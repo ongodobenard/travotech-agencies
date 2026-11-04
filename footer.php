@@ -252,6 +252,15 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 .trv-foot-legal{gap:18px;}
 @media(max-width:900px){.trv-foot-bottom-inner{flex-direction:column;justify-content:center;text-align:center;gap:6px;}}
 @media(max-width:600px){.trv-foot-inner{padding-top:32px;}.trv-foot-grid{gap:26px;}}
+
+/* ---- Social icons: real brand colors ---- */
+.trv-foot-soc{border:0 !important;color:#fff !important;}
+.trv-soc-facebook{background:#1877F2 !important;}
+.trv-soc-instagram{background:linear-gradient(45deg,#feda75 0%,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5 100%) !important;}
+.trv-soc-linkedin{background:#0A66C2 !important;}
+.trv-soc-x{background:#000 !important;box-shadow:0 0 0 1.5px rgba(255,255,255,.35);}
+.trv-soc-tiktok{background:#000 !important;box-shadow:2px 2px 0 #fe2c55,-2px -2px 0 #25f4ee;}
+.trv-foot-soc:hover,.trv-foot-soc:focus-visible{filter:brightness(1.12);transform:translateY(-2px);}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
@@ -270,19 +279,11 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
           foreach ( $trv_social_urls as $trv_net => $trv_url ) :
             $trv_has = ( $trv_url !== '' );
           ?>
-            <a href="<?php echo $trv_has ? esc_url( $trv_url ) : '#'; ?>" class="trv-foot-soc"<?php echo $trv_has ? ' target="_blank" rel="noopener noreferrer"' : ''; ?> aria-label="<?php echo esc_attr( $trv_social_labels[ $trv_net ] ); ?>">
+            <a href="<?php echo $trv_has ? esc_url( $trv_url ) : '#'; ?>" class="trv-foot-soc trv-soc-<?php echo esc_attr( $trv_net ); ?>"<?php echo $trv_has ? ' target="_blank" rel="noopener noreferrer"' : ''; ?> aria-label="<?php echo esc_attr( $trv_social_labels[ $trv_net ] ); ?>">
               <?php echo $trv_social_icons[ $trv_net ]; ?>
             </a>
           <?php endforeach; ?>
-          <a href="<?php echo esc_url( 'https://wa.me/' . $trv_wa ); ?>" class="trv-foot-soc" target="_blank" rel="noopener noreferrer" aria-label="Chat with Travotech Agencies on WhatsApp">
-            <?php echo $trv_wa_icon; ?>
-          </a>
         </div>
-
-        <a href="<?php echo esc_url( $trv_quote_link ); ?>" class="trv-foot-quote" target="_blank" rel="noopener noreferrer">
-          <?php echo $trv_wa_icon; ?>
-          Get a quote on WhatsApp
-        </a>
       </div>
 
       <div class="trv-foot-col">
