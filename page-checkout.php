@@ -420,7 +420,7 @@ wp_enqueue_style( 'dashicons' );
         </div>
         <div class="chkp-card-body">
           <div class="chkp-pay-pills">
-            <div class="chkp-pay-pill"><span class="dashicons dashicons-smartphone"></span>M-Pesa TILL_NUMBER_HERE</div>
+            
             <div class="chkp-pay-pill"><span class="dashicons dashicons-money-alt"></span>Cash on Delivery</div>
             <div class="chkp-pay-pill"><span class="dashicons dashicons-credit-card"></span>Visa / Mastercard</div>
             <div class="chkp-pay-pill"><span class="dashicons dashicons-bank"></span>Bank Transfer</div>
@@ -515,9 +515,9 @@ wp_enqueue_style( 'dashicons' );
       </div>
       <?php do_action( 'woocommerce_checkout_order_review' ); ?>
       <div class="chkp-pay-note">
-        <div class="chkp-pnr nairobi"><span class="dashicons dashicons-location"></span><span><strong>Nairobi:</strong> Pay on delivery: Cash or M-Pesa</span></div>
+        <div class="chkp-pnr nairobi"><span class="dashicons dashicons-location"></span><span><strong>Nairobi:</strong> Pay on delivery: Cash</span></div>
         <div class="chkp-pnr county"><span class="dashicons dashicons-warning"></span><span><strong>Other Counties:</strong> Full payment before dispatch</span></div>
-        <div class="chkp-pnr mpesa"><span class="dashicons dashicons-smartphone"></span><span>M-Pesa Till: <strong>TILL_NUMBER_HERE</strong> (TRAVOTECH AGENCIES)</span></div>
+        
       </div>
     </div>
   </div>
@@ -677,7 +677,7 @@ wp_enqueue_style( 'dashicons' );
     if(itemLines.length){itemLines.forEach(function(l){msg+=l+'\n';});}
     msg+='\n----------------------------\nORDER TOTAL: '+grandTotal+'\n----------------------------\n';
     if(notes)msg+='\nNOTES: '+notes+'\n';
-    msg+='\nPayment: [NAIROBI - pay on delivery / OTHER COUNTY - M-Pesa to Till TILL_NUMBER_HERE]\n\nPlease confirm my order. Thank you.';
+    msg+='\nPayment: [Please confirm payment arrangements]\n\nPlease confirm my order. Thank you.';
     return msg;
   }
 

@@ -207,7 +207,7 @@ wp_enqueue_style( 'dashicons' );
       <h2>1. Information We Collect</h2>
       <p><strong>Personal &amp; Contact Details:</strong> Your full name, phone number, email address, and delivery address when you place an order or register an account.</p>
       <p><strong>Health &amp; Prescription Information:</strong> Prescription details, medication history, and health-related information you submit when ordering prescription medicines or using our consultation service. This is treated with the highest level of confidentiality.</p>
-      <p><strong>Payment Information:</strong> Billing details processed securely through our payment providers (M-Pesa, card processors). We do not store your full card details on our servers.</p>
+      <p><strong>Payment Information:</strong> Billing details processed securely through our payment providers (card processors). We do not store your full card details on our servers.</p>
       <p><strong>Device &amp; Usage Data:</strong> IP address, browser type, and pages visited, collected automatically to help us improve your experience.</p>
 
       <h2>2. How We Use Your Information</h2>

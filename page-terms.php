@@ -359,7 +359,7 @@ wp_enqueue_style( 'dashicons' );
           </div>
           <div class="tz-title">Nairobi County</div>
           <div class="tz-amount">Pay on Delivery</div>
-          <div class="tz-sub">Pay in full when your order arrives, by our rider in Cash or via M-Pesa Till No. <strong>TILL_NUMBER_HERE</strong> (TRAVOTECH AGENCIES). No advance payment needed.</div>
+          <div class="tz-sub">Pay in full when your order arrives, by our rider in Cash. No advance payment needed.</div>
         </div>
         <div class="tp-zone-card county">
           <span class="tz-icon dashicons dashicons-admin-site-alt3"></span>
@@ -380,7 +380,7 @@ wp_enqueue_style( 'dashicons' );
 
       <p>We accept the following payment methods:</p>
       <div class="tp-methods">
-        <div class="tp-method"><span class="dashicons dashicons-smartphone"></span> M-Pesa Till: TILL_NUMBER_HERE (TRAVOTECH AGENCIES)</div>
+        
         <div class="tp-method"><span class="dashicons dashicons-money-alt"></span> Cash on Delivery</div>
         <div class="tp-method"><span class="dashicons dashicons-credit-card"></span> Visa / Mastercard</div>
         <div class="tp-method"><span class="dashicons dashicons-bank"></span> Bank Transfer</div>

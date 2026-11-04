@@ -926,7 +926,7 @@ button[name="update_cart"].cart-changed {
         <div class="cart-pay-note">
           <div class="pn-row nairobi">
             <span class="dashicons dashicons-location"></span>
-            <span><strong>Nairobi:</strong> Pay on delivery: Cash or M-Pesa Till <strong>TILL_NUMBER_HERE</strong></span>
+            <span><strong>Nairobi:</strong> Pay on delivery: Cash</span>
           </div>
           <div class="pn-row county">
             <span class="dashicons dashicons-warning"></span>

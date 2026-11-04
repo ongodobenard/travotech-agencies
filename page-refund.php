@@ -203,7 +203,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
       <div>
         <div class="wf-title">3. Refund Process</div>
-        <div class="wf-desc">Once your return is received and inspected, we will notify you via WhatsApp or email. Approved refunds are processed within <strong>3–5 business days</strong> via M-Pesa Till No. <strong>TILL_NUMBER_HERE (TRAVOTECH AGENCIES)</strong> or original payment method.</div>
+        <div class="wf-desc">Once your return is received and inspected, we will notify you via WhatsApp or email. Approved refunds are processed within <strong>3–5 business days</strong> via your original payment method.</div>
       </div>
     </div>
 

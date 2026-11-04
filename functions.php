@@ -643,9 +643,9 @@ function travotech_build_and_send_order( $args ) {
             <div style="background:#f0faf5;border:1.5px solid #b8ecd4;border-radius:8px;padding:14px 16px;">
               <div style="font-size:12px;font-weight:800;color:#2eaf6e;text-transform:uppercase;margin-bottom:8px;">Payment Reminder</div>
               <div style="font-size:12px;color:#4a6358;line-height:1.8;">
-                Nairobi: Collect Cash or M-Pesa on delivery<br>
+                Nairobi: Collect Cash on delivery<br>
                 Other Counties: Full payment before dispatch<br>
-                M-Pesa Till: TILL_NUMBER_HERE (TRAVOTECH AGENCIES)
+                
               </div>
             </div>
           </td></tr>
@@ -743,9 +743,9 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
             <div style="background:#f0faf5;border:1.5px solid #b8ecd4;border-radius:8px;padding:14px 16px;">
               <div style="font-size:12px;font-weight:800;color:#2eaf6e;text-transform:uppercase;margin-bottom:8px;">Payment: ' . esc_html( ucwords( str_replace( [ '_', '-' ], ' ', $payment ) ) ) . '</div>
               <div style="font-size:12px;color:#4a6358;line-height:1.9;">
-                Nairobi: Pay Cash or M-Pesa on delivery<br>
+                Nairobi: Pay Cash on delivery<br>
                 Other Counties: Full payment before dispatch<br>
-                M-Pesa Till: TILL_NUMBER_HERE <strong>: TRAVOTECH AGENCIES</strong><br>
+                
                 Total to pay: <span style="color:#2eaf6e;font-weight:800;">' . $total_fmt . '</span>
               </div>
             </div>
