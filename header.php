@@ -267,6 +267,14 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 .th-top{font-family:var(--th-fh);font-size:13px;letter-spacing:.04em;}
 .th-top .th-mi,.th-top .th-mi a{font-family:var(--th-fh);font-weight:600;color:#fff;}
 .th-top .th-mi i{color:#5fd39a;}
+
+/* ---- WooCommerce image override ---- */
+.th-sticky .th-logo-box img,.th-mhead .th-logo-box img{height:var(--th-lh,48px) !important;width:auto !important;max-width:var(--th-lw,200px) !important;object-fit:contain;}
+.th-mhead{--th-lh:38px;}
+#th-loader .th-ld-box img{height:60px !important;width:auto !important;max-width:230px !important;}
+.th-cdrop .th-cd-item img{width:48px !important;height:48px !important;max-width:48px !important;}
+@media (max-width:960px){.th-sticky{--th-lh:36px;--th-lw:150px;}}
+@media (max-width:380px){.th-sticky{--th-lh:30px;--th-lw:120px;}}
 </style>
 <?php wp_head(); ?>
 </head>
