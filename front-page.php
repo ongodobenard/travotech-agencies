@@ -39,6 +39,8 @@ $hp_reviews = array(
     array( 'Add a real customer review here.', 'Customer name', 'Hospital, Kenya' ),
 );
 
+$hp_reviews = array_values( array_filter( $hp_reviews, function ( $r ) { return stripos( $r[0], 'Add a real' ) === false; } ) );
+
 /* ---------- Helpers ---------- */
 $hp_cat_img = function ( $term ) {
     if ( function_exists( 'wc_get_products' ) ) {
@@ -273,6 +275,31 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
 .hp-rev .hp-gword .gr{color:#EA4335;font-size:15px;}
 .hp-rev .hp-gword .gy{color:#FBBC05;font-size:15px;}
 .hp-rev .hp-gword .gg{color:#34A853;font-size:15px;}
+
+/* ---- Fixes v3 ---- */
+/* CTA: solid colour */
+.hp-cta{background:var(--th-dk,#0c3a27);background-image:none;}
+
+/* Reviews: yellow stars */
+.hp-rev .hp-stars{display:flex;gap:3px;color:#FBBC05;font-size:1rem;}
+.hp-rev .hp-stars .off{color:#dadce0;}
+
+/* Equal image size in every product card */
+.hp-card-img{aspect-ratio:auto;height:clamp(150px,16vw,210px);padding:10px;}
+.hp-card-img img{width:100%;height:100%;object-fit:contain;display:block;}
+
+/* New Arrivals: shorter cards */
+section[aria-labelledby="hp-new-h"] .hp-grid{gap:14px;}
+section[aria-labelledby="hp-new-h"] .hp-card-img{height:clamp(120px,12vw,150px);padding:8px;}
+section[aria-labelledby="hp-new-h"] .hp-card-body{padding:10px;gap:6px;}
+section[aria-labelledby="hp-new-h"] .hp-card h3{font-size:.9rem;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.6em;}
+section[aria-labelledby="hp-new-h"] .hp-price{font-size:.9rem;}
+section[aria-labelledby="hp-new-h"] .hp-actions{gap:6px;margin-top:2px;}
+section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-size:11px;}
+@media (max-width:560px){
+    .hp-card-img{height:130px;}
+    section[aria-labelledby="hp-new-h"] .hp-card-img{height:110px;}
+}
 </style>
 
 <main class="hp" id="main">
@@ -395,7 +422,8 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
     </section>
 
     <!-- REVIEWS (no stars) -->
-    <section class="hp-sec alt" aria-labelledby="hp-rev-h">
+    <?php if ( ! empty( $hp_reviews ) ) : ?>
+	<section class="hp-sec alt" aria-labelledby="hp-rev-h">
         <div class="hp-wrap">
             <div class="hp-head">
                 <h2 id="hp-rev-h">What Our Customers Say</h2>
@@ -409,6 +437,8 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
                         <div class="hp-rev-by"><strong><?php echo esc_html( $r[1] ); ?></strong><span><?php echo esc_html( $r[2] ); ?></span></div>
                         <span class="hp-gword" aria-label="Google review"><span class="gb">G</span><span class="gr">o</span><span class="gy">o</span><span class="gb">g</span><span class="gg">l</span><span class="gr">e</span></span>
                     </div>
+                    <?php $hp_rt = isset( $r[3] ) ? max( 1, min( 5, (int) $r[3] ) ) : 5; ?>
+                    <div class="hp-stars" role="img" aria-label="<?php echo (int) $hp_rt; ?> out of 5 stars"><?php for ( $s = 1; $s <= 5; $s++ ) : ?><i class="fa-solid fa-star<?php echo $s > $hp_rt ? ' off' : ''; ?>" aria-hidden="true"></i><?php endfor; ?></div>
                     <p><?php echo esc_html( $r[0] ); ?></p>
                 </blockquote>
                 <?php endforeach; ?>
@@ -416,7 +446,9 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
         </div>
     </section>
 
-    <!-- CALL TO ACTION -->
+    <?php endif; ?>
+
+	<!-- CALL TO ACTION -->
     <section class="hp-cta" aria-labelledby="hp-cta-h">
         <div class="hp-wrap">
             <div>
