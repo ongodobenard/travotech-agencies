@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 /* ═══════════════════════════════════════════
-   TROVATECH PAGE LOADER
+   TRAVOTECH PAGE LOADER
    Background: deep pharmacy green (#1a3c2e)
    Spinner: bright green + red accent
    Starts painting on browser first frame
@@ -169,7 +169,7 @@
 <body <?php body_class(); ?>>
 
 <!-- ═══════════════════════════════════
-     TROVATECH PAGE LOADER
+     TRAVOTECH PAGE LOADER
 ═══════════════════════════════════ -->
 <div id="cv-page-loader" aria-hidden="true">
   <div class="cv-ld-glow"></div>
@@ -188,7 +188,7 @@
     <span class="cv-ld-d"></span>
   </div>
 
-  <div class="cv-ld-name" aria-label="Trovatech Agencies">
+  <div class="cv-ld-name" aria-label="Travotech Agencies">
     <span class="cv-ld-typed" id="cvLdTyped"></span>
     <span class="cv-ld-cursor" aria-hidden="true">|</span>
   </div>
@@ -201,7 +201,7 @@
   var typed = document.getElementById('cvLdTyped');
   if (!typed) return;
   /* C-A-R-E = green, V-E-E = red, space+PHARMACY = white */
-  var FULL = 'TROVATECH AGENCIES';
+  var FULL = 'TRAVOTECH AGENCIES';
   function col(i){ return i<=3?'cv-g':i<=6?'cv-r':'cv-w'; }
   var i=0, ready=false, t=null;
   function tick(){
@@ -226,7 +226,7 @@
   setTimeout(hide, 6000);
 })();
 </script>
-<!-- END TROVATECH LOADER -->
+<!-- END TRAVOTECH LOADER -->
 <?php wp_body_open(); ?>
 
 <style>
@@ -386,21 +386,21 @@
     </span>
     <span class="email-info">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      <?php echo esc_html(trovatech_email()); ?>
+      <?php echo esc_html(travotech_email()); ?>
     </span>
     <span class="address-info">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <?php echo esc_html(trovatech_address()); ?> &mdash; Mon-Fri: 8am-6pm | Sat: 8:30am-1:00pm | Sun &amp; Holidays: closed.
+      <?php echo esc_html(travotech_address()); ?> &mdash; Mon-Fri: 8am-6pm | Sat: 8:30am-1:00pm | Sun &amp; Holidays: closed.
     </span>
   </div>
   <div class="topbar-right">
-    <a href="<?php echo esc_url(get_option('trovatech_facebook','#')); ?>" class="soc" target="_blank" aria-label="Facebook">
+    <a href="<?php echo esc_url(get_option('travotech_facebook','#')); ?>" class="soc" target="_blank" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
     </a>
-    <a href="<?php echo esc_url(get_option('trovatech_instagram','#')); ?>" class="soc" target="_blank" aria-label="Instagram">
+    <a href="<?php echo esc_url(get_option('travotech_instagram','#')); ?>" class="soc" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
     </a>
-    <a href="<?php echo esc_url(get_option('trovatech_twitter','#')); ?>" class="soc" target="_blank" aria-label="X">
+    <a href="<?php echo esc_url(get_option('travotech_twitter','#')); ?>" class="soc" target="_blank" aria-label="X">
       <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     </a>
     <a href="https://wa.me/WHATSAPP_NUMBER_HERE" class="soc" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
@@ -413,10 +413,10 @@
 <header>
   <div class="header-main">
 
-    <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-link" aria-label="Trovatech Agencies — Go to homepage">
+    <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-link" aria-label="Travotech Agencies — Go to homepage">
       <div class="logo-img-wrap">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/Trovatech_Logo.png'); ?>"
-             alt="Trovatech Agencies" width="130" height="54" loading="eager" decoding="async"/>
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/Travotech_Logo.png'); ?>"
+             alt="Travotech Agencies" width="130" height="54" loading="eager" decoding="async"/>
       </div>
     </a>
 

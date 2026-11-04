@@ -342,7 +342,7 @@
           <span class="mtb-digit">3</span>
           <span class="mtb-digit">7</span>
         </div>
-        <span class="mtb-store">TROVATECH AGENCIES</span>
+        <span class="mtb-store">TRAVOTECH AGENCIES</span>
       </div>
     </div>
   </div>
@@ -354,12 +354,12 @@
     <div>
       <a href="<?php echo esc_url(home_url('/')); ?>"
          class="foot-logo-link"
-         aria-label="Trovatech Agencies — Go to homepage"
+         aria-label="Travotech Agencies — Go to homepage"
          style="margin-bottom:8px;">
         <div class="foot-logo-wrap">
           <img
-            src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/Trovatech_Logo.png'); ?>"
-            alt="Trovatech Agencies"
+            src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/Travotech_Logo.png'); ?>"
+            alt="Travotech Agencies"
             width="210"
             height="72"
             loading="lazy"
@@ -369,13 +369,13 @@
       </a>
       <p class="foot-desc">Kenya's trusted pharmacy. Quality medicines, supplements and healthcare products delivered with care across Nairobi and Kenya.</p>
       <div class="foot-socs">
-        <a href="<?php echo esc_url(get_option('trovatech_facebook','#')); ?>" class="foot-soc" target="_blank" aria-label="Facebook">
+        <a href="<?php echo esc_url(get_option('travotech_facebook','#')); ?>" class="foot-soc" target="_blank" aria-label="Facebook">
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         </a>
-        <a href="<?php echo esc_url(get_option('trovatech_instagram','#')); ?>" class="foot-soc" target="_blank" aria-label="Instagram">
+        <a href="<?php echo esc_url(get_option('travotech_instagram','#')); ?>" class="foot-soc" target="_blank" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
-        <a href="<?php echo esc_url(get_option('trovatech_twitter','#')); ?>" class="foot-soc" target="_blank" aria-label="X (Twitter)">
+        <a href="<?php echo esc_url(get_option('travotech_twitter','#')); ?>" class="foot-soc" target="_blank" aria-label="X (Twitter)">
           <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
         <a href="https://wa.me/<?php echo esc_attr($wa); ?>" class="foot-soc" target="_blank" aria-label="WhatsApp">
@@ -433,15 +433,15 @@
           </a>
         </li>
         <li>
-          <a href="mailto:<?php echo esc_attr(trovatech_email()); ?>">
+          <a href="mailto:<?php echo esc_attr(travotech_email()); ?>">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;margin-right:7px;flex-shrink:0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <?php echo esc_html(trovatech_email()); ?>
+            <?php echo esc_html(travotech_email()); ?>
           </a>
         </li>
         <li>
           <a href="#">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;margin-right:7px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <?php echo esc_html(trovatech_address()); ?>
+            <?php echo esc_html(travotech_address()); ?>
           </a>
         </li>
         <li>
@@ -470,7 +470,7 @@
 </footer>
 
 <!-- ═══════════════════════════════════════════════════
-     FLOATING BUTTONS — Trovatech Headphone Style
+     FLOATING BUTTONS — Travotech Headphone Style
 ═══════════════════════════════════════════════════ -->
 <style>
 
@@ -543,7 +543,7 @@
   pointer-events: auto;
 }
 
-/* ── Main toggle wrapper (button + Trovatech tag) ── */
+/* ── Main toggle wrapper (button + Travotech tag) ── */
 .f-toggle-wrap {
   display: flex;
   flex-direction: column;
@@ -634,8 +634,8 @@
 .f-toggle.active .f-ico-open  { display: none; }
 .f-toggle.active .f-ico-close { display: flex; }
 
-/* ── Trovatech pill tag ── */
-.f-trovatech-tag {
+/* ── Travotech pill tag ── */
+.f-travotech-tag {
   display: inline-block;
   font-family: 'Nunito', 'Helvetica Neue', Arial, sans-serif;
   font-size: 8.5px;
@@ -651,8 +651,8 @@
   transition: color .25s, background .25s, border-color .25s;
   white-space: nowrap;
 }
-.f-toggle.active + .f-trovatech-tag,
-.f-toggle-wrap.active-wrap .f-trovatech-tag {
+.f-toggle.active + .f-travotech-tag,
+.f-toggle-wrap.active-wrap .f-travotech-tag {
   color: #e53935;
   background: rgba(229,57,53,0.1);
   border-color: rgba(229,57,53,0.35);
@@ -684,8 +684,8 @@
     width: 54px;
     height: 54px;
   }
-  /* Trovatech tag */
-  .f-trovatech-tag {
+  /* Travotech tag */
+  .f-travotech-tag {
     font-size: 7.5px;
     padding: 3px 9px;
   }
@@ -713,7 +713,7 @@
     </svg>
   </a>
 
-  <!-- ══ Main toggle button — Trovatech Headphone ══ -->
+  <!-- ══ Main toggle button — Travotech Headphone ══ -->
   <div class="f-toggle-wrap" id="floatToggleWrap">
 
     <!-- Pulse rings — centred with translate, circular, fire once -->
@@ -778,8 +778,8 @@
 
     </button>
 
-    <!-- Trovatech pill label -->
-    <span class="f-trovatech-tag" id="trovatechTag">Trovatech</span>
+    <!-- Travotech pill label -->
+    <span class="f-travotech-tag" id="travotechTag">Travotech</span>
 
   </div>
   <!-- ══ End main toggle ══ -->
@@ -791,7 +791,7 @@
   var wrap      = document.getElementById('floatBtns');
   var toggle    = document.getElementById('floatToggle');
   var wrapDiv   = document.getElementById('floatToggleWrap');
-  var tag       = document.getElementById('trovatechTag');
+  var tag       = document.getElementById('travotechTag');
   var ring1     = document.getElementById('pulseRing1');
   var ring2     = document.getElementById('pulseRing2');
   if (!wrap || !toggle) return;

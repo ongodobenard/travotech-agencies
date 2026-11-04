@@ -4,13 +4,13 @@ get_header();
 global $product;
 
 /* ── Toast params ── */
-$trovatech_toast_pid  = isset($_GET['trovatech_added'])  ? intval($_GET['trovatech_added'])  : 0;
-$trovatech_toast_name = '';
-if ($trovatech_toast_pid) {
-  $p = wc_get_product($trovatech_toast_pid);
+$travotech_toast_pid  = isset($_GET['travotech_added'])  ? intval($_GET['travotech_added'])  : 0;
+$travotech_toast_name = '';
+if ($travotech_toast_pid) {
+  $p = wc_get_product($travotech_toast_pid);
   if ($p) {
     $n = $p->get_name();
-    $trovatech_toast_name = mb_strlen($n) > 30 ? mb_substr($n,0,30).'…' : $n;
+    $travotech_toast_name = mb_strlen($n) > 30 ? mb_substr($n,0,30).'…' : $n;
   }
 }
 
@@ -118,8 +118,8 @@ while (have_posts()): the_post();
 /* ═══════════════════════════════════════
    TOAST
 ═══════════════════════════════════════ */
-#trovatech-toast { position: fixed; bottom: 100px; right: 24px; z-index: 999999; min-width: 280px; max-width: 340px; background: #1a3c2e; color: #fff; border-radius: 14px; padding: 14px 16px 18px; box-shadow: 0 12px 40px rgba(0,0,0,.3); display: flex; align-items: flex-start; gap: 12px; font-family: 'Nunito', sans-serif; opacity: 0; transform: translateY(20px) scale(0.95); transition: opacity .4s cubic-bezier(.34,1.56,.64,1), transform .4s cubic-bezier(.34,1.56,.64,1); pointer-events: none; }
-#trovatech-toast.cv-show { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+#travotech-toast { position: fixed; bottom: 100px; right: 24px; z-index: 999999; min-width: 280px; max-width: 340px; background: #1a3c2e; color: #fff; border-radius: 14px; padding: 14px 16px 18px; box-shadow: 0 12px 40px rgba(0,0,0,.3); display: flex; align-items: flex-start; gap: 12px; font-family: 'Nunito', sans-serif; opacity: 0; transform: translateY(20px) scale(0.95); transition: opacity .4s cubic-bezier(.34,1.56,.64,1), transform .4s cubic-bezier(.34,1.56,.64,1); pointer-events: none; }
+#travotech-toast.cv-show { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
 .cv-toast-icon-wrap { width: 36px; height: 36px; border-radius: 50%; background: #2eaf6e; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
 .cv-toast-body { flex: 1; min-width: 0; }
 .cv-toast-title { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: #2eaf6e; margin-bottom: 3px; }
@@ -131,9 +131,9 @@ while (have_posts()): the_post();
 .cv-toast-btn-close:hover { background: rgba(255,255,255,.2); color: #fff; }
 .cv-toast-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,.15); border-radius: 0 0 14px 14px; overflow: hidden; }
 .cv-toast-progress-bar { height: 100%; width: 100%; background: #2eaf6e; transform-origin: left; animation: none; }
-#trovatech-toast.cv-show .cv-toast-progress-bar { animation: cvCountdown 5s linear forwards; }
+#travotech-toast.cv-show .cv-toast-progress-bar { animation: cvCountdown 5s linear forwards; }
 @keyframes cvCountdown { from{transform:scaleX(1);}to{transform:scaleX(0);} }
-@media(max-width:600px) { #trovatech-toast { bottom: 80px; right: 12px; left: 12px; min-width: unset; max-width: unset; } }
+@media(max-width:600px) { #travotech-toast { bottom: 80px; right: 12px; left: 12px; min-width: unset; max-width: unset; } }
 
 /* ═══════════════════════════════════════
    RELATED PRODUCTS
@@ -189,13 +189,13 @@ while (have_posts()): the_post();
 </style>
 
 <!-- TOAST -->
-<div id="trovatech-toast" role="alert" aria-live="assertive">
+<div id="travotech-toast" role="alert" aria-live="assertive">
   <div class="cv-toast-icon-wrap">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
   <div class="cv-toast-body">
     <div class="cv-toast-title">Added to Cart</div>
-    <div class="cv-toast-name" id="cv-toast-name"><?php echo esc_html($trovatech_toast_name); ?></div>
+    <div class="cv-toast-name" id="cv-toast-name"><?php echo esc_html($travotech_toast_name); ?></div>
     <div class="cv-toast-actions">
       <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="cv-toast-btn-cart">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg>
@@ -366,7 +366,7 @@ while (have_posts()): the_post();
           </div>
           <div class="p-btns">
             <?php if ($rsimp): ?>
-            <button type="button" class="p-btn-cart trovatech-rel-atc"
+            <button type="button" class="p-btn-cart travotech-rel-atc"
               data-pid="<?php echo esc_attr($rid); ?>"
               data-nonce="<?php echo esc_attr(wp_create_nonce('woocommerce-add-to-cart')); ?>"
               data-name="<?php echo esc_attr($rname_s); ?>">
@@ -426,7 +426,7 @@ while (have_posts()): the_post();
   /* ════════════════════════════════════
      TOAST
   ════════════════════════════════════ */
-  var toast    = document.getElementById('trovatech-toast');
+  var toast    = document.getElementById('travotech-toast');
   var toastNm  = document.getElementById('cv-toast-name');
   var toastBar = document.getElementById('cv-toast-bar');
   var closeBtn = document.getElementById('cv-toast-close');
@@ -453,15 +453,15 @@ while (have_posts()): the_post();
   }
 
   /* Show on first load if legacy query param present */
-  var TOAST_PID = <?php echo intval($trovatech_toast_pid); ?>;
+  var TOAST_PID = <?php echo intval($travotech_toast_pid); ?>;
   if (TOAST_PID > 0) {
     document.addEventListener('DOMContentLoaded', function(){
       showToast(null);
       if (window.history && window.history.replaceState) {
         var clean = window.location.pathname +
           (window.location.search
-            .replace(/[?&]trovatech_added=[^&]*/g,'')
-            .replace(/[?&]trovatech_scroll=[^&]*/g,'')
+            .replace(/[?&]travotech_added=[^&]*/g,'')
+            .replace(/[?&]travotech_scroll=[^&]*/g,'')
             .replace(/^&/,'?') || '');
         window.history.replaceState(null, '', clean);
       }
@@ -588,7 +588,7 @@ while (have_posts()): the_post();
       var qty      = qtyInput ? Math.max(1, parseInt(qtyInput.value) || 1) : 1;
       var total    = unitP * qty;
 
-      var msg = 'Hello Trovatech Agencies,\n\n'
+      var msg = 'Hello Travotech Agencies,\n\n'
               + 'ORDER REQUEST\n'
               + '============================\n\n'
               + 'PRODUCT DETAILS:\n'
@@ -605,7 +605,7 @@ while (have_posts()): the_post();
   }
 
   /* ── Related product ATC buttons (qty always 1) ── */
-  document.querySelectorAll('.trovatech-rel-atc').forEach(function(btn){
+  document.querySelectorAll('.travotech-rel-atc').forEach(function(btn){
     btn.addEventListener('click', function(){
       /* Quick icon pulse for feedback */
       var ico = btn.querySelector('.p-btn-ico');

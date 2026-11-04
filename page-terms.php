@@ -313,12 +313,12 @@ wp_enqueue_style( 'dashicons' );
 
     <div class="tp-inner">
 
-      <p class="tp-intro">Welcome to <strong>Trovatech Agencies</strong>. By accessing our website, placing an order, or using any of our services, you agree to be bound by these Terms &amp; Conditions. Please read them carefully before proceeding.</p>
+      <p class="tp-intro">Welcome to <strong>Travotech Agencies</strong>. By accessing our website, placing an order, or using any of our services, you agree to be bound by these Terms &amp; Conditions. Please read them carefully before proceeding.</p>
       <span class="tp-date">Last updated: <?php echo date( 'F Y' ); ?></span>
 
       <!-- 1. About Us -->
-      <h2><span class="dashicons dashicons-store"></span> 1. About Trovatech Agencies</h2>
-      <p><strong>Trovatech Agencies</strong> is a licensed pharmacy operating under the Pharmacy and Poisons Board of Kenya. We provide prescription and over-the-counter medicines, healthcare products, and pharmaceutical consultations to customers across Kenya, with delivery services available nationwide.</p>
+      <h2><span class="dashicons dashicons-store"></span> 1. About Travotech Agencies</h2>
+      <p><strong>Travotech Agencies</strong> is a licensed pharmacy operating under the Pharmacy and Poisons Board of Kenya. We provide prescription and over-the-counter medicines, healthcare products, and pharmaceutical consultations to customers across Kenya, with delivery services available nationwide.</p>
       <p>By using our website or services, you confirm that you are at least 18 years of age, or are acting under the supervision of a parent or legal guardian.</p>
 
       <!-- 2. Use of Website -->
@@ -359,7 +359,7 @@ wp_enqueue_style( 'dashicons' );
           </div>
           <div class="tz-title">Nairobi County</div>
           <div class="tz-amount">Pay on Delivery</div>
-          <div class="tz-sub">Pay in full when your order arrives, by our rider in Cash or via M-Pesa Till No. <strong>TILL_NUMBER_HERE</strong> (TROVATECH AGENCIES). No advance payment needed.</div>
+          <div class="tz-sub">Pay in full when your order arrives, by our rider in Cash or via M-Pesa Till No. <strong>TILL_NUMBER_HERE</strong> (TRAVOTECH AGENCIES). No advance payment needed.</div>
         </div>
         <div class="tp-zone-card county">
           <span class="tz-icon dashicons dashicons-admin-site-alt3"></span>
@@ -380,7 +380,7 @@ wp_enqueue_style( 'dashicons' );
 
       <p>We accept the following payment methods:</p>
       <div class="tp-methods">
-        <div class="tp-method"><span class="dashicons dashicons-smartphone"></span> M-Pesa Till: TILL_NUMBER_HERE (TROVATECH AGENCIES)</div>
+        <div class="tp-method"><span class="dashicons dashicons-smartphone"></span> M-Pesa Till: TILL_NUMBER_HERE (TRAVOTECH AGENCIES)</div>
         <div class="tp-method"><span class="dashicons dashicons-money-alt"></span> Cash on Delivery</div>
         <div class="tp-method"><span class="dashicons dashicons-credit-card"></span> Visa / Mastercard</div>
         <div class="tp-method"><span class="dashicons dashicons-bank"></span> Bank Transfer</div>
@@ -414,12 +414,12 @@ wp_enqueue_style( 'dashicons' );
 
       <!-- 8. Intellectual Property -->
       <h2><span class="dashicons dashicons-lock"></span> 8. Intellectual Property</h2>
-      <p>All content on this website, including text, images, logos, graphics, and product descriptions is the property of Trovatech Agencies or its content suppliers and is protected under Kenyan and international intellectual property law.</p>
+      <p>All content on this website, including text, images, logos, graphics, and product descriptions is the property of Travotech Agencies or its content suppliers and is protected under Kenyan and international intellectual property law.</p>
       <p>You may not reproduce, distribute, or use any content from this website for commercial purposes without our express written permission.</p>
 
       <!-- 9. Limitation of Liability -->
       <h2><span class="dashicons dashicons-shield"></span> 9. Limitation of Liability</h2>
-      <p>Trovatech Agencies shall not be liable for any indirect, incidental, or consequential damages arising from the use of our website or services. Our total liability in any matter arising from these terms shall not exceed the value of the order in question.</p>
+      <p>Travotech Agencies shall not be liable for any indirect, incidental, or consequential damages arising from the use of our website or services. Our total liability in any matter arising from these terms shall not exceed the value of the order in question.</p>
       <div class="tp-callout info">
         <span class="dashicons dashicons-info-outline"></span>
         <span>Health information provided on our website is for general guidance only and does not constitute medical advice. Always consult a qualified healthcare provider before starting, stopping, or changing any medication.</span>
@@ -445,7 +445,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="tp-contact-box">
         <div class="tp-contact-row">
           <span class="dashicons dashicons-store"></span>
-          <strong>Trovatech Agencies</strong>
+          <strong>Travotech Agencies</strong>
         </div>
         <div class="tp-contact-row">
           <span class="dashicons dashicons-location"></span>

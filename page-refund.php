@@ -203,7 +203,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
       <div>
         <div class="wf-title">3. Refund Process</div>
-        <div class="wf-desc">Once your return is received and inspected, we will notify you via WhatsApp or email. Approved refunds are processed within <strong>3–5 business days</strong> via M-Pesa Till No. <strong>TILL_NUMBER_HERE (TROVATECH AGENCIES)</strong> or original payment method.</div>
+        <div class="wf-desc">Once your return is received and inspected, we will notify you via WhatsApp or email. Approved refunds are processed within <strong>3–5 business days</strong> via M-Pesa Till No. <strong>TILL_NUMBER_HERE (TRAVOTECH AGENCIES)</strong> or original payment method.</div>
       </div>
     </div>
 
@@ -230,7 +230,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
       <div>
         <div class="wf-title">6. How to Initiate a Return</div>
-        <div class="wf-desc">Contact us via WhatsApp at <strong>+254 790 007616</strong> or email <strong>orders@trovatechpharmacy.co.ke</strong> with your order details and reason for return.</div>
+        <div class="wf-desc">Contact us via WhatsApp at <strong>+254 790 007616</strong> or email <strong>orders@travotechpharmacy.co.ke</strong> with your order details and reason for return.</div>
       </div>
     </div>
 
@@ -250,7 +250,7 @@ wp_enqueue_style( 'dashicons' );
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center;">
 
         <!-- WhatsApp Button -->
-        <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Trovatech Agencies! I have a question about your Return and Refund Policy.'); ?>"
+        <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have a question about your Return and Refund Policy.'); ?>"
            class="wa-cta-btn"
            target="_blank"
            rel="noopener">

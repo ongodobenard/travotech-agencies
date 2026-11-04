@@ -329,7 +329,7 @@ get_header(); ?>
       <div class="rx-bubble-4"></div>
       <div class="rx-bubble-5"></div>
       <div class="rx-delivery-img-wrap">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/js/images/delivery.png" alt="Fast Delivery — Trovatech Agencies">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/js/images/delivery.png" alt="Fast Delivery — Travotech Agencies">
       </div>
       <div class="rx-img-overlay-badge reveal">
         <h3>Fast &amp; Reliable Delivery</h3>
@@ -369,7 +369,7 @@ get_header(); ?>
 
       <form id="rxForm" enctype="multipart/form-data" novalidate>
         <?php wp_nonce_field('rx_nonce_action', 'rx_nonce'); ?>
-        <input type="hidden" name="action" value="trovatech_submit_prescription">
+        <input type="hidden" name="action" value="travotech_submit_prescription">
 
         <div class="rx-form-grid">
           <div class="fg" id="fg_fname">
@@ -469,7 +469,7 @@ get_header(); ?>
     <h2 class="sec-title reveal" style="color:white;">Need Help? <span style="color:var(--green-mid,#b8ecd4);">Call Us Now</span></h2>
     <p style="color:rgba(255,255,255,.8);font-size:.88rem;margin:10px 0 24px;" class="reveal rd1">Our pharmacists are available Mon–Sat 8am–6pm to assist you.</p>
     <a href="tel:+WHATSAPP_NUMBER_HERE" class="btn-green reveal rd2" style="background:white;color:var(--green);">
-      <?php echo esc_html(trovatech_phone()); ?>
+      <?php echo esc_html(travotech_phone()); ?>
     </a>
   </div>
 </section>
@@ -594,7 +594,7 @@ get_header(); ?>
       var data;
       try { data = JSON.parse(clean); } catch(e) {
         btnReset();
-        document.getElementById('rxErrorText').textContent = 'Server error. Please call us on ' + '<?php echo esc_js(trovatech_phone()); ?>';
+        document.getElementById('rxErrorText').textContent = 'Server error. Please call us on ' + '<?php echo esc_js(travotech_phone()); ?>';
         showToast(document.getElementById('rxError'), 8000);
         return;
       }
@@ -606,7 +606,7 @@ get_header(); ?>
         btnReset();
         document.getElementById('rxErrorText').textContent = (data.data && data.data.msg)
           ? data.data.msg
-          : 'Failed to send. Please call us on <?php echo esc_js(trovatech_phone()); ?>';
+          : 'Failed to send. Please call us on <?php echo esc_js(travotech_phone()); ?>';
         showToast(document.getElementById('rxError'), 8000);
       }
     })

@@ -1,4 +1,4 @@
-/* Trovatech Agencies — main.js */
+/* Travotech Agencies — main.js */
 
 // ─── HERO SLIDER (exact from prototype) ───────
 let cur = 0;
@@ -49,7 +49,7 @@ tabBtns.forEach(btn => {
     prodGrid.style.pointerEvents = 'none';
 
     const formData = new FormData();
-    formData.append('action', 'trovatech_filter_products');
+    formData.append('action', 'travotech_filter_products');
     formData.append('cat', cat);
     formData.append('nonce', (typeof medicareData !== 'undefined') ? medicareData.nonce : '');
 
@@ -98,7 +98,7 @@ if (contactForm) {
     btn.disabled = true;
 
     const fd = new FormData(this);
-    fd.append('action', 'trovatech_contact');
+    fd.append('action', 'travotech_contact');
 
     fetch((typeof medicareData !== 'undefined') ? medicareData.ajaxUrl : '/wp-admin/admin-ajax.php', {
       method: 'POST', body: fd,

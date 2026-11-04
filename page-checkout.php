@@ -295,7 +295,7 @@ wp_enqueue_style( 'dashicons' );
     $sel_country = $val( 'billing_country' ) ?: 'KE';
     $states      = WC()->countries->get_states( $sel_country ) ?: [];
     $sel_state   = $val( 'billing_state' );
-    $order_nonce = wp_create_nonce( 'trovatech_order_nonce' );
+    $order_nonce = wp_create_nonce( 'travotech_order_nonce' );
 ?>
 <div class="chkp-layout">
 
@@ -517,7 +517,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="chkp-pay-note">
         <div class="chkp-pnr nairobi"><span class="dashicons dashicons-location"></span><span><strong>Nairobi:</strong> Pay on delivery: Cash or M-Pesa</span></div>
         <div class="chkp-pnr county"><span class="dashicons dashicons-warning"></span><span><strong>Other Counties:</strong> Full payment before dispatch</span></div>
-        <div class="chkp-pnr mpesa"><span class="dashicons dashicons-smartphone"></span><span>M-Pesa Till: <strong>TILL_NUMBER_HERE</strong> (TROVATECH AGENCIES)</span></div>
+        <div class="chkp-pnr mpesa"><span class="dashicons dashicons-smartphone"></span><span>M-Pesa Till: <strong>TILL_NUMBER_HERE</strong> (TRAVOTECH AGENCIES)</span></div>
       </div>
     </div>
   </div>
@@ -645,8 +645,8 @@ wp_enqueue_style( 'dashicons' );
   function collectFormData(via){
     var form = document.getElementById('chkp-form');
     var fd   = new FormData(form);
-    fd.append('action',              'trovatech_send_order_email');
-    fd.append('trovatech_order_nonce', ORDER_NONCE);
+    fd.append('action',              'travotech_send_order_email');
+    fd.append('travotech_order_nonce', ORDER_NONCE);
     fd.append('order_via',           via || 'website');
     var payEl = document.querySelector('#chkp-form input[name="payment_method"]:checked');
     if(payEl) fd.set('payment_method', payEl.value);
@@ -670,7 +670,7 @@ wp_enqueue_style( 'dashicons' );
     var grandTotal='';
     var totRow=document.querySelector('.woocommerce-checkout-review-order-table tfoot .order-total .amount');
     if(totRow)grandTotal=totRow.textContent.trim();
-    var msg='Hello Trovatech Agencies,\n\nORDER REQUEST\n============================\n\nCUSTOMER DETAILS:\n';
+    var msg='Hello Travotech Agencies,\n\nORDER REQUEST\n============================\n\nCUSTOMER DETAILS:\n';
     msg+='Name: '+fname+' '+lname+'\n';
     if(company)msg+='Company: '+company+'\n';
     msg+='Phone: '+phone+'\nEmail: '+email+'\nAddress: '+addr1+(addr2?', '+addr2:'')+', '+city+', '+stateVal+(postcode?' '+postcode:'')+'\n\nORDER ITEMS:\n';

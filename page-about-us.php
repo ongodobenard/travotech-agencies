@@ -142,7 +142,7 @@ get_header(); ?>
     </div>
     <div>
       <div class="sec-tag sec-tag-outline reveal">About Us</div>
-      <h1 class="sec-title reveal rd1">About <span>Trovatech Agencies</span></h1>
+      <h1 class="sec-title reveal rd1">About <span>Travotech Agencies</span></h1>
       <p class="sec-desc reveal rd2">Kenya's most trusted pharmacy serving thousands of families with quality, affordable and certified medicines since 2012. Licensed by the Pharmacy and Poisons Board of Kenya.</p>
       <div class="why-feats" style="margin-top:28px;">
         <div class="why-feat reveal rd1">
@@ -308,7 +308,7 @@ get_header(); ?>
   <!-- WHATSAPP BUTTON -->
   <div style="text-align:center;margin-top:40px;" class="reveal">
     <p style="font-size:.88rem;color:var(--text-mid);font-weight:600;margin-bottom:16px;">Have delivery questions? Chat with us directly!</p>
-    <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Trovatech Agencies! I have a delivery enquiry.'); ?>"
+    <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have a delivery enquiry.'); ?>"
        class="wa-cta-btn"
        target="_blank"
        rel="noopener">
@@ -354,7 +354,7 @@ get_header(); ?>
           <a href="#" class="t-soc" aria-label="Facebook">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
-          <a href="mailto:<?php echo esc_attr(trovatech_email()); ?>" class="t-soc" aria-label="Email">
+          <a href="mailto:<?php echo esc_attr(travotech_email()); ?>" class="t-soc" aria-label="Email">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </a>
         </div>
@@ -372,7 +372,7 @@ get_header(); ?>
     <h2 class="sec-title reveal rd1" style="color:white;">Have Questions? <span style="color:var(--green-mid);">We're Here</span></h2>
     <p class="sec-desc reveal rd2" style="color:rgba(255,255,255,.8);margin:0 auto 28px;">Reach out via WhatsApp or visit us at Utawala Astrol (Nairobi).</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="reveal rd3">
-      <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Trovatech Agencies! I have an enquiry.'); ?>"
+      <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
          class="wa-cta-btn wa-cta-btn--white"
          target="_blank"
          rel="noopener">

@@ -2,13 +2,13 @@
 <?php
 add_filter('loop_shop_per_page', function($n) { return 16; }, 20);
 
-$trovatech_toast_pid  = isset($_GET['trovatech_added'])  ? intval($_GET['trovatech_added'])  : 0;
-$trovatech_toast_name = '';
-if ($trovatech_toast_pid) {
-  $p = wc_get_product($trovatech_toast_pid);
+$travotech_toast_pid  = isset($_GET['travotech_added'])  ? intval($_GET['travotech_added'])  : 0;
+$travotech_toast_name = '';
+if ($travotech_toast_pid) {
+  $p = wc_get_product($travotech_toast_pid);
   if ($p) {
     $n = $p->get_name();
-    $trovatech_toast_name = mb_strlen($n) > 30 ? mb_substr($n,0,30).'…' : $n;
+    $travotech_toast_name = mb_strlen($n) > 30 ? mb_substr($n,0,30).'…' : $n;
   }
 }
 ?>
@@ -257,7 +257,7 @@ ul.woocommerce-error,
 /* ═══════════════════════════════════════════════════
    FIXED TOAST NOTIFICATION
 ═══════════════════════════════════════════════════ */
-#trovatech-toast {
+#travotech-toast {
   position: fixed;
   bottom: 100px;
   right: 24px;
@@ -279,7 +279,7 @@ ul.woocommerce-error,
               transform .4s cubic-bezier(.34,1.56,.64,1);
   pointer-events: none;
 }
-#trovatech-toast.cv-show {
+#travotech-toast.cv-show {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: all;
@@ -328,7 +328,7 @@ ul.woocommerce-error,
   transform-origin: left;
   animation: none;
 }
-#trovatech-toast.cv-show .cv-toast-progress-bar {
+#travotech-toast.cv-show .cv-toast-progress-bar {
   animation: cvCountdown 5s linear forwards;
 }
 @keyframes cvCountdown {
@@ -336,7 +336,7 @@ ul.woocommerce-error,
   to   { transform: scaleX(0); }
 }
 @media(max-width:600px) {
-  #trovatech-toast { bottom: 80px; right: 12px; left: 12px; min-width: unset; max-width: unset; }
+  #travotech-toast { bottom: 80px; right: 12px; left: 12px; min-width: unset; max-width: unset; }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -361,7 +361,7 @@ ul.woocommerce-error,
 </style>
 
 <!-- FIXED TOAST HTML -->
-<div id="trovatech-toast" role="alert" aria-live="assertive">
+<div id="travotech-toast" role="alert" aria-live="assertive">
   <div class="cv-toast-icon-wrap">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
@@ -518,7 +518,7 @@ ul.woocommerce-error,
                 <?php if ($is_simple): ?>
                   <!-- Silent AJAX ATC — no navigation, no scroll -->
                   <button type="button"
-                    class="p-btn-cart trovatech-atc-btn"
+                    class="p-btn-cart travotech-atc-btn"
                     data-pid="<?php echo esc_attr($pid); ?>"
                     data-name="<?php echo esc_attr($pname_short); ?>">
                     <span class="p-btn-ico">
@@ -635,7 +635,7 @@ ul.woocommerce-error,
   /* ══════════════════════════════════════════
      TOAST
   ══════════════════════════════════════════ */
-  var toast       = document.getElementById('trovatech-toast');
+  var toast       = document.getElementById('travotech-toast');
   var toastNameEl = document.getElementById('cv-toast-name');
   var toastBar    = document.getElementById('cv-toast-bar');
   var closeBtn    = document.getElementById('cv-toast-close');
@@ -702,7 +702,7 @@ ul.woocommerce-error,
      Page comes back to exact same Y position.
      Toast appears. Cart count updates.
   ══════════════════════════════════════════ */
-  document.querySelectorAll('.trovatech-atc-btn').forEach(function(btn) {
+  document.querySelectorAll('.travotech-atc-btn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();

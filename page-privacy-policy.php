@@ -201,7 +201,7 @@ wp_enqueue_style( 'dashicons' );
 
     <div class="policy-inner">
 
-      <p class="pp-intro">At <strong>Trovatech Agencies</strong>, your privacy and the confidentiality of your health information are of the utmost importance to us. This policy explains how we collect, use, protect, and share your information when you use our services.</p>
+      <p class="pp-intro">At <strong>Travotech Agencies</strong>, your privacy and the confidentiality of your health information are of the utmost importance to us. This policy explains how we collect, use, protect, and share your information when you use our services.</p>
       <span class="pp-date">Last updated: <?php echo date( 'F Y' ); ?></span>
 
       <h2>1. Information We Collect</h2>
@@ -246,7 +246,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="pp-contact-box">
         <div class="pp-contact-row">
           <span class="dashicons dashicons-store"></span>
-          <strong>Trovatech Agencies</strong>
+          <strong>Travotech Agencies</strong>
         </div>
         <div class="pp-contact-row">
           <span class="dashicons dashicons-location"></span>

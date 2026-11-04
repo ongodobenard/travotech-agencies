@@ -151,7 +151,7 @@ header { margin-bottom:0!important;padding-bottom:0!important; }
 /* ═══════════════════════════════════════
    TOAST NOTIFICATION
 ═══════════════════════════════════════ */
-#trovatech-toast {
+#travotech-toast {
   position:fixed;bottom:100px;right:24px;z-index:999999;
   min-width:280px;max-width:340px;
   background:#1a3c2e;color:#fff;
@@ -163,7 +163,7 @@ header { margin-bottom:0!important;padding-bottom:0!important; }
   transition:opacity .4s cubic-bezier(.34,1.56,.64,1),transform .4s cubic-bezier(.34,1.56,.64,1);
   pointer-events:none;
 }
-#trovatech-toast.cv-show{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
+#travotech-toast.cv-show{opacity:1;transform:translateY(0) scale(1);pointer-events:all;}
 .cv-toast-icon-wrap{width:36px;height:36px;border-radius:50%;background:#2eaf6e;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
 .cv-toast-body{flex:1;min-width:0;}
 .cv-toast-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#2eaf6e;margin-bottom:3px;}
@@ -175,13 +175,13 @@ header { margin-bottom:0!important;padding-bottom:0!important; }
 .cv-toast-btn-close:hover{background:rgba(255,255,255,.2);color:#fff;}
 .cv-toast-progress{position:absolute;bottom:0;left:0;right:0;height:4px;background:rgba(255,255,255,.15);border-radius:0 0 14px 14px;overflow:hidden;}
 .cv-toast-progress-bar{height:100%;width:100%;background:#2eaf6e;transform-origin:left;animation:none;}
-#trovatech-toast.cv-show .cv-toast-progress-bar{animation:cvCountdown 5s linear forwards;}
+#travotech-toast.cv-show .cv-toast-progress-bar{animation:cvCountdown 5s linear forwards;}
 @keyframes cvCountdown{from{transform:scaleX(1);}to{transform:scaleX(0);}}
-@media(max-width:600px){#trovatech-toast{bottom:80px;right:12px;left:12px;min-width:unset;max-width:unset;}}
+@media(max-width:600px){#travotech-toast{bottom:80px;right:12px;left:12px;min-width:unset;max-width:unset;}}
 </style>
 
 <!-- TOAST HTML -->
-<div id="trovatech-toast" role="alert" aria-live="assertive">
+<div id="travotech-toast" role="alert" aria-live="assertive">
   <div class="cv-toast-icon-wrap">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
@@ -329,7 +329,7 @@ function fp_card( $product, $wa ) {
   $title     = get_the_title($pid);
   $title_short = mb_strlen($title) > 35 ? mb_substr($title, 0, 35) . '...' : $title;
   $sku       = esc_attr( $product->get_sku() );
-  $wamsg     = urlencode( "Hello Trovatech Agencies!\n\nI'd like to order:\n*" . $title . "*\nPrice: KES " . number_format($pc, 2) . "\n\nLink: " . $permalink . "\n\nPlease confirm availability. Thank you." );
+  $wamsg     = urlencode( "Hello Travotech Agencies!\n\nI'd like to order:\n*" . $title . "*\nPrice: KES " . number_format($pc, 2) . "\n\nLink: " . $permalink . "\n\nPlease confirm availability. Thank you." );
   list( $cat_n, $cat_link, $brand_n ) = fp_get_meta($pid);
   $nonce     = wp_create_nonce('wc_add_to_cart_nonce');
   ?>
@@ -542,7 +542,7 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
         $is_simple = $product->is_type('simple');
         $title     = get_the_title();
         $title_short = mb_strlen($title) > 35 ? mb_substr($title, 0, 35) . '...' : $title;
-        $wamsg     = urlencode("Hello Trovatech Agencies!\n\nI'd like to order:\n*".$title."*\nPrice: KES ".number_format($pc,2)."\n\nLink: ".get_permalink()."\n\nPlease confirm availability. Thank you.");
+        $wamsg     = urlencode("Hello Travotech Agencies!\n\nI'd like to order:\n*".$title."*\nPrice: KES ".number_format($pc,2)."\n\nLink: ".get_permalink()."\n\nPlease confirm availability. Thank you.");
         $cats      = get_the_terms(get_the_ID(),'product_cat');
         $cat_n     = ($cats && !is_wp_error($cats)) ? $cats[0]->name : '';
         $cat_lnk   = ($cats && !is_wp_error($cats)) ? get_term_link($cats[0]) : '#';
@@ -628,8 +628,8 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
     <div class="cta-form reveal rd1">
       <div class="cta-form-title">Send Us a Message</div>
       <form data-cvform="home" method="post" novalidate>
-        <?php wp_nonce_field('trovatech_nonce','nonce'); ?>
-        <input type="hidden" name="action" value="trovatech_contact">
+        <?php wp_nonce_field('travotech_nonce','nonce'); ?>
+        <input type="hidden" name="action" value="travotech_contact">
         <div class="form-row">
           <div class="fg" id="hfg-name">
             <input type="text" id="hcv_name" name="contact_name" placeholder="Your Name">
@@ -769,7 +769,7 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
   var HOME_URL = '<?php echo esc_js(home_url("/")); ?>';
 
   /* ── CART TOAST ── */
-  var toast    = document.getElementById('trovatech-toast');
+  var toast    = document.getElementById('travotech-toast');
   var toastNm  = document.getElementById('cv-toast-name');
   var toastBar = toast ? toast.querySelector('.cv-toast-progress-bar') : null;
   var closeBtn = document.getElementById('cv-toast-close');

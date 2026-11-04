@@ -151,7 +151,7 @@ get_header(); ?>
 <!-- Hero -->
 <section style="background:var(--green-pale);padding:56px 5%;text-align:center;">
   <div class="sec-tag sec-tag-outline reveal">Get In Touch</div>
-  <h1 class="sec-title reveal rd1">Contact <span>Trovatech Agencies</span></h1>
+  <h1 class="sec-title reveal rd1">Contact <span>Travotech Agencies</span></h1>
   <p class="sec-desc reveal rd2" style="margin:0 auto;">Have a question or need help? We're always available via WhatsApp, phone or email.</p>
 </section>
 
@@ -177,7 +177,7 @@ get_header(); ?>
           <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div>
             <div class="wf-title">Email Address</div>
-            <div class="wf-desc"><a href="mailto:<?php echo esc_attr(trovatech_email()); ?>" style="color:var(--green);font-weight:700;"><?php echo esc_html(trovatech_email()); ?></a></div>
+            <div class="wf-desc"><a href="mailto:<?php echo esc_attr(travotech_email()); ?>" style="color:var(--green);font-weight:700;"><?php echo esc_html(travotech_email()); ?></a></div>
           </div>
         </div>
 
@@ -185,7 +185,7 @@ get_header(); ?>
           <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
           <div>
             <div class="wf-title">Our Location</div>
-            <div class="wf-desc"><?php echo esc_html(trovatech_address()); ?></div>
+            <div class="wf-desc"><?php echo esc_html(travotech_address()); ?></div>
           </div>
         </div>
 
@@ -202,9 +202,9 @@ get_header(); ?>
       <div style="margin-top:28px;">
         <div style="font-size:.82rem;font-weight:800;color:var(--text);margin-bottom:12px;">Follow Us:</div>
         <div style="display:flex;gap:9px;">
-          <a href="<?php echo esc_url(get_option('trovatech_facebook','#')); ?>" class="foot-soc" target="_blank">f</a>
-          <a href="<?php echo esc_url(get_option('trovatech_instagram','#')); ?>" class="foot-soc" target="_blank">▶</a>
-          <a href="<?php echo esc_url(get_option('trovatech_twitter','#')); ?>" class="foot-soc" target="_blank">𝕏</a>
+          <a href="<?php echo esc_url(get_option('travotech_facebook','#')); ?>" class="foot-soc" target="_blank">f</a>
+          <a href="<?php echo esc_url(get_option('travotech_instagram','#')); ?>" class="foot-soc" target="_blank">▶</a>
+          <a href="<?php echo esc_url(get_option('travotech_twitter','#')); ?>" class="foot-soc" target="_blank">𝕏</a>
           <a href="https://wa.me/WHATSAPP_NUMBER_HERE" class="foot-soc" target="_blank">W</a>
         </div>
       </div>
@@ -215,8 +215,8 @@ get_header(); ?>
     <div class="cta-form reveal rd1">
       <div class="cta-form-title">Send Us a Message</div>
       <form data-cvform="contact" method="post" novalidate>
-        <?php wp_nonce_field('trovatech_nonce','nonce'); ?>
-        <input type="hidden" name="action" value="trovatech_contact">
+        <?php wp_nonce_field('travotech_nonce','nonce'); ?>
+        <input type="hidden" name="action" value="travotech_contact">
 
         <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
           <div class="fg" id="fg-name">
@@ -261,7 +261,7 @@ get_header(); ?>
         <!-- ✅ Success Toast -->
         <div class="cv-toast cv-success" id="cvSuccess" role="alert" aria-live="polite">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Thanks for contacting Trovatech! Message received successfully. Our professional pharmacist will get back to you shortly. For urgent enquiries, call or WhatsApp us directly on <a href="https://wa.me/WHATSAPP_NUMBER_HERE" style="color:inherit;text-decoration:underline;font-weight:900;" target="_blank">+254 790 007616</a>.</span>
+          <span>Thanks for contacting Travotech! Message received successfully. Our professional pharmacist will get back to you shortly. For urgent enquiries, call or WhatsApp us directly on <a href="https://wa.me/WHATSAPP_NUMBER_HERE" style="color:inherit;text-decoration:underline;font-weight:900;" target="_blank">+254 790 007616</a>.</span>
         </div>
 
         <!-- ❌ Error Toast -->
@@ -281,7 +281,7 @@ get_header(); ?>
   <div class="sec-tag sec-tag-solid reveal">Fastest Response</div>
   <h2 class="sec-title reveal rd1">Chat With Us on <span>WhatsApp</span></h2>
   <p class="sec-desc reveal rd2" style="margin:0 auto 28px;">Get instant responses from our pharmacists, available 24/7.</p>
-  <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Trovatech Agencies! I have an enquiry.'); ?>"
+  <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
      class="wa-cta-btn reveal rd3"
      target="_blank"
      rel="noopener">

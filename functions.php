@@ -1,6 +1,6 @@
 <?php
 /**
- * Trovatech Agencies — functions.php
+ * Travotech Agencies — functions.php
  * Updated: April 2026
  *
  * CHANGES:
@@ -41,7 +41,7 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 } );
 
 // ─── THEME SETUP ──────────────────────────────
-function trovatech_setup() {
+function travotech_setup() {
     add_theme_support( 'title-tag' );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'woocommerce' );
@@ -51,10 +51,10 @@ function trovatech_setup() {
     add_theme_support( 'custom-logo', [ 'width' => 46, 'height' => 46, 'flex-square' => true ] );
     register_nav_menus( [ 'primary' => 'Primary Menu' ] );
 }
-add_action( 'after_setup_theme', 'trovatech_setup' );
+add_action( 'after_setup_theme', 'travotech_setup' );
 
 // ─── ENQUEUE ──────────────────────────────────
-function trovatech_enqueue() {
+function travotech_enqueue() {
     wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap', [], null );
     wp_enqueue_style( 'medicare-style', get_stylesheet_uri(), [], '1.0.2' );
     wp_enqueue_script( 'medicare-main', get_template_directory_uri() . '/assets/js/main.js', [ 'jquery' ], '1.0.2', true );
@@ -69,23 +69,23 @@ function trovatech_enqueue() {
 
     wp_localize_script( 'medicare-main', 'medicareData', [
         'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-        'nonce'      => wp_create_nonce( 'trovatech_nonce' ),
-        'orderNonce' => wp_create_nonce( 'trovatech_order_nonce' ),
-        'waNumber'   => esc_js( trovatech_wa() ),
+        'nonce'      => wp_create_nonce( 'travotech_nonce' ),
+        'orderNonce' => wp_create_nonce( 'travotech_order_nonce' ),
+        'waNumber'   => esc_js( travotech_wa() ),
         'shopUrl'    => esc_url( $shop_url ),
     ] );
 }
-add_action( 'wp_enqueue_scripts', 'trovatech_enqueue' );
+add_action( 'wp_enqueue_scripts', 'travotech_enqueue' );
 
 // ─── HELPERS ──────────────────────────────────
-function trovatech_wa()      { return get_option( 'trovatech_wa',      'WHATSAPP_NUMBER_HERE' ); }
-function trovatech_phone()   { return get_option( 'trovatech_phone',   '+254 790 007 616' ); }
-function trovatech_address() { return get_option( 'trovatech_address', 'Nairobi, Kenya' ); }
-function trovatech_tagline() { return get_option( 'trovatech_tagline', 'Trusted Care, Delivered Daily' ); }
-function trovatech_email()   { return get_option( 'trovatech_email',   'sales@yourdomain.com' ); }
+function travotech_wa()      { return get_option( 'travotech_wa',      'WHATSAPP_NUMBER_HERE' ); }
+function travotech_phone()   { return get_option( 'travotech_phone',   '+254 790 007 616' ); }
+function travotech_address() { return get_option( 'travotech_address', 'Nairobi, Kenya' ); }
+function travotech_tagline() { return get_option( 'travotech_tagline', 'Trusted Care, Delivered Daily' ); }
+function travotech_email()   { return get_option( 'travotech_email',   'sales@yourdomain.com' ); }
 
 // ─── FORCE PAGE TEMPLATES BY SLUG ─────────────
-function trovatech_page_template( $template ) {
+function travotech_page_template( $template ) {
     if ( is_page() ) {
         $slug   = get_post_field( 'post_name', get_queried_object_id() );
         $custom = get_template_directory() . '/page-' . $slug . '.php';
@@ -93,13 +93,13 @@ function trovatech_page_template( $template ) {
     }
     return $template;
 }
-add_filter( 'template_include', 'trovatech_page_template', 99 );
+add_filter( 'template_include', 'travotech_page_template', 99 );
 
 // ─── WA URL HELPER ────────────────────────────
-function trovatech_get_wa_url( $product_id ) {
+function travotech_get_wa_url( $product_id ) {
     $product = wc_get_product( $product_id );
     if ( ! $product ) return '';
-    $wa    = trovatech_wa();
+    $wa    = travotech_wa();
     $name  = $product->get_name();
     $price = strip_tags( $product->get_price_html() );
     $url   = get_permalink( $product_id );
@@ -116,20 +116,20 @@ add_action( 'woocommerce_before_main_content', function () { echo '<div class="w
 add_action( 'woocommerce_after_main_content',  function () { echo '</div>'; }, 10 );
 
 // ─── WHATSAPP ORDER BUTTON (Single Product Page) ──────────────────────────
-function trovatech_wa_button() {
+function travotech_wa_button() {
     if ( ! class_exists( 'WooCommerce' ) ) return;
     global $product;
     if ( ! $product || ! is_a( $product, 'WC_Product' ) ) return;
 
     $product_id = $product->get_id();
-    $wa_url     = trovatech_get_wa_url( $product_id );
+    $wa_url     = travotech_get_wa_url( $product_id );
     ?>
     <button
         type="button"
-        class="wc-wa-btn trovatech-wa-order-btn"
+        class="wc-wa-btn travotech-wa-order-btn"
         data-product-id="<?php echo esc_attr( $product_id ); ?>"
         data-wa-url="<?php echo esc_url( $wa_url ); ?>"
-        data-nonce="<?php echo esc_attr( wp_create_nonce( 'trovatech_order_nonce' ) ); ?>"
+        data-nonce="<?php echo esc_attr( wp_create_nonce( 'travotech_order_nonce' ) ); ?>"
     >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -138,7 +138,7 @@ function trovatech_wa_button() {
     </button>
     <?php
 }
-add_action( 'woocommerce_single_product_summary', 'trovatech_wa_button', 35 );
+add_action( 'woocommerce_single_product_summary', 'travotech_wa_button', 35 );
 
 // ─── CASH ON DELIVERY ONLY ────────────────────
 add_filter( 'woocommerce_payment_gateways', function ( $gateways ) {
@@ -171,7 +171,7 @@ add_action( 'pre_get_posts', function ( $query ) {
 
 // ─── CART CLEAR ON REDIRECT (WA orders) ───────
 add_action( 'template_redirect', function () {
-    if ( ! isset( $_GET['trovatech_order_sent'] ) || $_GET['trovatech_order_sent'] !== '1' ) return;
+    if ( ! isset( $_GET['travotech_order_sent'] ) || $_GET['travotech_order_sent'] !== '1' ) return;
     if ( ! function_exists( 'WC' ) || ! WC()->cart ) return;
 
     WC()->cart->empty_cart();
@@ -190,7 +190,7 @@ add_action( 'template_redirect', function () {
 } );
 
 // ─── AJAX: FILTER PRODUCTS BY CATEGORY ───────
-function trovatech_filter_products() {
+function travotech_filter_products() {
     if ( ! class_exists( 'WooCommerce' ) ) wp_send_json_error( 'WooCommerce not active' );
 
     $cat  = sanitize_text_field( $_POST['cat'] ?? '' );
@@ -229,8 +229,8 @@ function trovatech_filter_products() {
             if ( ! $brands || is_wp_error( $brands ) ) $brands = get_the_terms( $product_id, 'pa_brand' );
             $brand_n = ( $brands && ! is_wp_error( $brands ) ) ? $brands[0]->name : '';
 
-            $wa_product_url = trovatech_get_wa_url( $product_id );
-            $wa_nonce       = wp_create_nonce( 'trovatech_order_nonce' );
+            $wa_product_url = travotech_get_wa_url( $product_id );
+            $wa_nonce       = wp_create_nonce( 'travotech_order_nonce' );
             ?>
             <div class="p-card">
               <a href="<?php the_permalink(); ?>" class="p-img-link">
@@ -274,7 +274,7 @@ function trovatech_filter_products() {
                   </a>
                   <button
                     type="button"
-                    class="p-btn-wa trovatech-wa-order-btn"
+                    class="p-btn-wa travotech-wa-order-btn"
                     data-product-id="<?php echo esc_attr( $product_id ); ?>"
                     data-wa-url="<?php echo esc_url( $wa_product_url ); ?>"
                     data-nonce="<?php echo esc_attr( $wa_nonce ); ?>"
@@ -294,8 +294,8 @@ function trovatech_filter_products() {
 
     wp_send_json_success( ob_get_clean() );
 }
-add_action( 'wp_ajax_trovatech_filter_products',        'trovatech_filter_products' );
-add_action( 'wp_ajax_nopriv_trovatech_filter_products', 'trovatech_filter_products' );
+add_action( 'wp_ajax_travotech_filter_products',        'travotech_filter_products' );
+add_action( 'wp_ajax_nopriv_travotech_filter_products', 'travotech_filter_products' );
 
 // ════════════════════════════════════════════════════════════════════════════
 // ─── GLOBAL JS FOR WA ORDER BUTTON ──────────────────────────────────────
@@ -312,10 +312,10 @@ add_action( 'wp_footer', function () {
     ?>
     <script>
     (function($){
-        if (typeof trovatechWaBound !== 'undefined') return;
-        window.trovatechWaBound = true;
+        if (typeof travotechWaBound !== 'undefined') return;
+        window.travotechWaBound = true;
 
-        $(document).on('click', '.trovatech-wa-order-btn', function(e){
+        $(document).on('click', '.travotech-wa-order-btn', function(e){
             e.preventDefault();
             var $btn      = $(this);
             var productId = $btn.data('product-id');
@@ -333,8 +333,8 @@ add_action( 'wp_footer', function () {
                 url  : (typeof medicareData !== 'undefined' ? medicareData.ajaxUrl : '/wp-admin/admin-ajax.php'),
                 type : 'POST',
                 data : {
-                    action             : 'trovatech_wa_order',
-                    trovatech_order_nonce: nonce,
+                    action             : 'travotech_wa_order',
+                    travotech_order_nonce: nonce,
                     product_id         : productId,
                     qty                : qty,
                     phone              : '',
@@ -356,10 +356,10 @@ add_action( 'wp_footer', function () {
 } );
 
 // ─── CONTACT FORM AJAX ────────────────────────
-function trovatech_contact() {
+function travotech_contact() {
     ob_clean();
 
-    if ( ! wp_verify_nonce( $_POST['nonce'] ?? '', 'trovatech_nonce' ) ) {
+    if ( ! wp_verify_nonce( $_POST['nonce'] ?? '', 'travotech_nonce' ) ) {
         wp_send_json_error( [ 'msg' => 'Security check failed. Please refresh and try again.' ] );
     }
 
@@ -380,15 +380,15 @@ function trovatech_contact() {
     if ( empty( $msg ) || strlen( trim( $msg ) ) < 5 )
         wp_send_json_error( [ 'msg' => 'Please enter your message (at least 5 characters).' ] );
 
-    $to      = trovatech_email();
-    $subject = "[Trovatech Contact] {$dept} - {$name}";
+    $to      = travotech_email();
+    $subject = "[Travotech Contact] {$dept} - {$name}";
     $body    = "New contact form submission from yourdomain.com\n\n";
     $body   .= "Name:        {$name}\n";
     $body   .= "Email:       {$email}\n";
     $body   .= "Phone:       {$phone}\n";
     $body   .= "Department:  {$dept}\n\n";
     $body   .= "Message:\n{$msg}\n\n";
-    $body   .= "Sent via Trovatech Agencies website contact form.\n";
+    $body   .= "Sent via Travotech Agencies website contact form.\n";
 
     $headers = [
         'Content-Type: text/plain; charset=UTF-8',
@@ -407,11 +407,11 @@ function trovatech_contact() {
         wp_send_json_error( [ 'msg' => 'Mail failed: ' . $smtp_err ] );
     }
 }
-add_action( 'wp_ajax_trovatech_contact',        'trovatech_contact' );
-add_action( 'wp_ajax_nopriv_trovatech_contact', 'trovatech_contact' );
+add_action( 'wp_ajax_travotech_contact',        'travotech_contact' );
+add_action( 'wp_ajax_nopriv_travotech_contact', 'travotech_contact' );
 
 // ─── PRESCRIPTION FORM AJAX ───────────────────
-function trovatech_submit_prescription() {
+function travotech_submit_prescription() {
     ob_clean();
 
     if ( ! wp_verify_nonce( $_POST['rx_nonce'] ?? '', 'rx_nonce_action' ) ) {
@@ -459,7 +459,7 @@ function trovatech_submit_prescription() {
     }
 
     $to      = 'sales@yourdomain.com';
-    $subject = '[Trovatech Prescription] ' . $fname . ' ' . $lname . ' - ' . $phone;
+    $subject = '[Travotech Prescription] ' . $fname . ' ' . $lname . ' - ' . $phone;
     $body    = "New Prescription Submission from yourdomain.com\n\n";
     $body   .= "================================\n";
     $body   .= "PATIENT DETAILS\n";
@@ -496,13 +496,13 @@ function trovatech_submit_prescription() {
         wp_send_json_error( [ 'msg' => 'Failed to send: ' . $err ] );
     }
 }
-add_action( 'wp_ajax_trovatech_submit_prescription',        'trovatech_submit_prescription' );
-add_action( 'wp_ajax_nopriv_trovatech_submit_prescription', 'trovatech_submit_prescription' );
+add_action( 'wp_ajax_travotech_submit_prescription',        'travotech_submit_prescription' );
+add_action( 'wp_ajax_nopriv_travotech_submit_prescription', 'travotech_submit_prescription' );
 
 // ════════════════════════════════════════════════════════════════════════════
 // ─── SHARED ORDER HELPER ─────────────────────────────────────────────────
 // ════════════════════════════════════════════════════════════════════════════
-function trovatech_build_and_send_order( $args ) {
+function travotech_build_and_send_order( $args ) {
 
     $fname      = $args['fname']      ?? '';
     $lname      = $args['lname']      ?? '';
@@ -557,7 +557,7 @@ function trovatech_build_and_send_order( $args ) {
 
             if ( $notes ) $order->add_order_note( 'Customer note: ' . $notes, 1 );
             $order->add_order_note(
-                'Order placed via Trovatech ' . ( $via === 'whatsapp' ? 'WhatsApp button' : 'website checkout' ) . '.',
+                'Order placed via Travotech ' . ( $via === 'whatsapp' ? 'WhatsApp button' : 'website checkout' ) . '.',
                 0
             );
 
@@ -574,7 +574,7 @@ function trovatech_build_and_send_order( $args ) {
 
     // ── SHARED EMAIL BUILDING ──
     $store_name   = get_bloginfo( 'name' );
-    $notify_email = function_exists( 'trovatech_email' ) ? trovatech_email() : 'sales@yourdomain.com';
+    $notify_email = function_exists( 'travotech_email' ) ? travotech_email() : 'sales@yourdomain.com';
     $order_label  = $order_id ? '#' . $order_id : 'N/A';
     $via_label    = $via === 'whatsapp' ? 'WhatsApp Order' : 'Website Checkout';
     $total_fmt    = 'KES ' . number_format( $total, 2 );
@@ -645,7 +645,7 @@ function trovatech_build_and_send_order( $args ) {
               <div style="font-size:12px;color:#4a6358;line-height:1.8;">
                 Nairobi: Collect Cash or M-Pesa on delivery<br>
                 Other Counties: Full payment before dispatch<br>
-                M-Pesa Till: TILL_NUMBER_HERE (TROVATECH AGENCIES)
+                M-Pesa Till: TILL_NUMBER_HERE (TRAVOTECH AGENCIES)
               </div>
             </div>
           </td></tr>
@@ -673,7 +673,7 @@ function trovatech_build_and_send_order( $args ) {
     // ── CUSTOMER CONFIRMATION EMAIL ──
     $sent_customer = false;
     if ( is_email( $email ) && $via !== 'whatsapp' ) {
-        $sent_customer = trovatech_send_customer_confirmation( $email, $fname, $lname, $phone, $order_id, $order_label, $cart_lines, $total_fmt, $notes, $payment, $store_name );
+        $sent_customer = travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $order_id, $order_label, $cart_lines, $total_fmt, $notes, $payment, $store_name );
     }
 
     return [
@@ -687,7 +687,7 @@ function trovatech_build_and_send_order( $args ) {
 // ════════════════════════════════════════════════════════════════════════════
 // ─── CUSTOMER CONFIRMATION EMAIL ─────────────────────────────────────────
 // ════════════════════════════════════════════════════════════════════════════
-function trovatech_send_customer_confirmation( $email, $fname, $lname, $phone, $order_id, $order_label, $cart_lines, $total_fmt, $notes, $payment, $store_name ) {
+function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $order_id, $order_label, $cart_lines, $total_fmt, $notes, $payment, $store_name ) {
 
     $items_html = '';
     foreach ( $cart_lines as $item ) {
@@ -699,7 +699,7 @@ function trovatech_send_customer_confirmation( $email, $fname, $lname, $phone, $
     }
 
     // ── FIX: Use STORE WhatsApp number so customer contacts the shop, not themselves ──
-    $store_wa = preg_replace( '/[^0-9]/', '', function_exists( 'trovatech_wa' ) ? trovatech_wa() : 'WHATSAPP_NUMBER_HERE' );
+    $store_wa = preg_replace( '/[^0-9]/', '', function_exists( 'travotech_wa' ) ? travotech_wa() : 'WHATSAPP_NUMBER_HERE' );
 
     $html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#f0faf5;">
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0faf5;padding:30px 0;">
@@ -745,7 +745,7 @@ function trovatech_send_customer_confirmation( $email, $fname, $lname, $phone, $
               <div style="font-size:12px;color:#4a6358;line-height:1.9;">
                 Nairobi: Pay Cash or M-Pesa on delivery<br>
                 Other Counties: Full payment before dispatch<br>
-                M-Pesa Till: TILL_NUMBER_HERE <strong>: TROVATECH AGENCIES</strong><br>
+                M-Pesa Till: TILL_NUMBER_HERE <strong>: TRAVOTECH AGENCIES</strong><br>
                 Total to pay: <span style="color:#2eaf6e;font-weight:800;">' . $total_fmt . '</span>
               </div>
             </div>
@@ -802,13 +802,13 @@ function trovatech_send_customer_confirmation( $email, $fname, $lname, $phone, $
 }
 
 // ─── AJAX: WHATSAPP QUICK ORDER ───────────────
-add_action( 'wp_ajax_trovatech_wa_order',        'trovatech_wa_order_handler' );
-add_action( 'wp_ajax_nopriv_trovatech_wa_order', 'trovatech_wa_order_handler' );
+add_action( 'wp_ajax_travotech_wa_order',        'travotech_wa_order_handler' );
+add_action( 'wp_ajax_nopriv_travotech_wa_order', 'travotech_wa_order_handler' );
 
-function trovatech_wa_order_handler() {
+function travotech_wa_order_handler() {
 
-    if ( ! isset( $_POST['trovatech_order_nonce'] ) ||
-         ! wp_verify_nonce( sanitize_text_field( $_POST['trovatech_order_nonce'] ), 'trovatech_order_nonce' ) ) {
+    if ( ! isset( $_POST['travotech_order_nonce'] ) ||
+         ! wp_verify_nonce( sanitize_text_field( $_POST['travotech_order_nonce'] ), 'travotech_order_nonce' ) ) {
         wp_send_json_error( [ 'msg' => 'Security check failed.' ] );
         return;
     }
@@ -833,7 +833,7 @@ function trovatech_wa_order_handler() {
     $price = (float) $product->get_price();
     $sub   = $price * $qty;
 
-    $result = trovatech_build_and_send_order( [
+    $result = travotech_build_and_send_order( [
         'fname'      => $fname,
         'lname'      => $lname,
         'country'    => 'KE',
@@ -858,13 +858,13 @@ function trovatech_wa_order_handler() {
 }
 
 // ─── AJAX: CHECKOUT PLACE ORDER ───────────────
-add_action( 'wp_ajax_trovatech_send_order_email',        'trovatech_send_order_email_handler' );
-add_action( 'wp_ajax_nopriv_trovatech_send_order_email', 'trovatech_send_order_email_handler' );
+add_action( 'wp_ajax_travotech_send_order_email',        'travotech_send_order_email_handler' );
+add_action( 'wp_ajax_nopriv_travotech_send_order_email', 'travotech_send_order_email_handler' );
 
-function trovatech_send_order_email_handler() {
+function travotech_send_order_email_handler() {
 
-    if ( ! isset( $_POST['trovatech_order_nonce'] ) ||
-         ! wp_verify_nonce( sanitize_text_field( $_POST['trovatech_order_nonce'] ), 'trovatech_order_nonce' ) ) {
+    if ( ! isset( $_POST['travotech_order_nonce'] ) ||
+         ! wp_verify_nonce( sanitize_text_field( $_POST['travotech_order_nonce'] ), 'travotech_order_nonce' ) ) {
         wp_send_json_error( [ 'msg' => 'Security check failed.' ] );
         return;
     }
@@ -916,7 +916,7 @@ function trovatech_send_order_email_handler() {
         return;
     }
 
-    $result = trovatech_build_and_send_order( [
+    $result = travotech_build_and_send_order( [
         'fname'      => $fname,
         'lname'      => $lname,
         'company'    => $company,
@@ -975,9 +975,9 @@ function trovatech_send_order_email_handler() {
 // ════════════════════════════════════════════════════════════════════════════
 // ─── WOOCOMMERCE ADMIN ORDER BADGE ───────────────────────────────────────
 // ════════════════════════════════════════════════════════════════════════════
-add_action( 'admin_menu', 'trovatech_wc_order_badge', 999 );
+add_action( 'admin_menu', 'travotech_wc_order_badge', 999 );
 
-function trovatech_wc_order_badge() {
+function travotech_wc_order_badge() {
     global $submenu;
 
     $current_page   = $_GET['page']      ?? '';
@@ -987,11 +987,11 @@ function trovatech_wc_order_badge() {
     $admin_user_id = get_current_user_id();
 
     if ( $is_orders_page ) {
-        update_user_meta( $admin_user_id, 'trovatech_orders_last_viewed', time() );
+        update_user_meta( $admin_user_id, 'travotech_orders_last_viewed', time() );
         return;
     }
 
-    $last_viewed = (int) get_user_meta( $admin_user_id, 'trovatech_orders_last_viewed', true );
+    $last_viewed = (int) get_user_meta( $admin_user_id, 'travotech_orders_last_viewed', true );
 
     $new_count = 0;
 
@@ -1018,7 +1018,7 @@ function trovatech_wc_order_badge() {
 
     if ( $new_count < 1 ) return;
 
-    $badge = ' <span class="awaiting-mod count-' . $new_count . '" id="trovatech-order-badge">'
+    $badge = ' <span class="awaiting-mod count-' . $new_count . '" id="travotech-order-badge">'
            . '<span class="pending-count">' . number_format_i18n( $new_count ) . '</span>'
            . '</span>';
 
@@ -1040,7 +1040,7 @@ function trovatech_wc_order_badge() {
         ?>
         <script>
         (function(){
-            var badge = document.getElementById('trovatech-order-badge');
+            var badge = document.getElementById('travotech-order-badge');
             if (!badge) return;
             var ordersPatterns = ['page=wc-orders', 'post_type=shop_order'];
             document.querySelectorAll('#adminmenu a').forEach(function(link){
@@ -1048,7 +1048,7 @@ function trovatech_wc_order_badge() {
                 var isOrders = ordersPatterns.some(function(p){ return href.indexOf(p) !== -1; });
                 if (!isOrders) return;
                 link.addEventListener('click', function(){
-                    var b = document.getElementById('trovatech-order-badge');
+                    var b = document.getElementById('travotech-order-badge');
                     if (b) b.style.display = 'none';
                 });
             });
@@ -1059,60 +1059,60 @@ function trovatech_wc_order_badge() {
 }
 
 // ─── ADMIN SETTINGS PAGE ──────────────────────
-function trovatech_admin_menu() {
-    add_menu_page( 'Trovatech Settings', 'Trovatech Settings', 'manage_options', 'medicare-settings', 'trovatech_settings_page', 'dashicons-heart', 60 );
+function travotech_admin_menu() {
+    add_menu_page( 'Travotech Settings', 'Travotech Settings', 'manage_options', 'medicare-settings', 'travotech_settings_page', 'dashicons-heart', 60 );
 }
-add_action( 'admin_menu', 'trovatech_admin_menu' );
+add_action( 'admin_menu', 'travotech_admin_menu' );
 
-function trovatech_settings_page() {
-    if ( isset( $_POST['trovatech_save'] ) ) {
-        check_admin_referer( 'trovatech_settings_save' );
-        foreach ( [ 'trovatech_wa', 'trovatech_phone', 'trovatech_address', 'trovatech_tagline', 'trovatech_email' ] as $k ) {
+function travotech_settings_page() {
+    if ( isset( $_POST['travotech_save'] ) ) {
+        check_admin_referer( 'travotech_settings_save' );
+        foreach ( [ 'travotech_wa', 'travotech_phone', 'travotech_address', 'travotech_tagline', 'travotech_email' ] as $k ) {
             update_option( $k, sanitize_text_field( $_POST[ $k ] ?? '' ) );
         }
         echo '<div class="updated"><p>Settings saved successfully.</p></div>';
     }
     ?>
     <div class="wrap">
-        <h1>Trovatech Settings</h1>
+        <h1>Travotech Settings</h1>
         <form method="post">
-            <?php wp_nonce_field( 'trovatech_settings_save' ); ?>
+            <?php wp_nonce_field( 'travotech_settings_save' ); ?>
             <table class="form-table">
                 <tr>
                     <th>WhatsApp Number</th>
                     <td>
-                        <input type="text" name="trovatech_wa" value="<?php echo esc_attr( trovatech_wa() ); ?>" class="regular-text">
+                        <input type="text" name="travotech_wa" value="<?php echo esc_attr( travotech_wa() ); ?>" class="regular-text">
                         <p class="description">Numbers only, no spaces or + e.g. <strong>WHATSAPP_NUMBER_HERE</strong></p>
                     </td>
                 </tr>
                 <tr>
                     <th>Display Phone</th>
                     <td>
-                        <input type="text" name="trovatech_phone" value="<?php echo esc_attr( trovatech_phone() ); ?>" class="regular-text">
+                        <input type="text" name="travotech_phone" value="<?php echo esc_attr( travotech_phone() ); ?>" class="regular-text">
                         <p class="description">Displayed in header/footer e.g. <strong>+254 790 007 616</strong></p>
                     </td>
                 </tr>
                 <tr>
                     <th>Address</th>
-                    <td><input type="text" name="trovatech_address" value="<?php echo esc_attr( trovatech_address() ); ?>" class="regular-text"></td>
+                    <td><input type="text" name="travotech_address" value="<?php echo esc_attr( travotech_address() ); ?>" class="regular-text"></td>
                 </tr>
                 <tr>
                     <th>Tagline</th>
-                    <td><input type="text" name="trovatech_tagline" value="<?php echo esc_attr( trovatech_tagline() ); ?>" class="regular-text"></td>
+                    <td><input type="text" name="travotech_tagline" value="<?php echo esc_attr( travotech_tagline() ); ?>" class="regular-text"></td>
                 </tr>
                 <tr>
                     <th>Display Email</th>
-                    <td><input type="text" name="trovatech_email" value="<?php echo esc_attr( trovatech_email() ); ?>" class="regular-text"></td>
+                    <td><input type="text" name="travotech_email" value="<?php echo esc_attr( travotech_email() ); ?>" class="regular-text"></td>
                 </tr>
             </table>
-            <?php submit_button( 'Save Settings', 'primary', 'trovatech_save' ); ?>
+            <?php submit_button( 'Save Settings', 'primary', 'travotech_save' ); ?>
         </form>
     </div>
     <?php
 }
 
 // ─── SCHEMA MARKUP ────────────────────────────
-function trovatech_schema() {
+function travotech_schema() {
     if ( is_admin() ) return;
     $schema = [
         '@context'    => 'https://schema.org',
@@ -1120,21 +1120,21 @@ function trovatech_schema() {
         'name'        => get_bloginfo( 'name' ),
         'description' => get_bloginfo( 'description' ),
         'url'         => home_url( '/' ),
-        'telephone'   => trovatech_phone(),
+        'telephone'   => travotech_phone(),
         'address'     => [
             '@type'           => 'PostalAddress',
-            'addressLocality' => trovatech_address(),
+            'addressLocality' => travotech_address(),
             'addressCountry'  => 'KE',
         ],
         'contactPoint' => [
             '@type'       => 'ContactPoint',
             'contactType' => 'customer service',
-            'telephone'   => trovatech_phone(),
+            'telephone'   => travotech_phone(),
         ],
     ];
     echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
 }
-add_action( 'wp_head', 'trovatech_schema' );
+add_action( 'wp_head', 'travotech_schema' );
 
 // ─── MISC ─────────────────────────────────────
 add_filter( 'excerpt_length', function () { return 18; }, 999 );
@@ -1153,8 +1153,8 @@ add_action( 'init', function () {
 // ════════════════════════════════════════════════════════════════════════════
 
 // Auto-fill on save for new & edited products
-add_action( 'save_post_product', 'trovatech_auto_yoast_keyphrase', 10, 2 );
-function trovatech_auto_yoast_keyphrase( $post_id, $post ) {
+add_action( 'save_post_product', 'travotech_auto_yoast_keyphrase', 10, 2 );
+function travotech_auto_yoast_keyphrase( $post_id, $post ) {
 
     // Skip autosaves and revisions
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
@@ -1171,14 +1171,14 @@ function trovatech_auto_yoast_keyphrase( $post_id, $post ) {
 }
 
 // Bulk-fill all existing products — runs once only
-add_action( 'init', 'trovatech_bulk_yoast_keyphrase_once' );
-function trovatech_bulk_yoast_keyphrase_once() {
+add_action( 'init', 'travotech_bulk_yoast_keyphrase_once' );
+function travotech_bulk_yoast_keyphrase_once() {
 
     // Only run if Yoast is active
     if ( ! defined( 'WPSEO_VERSION' ) ) return;
 
     // Skip if already done
-    if ( get_option( 'trovatech_yoast_kw_filled' ) ) return;
+    if ( get_option( 'travotech_yoast_kw_filled' ) ) return;
 
     $products = get_posts( [
         'post_type'      => 'product',
@@ -1196,5 +1196,5 @@ function trovatech_bulk_yoast_keyphrase_once() {
     }
 
     // Mark as done so this never runs again
-    update_option( 'trovatech_yoast_kw_filled', true );
+    update_option( 'travotech_yoast_kw_filled', true );
 }
