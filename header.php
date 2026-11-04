@@ -422,6 +422,25 @@ header .mobile-menu-bar .mob-bar-label{opacity:1;}
 .mobile-nav-drawer details.mob-cats[open] summary .fa-chevron-down{transform:rotate(180deg);}
 .mobile-nav-drawer details.mob-cats[open]{background:#f4fdf7;}
 .mobile-nav-drawer details.mob-cats a{padding:10px 16px 10px 30px;font-size:.9rem;}
+
+/* ---- Alignment fixes ---- */
+.header-main{align-items:center;}
+.hdr-actions{align-items:center;gap:18px;}
+.hdr-delivery{align-items:center;text-align:left;line-height:1.25;}
+.hdr-delivery strong{display:block;}
+.hdr-wishlist,.hdr-action{display:flex;flex-direction:row;align-items:center;gap:8px;height:44px;}
+.hdr-wishlist>div,.hdr-action>div{position:relative;display:flex;align-items:center;justify-content:center;width:28px;height:28px;}
+.hdr-wishlist i,.hdr-action i{display:block;line-height:1;}
+.cart-total{display:block;line-height:1;}
+.navbar{align-items:center;gap:6px;padding-top:6px;padding-bottom:6px;}
+.navbar ul{align-items:center;}
+.navbar ul li a{display:flex;align-items:center;height:44px;padding:0 14px;box-sizing:border-box;}
+.navbar .cat-dropdown-wrap{display:flex;align-items:center;margin:0 8px 0 0;}
+.navbar .nav-cat-btn{height:44px;}
+.navbar .nav-contact-btn{margin-left:auto;height:44px;box-sizing:border-box;}
+@media (max-width:1180px){
+  .hdr-actions{gap:14px;}
+}
 </style>
 
 <!-- TOP BAR -->
@@ -538,18 +557,12 @@ header .mobile-menu-bar .mob-bar-label{opacity:1;}
     $s_terms = array( 'terms-and-conditions', 'terms', 'terms-conditions' );
     $nav_links = [
       [home_url('/'),                         'Home',                     is_front_page()],
-      [$shop_url,                             'Shop Equipment',           function_exists('is_shop') && is_shop()],
+      [$shop_url,                             'Shop',           function_exists('is_shop') && is_shop()],
       [$trv_pg($s_about, '/about-us/'),       'About Us',                 is_page($s_about)],
       [$trv_pg($s_proj,  '/projects/'),       'Projects',                 is_page($s_proj)],
       [$trv_pg($s_ret,   '/refund/'),         'Return & Refund Policy',   is_page($s_ret)],
     ];
     ?>
-    <ul>
-      <?php foreach ( array_slice( $nav_links, 0, 2 ) as [ $href, $label, $active ] ): ?>
-        <li><a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a></li>
-      <?php endforeach; ?>
-    </ul>
-
     <div class="cat-dropdown-wrap" id="catDropWrap">
       <button class="nav-cat-btn" type="button" aria-haspopup="true" aria-expanded="false" id="catDropBtn">
         <i class="fa-solid fa-bars" aria-hidden="true"></i>
@@ -577,7 +590,7 @@ header .mobile-menu-bar .mob-bar-label{opacity:1;}
     </div>
 
     <ul>
-      <?php foreach ( array_slice( $nav_links, 2 ) as [ $href, $label, $active ] ): ?>
+      <?php foreach ( $nav_links as [ $href, $label, $active ] ): ?>
         <li><a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a></li>
       <?php endforeach; ?>
     </ul>
@@ -588,16 +601,13 @@ header .mobile-menu-bar .mob-bar-label{opacity:1;}
   </nav>
 
   <div class="mobile-nav-drawer" id="mobileDrawer">
-    <?php foreach ( array_slice( $nav_links, 0, 2 ) as [ $href, $label, $active ] ): ?>
-      <a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a>
-    <?php endforeach; ?>
     <details class="mob-cats">
       <summary><i class="fa-solid fa-bars" aria-hidden="true"></i> Shop By Category <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
       <?php if ( ! empty( $all_cats ) && ! is_wp_error( $all_cats ) ) : foreach ( $all_cats as $mc ) : ?>
         <a href="<?php echo esc_url( get_term_link( $mc ) ); ?>"><?php echo esc_html( $mc->name ); ?></a>
       <?php endforeach; endif; ?>
     </details>
-    <?php foreach ( array_slice( $nav_links, 2 ) as [ $href, $label, $active ] ): ?>
+    <?php foreach ( $nav_links as [ $href, $label, $active ] ): ?>
       <a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a>
     <?php endforeach; ?>
     <a href="<?php echo esc_url(home_url('/contact')); ?>" class="nav-contact-btn">
