@@ -232,6 +232,26 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 @media(prefers-reduced-motion:reduce){
   .trv-footer *,.trv-fab-wa{transition:none !important;}
 }
+
+/* ---- Cleanup: tighter, cleaner footer ---- */
+.trv-foot-inner{padding-top:44px;padding-bottom:20px;}
+.trv-foot-grid{grid-template-columns:1.4fr .9fr 1fr 1.4fr;gap:32px 40px;}
+.trv-foot-logo{margin-bottom:12px;}
+.trv-foot-desc{font-size:.95rem;line-height:1.65;margin:0 0 16px;}
+.trv-foot-socs{margin-bottom:16px;gap:10px;}
+.trv-foot-soc{width:40px;height:40px;}
+.trv-foot-h{font-size:1rem;margin:0 0 14px;padding-bottom:10px;}
+.trv-foot-links{gap:0;}
+.trv-foot-links a{padding:5px 0;font-size:.95rem;}
+.trv-foot-contact{gap:12px;}
+.trv-foot-contact li{min-width:0;font-size:.95rem;}
+.trv-foot-contact a,.trv-foot-contact span{min-width:0;word-break:normal;overflow-wrap:anywhere;}
+.trv-foot-bottom{background:transparent;border-top:1px solid var(--trv-line);}
+.trv-foot-bottom-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding-top:14px;padding-bottom:14px;}
+.trv-foot-copy,.trv-foot-credit,.trv-foot-legal a{font-size:.85rem;}
+.trv-foot-legal{gap:18px;}
+@media(max-width:900px){.trv-foot-bottom-inner{flex-direction:column;justify-content:center;text-align:center;gap:6px;}}
+@media(max-width:600px){.trv-foot-inner{padding-top:32px;}.trv-foot-grid{gap:26px;}}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
@@ -263,12 +283,6 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
           <?php echo $trv_wa_icon; ?>
           Get a quote on WhatsApp
         </a>
-
-        <div class="trv-foot-card">
-          <div class="trv-foot-card-label">Delivery coverage</div>
-          <div class="trv-foot-card-main">Nairobi, Thika &amp; all Kenya</div>
-          <div class="trv-foot-card-sub">Lab and hospital equipment delivered to your door</div>
-        </div>
       </div>
 
       <div class="trv-foot-col">
@@ -336,17 +350,6 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
             <span><?php echo esc_html( $trv_hours ); ?></span>
           </li>
         </ul>
-
-        <div class="trv-foot-map-wrap">
-          <div class="trv-foot-map">
-            <iframe src="<?php echo esc_url( $trv_map_src ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Travotech Agencies location map, Nairobi Kenya" tabindex="-1"></iframe>
-            <a href="<?php echo esc_url( $trv_map_link ); ?>" class="trv-foot-map-overlay" target="_blank" rel="noopener noreferrer" aria-label="Open full map"></a>
-          </div>
-          <a href="<?php echo esc_url( $trv_map_link ); ?>" class="trv-foot-map-link" target="_blank" rel="noopener noreferrer">
-            View Map
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-          </a>
-        </div>
       </div>
 
     </div>
