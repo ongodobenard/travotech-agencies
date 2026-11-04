@@ -1198,3 +1198,5 @@ function travotech_bulk_yoast_keyphrase_once() {
     // Mark as done so this never runs again
     update_option( 'travotech_yoast_kw_filled', true );
 }
+
+require_once get_template_directory() . '/inc/trv-seo.php';
