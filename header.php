@@ -164,6 +164,7 @@
   .cv-ld-typed .cv-char { opacity: 1 !important; transform: none !important; animation: none !important; }
 }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -375,36 +376,82 @@
 .mobile-nav-drawer.open{ display:flex !important; }
 .mobile-nav-drawer a{ display:block; padding:12px 16px; border-radius:10px; font-size:.95rem; font-weight:500; text-decoration:none; transition:background .15s; color:inherit; }
 .mobile-nav-drawer a:hover{ background:rgba(0,0,0,.04); }
+
+/* ---- Header update: Kenya flag, Font Awesome icons, responsive menu ---- */
+.ke-flag{display:inline-block;flex:0 0 auto;width:26px;height:17px;border-radius:2px;position:relative;vertical-align:middle;box-shadow:0 0 0 1px rgba(0,0,0,.18);background:linear-gradient(to bottom,#000 0 30%,#fff 30% 36%,#BB0000 36% 64%,#fff 64% 70%,#006600 70% 100%);}
+.ke-flag::after{content:"";position:absolute;left:50%;top:50%;width:7px;height:11px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(ellipse at center,#fff 0 22%,#BB0000 24% 60%,#000 62% 100%);}
+.topbar-left i{width:14px;text-align:center;font-size:.8rem;line-height:1;}
+.topbar .soc{background:#fff !important;}
+.topbar .soc i{font-size:.8rem;line-height:1;}
+.topbar .soc[aria-label="Facebook"]{color:#1877F2 !important;}
+.topbar .soc[aria-label="X"]{color:#000 !important;}
+.topbar .soc[aria-label="WhatsApp"]{color:#25D366 !important;}
+.topbar .soc[aria-label="Instagram"] i{background:linear-gradient(45deg,#FEDA75 0%,#FA7E1E 30%,#D62976 55%,#962FBF 80%,#4F5BD5 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hdr-delivery{flex-direction:row;align-items:center;gap:8px;}
+.hdr-delivery>span:last-child{display:flex;flex-direction:column;}
+.hdr-wishlist i,.hdr-action i{font-size:1.3rem;line-height:1;transition:transform .2s,color .2s;}
+.hdr-wishlist:hover i{transform:scale(1.15);color:#e53935;}
+.search-btn i{margin-right:4px;font-size:.85rem;}
+.nav-cat-btn i{font-size:.9rem;line-height:1;}
+.nav-cat-btn .cat-chevron{font-size:.75rem;margin-left:2px;transition:transform .25s;}
+.cat-dropdown a i{width:14px;text-align:center;font-size:.8rem;opacity:.45;transition:opacity .15s,color .15s;}
+.cat-dropdown a:hover i{opacity:1;color:#2eaf6e;}
+.nav-contact-btn i{font-size:.85rem;}
+.navbar ul{gap:0;}
+.mob-bar-label{display:flex;align-items:center;gap:8px;}
+header .mobile-menu-bar .mob-bar-label{opacity:1;}
+@media (max-width:1180px){
+  header .navbar{display:none !important;}
+  header .mobile-menu-bar{display:flex !important;align-items:center;justify-content:space-between;padding:6px 20px;border-top:1px solid rgba(0,0,0,.07);width:100%;box-sizing:border-box;}
+  header .mobile-menu-bar .hamburger{display:flex !important;width:38px;height:38px;padding:8px;border-radius:8px;}
+  header .mobile-menu-bar .hamburger span{width:16px;}
+  header .mobile-nav-drawer.open{display:flex !important;}
+  header .mobile-nav-drawer a.active{color:#2eaf6e;font-weight:700;}
+}
+@media (max-width:900px){
+  .topbar{justify-content:center;}
+  .topbar .topbar-right{display:none;}
+}
+
+/* ---- Header order update ---- */
+.navbar .cat-dropdown-wrap{margin:0 6px;}
+.mobile-nav-drawer details.mob-cats{border-radius:10px;overflow:hidden;}
+.mobile-nav-drawer details.mob-cats summary{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;font-size:.95rem;font-weight:600;cursor:pointer;list-style:none;background:#2eaf6e;color:#fff;}
+.mobile-nav-drawer details.mob-cats summary::-webkit-details-marker{display:none;}
+.mobile-nav-drawer details.mob-cats summary .fa-chevron-down{margin-left:auto;font-size:.75rem;transition:transform .2s;}
+.mobile-nav-drawer details.mob-cats[open] summary .fa-chevron-down{transform:rotate(180deg);}
+.mobile-nav-drawer details.mob-cats[open]{background:#f4fdf7;}
+.mobile-nav-drawer details.mob-cats a{padding:10px 16px 10px 30px;font-size:.9rem;}
 </style>
 
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-left">
     <span>
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
       <a href="tel:+254720737151" style="text-decoration:none;color:inherit">+254 720 737 151</a>
     </span>
     <span class="email-info">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <i class="fa-solid fa-envelope" aria-hidden="true"></i>
       <?php echo esc_html(travotech_email()); ?>
     </span>
     <span class="address-info">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <?php echo esc_html(travotech_address()); ?> &mdash; Mon-Fri: 8am-6pm | Sat: 8:30am-1:00pm | Sun &amp; Holidays: closed.
+      <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+      <span class="ke-flag" role="img" aria-label="Kenya flag"></span> <?php echo esc_html(travotech_address()); ?> &mdash; Mon-Fri: 8am-6pm | Sat: 8:30am-1:00pm | Sun &amp; Holidays: closed.
     </span>
   </div>
   <div class="topbar-right">
     <a href="<?php echo esc_url(get_option('travotech_facebook','#')); ?>" class="soc" target="_blank" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
     </a>
     <a href="<?php echo esc_url(get_option('travotech_instagram','#')); ?>" class="soc" target="_blank" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <i class="fa-brands fa-instagram" aria-hidden="true"></i>
     </a>
     <a href="<?php echo esc_url(get_option('travotech_twitter','#')); ?>" class="soc" target="_blank" aria-label="X">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
     </a>
     <a href="https://wa.me/254720737151" class="soc" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
     </a>
   </div>
 </div>
@@ -430,16 +477,16 @@
             <option value="<?php echo esc_attr($c->slug); ?>"><?php echo esc_html($c->name); ?></option>
         <?php endforeach; endif; ?>
       </select>
-      <input class="search-input" type="search" name="s" placeholder="Search medicines, brands, symptoms..." value="<?php echo get_search_query(); ?>">
+      <input class="search-input" type="search" name="s" placeholder="Search lab and hospital equipment..." value="<?php echo get_search_query(); ?>">
       <input type="hidden" name="post_type" value="product">
       <button type="submit" class="search-btn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
         Search
       </button>
     </form>
 
     <div class="hdr-actions">
-      <div class="hdr-delivery"><strong>Delivery</strong>Nairobi &amp; Kenya</div>
+      <div class="hdr-delivery"><span class="ke-flag" role="img" aria-label="Kenya flag"></span><span><strong>Delivery</strong>Nairobi &amp; Kenya</span></div>
 
       <?php
       $wishlist_url   = function_exists('YITH_WCWL') ? YITH_WCWL()->get_wishlist_url() : home_url('/wishlist');
@@ -447,9 +494,7 @@
       ?>
       <a href="<?php echo esc_url($wishlist_url); ?>" class="hdr-wishlist" aria-label="Wishlist">
         <div style="position:relative">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
+          <i class="fa-regular fa-heart" aria-hidden="true"></i>
           <div class="wishlist-badge <?php echo $wishlist_count > 0 ? 'has-items' : ''; ?>">
             <?php echo $wishlist_count > 0 ? $wishlist_count : ''; ?>
           </div>
@@ -459,7 +504,7 @@
       <?php if (function_exists('WC')): ?>
       <a href="<?php echo wc_get_cart_url(); ?>" class="hdr-action">
         <div style="position:relative">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
           <?php $count = WC()->cart->get_cart_contents_count(); if ($count > 0): ?>
             <div class="act-badge"><?php echo $count; ?></div>
           <?php endif; ?>
@@ -472,18 +517,44 @@
   </div>
 
   <div class="mobile-menu-bar">
-    <span class="mob-bar-label">Menu</span>
+    <span class="mob-bar-label"><span class="ke-flag" role="img" aria-label="Kenya flag"></span>Menu</span>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 
   <nav class="navbar">
+    
+
+    <?php
+    $shop_url  = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop');
+    $trv_pg = function ( array $slugs, $fallback ) {
+      foreach ( $slugs as $s ) { $p = get_page_by_path( $s ); if ( $p ) { return get_permalink( $p ); } }
+      return home_url( $fallback );
+    };
+    $s_proj  = array( 'projects', 'our-projects' );
+    $s_about = array( 'about-us', 'about' );
+    $s_ret   = array( 'return-and-refund-policy', 'return-policy', 'refund-policy', 'refund', 'returns' );
+    $s_terms = array( 'terms-and-conditions', 'terms', 'terms-conditions' );
+    $nav_links = [
+      [home_url('/'),                         'Home',                     is_front_page()],
+      [$shop_url,                             'Shop Equipment',           function_exists('is_shop') && is_shop()],
+      [$trv_pg($s_about, '/about-us/'),       'About Us',                 is_page($s_about)],
+      [$trv_pg($s_proj,  '/projects/'),       'Projects',                 is_page($s_proj)],
+      [$trv_pg($s_ret,   '/refund/'),         'Return & Refund Policy',   is_page($s_ret)],
+    ];
+    ?>
+    <ul>
+      <?php foreach ( array_slice( $nav_links, 0, 2 ) as [ $href, $label, $active ] ): ?>
+        <li><a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a></li>
+      <?php endforeach; ?>
+    </ul>
+
     <div class="cat-dropdown-wrap" id="catDropWrap">
       <button class="nav-cat-btn" type="button" aria-haspopup="true" aria-expanded="false" id="catDropBtn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
         Shop by category
-        <svg class="cat-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        <i class="fa-solid fa-chevron-down cat-chevron" aria-hidden="true"></i>
       </button>
       <div class="cat-dropdown" id="catDropPanel">
         <?php
@@ -491,57 +562,46 @@
         if (!empty($all_cats) && !is_wp_error($all_cats)):
           foreach ($all_cats as $cat): $cat_url = get_term_link($cat); ?>
             <a href="<?php echo esc_url($cat_url); ?>">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              <i class="fa-solid fa-tag" aria-hidden="true"></i>
               <?php echo esc_html($cat->name); ?>
               <?php if ($cat->count > 0): ?><span style="margin-left:auto;font-size:.72rem;opacity:.4;"><?php echo $cat->count; ?></span><?php endif; ?>
             </a>
         <?php endforeach;
         else: ?>
           <a href="<?php echo get_permalink(wc_get_page_id('shop')); ?>">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg>
+            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
             All Products
           </a>
         <?php endif; ?>
       </div>
     </div>
 
-    <?php
-    $shop_url  = function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop');
-    $nav_links = [
-      [home_url('/'),                    'Home',                is_front_page()],
-      [$shop_url,                        'Shop',                is_shop()],
-      [home_url('/submit-prescription'), 'Submit Prescription', is_page('submit-prescription')],
-      [home_url('/about-us'),            'About Us',            is_page('about-us')],
-    ];
-    ?>
     <ul>
-      <?php foreach ($nav_links as [$href, $label, $active]): ?>
-        <li><a href="<?php echo esc_url($href); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html($label); ?></a></li>
+      <?php foreach ( array_slice( $nav_links, 2 ) as [ $href, $label, $active ] ): ?>
+        <li><a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a></li>
       <?php endforeach; ?>
     </ul>
-
-    <a href="<?php echo esc_url(home_url('/refund')); ?>" class="nav-right">Return and Refund Policy</a>
     <a href="<?php echo esc_url(home_url('/contact')); ?>" class="nav-contact-btn">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
       Contact Us
     </a>
   </nav>
 
   <div class="mobile-nav-drawer" id="mobileDrawer">
-    <?php
-    $mob_links = [
-      [home_url('/'),                    'Home'],
-      [function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop'), 'Shop'],
-      [home_url('/submit-prescription'), 'Submit Prescription'],
-      [home_url('/about-us'),            'About Us'],
-      [home_url('/refund'),              'Return &amp; Refund Policy'],
-    ];
-    foreach ($mob_links as [$href, $label]):
-    ?>
-      <a href="<?php echo esc_url($href); ?>"><?php echo $label; ?></a>
+    <?php foreach ( array_slice( $nav_links, 0, 2 ) as [ $href, $label, $active ] ): ?>
+      <a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a>
+    <?php endforeach; ?>
+    <details class="mob-cats">
+      <summary><i class="fa-solid fa-bars" aria-hidden="true"></i> Shop By Category <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary>
+      <?php if ( ! empty( $all_cats ) && ! is_wp_error( $all_cats ) ) : foreach ( $all_cats as $mc ) : ?>
+        <a href="<?php echo esc_url( get_term_link( $mc ) ); ?>"><?php echo esc_html( $mc->name ); ?></a>
+      <?php endforeach; endif; ?>
+    </details>
+    <?php foreach ( array_slice( $nav_links, 2 ) as [ $href, $label, $active ] ): ?>
+      <a href="<?php echo esc_url( $href ); ?>"<?php echo $active ? ' class="active"' : ''; ?>><?php echo esc_html( $label ); ?></a>
     <?php endforeach; ?>
     <a href="<?php echo esc_url(home_url('/contact')); ?>" class="nav-contact-btn">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <i class="fa-solid fa-phone" aria-hidden="true"></i>
       Contact Us
     </a>
   </div>
