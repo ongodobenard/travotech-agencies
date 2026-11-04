@@ -371,7 +371,7 @@ function fp_card( $product, $wa ) {
           <span class="p-btn-ico"><?php echo fp_cart_ico(); ?></span>Select Options
         </a>
         <?php endif; ?>
-        <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo $wamsg; ?>"
+        <a href="https://wa.me/254720737151?text=<?php echo $wamsg; ?>"
            class="p-btn-wa" target="_blank" rel="noopener noreferrer">
           <span class="p-btn-ico"><?php echo fp_wa_ico(); ?></span>Buy Via WhatsApp
         </a>
@@ -460,10 +460,10 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
 ?>
 
 <!-- BEAUTY & PERSONAL CARE -->
-<?php fp_section('beauty','Beauty &','Personal Care',['Beauty & Personal Care','Beauty and Personal Care','beauty-personal-care','beauty','personal-care','personal care','skincare','skin care','skin-care'],'cat-sec--pale','WHATSAPP_NUMBER_HERE'); ?>
+<?php fp_section('beauty','Beauty &','Personal Care',['Beauty & Personal Care','Beauty and Personal Care','beauty-personal-care','beauty','personal-care','personal care','skincare','skin care','skin-care'],'cat-sec--pale','254720737151'); ?>
 
 <!-- MOTHER & CHILD -->
-<?php fp_section('mc','Mother &','Child',['Mother & Child','Mother and Child','mother-child','mother-and-child','Baby Care','baby-care','baby care','baby','maternity','Mother & Baby'],'cat-sec--light','WHATSAPP_NUMBER_HERE'); ?>
+<?php fp_section('mc','Mother &','Child',['Mother & Child','Mother and Child','mother-child','mother-and-child','Baby Care','baby-care','baby care','baby','maternity','Mother & Baby'],'cat-sec--light','254720737151'); ?>
 
 
 <!-- WHY US -->
@@ -588,7 +588,7 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
             <span class="p-btn-ico"><?php echo fp_cart_ico(); ?></span>Select Options
           </a>
           <?php endif; ?>
-          <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo $wamsg; ?>"
+          <a href="https://wa.me/254720737151?text=<?php echo $wamsg; ?>"
              class="p-btn-wa" target="_blank" rel="noopener noreferrer">
             <span class="p-btn-ico"><?php echo fp_wa_ico(); ?></span>Buy Via WhatsApp
           </a>
@@ -613,11 +613,11 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
       <h2 class="sec-title reveal rd1">Health Care<br><span>With Us</span></h2>
       <p class="sec-desc reveal rd2" style="color:rgba(255,255,255,.8)">Have a product enquiry? Need a prescription filled? Reach out and we'll respond promptly.</p>
       <div class="cta-btns reveal rd3">
-        <a href="https://wa.me/WHATSAPP_NUMBER_HERE" class="btn-green" style="background:white;color:var(--green);box-shadow:0 6px 20px rgba(0,0,0,.15)" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/254720737151" class="btn-green" style="background:white;color:var(--green);box-shadow:0 6px 20px rgba(0,0,0,.15)" target="_blank" rel="noopener noreferrer">
           <svg style="width:20px;height:20px;margin-right:8px" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Chat on WhatsApp
         </a>
-        <a href="tel:+WHATSAPP_NUMBER_HERE" class="btn-outline" style="border-color:rgba(255,255,255,.5);color:white">
+        <a href="tel:+254720737151" class="btn-outline" style="border-color:rgba(255,255,255,.5);color:white">
           <svg style="width:18px;height:18px;margin-right:8px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.27 9.09 19.79 19.79 0 01.22.45 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           +254 790 007 616
         </a>
@@ -664,7 +664,7 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
         <!-- Success Toast -->
         <div class="hcv-toast hcv-success" id="hcvSuccess" role="alert" aria-live="polite">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Message sent! Our pharmacist will get back to you shortly. For urgent enquiries WhatsApp us on <a href="https://wa.me/WHATSAPP_NUMBER_HERE" style="color:inherit;font-weight:900;text-decoration:underline;" target="_blank">+254 790 007616</a>.</span>
+          <span>Message sent! Our pharmacist will get back to you shortly. For urgent enquiries WhatsApp us on <a href="https://wa.me/254720737151" style="color:inherit;font-weight:900;text-decoration:underline;" target="_blank">+254 790 007616</a>.</span>
         </div>
 
         <!-- Error Toast -->

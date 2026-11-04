@@ -1,4 +1,4 @@
-<?php $wa = 'WHATSAPP_NUMBER_HERE'; $phone = '+254 790 007616'; ?>
+<?php $wa = '254720737151'; $phone = '+254 790 007616'; ?>
 
 <style>
 /* ═══════════════════════════════════════════════════
@@ -427,7 +427,7 @@
           </a>
         </li>
         <li>
-          <a href="tel:+WHATSAPP_NUMBER_HERE">
+          <a href="tel:+254720737151">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;margin-right:7px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             +254 790 007616
           </a>
@@ -696,7 +696,7 @@
 <div class="float-btns" id="floatBtns">
 
   <!-- Child: Call -->
-  <a href="tel:+WHATSAPP_NUMBER_HERE" class="f-btn f-call f-child" aria-label="Call Us">
+  <a href="tel:+254720737151" class="f-btn f-call f-child" aria-label="Call Us">
     <div class="f-tip">Call Us</div>
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
          stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -705,7 +705,7 @@
   </a>
 
   <!-- Child: WhatsApp -->
-  <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello ' . get_bloginfo('name') . '! I would like to place an order.'); ?>"
+  <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello ' . get_bloginfo('name') . '! I would like to place an order.'); ?>"
      class="f-btn f-wa f-child" target="_blank" rel="noopener" aria-label="WhatsApp">
     <div class="f-tip">WhatsApp Us</div>
     <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff">

@@ -468,7 +468,7 @@ get_header(); ?>
   <div style="position:relative;z-index:1;">
     <h2 class="sec-title reveal" style="color:white;">Need Help? <span style="color:var(--green-mid,#b8ecd4);">Call Us Now</span></h2>
     <p style="color:rgba(255,255,255,.8);font-size:.88rem;margin:10px 0 24px;" class="reveal rd1">Our pharmacists are available Mon–Sat 8am–6pm to assist you.</p>
-    <a href="tel:+WHATSAPP_NUMBER_HERE" class="btn-green reveal rd2" style="background:white;color:var(--green);">
+    <a href="tel:+254720737151" class="btn-green reveal rd2" style="background:white;color:var(--green);">
       <?php echo esc_html(travotech_phone()); ?>
     </a>
   </div>

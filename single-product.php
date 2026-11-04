@@ -16,7 +16,7 @@ if ($travotech_toast_pid) {
 
 while (have_posts()): the_post();
   $pid       = get_the_ID();
-  $wa        = 'WHATSAPP_NUMBER_HERE';
+  $wa        = '254720737151';
   $name      = $product->get_name();
   $price_c   = (float)$product->get_price();
   $price_r   = $product->get_regular_price();

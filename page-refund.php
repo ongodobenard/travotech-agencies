@@ -250,7 +250,7 @@ wp_enqueue_style( 'dashicons' );
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center;">
 
         <!-- WhatsApp Button -->
-        <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have a question about your Return and Refund Policy.'); ?>"
+        <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have a question about your Return and Refund Policy.'); ?>"
            class="wa-cta-btn"
            target="_blank"
            rel="noopener">

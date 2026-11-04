@@ -308,7 +308,7 @@ get_header(); ?>
   <!-- WHATSAPP BUTTON -->
   <div style="text-align:center;margin-top:40px;" class="reveal">
     <p style="font-size:.88rem;color:var(--text-mid);font-weight:600;margin-bottom:16px;">Have delivery questions? Chat with us directly!</p>
-    <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have a delivery enquiry.'); ?>"
+    <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have a delivery enquiry.'); ?>"
        class="wa-cta-btn"
        target="_blank"
        rel="noopener">
@@ -372,7 +372,7 @@ get_header(); ?>
     <h2 class="sec-title reveal rd1" style="color:white;">Have Questions? <span style="color:var(--green-mid);">We're Here</span></h2>
     <p class="sec-desc reveal rd2" style="color:rgba(255,255,255,.8);margin:0 auto 28px;">Reach out via WhatsApp or visit us at Utawala Astrol (Nairobi).</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="reveal rd3">
-      <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
+      <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
          class="wa-cta-btn wa-cta-btn--white"
          target="_blank"
          rel="noopener">

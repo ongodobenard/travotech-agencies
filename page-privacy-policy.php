@@ -230,7 +230,7 @@ wp_enqueue_style( 'dashicons' );
       <p>Our website uses cookies to enhance your browsing experience, remember your cart items, and understand how visitors use our site. You can control cookie settings through your browser preferences. Disabling cookies may affect some functionality such as maintaining your shopping cart.</p>
 
       <h2>7. Your Rights</h2>
-      <p>Under the <strong>Kenya Data Protection Act, 2019</strong>, you have the right to access the personal data we hold about you; correct any inaccurate information; request deletion of your data subject to our legal retention obligations; and withdraw consent for marketing communications at any time. To exercise any of these rights, contact us at <a href="mailto:privacy@yourdomain.com">privacy@yourdomain.com</a>.</p>
+      <p>Under the <strong>Kenya Data Protection Act, 2019</strong>, you have the right to access the personal data we hold about you; correct any inaccurate information; request deletion of your data subject to our legal retention obligations; and withdraw consent for marketing communications at any time. To exercise any of these rights, contact us at <a href="mailto:sales@travotechagencies.co.ke">sales@travotechagencies.co.ke</a>.</p>
 
       <h2>8. Children's Privacy</h2>
       <p>Our services are not directed at children under 18. If you are ordering medication on behalf of a child, a parent or legal guardian must complete the transaction. We do not knowingly collect personal data from minors without verified parental consent.</p>
@@ -254,11 +254,11 @@ wp_enqueue_style( 'dashicons' );
         </div>
         <div class="pp-contact-row">
           <span class="dashicons dashicons-phone"></span>
-          <a href="tel:+WHATSAPP_NUMBER_HERE">+254 790 007616</a>
+          <a href="tel:+254720737151">+254 790 007616</a>
         </div>
         <div class="pp-contact-row">
           <span class="dashicons dashicons-email-alt"></span>
-          <a href="mailto:privacy@yourdomain.com">privacy@yourdomain.com</a>
+          <a href="mailto:sales@travotechagencies.co.ke">sales@travotechagencies.co.ke</a>
         </div>
         <div class="pp-contact-row">
           <span class="dashicons dashicons-admin-site-alt3"></span>

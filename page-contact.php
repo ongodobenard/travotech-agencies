@@ -169,7 +169,7 @@ get_header(); ?>
           <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
           <div>
             <div class="wf-title">Phone / WhatsApp</div>
-            <div class="wf-desc"><a href="https://wa.me/WHATSAPP_NUMBER_HERE" style="color:var(--green);font-weight:700;" target="_blank">+254 790 007616</a></div>
+            <div class="wf-desc"><a href="https://wa.me/254720737151" style="color:var(--green);font-weight:700;" target="_blank">+254 790 007616</a></div>
           </div>
         </div>
 
@@ -205,7 +205,7 @@ get_header(); ?>
           <a href="<?php echo esc_url(get_option('travotech_facebook','#')); ?>" class="foot-soc" target="_blank">f</a>
           <a href="<?php echo esc_url(get_option('travotech_instagram','#')); ?>" class="foot-soc" target="_blank">▶</a>
           <a href="<?php echo esc_url(get_option('travotech_twitter','#')); ?>" class="foot-soc" target="_blank">𝕏</a>
-          <a href="https://wa.me/WHATSAPP_NUMBER_HERE" class="foot-soc" target="_blank">W</a>
+          <a href="https://wa.me/254720737151" class="foot-soc" target="_blank">W</a>
         </div>
       </div>
     </div>
@@ -261,7 +261,7 @@ get_header(); ?>
         <!-- ✅ Success Toast -->
         <div class="cv-toast cv-success" id="cvSuccess" role="alert" aria-live="polite">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Thanks for contacting Travotech! Message received successfully. Our professional pharmacist will get back to you shortly. For urgent enquiries, call or WhatsApp us directly on <a href="https://wa.me/WHATSAPP_NUMBER_HERE" style="color:inherit;text-decoration:underline;font-weight:900;" target="_blank">+254 790 007616</a>.</span>
+          <span>Thanks for contacting Travotech! Message received successfully. Our professional pharmacist will get back to you shortly. For urgent enquiries, call or WhatsApp us directly on <a href="https://wa.me/254720737151" style="color:inherit;text-decoration:underline;font-weight:900;" target="_blank">+254 790 007616</a>.</span>
         </div>
 
         <!-- ❌ Error Toast -->
@@ -281,7 +281,7 @@ get_header(); ?>
   <div class="sec-tag sec-tag-solid reveal">Fastest Response</div>
   <h2 class="sec-title reveal rd1">Chat With Us on <span>WhatsApp</span></h2>
   <p class="sec-desc reveal rd2" style="margin:0 auto 28px;">Get instant responses from our pharmacists, available 24/7.</p>
-  <a href="https://wa.me/WHATSAPP_NUMBER_HERE?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
+  <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
      class="wa-cta-btn reveal rd3"
      target="_blank"
      rel="noopener">

@@ -27,9 +27,9 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
     $phpmailer->SMTPAuth   = true;
     $phpmailer->Port       = 465;
     $phpmailer->SMTPSecure = 'ssl';
-    $phpmailer->Username   = 'sales@yourdomain.com';
+    $phpmailer->Username   = 'sales@travotechagencies.co.ke';
     $phpmailer->Password   = 'CHANGE_ME_SMTP_PASSWORD';
-    $phpmailer->From       = 'sales@yourdomain.com';
+    $phpmailer->From       = 'sales@travotechagencies.co.ke';
     $phpmailer->FromName   = get_bloginfo( 'name' ) . ' Website';
     $phpmailer->SMTPOptions = [
         'ssl' => [
@@ -78,11 +78,11 @@ function travotech_enqueue() {
 add_action( 'wp_enqueue_scripts', 'travotech_enqueue' );
 
 // ─── HELPERS ──────────────────────────────────
-function travotech_wa()      { return get_option( 'travotech_wa',      'WHATSAPP_NUMBER_HERE' ); }
+function travotech_wa()      { return get_option( 'travotech_wa',      '254720737151' ); }
 function travotech_phone()   { return get_option( 'travotech_phone',   '+254 790 007 616' ); }
 function travotech_address() { return get_option( 'travotech_address', 'Nairobi, Kenya' ); }
 function travotech_tagline() { return get_option( 'travotech_tagline', 'Trusted Care, Delivered Daily' ); }
-function travotech_email()   { return get_option( 'travotech_email',   'sales@yourdomain.com' ); }
+function travotech_email()   { return get_option( 'travotech_email',   'sales@travotechagencies.co.ke' ); }
 
 // ─── FORCE PAGE TEMPLATES BY SLUG ─────────────
 function travotech_page_template( $template ) {
@@ -382,7 +382,7 @@ function travotech_contact() {
 
     $to      = travotech_email();
     $subject = "[Travotech Contact] {$dept} - {$name}";
-    $body    = "New contact form submission from yourdomain.com\n\n";
+    $body    = "New contact form submission from travotechagencies.co.ke\n\n";
     $body   .= "Name:        {$name}\n";
     $body   .= "Email:       {$email}\n";
     $body   .= "Phone:       {$phone}\n";
@@ -458,9 +458,9 @@ function travotech_submit_prescription() {
         wp_send_json_error( [ 'msg' => 'Please attach your prescription file.' ] );
     }
 
-    $to      = 'sales@yourdomain.com';
+    $to      = 'sales@travotechagencies.co.ke';
     $subject = '[Travotech Prescription] ' . $fname . ' ' . $lname . ' - ' . $phone;
-    $body    = "New Prescription Submission from yourdomain.com\n\n";
+    $body    = "New Prescription Submission from travotechagencies.co.ke\n\n";
     $body   .= "================================\n";
     $body   .= "PATIENT DETAILS\n";
     $body   .= "================================\n";
@@ -574,7 +574,7 @@ function travotech_build_and_send_order( $args ) {
 
     // ── SHARED EMAIL BUILDING ──
     $store_name   = get_bloginfo( 'name' );
-    $notify_email = function_exists( 'travotech_email' ) ? travotech_email() : 'sales@yourdomain.com';
+    $notify_email = function_exists( 'travotech_email' ) ? travotech_email() : 'sales@travotechagencies.co.ke';
     $order_label  = $order_id ? '#' . $order_id : 'N/A';
     $via_label    = $via === 'whatsapp' ? 'WhatsApp Order' : 'Website Checkout';
     $total_fmt    = 'KES ' . number_format( $total, 2 );
@@ -699,7 +699,7 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
     }
 
     // ── FIX: Use STORE WhatsApp number so customer contacts the shop, not themselves ──
-    $store_wa = preg_replace( '/[^0-9]/', '', function_exists( 'travotech_wa' ) ? travotech_wa() : 'WHATSAPP_NUMBER_HERE' );
+    $store_wa = preg_replace( '/[^0-9]/', '', function_exists( 'travotech_wa' ) ? travotech_wa() : '254720737151' );
 
     $html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#f0faf5;">
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0faf5;padding:30px 0;">
@@ -777,12 +777,12 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
 
           <tr><td style="padding:24px 32px;text-align:center;">
             <a href="https://wa.me/' . esc_attr( $store_wa ) . '" style="display:inline-block;background:#25d366;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Chat on WhatsApp</a>
-            <a href="tel:+WHATSAPP_NUMBER_HERE" style="display:inline-block;background:#2eaf6e;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Call Us</a>
+            <a href="tel:+254720737151" style="display:inline-block;background:#2eaf6e;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Call Us</a>
           </td></tr>
 
           <tr><td style="background:#f8fffe;border-top:2px solid #e8f8f0;padding:16px 32px;text-align:center;">
             <div style="font-size:12px;color:#4a6358;font-weight:700;">' . esc_html( $store_name ) . ' :Trusted Care, Delivered Daily</div>
-            <div style="font-size:11px;color:#8aaa98;margin-top:4px;">+254 790 007 616 &nbsp;|&nbsp; sales@yourdomain.com</div>
+            <div style="font-size:11px;color:#8aaa98;margin-top:4px;">+254 790 007 616 &nbsp;|&nbsp; sales@travotechagencies.co.ke</div>
             <div style="font-size:11px;color:#8aaa98;margin-top:2px;">' . esc_html( home_url( '/' ) ) . '</div>
             <div style="font-size:10px;color:#b0c8bc;margin-top:8px;">This is an automated order confirmation email. Please do not reply directly.</div>
           </td></tr>
@@ -795,7 +795,7 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
     $subject = 'Order ' . $order_label . ' Confirmed - ' . $store_name;
     $headers = [
         'Content-Type: text/html; charset=UTF-8',
-        'From: ' . $store_name . ' <sales@yourdomain.com>',
+        'From: ' . $store_name . ' <sales@travotechagencies.co.ke>',
     ];
 
     return wp_mail( $email, $subject, $html, $headers );
@@ -1082,7 +1082,7 @@ function travotech_settings_page() {
                     <th>WhatsApp Number</th>
                     <td>
                         <input type="text" name="travotech_wa" value="<?php echo esc_attr( travotech_wa() ); ?>" class="regular-text">
-                        <p class="description">Numbers only, no spaces or + e.g. <strong>WHATSAPP_NUMBER_HERE</strong></p>
+                        <p class="description">Numbers only, no spaces or + e.g. <strong>254720737151</strong></p>
                     </td>
                 </tr>
                 <tr>
