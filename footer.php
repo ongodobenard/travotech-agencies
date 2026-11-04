@@ -358,7 +358,7 @@
          style="margin-bottom:8px;">
         <div class="foot-logo-wrap">
           <img
-            src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/Travotech_Logo.png'); ?>"
+            src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/travotechlogo.png'); ?>"
             alt="Travotech Agencies"
             width="210"
             height="72"

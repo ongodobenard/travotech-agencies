@@ -415,7 +415,7 @@
 
     <a href="<?php echo esc_url(home_url('/')); ?>" class="logo-link" aria-label="Travotech Agencies — Go to homepage">
       <div class="logo-img-wrap">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/Travotech_Logo.png'); ?>"
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/js/images/travotechlogo.png'); ?>"
              alt="Travotech Agencies" width="130" height="54" loading="eager" decoding="async"/>
       </div>
     </a>
