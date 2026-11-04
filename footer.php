@@ -288,6 +288,25 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 .trv-foot-contact li:nth-child(2) i{color:#FF6B5E;}
 .trv-foot-contact li:nth-child(3) i{color:#FF5A4D;}
 .trv-foot-contact li:nth-child(4) i{color:#FFC73A;}
+
+/* ---- Responsive fix (must stay last) ---- */
+@media (max-width:1024px){
+  .trv-foot-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px;}
+  .trv-foot-col.trv-foot-brand{grid-column:1 / -1;}
+}
+@media (max-width:600px){
+  .trv-foot-inner{padding-left:20px;padding-right:20px;}
+  .trv-foot-grid{grid-template-columns:minmax(0,1fr);gap:28px;}
+  .trv-foot-col.trv-foot-brand{grid-column:auto;}
+  .trv-foot-h{font-size:1.05rem;}
+  .trv-foot-links a{padding:7px 0;}
+  .trv-foot-contact a,.trv-foot-contact span{overflow-wrap:break-word;word-break:normal;}
+  .trv-foot-bottom-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding-left:20px;padding-right:20px;}
+  .trv-foot-copy{order:1;}
+  .trv-foot-legal{order:2;justify-content:center;}
+  .trv-foot-credit{order:3;}
+  .trv-foot-bottom{padding-bottom:76px;}
+}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
