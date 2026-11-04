@@ -63,7 +63,20 @@ $hp_card = function ( $p ) {
         <div class="hp-card-body">
             <h3><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $name ); ?></a></h3>
             <div class="hp-price"><?php echo wp_kses_post( $p->get_price_html() ); ?></div>
-            <a class="hp-btn hp-btn-sm" href="<?php echo esc_url( $url ); ?>"><i class="fa-solid fa-eye" aria-hidden="true"></i> View details</a>
+            <?php
+            $wa    = preg_replace( '/\D+/', '', (string) get_option( 'travotech_wa', get_option( 'trovatech_wa', '254720737151' ) ) );
+            $msg   = rawurlencode( 'Hello Travotech Agencies, I would like to order: ' . $name . ' - ' . $url );
+            $can   = $p->is_purchasable() && $p->is_in_stock();
+            $ajax  = $can && $p->supports( 'ajax_add_to_cart' );
+            ?>
+            <div class="hp-actions">
+                <?php if ( $can ) : ?>
+                <a href="<?php echo esc_url( $p->add_to_cart_url() ); ?>" data-quantity="1" data-product_id="<?php echo (int) $p->get_id(); ?>" data-product_sku="<?php echo esc_attr( $p->get_sku() ); ?>" aria-label="Add <?php echo esc_attr( $name ); ?> to your cart" rel="nofollow" class="hp-btn hp-btn-sm product_type_<?php echo esc_attr( $p->get_type() ); ?><?php echo $ajax ? ' add_to_cart_button ajax_add_to_cart' : ''; ?>"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> <?php echo esc_html( $p->add_to_cart_text() ); ?></a>
+                <?php else : ?>
+                <a class="hp-btn hp-btn-sm" href="<?php echo esc_url( $url ); ?>"><i class="fa-solid fa-eye" aria-hidden="true"></i> View details</a>
+                <?php endif; ?>
+                <a class="hp-btn hp-btn-sm hp-btn-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo esc_attr( $msg ); ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</a>
+            </div>
         </div>
     </article>
     <?php
@@ -219,6 +232,47 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
     .hp-hero-btns .hp-btn,.hp-cta .hp-btn{width:100%;}
     .hp-cta .hp-wrap{text-align:center;justify-content:center;}
 }
+
+/* ---- Fixes v2 ---- */
+/* Hero: clearer image */
+.hp-hero::before{background:linear-gradient(90deg,rgba(9,45,31,.8) 0%,rgba(9,45,31,.5) 34%,rgba(9,45,31,0) 62%);}
+.hp-hero-txt{max-width:580px;}
+.hp .hp-hero h1{font-size:clamp(1.8rem,4vw,2.9rem);text-shadow:0 2px 12px rgba(0,0,0,.45);}
+.hp-hero p{text-shadow:0 1px 8px rgba(0,0,0,.5);}
+@media (max-width:900px){.hp-hero::before{background:linear-gradient(180deg,rgba(9,45,31,.62),rgba(9,45,31,.45));}}
+
+/* Categories: image on top, name bar below, equal heights */
+.hp-cats{gap:14px;}
+.hp-cat{border-radius:8px;}
+.hp-cat-img{aspect-ratio:auto;height:clamp(120px,13vw,165px);padding:8px;overflow:hidden;background:#f4f7f5;}
+.hp-cat-img img{width:100%;height:100%;object-fit:contain;}
+.hp .hp-cat h3.hp-cat-name{color:#fff;flex:0 0 auto;min-height:56px;padding:10px 8px;font-size:15px;line-height:1.25;}
+
+/* Product buttons */
+.hp-actions{display:grid;gap:8px;margin-top:4px;}
+.hp-card .hp-btn-sm{padding:10px 8px;font-size:12px;letter-spacing:.02em;line-height:1.2;text-align:center;}
+.hp .hp-btn-wa{background:#25D366;border-color:#25D366;color:#fff;}
+.hp .hp-btn-wa:hover{background:#1da851;border-color:#1da851;color:#fff;}
+.hp-card .added_to_cart{display:block;text-align:center;font-size:12px;font-weight:700;color:var(--th-g,#238a56);}
+.hp-btn.loading{opacity:.6;pointer-events:none;}
+.hp-btn.added{background:var(--th-dk,#0c3a27);border-color:var(--th-dk,#0c3a27);}
+@media (max-width:560px){.hp-card .hp-btn-sm{font-size:11px;padding:9px 4px;letter-spacing:0;}}
+
+/* Reviews: Google style, no red border */
+.hp-rev blockquote{border:1px solid #dfe8e3;gap:14px;background:#fff;}
+.hp-rev .hp-rev-top{display:flex;align-items:center;gap:12px;}
+.hp-rev .hp-av{width:44px;height:44px;flex:0 0 44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font:700 18px var(--th-fb,sans-serif);background:#4285F4;}
+.hp-rev blockquote:nth-child(4n+2) .hp-av{background:#EA4335;}
+.hp-rev blockquote:nth-child(4n+3) .hp-av{background:#FBBC05;color:#1b2230;}
+.hp-rev blockquote:nth-child(4n+4) .hp-av{background:#34A853;}
+.hp-rev .hp-rev-by{display:flex;flex-direction:column;min-width:0;flex:1;background:none;padding:0;}
+.hp-rev .hp-rev-by strong{color:#1b2230;font-size:1rem;}
+.hp-rev .hp-rev-by span{color:#6b7280;font-size:.85rem;}
+.hp-rev .hp-gword{font:600 15px var(--th-fb,sans-serif);white-space:nowrap;}
+.hp-rev .hp-gword .gb{color:#4285F4;font-size:15px;}
+.hp-rev .hp-gword .gr{color:#EA4335;font-size:15px;}
+.hp-rev .hp-gword .gy{color:#FBBC05;font-size:15px;}
+.hp-rev .hp-gword .gg{color:#34A853;font-size:15px;}
 </style>
 
 <main class="hp" id="main">
@@ -350,9 +404,12 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
             <div class="hp-rev">
                 <?php foreach ( $hp_reviews as $r ) : ?>
                 <blockquote>
-                    <i class="fa-solid fa-quote-left" aria-hidden="true"></i>
+                    <div class="hp-rev-top">
+                        <span class="hp-av" aria-hidden="true"><?php echo esc_html( strtoupper( substr( trim( $r[1] ), 0, 1 ) ) ); ?></span>
+                        <div class="hp-rev-by"><strong><?php echo esc_html( $r[1] ); ?></strong><span><?php echo esc_html( $r[2] ); ?></span></div>
+                        <span class="hp-gword" aria-label="Google review"><span class="gb">G</span><span class="gr">o</span><span class="gy">o</span><span class="gb">g</span><span class="gg">l</span><span class="gr">e</span></span>
+                    </div>
                     <p><?php echo esc_html( $r[0] ); ?></p>
-                    <footer><strong><?php echo esc_html( $r[1] ); ?></strong><span><?php echo esc_html( $r[2] ); ?></span></footer>
                 </blockquote>
                 <?php endforeach; ?>
             </div>
