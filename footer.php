@@ -267,6 +267,27 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 .trv-foot-contact i{flex:0 0 22px;width:22px;margin-top:4px;text-align:center;font-size:1rem;line-height:1;color:var(--trv-accent);}
 .trv-foot-soc i{font-size:1.15rem;line-height:1;}
 .trv-fab-wa i{font-size:1.9rem;line-height:1;}
+
+/* ---- Real brand colors for Font Awesome icons ---- */
+.trv-foot-soc.trv-soc-facebook,
+.trv-foot-soc.trv-soc-instagram,
+.trv-foot-soc.trv-soc-tiktok,
+.trv-foot-soc.trv-soc-linkedin,
+.trv-foot-soc.trv-soc-x{background:#fff !important;border:0 !important;box-shadow:none !important;}
+.trv-foot-soc.trv-soc-facebook{color:#1877F2 !important;}
+.trv-foot-soc.trv-soc-linkedin{color:#0A66C2 !important;}
+.trv-foot-soc.trv-soc-x{color:#000 !important;}
+.trv-foot-soc.trv-soc-tiktok{color:#000 !important;}
+.trv-foot-soc.trv-soc-tiktok i{text-shadow:1.5px 1.5px 0 #FE2C55,-1.5px -1.5px 0 #25F4EE;}
+.trv-foot-soc.trv-soc-instagram{color:#D62976 !important;}
+.trv-foot-soc.trv-soc-instagram i{background:linear-gradient(45deg,#FEDA75 0%,#FA7E1E 30%,#D62976 55%,#962FBF 80%,#4F5BD5 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.trv-foot-soc:hover,.trv-foot-soc:focus-visible{background:#EAF7F0 !important;filter:none !important;transform:translateY(-2px);}
+
+/* Contact icons */
+.trv-foot-contact li:nth-child(1) i{color:#34D27B;}
+.trv-foot-contact li:nth-child(2) i{color:#FF6B5E;}
+.trv-foot-contact li:nth-child(3) i{color:#FF5A4D;}
+.trv-foot-contact li:nth-child(4) i{color:#FFC73A;}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
