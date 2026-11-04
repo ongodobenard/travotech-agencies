@@ -79,7 +79,7 @@ add_action( 'wp_enqueue_scripts', 'travotech_enqueue' );
 
 // ─── HELPERS ──────────────────────────────────
 function travotech_wa()      { return get_option( 'travotech_wa',      '254720737151' ); }
-function travotech_phone()   { return get_option( 'travotech_phone',   '+254 790 007 616' ); }
+function travotech_phone()   { return get_option( 'travotech_phone',   '+254 720 737 151' ); }
 function travotech_address() { return get_option( 'travotech_address', 'Nairobi, Kenya' ); }
 function travotech_tagline() { return get_option( 'travotech_tagline', 'Trusted Care, Delivered Daily' ); }
 function travotech_email()   { return get_option( 'travotech_email',   'sales@travotechagencies.co.ke' ); }
@@ -655,7 +655,7 @@ function travotech_build_and_send_order( $args ) {
           </td></tr>
           <tr><td style="background:#f8fffe;border-top:2px solid #e8f8f0;padding:16px 32px;text-align:center;">
             <div style="font-size:11px;color:#8aaa98;">Automated notification from ' . esc_html( $store_name ) . '</div>
-            <div style="font-size:11px;color:#8aaa98;margin-top:3px;">+254 790 007 616 &nbsp;|&nbsp; ' . esc_html( home_url( '/' ) ) . '</div>
+            <div style="font-size:11px;color:#8aaa98;margin-top:3px;">+254 720 737 151 &nbsp;|&nbsp; ' . esc_html( home_url( '/' ) ) . '</div>
           </td></tr>
         </table>
       </td></tr>
@@ -782,7 +782,7 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
 
           <tr><td style="background:#f8fffe;border-top:2px solid #e8f8f0;padding:16px 32px;text-align:center;">
             <div style="font-size:12px;color:#4a6358;font-weight:700;">' . esc_html( $store_name ) . ' :Trusted Care, Delivered Daily</div>
-            <div style="font-size:11px;color:#8aaa98;margin-top:4px;">+254 790 007 616 &nbsp;|&nbsp; sales@travotechagencies.co.ke</div>
+            <div style="font-size:11px;color:#8aaa98;margin-top:4px;">+254 720 737 151 &nbsp;|&nbsp; sales@travotechagencies.co.ke</div>
             <div style="font-size:11px;color:#8aaa98;margin-top:2px;">' . esc_html( home_url( '/' ) ) . '</div>
             <div style="font-size:10px;color:#b0c8bc;margin-top:8px;">This is an automated order confirmation email. Please do not reply directly.</div>
           </td></tr>
@@ -966,7 +966,7 @@ function travotech_send_order_email_handler() {
         ] );
     } else {
         wp_send_json_error( [
-            'msg'      => 'Something went wrong. Please contact us on WhatsApp or call +254 790 007 616.',
+            'msg'      => 'Something went wrong. Please contact us on WhatsApp or call +254 720 737 151.',
             'order_id' => 0,
         ] );
     }
@@ -1089,7 +1089,7 @@ function travotech_settings_page() {
                     <th>Display Phone</th>
                     <td>
                         <input type="text" name="travotech_phone" value="<?php echo esc_attr( travotech_phone() ); ?>" class="regular-text">
-                        <p class="description">Displayed in header/footer e.g. <strong>+254 790 007 616</strong></p>
+                        <p class="description">Displayed in header/footer e.g. <strong>+254 720 737 151</strong></p>
                     </td>
                 </tr>
                 <tr>

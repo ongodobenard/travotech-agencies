@@ -375,7 +375,7 @@ wp_enqueue_style( 'dashicons' );
 
       <div class="tp-callout warning">
         <span class="dashicons dashicons-warning"></span>
-        <span>Orders destined for counties outside Nairobi will <strong>not be dispatched</strong> until the <strong>full order payment</strong> has been received and confirmed by our team. Contact us on <a href="tel:+254720737151">+254 790 007616</a> after completing your payment.</span>
+        <span>Orders destined for counties outside Nairobi will <strong>not be dispatched</strong> until the <strong>full order payment</strong> has been received and confirmed by our team. Contact us on <a href="tel:+254720737151">+254 720 737 151</a> after completing your payment.</span>
       </div>
 
       <p>We accept the following payment methods:</p>
@@ -405,7 +405,7 @@ wp_enqueue_style( 'dashicons' );
         <div class="tp-list-item"><span class="dashicons dashicons-yes-alt"></span><span><strong>Partial refund:</strong> Missing items or partial order fulfilment errors.</span></div>
         <div class="tp-list-item"><span class="dashicons dashicons-no-alt"></span><span><strong>No refund:</strong> Dispensed prescription medicines, opened or used products, or orders cancelled after dispatch.</span></div>
       </div>
-      <p>All refund requests must be submitted within <strong>48 hours</strong> of delivery by contacting us on <a href="tel:+254720737151">+254 790 007616</a>.</p>
+      <p>All refund requests must be submitted within <strong>48 hours</strong> of delivery by contacting us on <a href="tel:+254720737151">+254 720 737 151</a>.</p>
 
       <!-- 7. Pricing -->
       <h2><span class="dashicons dashicons-tag"></span> 7. Pricing &amp; Availability</h2>
@@ -453,11 +453,11 @@ wp_enqueue_style( 'dashicons' );
         </div>
         <div class="tp-contact-row">
           <span class="dashicons dashicons-phone"></span>
-          <a href="tel:+254720737151">+254 790 007616</a>
+          <a href="tel:+254720737151">+254 720 737 151</a>
         </div>
         <div class="tp-contact-row">
           <span class="dashicons dashicons-whatsapp" style="color:#25d366;"></span>
-          <a href="https://wa.me/254720737151" target="_blank" rel="noopener">WhatsApp: +254 790 007616</a>
+          <a href="https://wa.me/254720737151" target="_blank" rel="noopener">WhatsApp: +254 720 737 151</a>
         </div>
         <div class="tp-contact-row">
           <span class="dashicons dashicons-email-alt"></span>

@@ -464,7 +464,7 @@ wp_enqueue_style( 'dashicons' );
             </div>
             <div class="chkp-success-banner-body">
               Your order has been saved and our team will contact you shortly to confirm delivery.<br>
-              For urgent enquiries: <a href="https://wa.me/254720737151" target="_blank">WhatsApp +254 790 007616</a>
+              For urgent enquiries: <a href="https://wa.me/254720737151" target="_blank">WhatsApp +254 720 737 151</a>
               <div class="chkp-success-email-note" id="chkp-email-note-desktop" style="display:none;">
                 <span class="dashicons dashicons-email-alt" style="font-size:13px;width:13px;height:13px;color:#2eaf6e;flex-shrink:0;"></span>
                 <span id="chkp-email-note-text-desktop">A confirmation email has been sent to your inbox.</span>
@@ -536,7 +536,7 @@ wp_enqueue_style( 'dashicons' );
       </div>
       <div class="chkp-success-banner-body">
         Your order has been saved and our team will contact you shortly to confirm delivery.<br>
-        <a href="https://wa.me/254720737151" target="_blank">WhatsApp +254 790 007616</a>
+        <a href="https://wa.me/254720737151" target="_blank">WhatsApp +254 720 737 151</a>
         <div class="chkp-success-email-note" id="chkp-email-note-mobile" style="display:none;">
           <span class="dashicons dashicons-email-alt" style="font-size:13px;width:13px;height:13px;color:#2eaf6e;flex-shrink:0;"></span>
           <span id="chkp-email-note-text-mobile">A confirmation email has been sent to your inbox.</span>
@@ -800,7 +800,7 @@ wp_enqueue_style( 'dashicons' );
     var suffix = isDesktop ? '-desktop' : '-mobile';
     var errEl  = document.getElementById('chkp-error'+suffix);
     if(!errEl) return;
-    errEl.innerHTML = '<strong>'+msg+'</strong><br><small>You can also order via <a href="https://wa.me/254720737151" style="color:#b71c1c;">WhatsApp +254 790 007616</a></small>';
+    errEl.innerHTML = '<strong>'+msg+'</strong><br><small>You can also order via <a href="https://wa.me/254720737151" style="color:#b71c1c;">WhatsApp +254 720 737 151</a></small>';
     errEl.classList.add('show');
     errEl.scrollIntoView({behavior:'smooth',block:'center'});
   }

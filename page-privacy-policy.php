@@ -254,7 +254,7 @@ wp_enqueue_style( 'dashicons' );
         </div>
         <div class="pp-contact-row">
           <span class="dashicons dashicons-phone"></span>
-          <a href="tel:+254720737151">+254 790 007616</a>
+          <a href="tel:+254720737151">+254 720 737 151</a>
         </div>
         <div class="pp-contact-row">
           <span class="dashicons dashicons-email-alt"></span>

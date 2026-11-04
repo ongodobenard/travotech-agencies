@@ -619,7 +619,7 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
         </a>
         <a href="tel:+254720737151" class="btn-outline" style="border-color:rgba(255,255,255,.5);color:white">
           <svg style="width:18px;height:18px;margin-right:8px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.27 9.09 19.79 19.79 0 01.22.45 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          +254 790 007 616
+          +254 720 737 151
         </a>
       </div>
     </div>
@@ -664,7 +664,7 @@ function fp_section( $id, $label1, $label2, $cat_names, $bg, $wa ) {
         <!-- Success Toast -->
         <div class="hcv-toast hcv-success" id="hcvSuccess" role="alert" aria-live="polite">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Message sent! Our pharmacist will get back to you shortly. For urgent enquiries WhatsApp us on <a href="https://wa.me/254720737151" style="color:inherit;font-weight:900;text-decoration:underline;" target="_blank">+254 790 007616</a>.</span>
+          <span>Message sent! Our pharmacist will get back to you shortly. For urgent enquiries WhatsApp us on <a href="https://wa.me/254720737151" style="color:inherit;font-weight:900;text-decoration:underline;" target="_blank">+254 720 737 151</a>.</span>
         </div>
 
         <!-- Error Toast -->
@@ -932,7 +932,7 @@ window.addEventListener('load', function () {
       try { data = JSON.parse(clean); }
       catch(e) {
         btnReset();
-        errorText.textContent = 'Server error. Please contact us via WhatsApp on +254 790 007616.';
+        errorText.textContent = 'Server error. Please contact us via WhatsApp on +254 720 737 151.';
         showToast(errorEl, 8000);
         return;
       }
@@ -943,7 +943,7 @@ window.addEventListener('load', function () {
         btnReset();
         errorText.textContent = (data.data && data.data.msg)
           ? data.data.msg
-          : 'Mail delivery failed. Please contact us via WhatsApp on +254 790 007616.';
+          : 'Mail delivery failed. Please contact us via WhatsApp on +254 720 737 151.';
         showToast(errorEl, 7000);
       }
     })

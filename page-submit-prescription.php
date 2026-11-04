@@ -397,7 +397,7 @@ get_header(); ?>
           </div>
           <div class="fg" id="fg_phone">
             <label>Phone Number <span class="req">*</span></label>
-            <input type="tel" name="rx_phone" id="rx_phone" placeholder="+254 790 007616">
+            <input type="tel" name="rx_phone" id="rx_phone" placeholder="+254 720 737 151">
             <span class="field-error-msg">Phone number is required.</span>
           </div>
           <div class="fg">
