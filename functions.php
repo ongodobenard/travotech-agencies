@@ -1203,3 +1203,35 @@ require_once get_template_directory() . '/inc/trv-seo.php';
 
 /* travotech_shop_per_page: 10 per page on phones, 9 on desktop and tablets */
 add_filter( 'loop_shop_per_page', function ( $n ) { return ( isset( $_SERVER['HTTP_USER_AGENT'] ) && false !== stripos( $_SERVER['HTTP_USER_AGENT'], 'Mobi' ) ) ? 10 : 9; }, 20 );
+
+/* btn-radius-final: every button uses the same 6px radius, printed last */
+add_action( 'wp_footer', function () {
+    echo '<style id="btn-radius-final">
+html body:not(#a):not(#b) .th-cd-btns a,
+html body:not(#a):not(#b) .th-cd-view,
+html body:not(#a):not(#b) .th-cd-go,
+html body:not(#a):not(#b) .hp-btn,
+html body:not(#a):not(#b) .hp-btn-sm,
+html body:not(#a):not(#b) .hp-btn-wa,
+html body:not(#a):not(#b) .hp-b,
+html body:not(#a):not(#b) .sh-b,
+html body:not(#a):not(#b) .sh-btn,
+html body:not(#a):not(#b) .sp-wa-btn,
+html body:not(#a):not(#b) .sp-atc-btn,
+html body:not(#a):not(#b) .p-btn-cart,
+html body:not(#a):not(#b) .p-btn-wa,
+html body:not(#a):not(#b) .cart-checkout-btn,
+html body:not(#a):not(#b) .chkp-wa-btn,
+html body:not(#a):not(#b) .chkp-place-btn,
+html body:not(#a):not(#b) a[href*="wa.me"]:not(.th-soc),
+html body:not(#a):not(#b) a[href*="api.whatsapp.com"]:not(.th-soc),
+html body:not(#a):not(#b) a[href*="whatsapp.com/send"]:not(.th-soc),
+html body:not(#a):not(#b) .th-wa-pulse,
+html body:not(#a):not(#b) [class*="whatsapp"]:not(.th-soc):not(.th-soc-whatsapp),
+html body:not(#a):not(#b) [class*="wa-float"],
+html body:not(#a):not(#b) [class*="float-wa"],
+html body:not(#a):not(#b) [id*="whatsapp"],
+html body:not(#a):not(#b) [class*="whatsapp"] > a,
+html body:not(#a):not(#b) [id*="whatsapp"] > a{border-radius:6px !important;}
+</style>';
+}, 99999 );

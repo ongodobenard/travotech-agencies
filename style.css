@@ -369,17 +369,7 @@ footer{background:#072525;color:rgba(255,255,255,.7);padding:56px 5% 26px;}
   .form-row{grid-template-columns:1fr;}
 }
 
-/* ---- wa-square: WhatsApp buttons not circular ---- */
-body a[href*="wa.me"],
-body a[href*="api.whatsapp.com"],
-body a[href*="web.whatsapp.com"],
-body button[class*="whatsapp"],
-body [class*="whatsapp-float"],
-body [class*="wa-float"],
-body [class*="float-wa"]{border-radius:14px !important;}
 
-/* ---- wa-square3: WhatsApp float not circular ---- */
-body a[href*="wa.me"], body a[href*="whatsapp.com"], body [class*="whatsapp"], body [class*="wa-float"], body [class*="wa-fab"], body [class*="th-wa"], body [id*="whatsapp"] { border-radius:14px !important; }
 
 /* ---- sp-fonts-v1: single product fonts, reviews, form ---- */
 body.single-product div.product :where(p,li,span,a,label,td,th,input,textarea,select,button,div,dt,dd,small,strong):not(.star-rating):not(.star-rating *):not(p.stars):not(p.stars *):not([class*="fa-"]):not(.dashicons){font-family:var(--th-fb,'Inter',system-ui,sans-serif);}
@@ -438,10 +428,3 @@ body.single-product #review_form .form-submit input#submit:hover{background:var(
 body.single-product div.product form.cart .single_add_to_cart_button{border-radius:8px !important;background:var(--th-g,#22adb0);color:#fff;font:600 14px var(--th-fh,'Oswald',sans-serif) !important;letter-spacing:.05em;text-transform:uppercase;min-height:50px;padding:0 28px;border:0;}
 body.single-product div.product form.cart .single_add_to_cart_button:hover{background:var(--th-dk,#093c3c);}
 body.single-product div.product form.cart .quantity input.qty{height:50px;border:1.5px solid #c9d3cd;border-radius:8px;font:600 15px var(--th-fb,'Inter',sans-serif);}
-/* ---- wa-square2: floating WhatsApp not circular ---- */
-body [class*="whatsapp" i],
-body [id*="whatsapp" i],
-body [class*="whatsapp" i] > a,
-body [id*="whatsapp" i] > a,
-body a[href*="wa.me"],
-body a[href*="api.whatsapp.com"]{border-radius:14px !important;}
