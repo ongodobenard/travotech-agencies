@@ -167,6 +167,29 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ct-cta{flex-direction:column;text-align:center;}
 .ct-cta>i{border-right:0;padding-right:0;}
 }
+
+/* ---- Hero fix v2 ---- */
+/* One hero: contact.png covers the whole top area, behind the cards and the people */
+.ct-top{background:var(--ct-dk);overflow:hidden;}
+.ct-band{position:static;overflow:visible;background:none;}
+.ct-band-in{padding:30px 5% 24px;}
+.ct-cards-wrap{margin:0 auto;padding:0 5% 40px;}
+.ct-people-d{top:0;bottom:0;width:min(46%,580px);z-index:1;}
+.ct-cards-wrap{z-index:3;}
+@media (max-width:1000px){
+    .ct-band-in{padding:24px 5% 0;}
+    .ct-cards-wrap{margin:16px auto 0;padding-bottom:28px;}
+}
+
+/* ---- Hero fix v3 ---- */
+/* Desktop keeps v2. Phone and tablet go back to the earlier layout, with a bigger people image */
+@media (max-width:1000px){
+    .ct-top{background:linear-gradient(180deg,#f4faf6 0,#e6f3ec 100%);overflow:visible;}
+    .ct-band{position:relative;overflow:hidden;background:var(--ct-dk);}
+    .ct-band-in{padding:24px 5% 0;}
+    .ct-people-m{height:clamp(250px,64vw,400px);margin-top:10px;}
+    .ct-cards-wrap{margin:-24px auto 0;padding:0 5% 26px;}
+}
 </style>
 
 <main class="ct">
