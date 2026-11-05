@@ -179,6 +179,16 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ab .ab-hero-line{display:block;width:70px;height:4px;background:var(--ab-red);border-radius:2px;margin:0 auto 16px;}
 .ab .ab-hero p{color:#fff;font-size:clamp(.95rem,2vw,1.15rem);max-width:700px;margin:0 auto;}
 .ab>section:last-child{padding-bottom:28px;}
+
+/* ---- About v3 ---- */
+.ab .ab-hero::before{background:linear-gradient(180deg,rgba(12,58,39,.10),rgba(12,58,39,.18)) !important;}
+.ab .ab-hero-in{background:rgba(12,58,39,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border-radius:14px;padding:clamp(18px,3.5vw,34px) clamp(16px,4vw,40px);margin:32px 5%;max-width:820px;}
+.ab .ab-hero h1{font-size:clamp(1.5rem,4vw,2.6rem);margin:0 0 12px;}
+.ab .ab-hero p{font-size:clamp(.9rem,1.8vw,1.05rem);}
+@media (max-width:700px){
+    .ab .ab-hero{min-height:260px;}
+    .ab .ab-hero-in{margin:20px 4%;}
+}
 </style>
 
 <main class="ab">
