@@ -111,11 +111,15 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 
 /* ---- Refund v2 ---- */
 .rp-body li i.rp-dot{font-size:.45rem;margin-top:10px;color:var(--rp-g);}
+
+/* ---- Refund v3 ---- */
+.rp .rp-hero{position:relative !important;top:auto !important;bottom:auto !important;z-index:1 !important;height:auto;}
+.rp .rp-sum{position:relative;z-index:5;}
 </style>
 
 <main class="rp">
 
-<header class="rp-hero">
+<div class="rp-hero">
 <svg class="rp-hero-art" viewBox="0 0 640 320" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
 <circle cx="520" cy="110" r="150" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
 <circle cx="520" cy="110" r="100" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
@@ -136,7 +140,7 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 <p class="rp-upd"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last updated: <?php echo esc_html( $rp_updated ); ?></p>
 </div>
 </div>
-</header>
+</div>
 
 <div class="rp-wrap">
 
