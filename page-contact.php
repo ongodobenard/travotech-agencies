@@ -223,6 +223,22 @@ html body main.ct .ct-field textarea{min-height:150px !important;height:150px;}
 html body main.ct .ct-people-m{height:clamp(300px,84vw,460px) !important;margin-top:0 !important;}
 html body main.ct .ct-people-m img{height:100% !important;transform:scale(1.25);transform-origin:bottom center;}
 }
+
+/* ct-v7: people image sets its own height on phone and tablet, no empty gap */
+@media (max-width:1000px){
+html body main.ct .ct-band-in{padding-bottom:0 !important;}
+html body main.ct .ct-txt{position:relative;z-index:2;}
+html body main.ct .ct-people-m{display:block !important;height:auto !important;min-height:0 !important;margin-top:-26px !important;overflow:hidden;position:relative;z-index:1;}
+html body main.ct .ct-people-m img{display:block !important;width:min(100%,640px) !important;max-width:none !important;height:auto !important;margin:0 auto !important;transform:none !important;object-fit:contain;}
+}
+@media (max-width:700px){
+html body main.ct .ct-people-m{margin-top:-34px !important;}
+html body main.ct .ct-people-m img{width:125% !important;margin-left:-12.5% !important;margin-right:0 !important;}
+}
+@media (max-width:420px){
+html body main.ct .ct-people-m{margin-top:-44px !important;}
+html body main.ct .ct-people-m img{width:135% !important;margin-left:-17.5% !important;}
+}
 </style>
 
 <main class="ct">
