@@ -189,6 +189,12 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
     .ab .ab-hero{min-height:260px;}
     .ab .ab-hero-in{margin:20px 4%;}
 }
+
+/* ---- About v4 ---- */
+.ab .ab-hero-in{background:none !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;border-radius:0;box-shadow:none;padding:40px 5% !important;margin:0 auto !important;}
+.ab .ab-hero::before{background:rgba(12,58,39,.18) !important;}
+.ab .ab-hero h1{text-shadow:0 2px 4px rgba(0,0,0,.55),0 4px 22px rgba(0,0,0,.45);}
+.ab .ab-hero p{text-shadow:0 1px 3px rgba(0,0,0,.65),0 2px 14px rgba(0,0,0,.5);font-weight:500;}
 </style>
 
 <main class="ab">
