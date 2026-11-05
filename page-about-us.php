@@ -2,6 +2,11 @@
 /*
 Template Name: About Us
 */
+if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
+    add_filter( 'pre_get_document_title', function () {
+        return 'About Travotech Agencies | Laboratory & Healthcare Supplier Kenya';
+    } );
+}
 get_header();
 
 $img  = esc_url( get_template_directory_uri() ) . '/assets/js/images/';
@@ -11,7 +16,7 @@ $contact = home_url( '/contact/' );
 /* Images: change the filenames here if you want different pictures */
 $ab_hero    = 'aboutbg.png';
 $ab_who     = 'aboutbg2.png';
-$ab_why     = 'doctors.png';
+$ab_why     = file_exists( get_template_directory() . '/assets/js/images/whyus.png' ) ? 'whyus.png' : 'doctors.png';
 $ab_quality = 'homebg2.png';
 
 /* Team: names and roles are placeholders taken from the mockup. Replace with real staff. */
@@ -159,19 +164,39 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ab-cta{flex-direction:column;text-align:center;}
 .ab-h2::before,.ab-h2::after{width:24px;}
 }
+
+/* ---- About v2 ---- */
+.ab .ab-h2{margin:0 0 28px;}
+.ab .ab-team-sub{margin:0 auto 28px;max-width:620px;text-align:center;}
+.ab .ab-who h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:12px;}
+.ab .ab-who h2 span{color:var(--ab-g);}
+.ab .ab-hero{display:flex;align-items:center;justify-content:center;height:auto;min-height:clamp(280px,42vw,440px);text-align:center;}
+.ab .ab-hero::after{display:none;}
+.ab .ab-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,58,39,.78),rgba(12,58,39,.55));z-index:1;}
+.ab .ab-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+.ab .ab-hero-in{position:relative;z-index:2;max-width:860px;padding:40px 5%;}
+.ab .ab-hero h1{color:#fff;font-size:clamp(1.8rem,5vw,3.2rem);line-height:1.15;margin:0 0 14px;text-shadow:0 2px 12px rgba(0,0,0,.35);}
+.ab .ab-hero-line{display:block;width:70px;height:4px;background:var(--ab-red);border-radius:2px;margin:0 auto 16px;}
+.ab .ab-hero p{color:#fff;font-size:clamp(.95rem,2vw,1.15rem);max-width:700px;margin:0 auto;}
+.ab>section:last-child{padding-bottom:28px;}
 </style>
 
 <main class="ab">
 
 <div class="ab-hero">
 <img src="<?php echo $img . $ab_hero; ?>" alt="Travotech Agencies Limited healthcare and pharmacy team in Kenya" width="1600" height="500" fetchpriority="high">
+<div class="ab-hero-in">
+<h1>Trusted Laboratory, Pharmaceutical &amp; Healthcare Supplier in Kenya</h1>
+<span class="ab-hero-line"></span>
+<p>Travotech Agencies Limited supplies quality laboratory equipment, pharmaceutical and healthcare products to hospitals, clinics, pharmacies and laboratories in Nairobi and across Kenya.</p>
+</div>
 </div>
 
 <section class="ab-sec">
 <div class="ab-wrap ab-who">
 <div>
 <span class="ab-pill">About Us</span>
-<h1>Who <span>We Are</span></h1>
+<h2>Who <span>We Are</span></h2>
 <p>Travotech Agencies Limited is a trusted provider of quality pharmaceutical, laboratory and healthcare products in Kenya. We are committed to improving health and wellness through safe, reliable and affordable products.</p>
 <div class="ab-who-line"></div>
 </div>
