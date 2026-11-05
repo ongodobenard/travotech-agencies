@@ -341,6 +341,16 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     .sh .sh-promo{flex:1 1 auto;order:3;}
     .sh .sh-why{order:1;}
 }
+
+/* ---- Fixes v9 ---- */
+.sh .sh-promo{display:flex;flex-direction:column;overflow:hidden;}
+.sh .sh-promo-img{order:1;position:relative;flex:1 1 auto;min-height:90px;max-height:none;}
+.sh .sh-promo-text{order:2;flex:0 0 auto;padding:10px 14px 12px;}
+.sh .sh-promo-text .sh-wt{font-size:.95rem;margin:0 0 4px;}
+.sh .sh-promo-text p{font-size:.82rem;line-height:1.5;margin:0 0 6px;}
+@media (max-width:900px){
+    .sh .sh-promo-img{flex:0 0 auto;height:160px;min-height:0;}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
@@ -430,13 +440,13 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
                 </ul>
             </div>
 			<div class="sh-widget sh-promo">
-                <div class="sh-promo-text">
-                    <h2 class="sh-wt"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i> Trusted Laboratory &amp; Hospital Equipment Supplier in Kenya</h2>
-                    <p>Travotech supplies quality medical, laboratory and hospital equipment to clinics, hospitals, pharmacies, schools and research labs. Browse microscopes, centrifuges, autoclaves, hospital beds, diagnostic and sterilization equipment, with delivery in Nairobi, Thika and across Kenya.</p>
-                    <a class="sh-promo-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Request a quote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
                 <div class="sh-promo-img">
                     <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/images/homebg2.png" alt="Laboratory and hospital equipment supplier in Kenya - Travotech" loading="lazy" width="600" height="400">
+                </div>
+                <div class="sh-promo-text">
+                    <h2 class="sh-wt"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i> Trusted Equipment Supplier in Kenya</h2>
+                    <p>Quality laboratory and hospital equipment for clinics, hospitals and labs, delivered across Kenya.</p>
+                    <a class="sh-promo-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Request a quote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
 			<div class="sh-widget sh-help">
