@@ -1201,5 +1201,5 @@ function travotech_bulk_yoast_keyphrase_once() {
 
 require_once get_template_directory() . '/inc/trv-seo.php';
 
-/* travotech_shop_per_page: 12 products per shop page */
-add_filter( 'loop_shop_per_page', function ( $n ) { return 12; }, 20 );
+/* travotech_shop_per_page: 9 products per shop page */
+add_filter( 'loop_shop_per_page', function ( $n ) { return 9; }, 20 );
