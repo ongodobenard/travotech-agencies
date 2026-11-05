@@ -102,6 +102,7 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 .th-dots circle:nth-child(3n){animation-delay:-.6s;}
 .th-dots .r{fill:#e53935;}
 .th-dots .t{fill:#22adb0;}
+.th-dots .g{fill:#009228;}
 @keyframes th-orbit{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 @keyframes th-dotpulse{0%,100%{transform:scale(1);}50%{transform:scale(.7);}}
 @media (prefers-reduced-motion:reduce){.th-dots .th-ring,.th-dots circle{animation:none !important;}}
@@ -361,13 +362,13 @@ html body .th-cart .th-badge{left:50%;right:auto;top:-3px;margin-left:2px;}
         <g class="th-ring">
             <circle class="r" cx="50"   cy="20"   r="2.4"/>
             <circle class="t" cx="67.6" cy="25.7" r="4.6"/>
-            <circle class="t" cx="78.5" cy="40.7" r="6.6"/>
+            <circle class="g" cx="78.5" cy="40.7" r="6.6"/>
             <circle class="t" cx="78.5" cy="59.3" r="7.6"/>
-            <circle class="t" cx="67.6" cy="74.3" r="6.8"/>
+            <circle class="g" cx="67.6" cy="74.3" r="6.8"/>
             <circle class="t" cx="50"   cy="80"   r="5"/>
-            <circle class="t" cx="32.4" cy="74.3" r="3.4"/>
+            <circle class="g" cx="32.4" cy="74.3" r="3.4"/>
             <circle class="r" cx="21.5" cy="59.3" r="2.4"/>
-            <circle class="t" cx="21.5" cy="40.7" r="2"/>
+            <circle class="g" cx="21.5" cy="40.7" r="2"/>
             <circle class="t" cx="32.4" cy="25.7" r="2.2"/>
         </g>
     </svg>
