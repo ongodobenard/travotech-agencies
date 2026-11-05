@@ -397,6 +397,32 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
     .trv-footer .trv-foot-credit{padding-bottom:0 !important;margin-bottom:0 !important;}
     body{margin-bottom:0 !important;padding-bottom:0 !important;}
 }
+
+/* ---- footer-font-v1: bigger footer text on all screens ---- */
+html body .trv-footer{font-size:1.1rem;}
+html body .trv-footer .trv-foot-desc{font-size:1.08rem !important;line-height:1.7 !important;}
+html body .trv-footer .trv-foot-logo-tag{font-size:.95rem !important;}
+html body .trv-footer .trv-foot-h{font-size:1.25rem !important;}
+html body .trv-footer .trv-foot-links a{font-size:1.1rem !important;}
+html body .trv-footer .trv-foot-contact li{font-size:1.1rem !important;}
+html body .trv-footer .trv-foot-contact a,
+html body .trv-footer .trv-foot-contact span{font-size:1.1rem !important;}
+html body .trv-footer .trv-foot-contact i{font-size:1.1rem !important;}
+html body .trv-footer .trv-foot-copy,
+html body .trv-footer .trv-foot-credit,
+html body .trv-footer .trv-foot-credit a,
+html body .trv-footer .trv-foot-legal a{font-size:.95rem !important;}
+html body .trv-footer .trv-foot-soc{width:44px;height:44px;}
+html body .trv-footer .trv-foot-soc i{font-size:1.25rem !important;}
+html body .trv-footer .trv-fab-tip{font-size:1rem;}
+
+/* phone and tablet: the rem scale is already larger there, so keep the bottom bar readable */
+@media (max-width:900px){
+    html body .trv-footer .trv-foot-copy{font-size:.9rem !important;line-height:1.5 !important;}
+    html body .trv-footer .trv-foot-credit,
+    html body .trv-footer .trv-foot-credit a{font-size:.88rem !important;line-height:1.5 !important;}
+    html body .trv-footer .trv-foot-links a{padding:4px 0 !important;}
+}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
