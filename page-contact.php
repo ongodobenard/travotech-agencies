@@ -213,6 +213,16 @@ html body main.ct .ct-top .ct-band .ct-band-bg::after{background:linear-gradient
 @media (max-width:1000px){
 html body main.ct .ct-top .ct-band .ct-band-bg::after{background:rgba(9,60,60,.55) !important;}
 }
+
+/* ct-v6: taller message box, bigger people image on phone and tablet */
+html body main.ct .ct-field textarea{min-height:130px !important;height:130px;}
+@media (max-width:700px){
+html body main.ct .ct-field textarea{min-height:150px !important;height:150px;}
+}
+@media (max-width:1000px){
+html body main.ct .ct-people-m{height:clamp(300px,84vw,460px) !important;margin-top:0 !important;}
+html body main.ct .ct-people-m img{height:100% !important;transform:scale(1.25);transform-origin:bottom center;}
+}
 </style>
 
 <main class="ct">

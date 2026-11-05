@@ -241,6 +241,11 @@ html body main.pj .pj-sum{margin-top:-26px !important;}
 html body main.pj .pj-faq{display:block !important;column-count:2;column-gap:14px;max-width:1100px;}
 html body main.pj .pj-faq details{break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;margin:0 0 12px;}
 @media (max-width:900px){html body main.pj .pj-faq{column-count:1;}}
+
+/* pj-v5: intro paragraph wraps to about 3 lines on desktop */
+@media (min-width:1001px){
+html body main.pj .pj-top-txt p{max-width:880px;}
+}
 </style>
 
 <main class="pj" id="main">
@@ -264,7 +269,7 @@ html body main.pj .pj-faq details{break-inside:avoid;-webkit-column-break-inside
 <span class="pj-badge"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Our Projects</span>
 <h1 id="pj-h1">Top Medical Equipment Projects in Kenya</h1>
 <span class="pj-line"></span>
-<p>Professional, affordable equipment supply and installation in Nairobi, Kisumu, Nyeri and across Kenya.</p>
+<p>Professional, affordable equipment supply and installation in Nairobi, Kisumu, Nyeri and across Kenya. We equip hospitals, clinics and laboratories with quality devices, staff training and dependable after-sales support.</p>
 <div class="pj-top-btns">
 <a class="pj-btn pj-btn-red" href="<?php echo esc_url( $contact ); ?>"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Partner with us</a>
 <a class="pj-btn pj-btn-ghost" href="<?php echo esc_url( $shop ); ?>"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Shop equipment</a>
