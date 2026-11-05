@@ -73,7 +73,7 @@ get_header(); ?>
   padding: 0 18px;
   font-size: .85rem;
   font-weight: 700;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   margin-top: 0;
   border: 1.5px solid transparent;
   line-height: 1.45;
@@ -156,7 +156,7 @@ get_header(); ?>
 .rx-delivery-img-wrap { position: relative; z-index: 1; text-align: center; overflow: visible; }
 .rx-delivery-img-wrap img { width: 100%; max-width: 420px; height: auto; object-fit: cover; object-position: top center; display: block; margin: 0 auto; position: relative; z-index: 1; -webkit-mask-image: rgba(0,0,0,.4); mask-image: rgba(0,0,0,.4); }
 .rx-img-overlay-badge { position: relative; z-index: 2; background: var(--green, #22adb0); color: white; border-radius: 14px; padding: 14px 20px; margin: -24px auto 0; max-width: 320px; text-align: center; box-shadow: 0 8px 28px rgba(34,173,176,.35); }
-.rx-img-overlay-badge h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: white; margin: 0 0 4px; }
+.rx-img-overlay-badge h3 { font-family: var(--th-fh,'Oswald',sans-serif); font-size: 1rem; font-weight: 700; color: white; margin: 0 0 4px; }
 .rx-img-overlay-badge p { font-size: .76rem; color: rgba(255,255,255,.85); font-weight: 600; margin: 0; line-height: 1.5; }
 .rx-img-overlay-badge .rx-badge-dots { display: flex; justify-content: center; gap: 4px; margin-top: 8px; }
 .rx-img-overlay-badge .rx-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.5); }

@@ -53,14 +53,14 @@ wp_enqueue_style( 'dashicons' );
 .chkp-banner{background:#22adb0;padding:clamp(18px,3vw,36px) 5%;position:relative;overflow:hidden;}
 .chkp-banner::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.07);}
 .chkp-banner-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-.chkp-banner h1{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.9rem);font-weight:700;color:#fff;margin:0;display:flex;align-items:center;gap:8px;}
+.chkp-banner h1{font-family:var(--th-fh,'Oswald',sans-serif);font-size:clamp(1.2rem,2.5vw,1.9rem);font-weight:700;color:#fff;margin:0;display:flex;align-items:center;gap:8px;}
 .chkp-breadcrumb{font-size:.75rem;color:rgba(255,255,255,.75);font-weight:600;}
 .chkp-breadcrumb a{color:#fff;text-decoration:underline;}
 
 /* ── STEPS ── */
 .chkp-steps{background:#fff;border-bottom:2px solid #e5fbfb;padding:10px 5%;}
 .chkp-steps-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;}
-.chkp-step{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;font-family:'Nunito',sans-serif;color:#5bd9d7;white-space:nowrap;}
+.chkp-step{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;font-family:'Inter',system-ui,sans-serif;color:#5bd9d7;white-space:nowrap;}
 .chkp-step.active{color:#22adb0;}.chkp-step.done{color:#22adb0;}
 .chkp-step-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;flex-shrink:0;background:#e5fbfb;color:#5bd9d7;}
 .chkp-step.active .chkp-step-num{background:#22adb0;color:#fff;}
@@ -78,7 +78,7 @@ wp_enqueue_style( 'dashicons' );
 .chkp-card:last-child{margin-bottom:0;}
 .chkp-card-head{padding:11px 16px;border-bottom:2px solid #e5fbfb;display:flex;align-items:center;gap:7px;background:#f9fefe;}
 .chkp-card-head .dashicons{color:#22adb0;font-size:15px;width:15px;height:15px;}
-.chkp-card-head h3{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:#103837;margin:0;}
+.chkp-card-head h3{font-family:'Inter',system-ui,sans-serif;font-size:.85rem;font-weight:800;color:#103837;margin:0;}
 .chkp-card-body{padding:clamp(10px,2vw,18px);}
 
 /* ════════════════════════════════════════════════
@@ -93,7 +93,7 @@ wp_enqueue_style( 'dashicons' );
 .chkp-grid .span2{grid-column:unset;}
 
 .chkp-fg{display:flex;flex-direction:column;gap:4px;}
-.chkp-fg label{font-family:'Nunito',sans-serif;font-size:.76rem;font-weight:700;color:#22adb0;line-height:1.3;}
+.chkp-fg label{font-family:'Inter',system-ui,sans-serif;font-size:.76rem;font-weight:700;color:#22adb0;line-height:1.3;}
 .chkp-fg label .req{color:#e53935;}
 .chkp-fg label .opt{color:#5bd9d7;font-weight:500;}
 .chkp-fg input,.chkp-fg select,.chkp-fg textarea{
@@ -101,7 +101,7 @@ wp_enqueue_style( 'dashicons' );
   padding:9px 12px;
   border:2px solid #b0f4f3;
   border-radius:8px;
-  font-family:'Nunito',sans-serif;
+  font-family:'Inter',system-ui,sans-serif;
   font-size:.83rem;color:#103837;
   background:#fff;outline:none;
   -webkit-appearance:none;appearance:none;
@@ -110,19 +110,19 @@ wp_enqueue_style( 'dashicons' );
 .chkp-fg input:focus,.chkp-fg select:focus,.chkp-fg textarea:focus{border-color:#22adb0;box-shadow:0 0 0 3px rgba(34,173,176,.1);}
 .chkp-fg input.error,.chkp-fg select.error,.chkp-fg textarea.error{border-color:#e53935!important;box-shadow:0 0 0 3px rgba(229,57,53,.1)!important;}
 .chkp-fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238aaa98' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
-.chkp-field-error{font-size:.7rem;color:#e53935;font-family:'Nunito',sans-serif;margin-top:2px;display:none;}
+.chkp-field-error{font-size:.7rem;color:#e53935;font-family:'Inter',system-ui,sans-serif;margin-top:2px;display:none;}
 .chkp-fg.has-error .chkp-field-error{display:block;}
 
 /* ── EMAIL NOTE ── */
-.chkp-email-note{font-size:.7rem;color:#22adb0;font-family:'Nunito',sans-serif;margin-top:4px;display:flex;align-items:center;gap:4px;}
+.chkp-email-note{font-size:.7rem;color:#22adb0;font-family:'Inter',system-ui,sans-serif;margin-top:4px;display:flex;align-items:center;gap:4px;}
 
 /* ── VALIDATION BANNER ── */
-.chkp-validation-msg{display:none;background:#fff0f0;border:1.5px solid #e53935;border-left:4px solid #e53935;border-radius:10px;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:.83rem;color:#b71c1c;margin-bottom:12px;}
+.chkp-validation-msg{display:none;background:#fff0f0;border:1.5px solid #e53935;border-left:4px solid #e53935;border-radius:10px;padding:11px 14px;font-family:'Inter',system-ui,sans-serif;font-size:.83rem;color:#b71c1c;margin-bottom:12px;}
 .chkp-validation-msg.show{display:block;}
 
 /* ── PAYMENT ── */
 .chkp-pay-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
-.chkp-pay-pill{display:inline-flex;align-items:center;gap:5px;background:#eefcfc;border:1.5px solid #b0f4f3;border-radius:50px;padding:5px 10px;font-size:.72rem;font-weight:700;color:#103837;font-family:'Nunito',sans-serif;}
+.chkp-pay-pill{display:inline-flex;align-items:center;gap:5px;background:#eefcfc;border:1.5px solid #b0f4f3;border-radius:50px;padding:5px 10px;font-size:.72rem;font-weight:700;color:#103837;font-family:'Inter',system-ui,sans-serif;}
 .chkp-pay-pill .dashicons{color:#22adb0;font-size:12px;width:12px;height:12px;}
 .chkp-wrap #payment{background:transparent!important;border:none!important;padding:0!important;}
 .chkp-wrap #payment ul.payment_methods{list-style:none!important;border:none!important;padding:0!important;margin:0!important;background:transparent!important;}
@@ -130,19 +130,19 @@ wp_enqueue_style( 'dashicons' );
 .chkp-wrap #payment ul.payment_methods li:has(input:checked){border-color:#22adb0!important;background:#e5fbfb!important;}
 .chkp-wrap #payment ul.payment_methods li label{font-size:.84rem!important;font-weight:700!important;color:#103837!important;margin:0!important;cursor:pointer!important;display:flex!important;align-items:center!important;gap:7px!important;}
 .chkp-wrap #payment ul.payment_methods li input[type="radio"]{accent-color:#22adb0!important;width:14px!important;height:14px!important;flex-shrink:0!important;}
-.chkp-wrap #payment .payment_box{background:#fff!important;border:1.5px solid #b0f4f3!important;border-radius:7px!important;padding:10px 12px!important;margin:7px 0 0!important;font-size:.8rem!important;color:#22adb0!important;font-family:'Nunito',sans-serif!important;line-height:1.6!important;display:block!important;}
+.chkp-wrap #payment .payment_box{background:#fff!important;border:1.5px solid #b0f4f3!important;border-radius:7px!important;padding:10px 12px!important;margin:7px 0 0!important;font-size:.8rem!important;color:#22adb0!important;font-family:'Inter',system-ui,sans-serif!important;line-height:1.6!important;display:block!important;}
 .chkp-wrap #payment #place_order,.chkp-wrap #payment .place-order{display:none!important;}
 
 /* ── BUTTONS ── */
 .chkp-actions{display:flex;flex-direction:column;gap:10px;}
-.chkp-wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:13px 14px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;text-decoration:none;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(37,211,102,.3);transition:all .3s;width:100%;box-sizing:border-box;text-align:center;}
+.chkp-wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:13px 14px;border-radius:50px;font-family:'Inter',system-ui,sans-serif;font-size:.9rem;font-weight:900;text-decoration:none;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(37,211,102,.3);transition:all .3s;width:100%;box-sizing:border-box;text-align:center;}
 .chkp-wa-btn:hover{background:#22adb0;transform:translateY(-2px);color:#fff;}
-.chkp-place-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#22adb0;color:#fff;padding:12px 14px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;border:none;cursor:pointer;width:100%;box-sizing:border-box;box-shadow:0 5px 18px rgba(34,173,176,.3);transition:all .3s;}
+.chkp-place-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#22adb0;color:#fff;padding:12px 14px;border-radius:50px;font-family:'Inter',system-ui,sans-serif;font-size:.88rem;font-weight:900;border:none;cursor:pointer;width:100%;box-sizing:border-box;box-shadow:0 5px 18px rgba(34,173,176,.3);transition:all .3s;}
 .chkp-place-btn:hover:not(:disabled){background:#22adb0;transform:translateY(-2px);}
 .chkp-place-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
-.chkp-or{display:flex;align-items:center;gap:8px;color:#5bd9d7;font-size:.7rem;font-weight:700;font-family:'Nunito',sans-serif;}
+.chkp-or{display:flex;align-items:center;gap:8px;color:#5bd9d7;font-size:.7rem;font-weight:700;font-family:'Inter',system-ui,sans-serif;}
 .chkp-or::before,.chkp-or::after{content:'';flex:1;height:1px;background:#daf6f6;}
-.chkp-back{display:flex;align-items:center;justify-content:center;gap:6px;color:#5bd9d7;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif;text-decoration:none;transition:color .2s;}
+.chkp-back{display:flex;align-items:center;justify-content:center;gap:6px;color:#5bd9d7;font-size:.78rem;font-weight:700;font-family:'Inter',system-ui,sans-serif;text-decoration:none;transition:color .2s;}
 .chkp-back:hover{color:#22adb0;}
 
 /* ── SIDEBAR ── */
@@ -150,16 +150,16 @@ wp_enqueue_style( 'dashicons' );
 .chkp-summary-card{background:#fff;border-radius:12px;border:1.5px solid #b0f4f3;box-shadow:0 3px 16px rgba(34,173,176,.07);overflow:hidden;margin-bottom:14px;}
 .chkp-summary-head{background:#22adb0;padding:12px 16px;display:flex;align-items:center;gap:7px;}
 .chkp-summary-head .dashicons{color:#fff;font-size:15px;width:15px;height:15px;}
-.chkp-summary-head h3{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:#fff;margin:0;}
+.chkp-summary-head h3{font-family:'Inter',system-ui,sans-serif;font-size:.85rem;font-weight:800;color:#fff;margin:0;}
 .chkp-summary-card .woocommerce-checkout-review-order-table{width:100%!important;border-collapse:collapse!important;border:none!important;margin:0!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table th,.chkp-summary-card .woocommerce-checkout-review-order-table td{padding:8px 14px!important;border:none!important;border-bottom:1px solid #e5fbfb!important;font-family:'Nunito',sans-serif!important;font-size:.79rem!important;vertical-align:middle!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table th,.chkp-summary-card .woocommerce-checkout-review-order-table td{padding:8px 14px!important;border:none!important;border-bottom:1px solid #e5fbfb!important;font-family:'Inter',system-ui,sans-serif!important;font-size:.79rem!important;vertical-align:middle!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table thead th{font-size:.62rem!important;font-weight:800!important;color:#5bd9d7!important;text-transform:uppercase!important;letter-spacing:.07em!important;background:#f9fefe!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table .product-name{color:#103837!important;font-weight:700!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table .product-total .amount{color:#22adb0!important;font-weight:800!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table tfoot .order-total th{font-weight:800!important;color:#103837!important;font-size:.84rem!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table tfoot .order-total .amount{font-size:1.05rem!important;font-weight:900!important;color:#22adb0!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:last-child td,.chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:last-child th{border-bottom:none!important;}
-.chkp-pay-note{background:#eefcfc;border-top:2px solid #e5fbfb;padding:11px 14px;font-family:'Nunito',sans-serif;}
+.chkp-pay-note{background:#eefcfc;border-top:2px solid #e5fbfb;padding:11px 14px;font-family:'Inter',system-ui,sans-serif;}
 .chkp-pnr{display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;font-size:.72rem;color:#22adb0;line-height:1.45;}
 .chkp-pnr:last-child{margin-bottom:0;}
 .chkp-pnr .dashicons{font-size:12px;width:12px;height:12px;flex-shrink:0;margin-top:1px;}
@@ -172,7 +172,7 @@ wp_enqueue_style( 'dashicons' );
 /* ── ORDER SUCCESS BANNER ── */
 .chkp-success-banner{
   display:none;background:#ebfcfc;border:1.5px solid #57e7e5;border-left:4px solid #22adb0;
-  border-radius:10px;padding:16px;font-family:'Nunito',sans-serif;margin-bottom:12px;
+  border-radius:10px;padding:16px;font-family:'Inter',system-ui,sans-serif;margin-bottom:12px;
 }
 .chkp-success-banner.show{display:block;}
 .chkp-success-banner-title{font-size:.95rem;font-weight:900;color:#22adb0;margin-bottom:6px;display:flex;align-items:center;gap:7px;}
@@ -184,7 +184,7 @@ wp_enqueue_style( 'dashicons' );
 /* ── ERROR BANNER ── */
 .chkp-error-banner{
   display:none;background:#fff0f0;border:1.5px solid #e53935;border-left:4px solid #e53935;
-  border-radius:10px;padding:14px;font-family:'Nunito',sans-serif;margin-bottom:12px;
+  border-radius:10px;padding:14px;font-family:'Inter',system-ui,sans-serif;margin-bottom:12px;
   font-size:.82rem;color:#b71c1c;
 }
 .chkp-error-banner.show{display:block;}
@@ -679,7 +679,7 @@ body #chkp-place-btn-mobile{border-radius:8px !important;}
     });
 
     var tbody = document.querySelector('.woocommerce-checkout-review-order-table tbody');
-    if(tbody) tbody.innerHTML = '<tr><td colspan="2" style="padding:12px 14px;font-size:.8rem;color:#5bd9d7;font-family:Nunito,sans-serif;text-align:center;">Cart cleared</td></tr>';
+    if(tbody) tbody.innerHTML = '<tr><td colspan="2" style="padding:12px 14px;font-size:.8rem;color:#5bd9d7;font-family:'Inter',system-ui,sans-serif;text-align:center;">Cart cleared</td></tr>';
 
     var totCell = document.querySelector('.woocommerce-checkout-review-order-table tfoot .order-total .amount');
     if(totCell) totCell.textContent = 'KES 0.00';

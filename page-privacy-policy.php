@@ -32,7 +32,7 @@ wp_enqueue_style( 'dashicons' );
   background: rgba(255,255,255,.08);
 }
 .privacy-policy-page .pp-banner .pp-title {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--th-fh,'Oswald',sans-serif);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: #fff;
@@ -88,7 +88,7 @@ wp_enqueue_style( 'dashicons' );
   box-shadow: 0 8px 40px rgba(34,173,176,.12), 0 2px 12px rgba(0,0,0,.04);
 }
 .privacy-policy-page .policy-inner h2 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   color: #103837;
   font-size: 1.15rem;
   font-weight: 800;

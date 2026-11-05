@@ -47,7 +47,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   margin: 0 auto;
 }
 .cart-banner h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--th-fh,'Oswald',sans-serif);
   font-size: clamp(1.1rem, 3vw, 2rem);
   font-weight: 700;
   color: #fff;
@@ -106,7 +106,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   flex-shrink: 0;
 }
 .cart-card-head h2 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: clamp(.8rem, 2vw, .92rem);
   font-weight: 800;
   color: #103837;
@@ -144,7 +144,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   color: #5bd9d7;
   text-transform: uppercase;
   letter-spacing: .07em;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   white-space: nowrap;
 }
 .cart-table-wrap table.shop_table tbody tr td {
@@ -154,7 +154,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   vertical-align: middle;
   font-size: .84rem;
   color: #22adb0;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
 }
 .cart-table-wrap table.shop_table tbody tr:last-child td { border-bottom: none !important; }
 
@@ -266,7 +266,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   border-radius: 0 !important;
   box-shadow: none !important;
   text-align: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: .84rem;
   font-weight: 700;
   color: #103837;
@@ -302,7 +302,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   padding: 8px 10px;
   border: 2px solid #b0f4f3;
   border-radius: 8px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: .76rem;
   outline: none;
   width: 120px;
@@ -318,7 +318,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   border: 2px solid #22adb0;
   padding: 8px 12px;
   border-radius: 8px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: .72rem;
   font-weight: 800;
   cursor: pointer;
@@ -336,7 +336,7 @@ button[name="update_cart"] {
   border: 2px solid #b0f4f3 !important;
   padding: 8px 14px !important;
   border-radius: 8px !important;
-  font-family: 'Nunito', sans-serif !important;
+  font-family: 'Inter',system-ui,sans-serif !important;
   font-size: .72rem !important;
   font-weight: 800 !important;
   cursor: not-allowed !important;
@@ -375,14 +375,14 @@ button[name="update_cart"].cart-changed {
   margin: 0 auto 14px;
 }
 .cart-empty-box .cei .dashicons { font-size: 28px; width: 28px; height: 28px; color: #22adb0; }
-.cart-empty-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #103837; margin: 0 0 8px; }
+.cart-empty-box h3 { font-family: var(--th-fh,'Oswald',sans-serif); font-size: 1.2rem; color: #103837; margin: 0 0 8px; }
 .cart-empty-box p  { font-size: .82rem; color: #5bd9d7; margin: 0 0 18px; }
 .cart-empty-box a.btn-shop {
   display: inline-flex; align-items: center; gap: 7px;
   background: #22adb0; color: #fff;
   padding: 11px 22px; border-radius: 8px;
   font-size: .84rem; font-weight: 800; text-decoration: none;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   box-shadow: 0 6px 18px rgba(34,173,176,.3); transition: all .25s;
 }
 .cart-empty-box a.btn-shop:hover { background: #22adb0; transform: translateY(-2px); }
@@ -405,7 +405,7 @@ button[name="update_cart"].cart-changed {
 }
 .cart-totals-head .dashicons { color: #fff; font-size: 17px; width: 17px; height: 17px; }
 .cart-totals-head h2 {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: clamp(.8rem, 2vw, .92rem);
   font-weight: 800; color: #fff; margin: 0;
 }
@@ -417,7 +417,7 @@ button[name="update_cart"].cart-changed {
   padding: 12px 16px;
   border: none;
   border-bottom: 1px solid #e5fbfb;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: clamp(.8rem, 2vw, .88rem);
   vertical-align: middle;
 }
@@ -446,7 +446,7 @@ button[name="update_cart"].cart-changed {
   background: #22adb0; color: #fff;
   padding: clamp(11px,2vw,14px) 18px;
   border-radius: 8px;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Inter',system-ui,sans-serif;
   font-size: clamp(.82rem,2vw,.92rem);
   font-weight: 900; text-decoration: none;
   width: 100%; box-sizing: border-box; text-align: center;
@@ -464,7 +464,7 @@ button[name="update_cart"].cart-changed {
   background: #eefcfc; border: 1.5px solid #b0f4f3;
   border-radius: 10px; padding: 11px 12px;
   font-size: clamp(.68rem,1.8vw,.76rem);
-  color: #22adb0; font-family: 'Nunito', sans-serif; line-height: 1.55;
+  color: #22adb0; font-family: 'Inter',system-ui,sans-serif; line-height: 1.55;
 }
 .cart-pay-note .pn-row {
   display: flex; align-items: flex-start; gap: 7px; margin-bottom: 5px;
@@ -527,7 +527,7 @@ button[name="update_cart"].cart-changed {
   /* Info */
   .mci-info { flex: 1; min-width: 0; }
   .mci-name {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter',system-ui,sans-serif;
     font-size: .82rem; font-weight: 700;
     color: #103837; line-height: 1.35;
     margin-bottom: 4px;
@@ -535,7 +535,7 @@ button[name="update_cart"].cart-changed {
   }
   .mci-name:hover { color: #22adb0; }
   .mci-price {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter',system-ui,sans-serif;
     font-size: .74rem; color: #5bd9d7; font-weight: 600;
     margin-bottom: 8px;
   }
@@ -550,7 +550,7 @@ button[name="update_cart"].cart-changed {
     flex-wrap: wrap;
   }
   .mci-subtotal {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter',system-ui,sans-serif;
     font-size: .78rem; font-weight: 800;
     color: #103837;
   }
@@ -595,7 +595,7 @@ button[name="update_cart"].cart-changed {
     padding: 8px 10px;
     border: 2px solid #b0f4f3;
     border-radius: 8px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter',system-ui,sans-serif;
     font-size: .76rem;
     outline: none;
     min-width: 0;
@@ -608,7 +608,7 @@ button[name="update_cart"].cart-changed {
     border: 2px solid #22adb0;
     padding: 8px 12px;
     border-radius: 8px;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Inter',system-ui,sans-serif;
     font-size: .72rem; font-weight: 800;
     cursor: pointer; white-space: nowrap;
     transition: all .2s;
