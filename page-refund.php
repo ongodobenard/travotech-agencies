@@ -115,22 +115,42 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 /* ---- Refund v3 ---- */
 .rp .rp-hero{position:relative !important;top:auto !important;bottom:auto !important;z-index:1 !important;height:auto;}
 .rp .rp-sum{position:relative;z-index:5;}
+
+/* ---- Refund v4 ---- */
+.rp .rp-hero-art{position:absolute;right:0;top:0;height:100%;width:min(62%,680px);pointer-events:none;overflow:hidden;}
+.rp .rp-hero-art i{position:absolute;line-height:1;}
+.rp .rp-ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.10);}
+.rp .rp-ring1{width:340px;height:340px;right:-70px;top:-90px;}
+.rp .rp-ring2{width:220px;height:220px;right:-10px;top:-30px;}
+.rp .rp-a1{right:14%;top:16%;font-size:clamp(90px,13vw,170px);color:#5fd39a;opacity:.38;}
+.rp .rp-a2{right:46%;bottom:12%;font-size:clamp(46px,6vw,76px);color:#fff;opacity:.14;}
+.rp .rp-a3{right:5%;bottom:10%;font-size:clamp(50px,7vw,86px);color:#fff;opacity:.14;}
+.rp .rp-a4{right:34%;top:12%;font-size:clamp(40px,5vw,60px);color:#fff;opacity:.12;}
+.rp .rp-a5{right:62%;top:30%;font-size:clamp(30px,4vw,46px);color:#5fd39a;opacity:.30;}
+.rp .rp-a6{right:28%;bottom:8%;font-size:clamp(34px,4.5vw,54px);color:#d32f2f;opacity:.50;}
+.rp .rp-a7{right:50%;top:10%;font-size:24px;color:#5fd39a;opacity:.45;}
+.rp .rp-a8{right:3%;top:58%;font-size:20px;color:#fff;opacity:.25;}
+.rp .rp-a9{right:70%;bottom:14%;font-size:18px;color:#5fd39a;opacity:.35;}
+@media (max-width:1000px){.rp .rp-hero-art{opacity:.55;width:75%;}}
+@media (max-width:640px){.rp .rp-hero-art{opacity:.35;width:100%;}}
 </style>
 
 <main class="rp">
 
 <div class="rp-hero">
-<svg class="rp-hero-art" viewBox="0 0 640 320" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
-<circle cx="520" cy="110" r="150" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
-<circle cx="520" cy="110" r="100" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
-<circle cx="520" cy="110" r="52" fill="#ffffff" fill-opacity=".06"/>
-<path d="M508 80h24v22h22v24h-22v22h-24v-22h-22v-24h22z" fill="#5fd39a" fill-opacity=".35"/>
-<path d="M60 230h130l22-46 34 96 30-120 26 70h60l18-30h90l22 30h120" fill="none" stroke="#5fd39a" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M300 40h14v14h14v14h-14v14h-14V68h-14V54h14z" fill="#ffffff" fill-opacity=".14"/>
-<path d="M580 250h10v10h10v10h-10v10h-10v-10h-10v-10h10z" fill="#d32f2f" fill-opacity=".55"/>
-<circle cx="140" cy="70" r="6" fill="#5fd39a" fill-opacity=".5"/>
-<circle cx="410" cy="270" r="9" fill="#ffffff" fill-opacity=".14"/>
-</svg>
+<div class="rp-hero-art" aria-hidden="true">
+<span class="rp-ring rp-ring1"></span>
+<span class="rp-ring rp-ring2"></span>
+<i class="fa-solid fa-heart-pulse rp-a1"></i>
+<i class="fa-solid fa-stethoscope rp-a2"></i>
+<i class="fa-solid fa-microscope rp-a3"></i>
+<i class="fa-solid fa-shield-halved rp-a4"></i>
+<i class="fa-solid fa-vial rp-a5"></i>
+<i class="fa-solid fa-kit-medical rp-a6"></i>
+<i class="fa-solid fa-plus rp-a7"></i>
+<i class="fa-solid fa-plus rp-a8"></i>
+<i class="fa-solid fa-plus rp-a9"></i>
+</div>
 <div class="rp-hero-in">
 <div class="rp-hero-txt">
 <span class="rp-badge"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Customer policy</span>
