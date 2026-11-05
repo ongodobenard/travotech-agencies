@@ -276,6 +276,20 @@ body #chkp-place-btn-mobile{border-radius:8px !important;}
   body #chkp-place-btn-desktop,
   body #chkp-place-btn-mobile{min-height:56px;font-size:17px !important;}
 }
+
+/* ---- chkp-sidebar-scroll: summary matches the left column height, items scroll ---- */
+@media (min-width:961px){
+  .chkp-layout{align-items:stretch;}
+  .chkp-sidebar{position:relative !important;top:auto !important;min-height:460px;}
+  .chkp-sidebar .chkp-summary-card{position:absolute;top:0;right:0;bottom:0;left:0;margin:0;display:flex;flex-direction:column;}
+  .chkp-sidebar .chkp-summary-head{flex:0 0 auto;}
+  .chkp-sidebar #order_review{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#22adb0 #e5fbfb;}
+  .chkp-sidebar #order_review::-webkit-scrollbar{width:8px;}
+  .chkp-sidebar #order_review::-webkit-scrollbar-track{background:#e5fbfb;}
+  .chkp-sidebar #order_review::-webkit-scrollbar-thumb{background:#22adb0;border-radius:6px;}
+  .chkp-sidebar .woocommerce-checkout-review-order-table thead th{position:sticky;top:0;z-index:2;}
+  .chkp-sidebar .chkp-pay-note{flex:0 0 auto;}
+}
 </style>
 
 <?php if ( function_exists( 'wc_clear_notices' ) ) wc_clear_notices(); ?>
