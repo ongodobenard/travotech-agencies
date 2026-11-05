@@ -36,6 +36,13 @@ $pj_faq = array(
     array( 'Are your prices affordable for small clinics?', 'We aim to give fair, clear pricing for individual buyers, small clinics and institutions that buy in bulk. Send us your list and we will send a quotation.' ),
     array( 'Do you train our staff after installation?', 'Our team can guide your staff on safe daily use and basic care, and we stay available for questions after the sale.' ),
     array( 'How do I request a quote for my facility?', 'Call or WhatsApp us, or use the contact page. Tell us what equipment you need and where your facility is, and we will reply with options and prices.' ),
+    array( 'What types of medical equipment do you supply in Kenya?', 'We supply patient monitors, hospital beds, laboratory analyzers, ultrasound machines, infusion pumps, theatre equipment, defibrillators and medical consumables.' ),
+    array( 'Do you supply laboratory analyzers and reagents?', 'Yes. We supply laboratory equipment and consumables for hospitals, clinics, schools and diagnostic laboratories. Contact us with your needs and we will advise on the right options.' ),
+    array( 'Which counties do you deliver to?', 'We deliver in Nairobi, Kisumu, Nyeri, Mombasa, Nakuru, Eldoret, Thika, Meru and across Kenya.' ),
+    array( 'Can you supply hospital beds and patient monitors in bulk?', 'Yes. Hospitals and institutions can order in bulk. Send us your list and we will prepare a quotation with clear pricing.' ),
+    array( 'Does the equipment come with a warranty?', 'Equipment comes with the manufacturer warranty, as stated on the product page or your quotation. Ask us for the exact terms before you order.' ),
+    array( 'How long does delivery take?', 'Delivery times depend on the item, stock and your location. We confirm an estimated delivery time when you order and keep you updated.' ),
+    array( 'Can I pay by M-Pesa or bank transfer?', 'Yes. We accept M-Pesa, bank transfer and other methods shown at checkout or on your quotation.' ),
 );
 
 $pj_title = 'Medical Equipment Projects in Kenya | Travotech Agencies';
@@ -219,12 +226,27 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 /* pj-v2: compact banner, 2-column FAQ */
 @media (max-width:900px){.pj-faq{grid-template-columns:1fr;}}
 @media (max-width:640px){.pj-top-in{padding-bottom:40px;}}
+
+/* pj-v4: banner as tight as Terms, 6 + 6 FAQ */
+html body .site-breadcrumb{padding-top:6px !important;padding-bottom:6px !important;margin:0 !important;min-height:0 !important;line-height:1.3 !important;font-size:.85rem !important;}
+html body main.pj{padding:0 !important;margin:0 !important;}
+html body main.pj .pj-top{padding:0 !important;margin:0 !important;min-height:0 !important;height:auto !important;}
+html body main.pj .pj-top-in{padding:22px clamp(16px,4vw,48px) 46px !important;min-height:0 !important;}
+html body main.pj .pj-top-txt{max-width:820px !important;}
+html body main.pj .pj-top h1{font-size:clamp(1.5rem,3vw,2.3rem) !important;margin:0 0 10px !important;}
+html body main.pj .pj-badge{margin-bottom:10px !important;}
+html body main.pj .pj-line{margin-bottom:10px !important;}
+html body main.pj .pj-top-btns{margin-top:14px !important;}
+html body main.pj .pj-sum{margin-top:-26px !important;}
+html body main.pj .pj-faq{display:block !important;column-count:2;column-gap:14px;max-width:1100px;}
+html body main.pj .pj-faq details{break-inside:avoid;-webkit-column-break-inside:avoid;page-break-inside:avoid;margin:0 0 12px;}
+@media (max-width:900px){html body main.pj .pj-faq{column-count:1;}}
 </style>
 
 <main class="pj" id="main">
 
 <!-- TOP BANNER: no photo, art only -->
-<section class="pj-top" aria-labelledby="pj-h1">
+<div class="pj-top" aria-labelledby="pj-h1">
 <div class="pj-ha" aria-hidden="true">
 <span class="pj-ring pj-ring1"></span>
 <span class="pj-ring pj-ring2"></span>
@@ -249,7 +271,7 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 </div>
 </div>
 </div>
-</section>
+</div>
 
 <div class="pj-wrap">
 <div class="pj-sum">
