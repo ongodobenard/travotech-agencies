@@ -1,382 +1,283 @@
 <?php
-/**
- * Template Name: Return Refund Policy
- */
+/*
+Template Name: Return & Refund Policy
+*/
+
+/* ---- Edit these numbers to match your real policy ---- */
+$rp_return_days = '7';
+$rp_report_hours = '48';
+$rp_refund_days = '7 to 10 working days';
+$rp_restock = '10%';
+$rp_updated = 'November 2026';
+
+$rp_phone_show = '+254 796 038686';
+$rp_phone_link = '+254796038686';
+$rp_wa = '254796038686';
+$rp_email = 'info@travotech.co.ke';
+$contact = home_url( '/contact/' );
+$shop = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
+
+if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
+    add_filter( 'pre_get_document_title', function () {
+        return 'Return & Refund Policy | Travotech Agencies Kenya';
+    } );
+    add_action( 'wp_head', function () {
+        echo '<meta name="description" content="' . esc_attr( 'Read the Travotech Agencies return and refund policy for laboratory analyzers, hospital beds, patient monitors, reagents and medical equipment in Kenya, including terms and conditions.' ) . '">' . "\n";
+    }, 1 );
+}
 get_header();
-wp_enqueue_style( 'dashicons' );
 ?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => 'Return and Refund Policy', 'url' => get_permalink(), 'publisher' => array( '@type' => 'Organization', 'name' => 'Travotech Agencies Limited', 'url' => home_url( '/' ) ) ), JSON_UNESCAPED_SLASHES ); ?>
+</script>
 
 <style>
-/* ── WhatsApp Button ── */
-.wa-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--green);
-  color: white;
-  padding: 13px 28px;
-  border-radius: 50px;
-  font-size: .92rem;
-  font-weight: 800;
-  font-family: 'Nunito', sans-serif;
-  text-decoration: none;
-  transition: all .3s;
-  box-shadow: 0 6px 20px rgba(46,175,110,.3);
-  white-space: nowrap;
-}
-.wa-cta-btn:hover {
-  background: var(--green-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(46,175,110,.4);
-}
+.rp{--rp-g:var(--th-g,#238a56);--rp-gd:var(--th-gd,#1b6d44);--rp-dk:var(--th-dk,#0c3a27);--rp-red:var(--th-red,#d32f2f);--rp-tint:#eaf6ef;--rp-line:#d6e8de;
+font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
+.rp *,.rp *::before,.rp *::after{box-sizing:border-box;}
+.rp h1,.rp h2,.rp h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--rp-dk);margin:0;line-height:1.2;letter-spacing:.01em;}
+.rp p{margin:0 0 12px;line-height:1.75;font-size:.95rem;}
+.rp a{color:var(--rp-gd);}
+.rp-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;}
 
-/* ── Bubble content wrapper ── */
-.refund-bubble-zone {
-  position: relative;
-  background: white;
-  padding: 56px 5%;
-  overflow: hidden;
-}
-#refund-bubble-canvas {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-.refund-bubble-zone .refund-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 820px;
-  margin: 0 auto;
-}
+/* Hero: solid colour with line art */
+.rp-hero{position:relative;background:var(--rp-dk);color:#fff;overflow:hidden;}
+.rp-hero-art{position:absolute;right:0;top:0;height:100%;width:min(60%,640px);opacity:.9;pointer-events:none;}
+.rp-hero-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:clamp(44px,8vw,86px) 5%;}
+.rp-hero-txt{max-width:640px;}
+.rp-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.82rem;font-weight:600;padding:5px 14px;border-radius:6px;margin-bottom:16px;}
+.rp .rp-hero h1{color:#fff;font-size:clamp(1.7rem,4.4vw,3rem);margin-bottom:14px;}
+.rp-hero-line{display:block;width:70px;height:4px;background:var(--rp-red);border-radius:2px;margin-bottom:16px;}
+.rp .rp-hero p{color:rgba(255,255,255,.9);font-size:clamp(.95rem,1.8vw,1.1rem);margin:0;}
+.rp-upd{margin-top:16px !important;font-size:.85rem !important;color:#9fe0bf !important;}
 
-/* ── Feature cards — glassmorphism over bubbles ── */
-.refund-bubble-zone .why-feat {
-  background: rgba(255,255,255,.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1.5px solid rgba(184,236,212,.7);
-  box-shadow: 0 4px 20px rgba(46,175,110,.08);
-}
+/* Summary cards */
+.rp-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-34px;position:relative;z-index:3;}
+.rp-sum div{background:#fff;border:1px solid var(--rp-line);border-radius:10px;padding:18px 16px;box-shadow:0 8px 22px rgba(12,58,39,.10);}
+.rp-sum i{font-size:1.5rem;color:var(--rp-g);margin-bottom:8px;display:block;}
+.rp-sum b{display:block;font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--rp-dk);font-size:1.02rem;margin-bottom:4px;}
+.rp-sum span{font-size:.85rem;line-height:1.55;display:block;}
 
-/* ── Terms link banner ── */
-.terms-link-banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background: linear-gradient(135deg, #1e8a54, #2eaf6e);
-  border-radius: 14px;
-  padding: 20px 26px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-.terms-link-banner .tlb-text {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.terms-link-banner .tlb-text .dashicons {
-  color: #fff;
-  font-size: 26px;
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
-}
-.terms-link-banner .tlb-title {
-  font-size: .92rem;
-  font-weight: 900;
-  color: #fff;
-  font-family: 'Nunito', sans-serif;
-}
-.terms-link-banner .tlb-sub {
-  font-size: .76rem;
-  color: rgba(255,255,255,.8);
-  font-weight: 500;
-  margin-top: 2px;
-}
-.terms-link-banner .tlb-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: #fff;
-  color: var(--green);
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-size: .82rem;
-  font-weight: 900;
-  font-family: 'Nunito', sans-serif;
-  text-decoration: none;
-  transition: all .25s;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.terms-link-banner .tlb-btn:hover {
-  background: var(--green-light);
-  transform: translateY(-1px);
-}
-.terms-link-banner .tlb-btn .dashicons {
-  font-size: 16px; width: 16px; height: 16px;
-}
+/* Layout */
+.rp-layout{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start;padding:40px 0 20px;}
+.rp-toc{position:sticky;top:20px;background:var(--rp-tint);border:1px solid var(--rp-line);border-radius:10px;padding:18px;}
+.rp-toc h2{font-size:1.1rem;margin-bottom:10px;}
+.rp-toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;display:grid;gap:2px;}
+.rp-toc li{counter-increment:toc;}
+.rp-toc a{display:flex;gap:8px;padding:6px 8px;border-radius:6px;text-decoration:none;font-size:.88rem;color:var(--rp-dk);font-weight:500;}
+.rp-toc a::before{content:counter(toc) ".";color:var(--rp-g);font-weight:700;min-width:20px;}
+.rp-toc a:hover{background:#fff;}
 
-@media (max-width: 768px) {
-  .wa-cta-btn {
-    font-size: .78rem;
-    padding: 11px 18px;
-    gap: 7px;
-    white-space: normal;
-    text-align: center;
-    max-width: 280px;
-    width: 100%;
-  }
-  .wa-cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
-  .terms-link-banner { flex-direction: column; align-items: flex-start; }
-}
+.rp-body section{padding:0 0 26px;margin-bottom:26px;border-bottom:1px solid var(--rp-line);scroll-margin-top:90px;}
+.rp-body section:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0;}
+.rp-body h2{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.rp-body h2 i{color:var(--rp-g);font-size:1.2rem;}
+.rp-body ul{margin:0 0 12px;padding-left:0;list-style:none;display:grid;gap:8px;}
+.rp-body li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;line-height:1.6;}
+.rp-body li i{margin-top:5px;color:var(--rp-g);flex-shrink:0;}
+.rp-body li i.rp-no{color:var(--rp-red);}
+.rp-note{background:#fff7e6;border-left:4px solid #e8a317;border-radius:6px;padding:12px 14px;font-size:.9rem;margin:12px 0;}
+.rp-steps{counter-reset:st;display:grid;gap:12px;margin:0 0 12px;padding:0;list-style:none;}
+.rp-steps li{counter-increment:st;display:flex;gap:14px;align-items:flex-start;background:var(--rp-tint);border:1px solid var(--rp-line);border-radius:10px;padding:14px;}
+.rp-steps li::before{content:counter(st);flex:0 0 34px;height:34px;border-radius:50%;background:var(--rp-g);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;}
 
-@media (max-width: 480px) {
-  .wa-cta-btn {
-    font-size: .72rem;
-    padding: 10px 14px;
-    gap: 6px;
-    max-width: 260px;
-  }
-  .wa-cta-btn svg { width: 14px; height: 14px; }
-  .btn-outline {
-    font-size: .72rem !important;
-    padding: 10px 14px !important;
-  }
+/* Contact */
+.rp-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;}
+.rp-contact a{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--rp-line);border-radius:10px;padding:14px;text-decoration:none;color:var(--rp-dk);font-weight:600;font-size:.9rem;word-break:break-word;}
+.rp-contact i{width:40px;height:40px;border-radius:50%;background:var(--rp-g);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rp-contact small{display:block;font-weight:400;color:#5a6b62;}
+
+/* CTA */
+.rp-cta{background:var(--rp-red);color:#fff;border-radius:12px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:10px 0 36px;}
+.rp .rp-cta h2{color:#fff;font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:4px;}
+.rp .rp-cta p{margin:0;color:#fff;font-size:.9rem;}
+.rp-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;background:#fff;color:var(--rp-dk) !important;white-space:nowrap;}
+.rp-btn:hover{background:var(--rp-tint);}
+
+@media (max-width:1000px){
+.rp-sum{grid-template-columns:repeat(2,1fr);}
+.rp-layout{grid-template-columns:1fr;gap:22px;padding-top:28px;}
+.rp-toc{position:static;}
+.rp-toc ol{grid-template-columns:repeat(2,1fr);}
+.rp-hero-art{opacity:.45;width:70%;}
+}
+@media (max-width:640px){
+.rp-sum{grid-template-columns:1fr;margin-top:-24px;}
+.rp-toc ol{grid-template-columns:1fr;}
+.rp-contact{grid-template-columns:1fr;}
+.rp-cta{flex-direction:column;text-align:center;}
+.rp-hero-art{opacity:.3;width:100%;}
 }
 </style>
 
-<!-- ── Banner ── -->
-<section style="background:var(--green-pale);padding:56px 5%;text-align:center;">
-  <div class="sec-tag sec-tag-outline reveal">Legal</div>
-  <h1 class="sec-title reveal rd1">Return &amp; <span>Refund Policy</span></h1>
-  <p class="sec-desc reveal rd2" style="margin:0 auto;">Please read our return and refund policy carefully before making a purchase.</p>
+<main class="rp">
+
+<header class="rp-hero">
+<svg class="rp-hero-art" viewBox="0 0 640 320" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" focusable="false">
+<circle cx="520" cy="110" r="150" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
+<circle cx="520" cy="110" r="100" fill="none" stroke="#ffffff" stroke-opacity=".10" stroke-width="2"/>
+<circle cx="520" cy="110" r="52" fill="#ffffff" fill-opacity=".06"/>
+<path d="M508 80h24v22h22v24h-22v22h-24v-22h-22v-24h22z" fill="#5fd39a" fill-opacity=".35"/>
+<path d="M60 230h130l22-46 34 96 30-120 26 70h60l18-30h90l22 30h120" fill="none" stroke="#5fd39a" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M300 40h14v14h14v14h-14v14h-14V68h-14V54h14z" fill="#ffffff" fill-opacity=".14"/>
+<path d="M580 250h10v10h10v10h-10v10h-10v-10h-10v-10h10z" fill="#d32f2f" fill-opacity=".55"/>
+<circle cx="140" cy="70" r="6" fill="#5fd39a" fill-opacity=".5"/>
+<circle cx="410" cy="270" r="9" fill="#ffffff" fill-opacity=".14"/>
+</svg>
+<div class="rp-hero-in">
+<div class="rp-hero-txt">
+<span class="rp-badge"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Customer policy</span>
+<h1>Return &amp; Refund Policy for Medical and Laboratory Equipment in Kenya</h1>
+<span class="rp-hero-line"></span>
+<p>Buy with confidence from Travotech Agencies Limited. This page explains how returns, refunds and exchanges work for hematology and chemistry analyzers, hospital beds, patient monitors, reagents and other medical supplies, together with our terms and conditions.</p>
+<p class="rp-upd"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last updated: <?php echo esc_html( $rp_updated ); ?></p>
+</div>
+</div>
+</header>
+
+<div class="rp-wrap">
+
+<div class="rp-sum">
+<div><i class="fa-solid fa-box-open" aria-hidden="true"></i><b>Report within <?php echo esc_html( $rp_report_hours ); ?> hours</b><span>Tell us about damaged or wrong items within <?php echo esc_html( $rp_report_hours ); ?> hours of delivery.</span></div>
+<div><i class="fa-solid fa-rotate-left" aria-hidden="true"></i><b><?php echo esc_html( $rp_return_days ); ?>-day return window</b><span>Unused equipment in original packaging can be returned within <?php echo esc_html( $rp_return_days ); ?> days.</span></div>
+<div><i class="fa-solid fa-vial" aria-hidden="true"></i><b>Reagents and tests</b><span>Returned only when faulty or wrong, and only if sealed and in date.</span></div>
+<div><i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i><b>Refund in <?php echo esc_html( $rp_refund_days ); ?></b><span>Approved refunds go back to your original payment method.</span></div>
+</div>
+
+<div class="rp-layout">
+
+<aside class="rp-toc" aria-label="Page contents">
+<h2>On this page</h2>
+<ol>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#eligible">What can be returned</a></li>
+<li><a href="#not-eligible">What cannot be returned</a></li>
+<li><a href="#damaged">Damaged or wrong items</a></li>
+<li><a href="#how">How to return an item</a></li>
+<li><a href="#refunds">Refunds</a></li>
+<li><a href="#exchanges">Exchanges</a></li>
+<li><a href="#warranty">Warranty and support</a></li>
+<li><a href="#cancel">Order cancellations</a></li>
+<li><a href="#terms">Terms and conditions</a></li>
+<li><a href="#contact">Contact us</a></li>
+</ol>
+</aside>
+
+<div class="rp-body">
+
+<section id="overview">
+<h2><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Overview</h2>
+<p>Travotech Agencies Limited supplies laboratory equipment, patient monitoring, hospital furniture and medical consumables to hospitals, clinics, pharmacies, schools and laboratories across Kenya. Many of our products are clinical items, so some have stricter return rules to keep patients and staff safe.</p>
+<p>By placing an order with us you agree to this policy and to the terms and conditions below.</p>
 </section>
 
-<!-- ── Content with 3D Bubbles ── -->
-<section class="refund-bubble-zone">
+<section id="eligible">
+<h2><i class="fa-solid fa-circle-check" aria-hidden="true"></i> What can be returned</h2>
+<p>You may ask to return equipment such as analyzers, patient monitors, hospital beds, examination couches and trolleys when all of the following apply:</p>
+<ul>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> You contact us within <?php echo esc_html( $rp_return_days ); ?> days of delivery.</li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> The item is unused, undamaged and has not been installed or commissioned.</li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> It is in its original packaging with all accessories, manuals and seals.</li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> You can show your order number or proof of purchase.</li>
+</ul>
+</section>
 
-  <!-- Bubble canvas scoped to this section only -->
-  <canvas id="refund-bubble-canvas"></canvas>
+<section id="not-eligible">
+<h2><i class="fa-solid fa-ban" aria-hidden="true"></i> What cannot be returned</h2>
+<ul>
+<li><i class="fa-solid fa-xmark rp-no" aria-hidden="true"></i> Reagents, lyse solutions and calibrators once opened, or if the cold chain or storage conditions were not kept after delivery.</li>
+<li><i class="fa-solid fa-xmark rp-no" aria-hidden="true"></i> Rapid test kits and other diagnostic consumables once the pack is opened.</li>
+<li><i class="fa-solid fa-xmark rp-no" aria-hidden="true"></i> Disinfectants and surgical spirit once opened or used.</li>
+<li><i class="fa-solid fa-xmark rp-no" aria-hidden="true"></i> Equipment that has been installed, used, repaired or modified by anyone other than our team or an approved engineer.</li>
+<li><i class="fa-solid fa-xmark rp-no" aria-hidden="true"></i> Special orders and items imported or configured for your specific request.</li>
+<li><i class="fa-solid fa-xmark rp-no" aria-hidden="true"></i> Items damaged through misuse, wrong voltage, poor storage or failure to follow the manufacturer's instructions.</li>
+</ul>
+<div class="rp-note"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> For safety and quality reasons, we cannot accept returned items that have been in contact with patients, blood or other samples.</div>
+</section>
 
-  <div class="refund-inner">
+<section id="damaged">
+<h2><i class="fa-solid fa-truck-medical" aria-hidden="true"></i> Damaged, defective or wrong items</h2>
+<p>Please check your order while the delivery person is with you. If something is damaged, missing or not what you ordered:</p>
+<ul>
+<li><i class="fa-solid fa-camera" aria-hidden="true"></i> Contact us within <?php echo esc_html( $rp_report_hours ); ?> hours of delivery.</li>
+<li><i class="fa-solid fa-camera" aria-hidden="true"></i> Send clear photos or a short video of the item, the packaging and the delivery note.</li>
+<li><i class="fa-solid fa-camera" aria-hidden="true"></i> Keep all packaging until we have inspected the item.</li>
+</ul>
+<p>If the fault is confirmed, we will repair, replace or refund the item at no cost to you, including the return transport.</p>
+</section>
 
-    <!-- ── Terms & Conditions Link Banner ── -->
-    <div class="terms-link-banner reveal">
-      <div class="tlb-text">
-        <span class="dashicons dashicons-media-text"></span>
-        <div>
-          <div class="tlb-title">Also review our Terms &amp; Conditions</div>
-          <div class="tlb-sub">Our T&amp;Cs cover payment zones, delivery, pricing, and your legal rights as a customer.</div>
-        </div>
-      </div>
-      <a href="<?php echo esc_url( home_url('/terms') ); ?>" class="tlb-btn">
-        <span class="dashicons dashicons-arrow-right-alt"></span>
-        Read Terms &amp; Conditions
-      </a>
-    </div>
+<section id="how">
+<h2><i class="fa-solid fa-list-check" aria-hidden="true"></i> How to return an item</h2>
+<ol class="rp-steps">
+<li><div><b>Contact us.</b> Call, email or message us on WhatsApp with your order number, the product name and the reason for the return.</div></li>
+<li><div><b>Get approval.</b> Our team reviews your request and replies with a return authorisation and instructions. Please do not send anything back before this.</div></li>
+<li><div><b>Pack it safely.</b> Use the original packaging and include all accessories, manuals and the delivery note.</div></li>
+<li><div><b>Send or hand it over.</b> We will arrange collection or tell you where to deliver it.</div></li>
+<li><div><b>Inspection.</b> We check the item on arrival and confirm the outcome by email or phone.</div></li>
+</ol>
+</section>
 
-    <!-- 1. Returns Eligibility -->
-    <div class="why-feat reveal" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg></div>
-      <div>
-        <div class="wf-title">1. Returns Eligibility</div>
-        <div class="wf-desc">Products may be returned within <strong>7 days</strong> of purchase if unused, in original packaging, and with proof of purchase. Prescription medicines and opened products cannot be returned for safety reasons.</div>
-      </div>
-    </div>
+<section id="refunds">
+<h2><i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i> Refunds</h2>
+<ul>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> Approved refunds are paid to your original payment method, for example M-Pesa, bank transfer or card, within <?php echo esc_html( $rp_refund_days ); ?> after inspection.</li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> Returns that are not caused by a fault may be charged a restocking fee of up to <?php echo esc_html( $rp_restock ); ?> of the product price, plus the cost of return transport.</li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> Faulty, damaged or wrong items are refunded in full, including delivery charges.</li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> Your bank or mobile money provider may need extra time to show the money in your account.</li>
+</ul>
+</section>
 
-    <!-- 2. Non-Returnable Items -->
-    <div class="why-feat reveal rd1" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>
-      <div>
-        <div class="wf-title">2. Non-Returnable Items</div>
-        <div class="wf-desc">The following cannot be returned: prescription medicines, opened supplements, perishable health products, personal care items, and any product used or damaged after delivery.</div>
-      </div>
-    </div>
+<section id="exchanges">
+<h2><i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i> Exchanges</h2>
+<p>If you ordered the wrong model or size, we can exchange it for another product when stock is available. Any price difference is paid by you or refunded to you. The same conditions as returns apply, including the <?php echo esc_html( $rp_return_days ); ?>-day window.</p>
+</section>
 
-    <!-- 3. Refund Process -->
-    <div class="why-feat reveal rd2" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-      <div>
-        <div class="wf-title">3. Refund Process</div>
-        <div class="wf-desc">Once your return is received and inspected, we will notify you via WhatsApp or email. Approved refunds are processed within <strong>3–5 business days</strong> via your original payment method.</div>
-      </div>
-    </div>
+<section id="warranty">
+<h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Warranty and support</h2>
+<p>Equipment comes with the manufacturer's warranty, and the period is stated on the product page or your quotation. Warranty covers manufacturing faults under normal use. It does not cover damage from misuse, unauthorised repairs, power surges or lack of routine maintenance.</p>
+<p>For installation, training or technical help, <a href="<?php echo esc_url( $contact ); ?>">contact our team</a> and we will guide you.</p>
+</section>
 
-    <!-- 4. Damaged or Wrong Items -->
-    <div class="why-feat reveal rd3" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-      <div>
-        <div class="wf-title">4. Damaged or Wrong Items</div>
-        <div class="wf-desc">If you received a damaged or incorrect item, contact us within <strong>24 hours</strong> of delivery via WhatsApp with a photo. We will arrange a replacement or full refund at no extra cost.</div>
-      </div>
-    </div>
+<section id="cancel">
+<h2><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Order cancellations</h2>
+<p>You can cancel an order before it is dispatched at no charge. Once it has shipped, the return rules above apply. Special orders cannot be cancelled after we have placed them with the supplier.</p>
+</section>
 
-    <!-- 5. Exchange Policy -->
-    <div class="why-feat reveal" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
-      <div>
-        <div class="wf-title">5. Exchange Policy</div>
-        <div class="wf-desc">We offer exchanges for eligible products within 7 days. The exchanged item must be of equal or greater value. Any price difference must be settled before the exchange is processed.</div>
-      </div>
-    </div>
+<section id="terms">
+<h2><i class="fa-solid fa-file-contract" aria-hidden="true"></i> Terms and conditions</h2>
+<ul>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Orders and prices.</b> Prices are in Kenya shillings and may change without notice. An order is confirmed when we accept it and, where needed, receive payment.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Availability.</b> We work hard to keep stock accurate. If an item is unavailable we will offer a replacement, a later delivery date or a full refund.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Delivery.</b> Delivery times are estimates. Risk passes to you once the goods are delivered and signed for.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Proper use.</b> Medical and laboratory equipment must be used by trained staff following the manufacturer's instructions and local regulations. You are responsible for choosing products suitable for your facility.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Liability.</b> Our liability for any claim is limited to the price paid for the product concerned, except where the law does not allow this limit.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Changes to this policy.</b> We may update this page from time to time. The version on the site when you order is the one that applies to your order.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Governing law.</b> These terms are governed by the laws of the Republic of Kenya.</span></li>
+</ul>
+</section>
 
-    <!-- 6. How to Initiate a Return -->
-    <div class="why-feat reveal rd1" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-      <div>
-        <div class="wf-title">6. How to Initiate a Return</div>
-        <div class="wf-desc">Contact us via WhatsApp at <strong>+254 720 737 151</strong> or email <strong>orders@travotechpharmacy.co.ke</strong> with your order details and reason for return.</div>
-      </div>
-    </div>
+<section id="contact">
+<h2><i class="fa-solid fa-headset" aria-hidden="true"></i> Contact us</h2>
+<p>Questions about a return or refund? Reach our team and quote your order number.</p>
+<div class="rp-contact">
+<a href="tel:<?php echo esc_attr( $rp_phone_link ); ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small><?php echo esc_html( $rp_phone_show ); ?></span></a>
+<a href="mailto:<?php echo esc_attr( $rp_email ); ?>"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email us</small><?php echo esc_html( $rp_email ); ?></span></a>
+<a href="https://wa.me/<?php echo esc_attr( $rp_wa ); ?>" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with us</span></a>
+</div>
+</section>
 
-    <!-- 7. Governing Law -->
-    <div class="why-feat reveal rd2" style="margin-bottom:20px;">
-      <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div>
-        <div class="wf-title">7. Governing Law</div>
-        <div class="wf-desc">This policy is governed by the laws of Kenya and the regulations of the Pharmacy and Poisons Board of Kenya. Any disputes shall be resolved in accordance with Kenyan consumer protection laws. For full legal terms, see our <a href="<?php echo esc_url( home_url('/terms') ); ?>" style="color:var(--green);font-weight:700;">Terms &amp; Conditions</a>.</div>
-      </div>
-    </div>
+</div>
+</div>
 
-    <!-- ── CTA Box ── -->
-    <div style="background:rgba(240,250,245,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:16px;border:1.5px solid rgba(184,236,212,.7);padding:28px;text-align:center;margin-top:40px;" class="reveal">
-      <div style="font-size:1rem;font-weight:900;color:var(--text);margin-bottom:8px;">Still Have Questions?</div>
-      <p style="font-size:.82rem;color:var(--text-light);margin-bottom:20px;">Contact our team and we'll help resolve any issue quickly.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center;">
+<div class="rp-cta">
+<div>
+<h2>Need help with an order?</h2>
+<p>Our team will guide you on returns, refunds and choosing the right equipment.</p>
+</div>
+<a class="rp-btn" href="<?php echo esc_url( $contact ); ?>">Contact Us <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+</div>
 
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have a question about your Return and Refund Policy.'); ?>"
-           class="wa-cta-btn"
-           target="_blank"
-           rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Chat on WhatsApp: +254 720 737 151
-        </a>
-
-        <!-- Terms & Conditions Button -->
-        <a href="<?php echo esc_url( home_url('/terms') ); ?>" class="btn-outline">
-          Terms &amp; Conditions
-        </a>
-
-        <!-- Contact Page Button -->
-        <a href="<?php echo esc_url( home_url('/contact') ); ?>" class="btn-outline">Contact Page</a>
-
-      </div>
-    </div>
-
-  </div><!-- /.refund-inner -->
-</section><!-- /.refund-bubble-zone -->
-
-<script>
-(function () {
-  const canvas  = document.getElementById('refund-bubble-canvas');
-  if (!canvas) return;
-  const section = canvas.closest('.refund-bubble-zone');
-  const ctx     = canvas.getContext('2d');
-
-  function resize() {
-    canvas.width  = section.offsetWidth;
-    canvas.height = section.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  new ResizeObserver(resize).observe(section);
-
-  function rand(a, b) { return Math.random() * (b - a) + a; }
-
-  function drawCross(ctx, x, y, r) {
-    const arm = r * 0.38, thick = r * 0.13;
-    ctx.save();
-    ctx.globalAlpha = 0.72;
-    ctx.fillStyle = '#e53935';
-    ctx.beginPath(); ctx.roundRect(x - arm, y - thick, arm * 2, thick * 2, thick * 0.5); ctx.fill();
-    ctx.beginPath(); ctx.roundRect(x - thick, y - arm, thick * 2, arm * 2, thick * 0.5); ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,0.55)';
-    ctx.beginPath(); ctx.arc(x, y, thick * 0.55, 0, Math.PI * 2); ctx.fill();
-    ctx.restore();
-  }
-
-  function draw3DBubble(ctx, x, y, r, baseColor) {
-    const bg = ctx.createRadialGradient(x-r*.25,y-r*.25,r*.05,x,y,r);
-    bg.addColorStop(0,   'rgba(255,255,255,0.55)');
-    bg.addColorStop(0.4, baseColor.replace('BASE','0.18'));
-    bg.addColorStop(0.8, baseColor.replace('BASE','0.32'));
-    bg.addColorStop(1,   baseColor.replace('BASE','0.50'));
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=bg; ctx.fill();
-
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-    ctx.strokeStyle=baseColor.replace('BASE','0.55');
-    ctx.lineWidth=r*.045; ctx.stroke();
-
-    const g1=ctx.createRadialGradient(x-r*.32,y-r*.36,r*.01,x-r*.20,y-r*.20,r*.52);
-    g1.addColorStop(0,'rgba(255,255,255,0.80)');
-    g1.addColorStop(.5,'rgba(255,255,255,0.20)');
-    g1.addColorStop(1,'rgba(255,255,255,0.00)');
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g1; ctx.fill();
-
-    const g2=ctx.createRadialGradient(x+r*.30,y+r*.28,0,x+r*.30,y+r*.28,r*.18);
-    g2.addColorStop(0,'rgba(255,255,255,0.45)');
-    g2.addColorStop(1,'rgba(255,255,255,0.00)');
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g2; ctx.fill();
-
-    ctx.save();
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.clip();
-    const cg=ctx.createRadialGradient(x,y+r*.85,r*.1,x,y+r,r*.6);
-    cg.addColorStop(0,baseColor.replace('BASE','0.35'));
-    cg.addColorStop(1,'rgba(255,255,255,0.00)');
-    ctx.beginPath(); ctx.arc(x,y+r*.72,r*.55,0,Math.PI*2); ctx.fillStyle=cg; ctx.fill();
-    ctx.restore();
-
-    drawCross(ctx, x, y, r);
-  }
-
-  const COLORS = [
-    'rgba(46,175,110,BASE)','rgba(30,138,84,BASE)',
-    'rgba(61,201,126,BASE)','rgba(184,236,212,BASE)',
-    'rgba(102,210,155,BASE)',
-  ];
-
-  const bubbles = [];
-  const COUNT   = 18;
-
-  function makeBubble(forceBottom) {
-    const r = rand(50, 115);
-    return {
-      x      : rand(r, canvas.width - r),
-      y      : forceBottom ? rand(canvas.height, canvas.height + r*2) : rand(r, canvas.height - r),
-      r,
-      color  : COLORS[Math.floor(rand(0, COLORS.length))],
-      dx     : rand(-0.45, 0.45),
-      dy     : rand(-0.55, -0.15),
-      phase  : rand(0, Math.PI * 2),
-      wobble : rand(0.004, 0.010),
-    };
-  }
-
-  for (let i = 0; i < COUNT; i++) bubbles.push(makeBubble(false));
-
-  function tick() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    bubbles.forEach((b, i) => {
-      b.phase += b.wobble;
-      b.x += b.dx + Math.sin(b.phase * 0.7) * 0.3;
-      b.y += b.dy;
-      if (b.x - b.r < 0)            { b.x = b.r;                b.dx =  Math.abs(b.dx); }
-      if (b.x + b.r > canvas.width) { b.x = canvas.width - b.r; b.dx = -Math.abs(b.dx); }
-      if (b.y + b.r < 0)            { bubbles[i] = makeBubble(true); return; }
-      draw3DBubble(ctx, b.x, b.y, b.r, b.color);
-    });
-    requestAnimationFrame(tick);
-  }
-  tick();
-})();
-</script>
+</div>
+</main>
 
 <?php get_footer(); ?>
