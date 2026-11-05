@@ -333,6 +333,22 @@ html body[class*="page-template-page-contact"] [class$="hero"][class$="hero"][cl
 html body[class*="page-template-page-contact"] [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
 html body[class*="page-template-page-contact"] .ct .ct-band-bg::after{background:rgba(11,74,140,.6) !important;}
 }
+
+/* ---- Flag and badge v1 ---- */
+html body .ke-flag{width:26px;height:17px;border-radius:2px;background:linear-gradient(to bottom,#000 0,#000 27%,#fff 27%,#fff 35%,#bb0000 35%,#bb0000 65%,#fff 65%,#fff 73%,#006600 73%,#006600 100%);box-shadow:0 0 0 1px rgba(0,0,0,.25);}
+html body .ke-flag::after{width:7px;height:12px;border-radius:50%;background:linear-gradient(90deg,#bb0000 0,#bb0000 38%,#fff 38%,#fff 62%,#bb0000 62%,#bb0000 100%);border:1px solid #000;box-sizing:border-box;transform:translate(-50%,-50%);}
+html body .th-deliv .ke-flag{display:inline-block;}
+@media (max-width:1180px){
+    html body .th-deliv{display:flex !important;}
+    html body .th-deliv > span:not(.ke-flag){display:none;}
+}
+@media (max-width:960px){
+    html body .th-deliv{margin-right:8px;}
+}
+html body .th-cart .th-badge{left:50%;right:auto;top:-3px;margin-left:2px;}
+@media (max-width:640px){
+    html body .th-cart .th-badge{min-width:16px;height:16px;font-size:9px;top:-2px;}
+}
 </style>
 <?php wp_head(); ?>
 </head>
