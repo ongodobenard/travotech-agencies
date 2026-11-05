@@ -688,7 +688,23 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
      SILENT CART RESET via WooCommerce cart fragments AJAX
   ════════════════════════════════════════════════════════ */
   var CART_URL = '<?php echo esc_js( wc_get_cart_url() ); ?>';
-  function goToCart(delay){ setTimeout(function(){ window.location.href = CART_URL; }, delay); }
+  var CLEAR_DONE = null;
+  function clearServerCart(){
+    if(CLEAR_DONE) return CLEAR_DONE;
+    var fd = new FormData(); fd.append('action','travotech_clear_cart');
+    CLEAR_DONE = fetch(AJAX_URL,{method:'POST',body:fd,credentials:'same-origin',keepalive:true})
+      .then(function(r){ return r.json(); }).catch(function(){})
+      .then(function(){ refreshHeaderCart(); });
+    return CLEAR_DONE;
+  }
+  function goToCart(delay){
+    setTimeout(function(){
+      var cap = new Promise(function(r){ setTimeout(r, 4000); });
+      Promise.race([CLEAR_DONE || Promise.resolve(), cap]).then(function(){
+        window.location.href = CART_URL + (CART_URL.indexOf('?') > -1 ? '&' : '?') + 'cleared=' + Date.now();
+      });
+    }, delay);
+  }
   function refreshHeaderCart(){
     fetch(window.location.href,{credentials:'same-origin',cache:'no-store',headers:{'X-Requested-With':'XMLHttpRequest'}})
     .then(function(r){return r.text();})
@@ -700,7 +716,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
   }
 
   function silentCartReset(){
-    refreshHeaderCart();
+    clearServerCart();
     var form = document.getElementById('chkp-form');
     if(form){
       form.querySelectorAll('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"])').forEach(function(inp){ inp.value=''; });
@@ -799,7 +815,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
 
     if(succEl) succEl.scrollIntoView({behavior:'smooth',block:'center'});
     silentCartReset();
-    goToCart(2500);
+    goToCart(1500);
   }
 
   function showError(msg, isDesktop){
@@ -875,9 +891,20 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
     }
     document.getElementById(valMsg).classList.remove('show');
 
-    window.open('https://wa.me/254720737151?text='+encodeURIComponent(buildWaMessage()), '_blank');
+    var waUrl = 'https://wa.me/254720737151?text=' + encodeURIComponent(buildWaMessage());
+    var waWin = null;
+    try { waWin = window.open('', '_blank'); } catch(e) {}
+    var waBtn = document.getElementById(isDesktop ? 'chkp-wa-btn' : 'chkp-wa-btn-mobile');
+    if(waBtn){ waBtn.style.pointerEvents = 'none'; waBtn.style.opacity = '.65'; }
     sendOrderToServer('whatsapp', function(res){
-      if(res && (res.success || (res.data && res.data.order_id))){ silentCartReset(); goToCart(1200); }
+      var ok = !!(res && (res.success || (res.data && res.data.order_id)));
+      if(ok){ silentCartReset(); }
+      var wait = (ok && CLEAR_DONE) ? Promise.race([CLEAR_DONE, new Promise(function(r){ setTimeout(r, 3000); })]) : Promise.resolve();
+      wait.then(function(){
+        if(waBtn){ waBtn.style.pointerEvents = ''; waBtn.style.opacity = ''; }
+        if(waWin && !waWin.closed){ waWin.location.href = waUrl; if(ok){ goToCart(400); } }
+        else { window.location.href = waUrl; }
+      });
     });
   }
 
@@ -923,4 +950,32 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
 })();
 </script>
 
+<style>
+/* mobile-scroll-v1: the list scrolls first, then the page takes over */
+@media (max-width:960px){
+  html body .chkp-scroll,
+  html body .chkp-sidebar #order_review{overscroll-behavior:auto !important;overscroll-behavior-y:auto !important;}
+}
+</style>
+<script>
+(function(){
+  var el = document.getElementById('chkp-scroll');
+  if(!el) return;
+  var last = 0;
+  el.addEventListener('touchstart', function(e){ last = e.touches[0].clientY; }, {passive:true});
+  el.addEventListener('touchmove', function(e){
+    if(!window.matchMedia('(max-width:960px)').matches) return;
+    var y = e.touches[0].clientY;
+    var d = last - y;            /* d > 0: finger moving up */
+    last = y;
+    if(el.scrollHeight <= el.clientHeight + 1) return;   /* list not scrollable: page scrolls natively */
+    var atTop = el.scrollTop <= 0;
+    var atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+    if((d > 0 && atBottom) || (d < 0 && atTop)){
+      if(e.cancelable) e.preventDefault();
+      window.scrollBy(0, d);
+    }
+  }, {passive:false});
+})();
+</script>
 <?php get_footer(); ?>

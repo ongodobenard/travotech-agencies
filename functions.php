@@ -1235,3 +1235,36 @@ html body:not(#a):not(#b) [class*="whatsapp"] > a,
 html body:not(#a):not(#b) [id*="whatsapp"] > a{border-radius:6px !important;}
 </style>';
 }, 99999 );
+
+/* travotech-fast-order-v1 */
+add_action( 'wp_ajax_travotech_clear_cart', 'travotech_clear_cart_ajax' );
+add_action( 'wp_ajax_nopriv_travotech_clear_cart', 'travotech_clear_cart_ajax' );
+function travotech_clear_cart_ajax() {
+    if ( function_exists( 'WC' ) ) {
+        if ( null === WC()->cart && function_exists( 'wc_load_cart' ) ) { wc_load_cart(); }
+        if ( WC()->cart ) { WC()->cart->empty_cart( true ); }
+    }
+    wp_send_json_success();
+}
+
+/* Order emails are sent after the browser already has its answer */
+function travotech_defer_order_mail() {
+    $GLOBALS['travotech_mail_queue'] = array();
+    $cb = function ( $pre, $atts ) {
+        $GLOBALS['travotech_mail_queue'][] = $atts;
+        return true;
+    };
+    add_filter( 'pre_wp_mail', $cb, 10, 2 );
+    add_action( 'shutdown', function () use ( $cb ) {
+        remove_filter( 'pre_wp_mail', $cb, 10 );
+        $q = isset( $GLOBALS['travotech_mail_queue'] ) ? $GLOBALS['travotech_mail_queue'] : array();
+        if ( ! $q ) { return; }
+        if ( function_exists( 'fastcgi_finish_request' ) ) { fastcgi_finish_request(); }
+        elseif ( function_exists( 'litespeed_finish_request' ) ) { litespeed_finish_request(); }
+        foreach ( $q as $m ) {
+            wp_mail( $m['to'], $m['subject'], $m['message'], $m['headers'], $m['attachments'] );
+        }
+    }, 1 );
+}
+add_action( 'wp_ajax_travotech_send_order_email', 'travotech_defer_order_mail', 1 );
+add_action( 'wp_ajax_nopriv_travotech_send_order_email', 'travotech_defer_order_mail', 1 );
