@@ -1,389 +1,791 @@
 <?php
 /**
  * Template Name: About Us
+ *
+ * Refined About Us page — left sidebar + main content, fully responsive.
+ * Matches the Nozaltah / Pharmacare brand (deep rose-pink + teal accent).
+ *
+ * HOW TO DEPLOY (fixes the 404):
+ * 1. Upload THIS file to: /wp-content/themes/YOUR-ACTIVE-THEME/page-about-us.php
+ * 2. In WP Admin → Settings → Permalinks → click "Save Changes" (flushes rewrites)
+ * 3. In WP Admin → Pages → check if an "About Us" page exists.
+ *    - If YES: edit it → Page Attributes → Template → select "About Us" → Update
+ *    - If NO:  create a new Page titled "About Us", slug "about-us", publish it,
+ *              then set Template → "About Us"
+ * 4. Clear any caching plugin cache + browser cache
+ * 5. Visit /about-us/ — it should now render correctly.
  */
-get_header(); ?>
+
+if ( ! defined( 'ABSPATH' ) ) exit; // security: no direct access
+
+get_header();
+?>
+
+<!-- Google Fonts — consistent with front-page -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700;1,800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-/* ── Delivery Section ── */
-.rx-delivery { background: var(--green-pale); padding: 56px 5%; }
-.rx-delivery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
-.delivery-info-box { background: white; border-radius: 16px; padding: 28px; border: 1.5px solid var(--green-light); }
-.di-title { font-size: .88rem; font-weight: 900; color: var(--text); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; padding-bottom: 12px; border-bottom: 2px solid var(--green-light); }
-.delivery-row { display: flex; gap: 12px; margin-bottom: 18px; align-items: flex-start; }
-.delivery-row:last-child { margin-bottom: 0; }
-.di-icon { width: 32px; height: 32px; border-radius: 8px; background: var(--green-pale); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.di-label { font-size: .82rem; font-weight: 800; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.di-desc { font-size: .76rem; color: var(--text-light); line-height: 1.6; font-weight: 500; }
-.di-badge { font-size: .62rem; font-weight: 800; padding: 2px 8px; border-radius: 50px; }
-.di-badge--green { background: var(--green-light); color: var(--green); }
-.di-badge--orange { background: #fff3e8; color: #e65100; }
-
-/* ── Stat Counter ── */
-.stat-num { font-size: 2.4rem; font-weight: 900; color: white; font-variant-numeric: tabular-nums; }
-
-/* ── Team Grid ── */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+/* ══════════════════════════════════════════════════
+   VARIABLES
+   ══════════════════════════════════════════════════ */
+:root {
+    --pk:        #8B1A4A;
+    --pk-light:  #f9edf3;
+    --teal:      #1aaa8f;
+    --teal-light:#e8f5f2;
+    --text:      #1a1a2e;
+    --muted:     #6b7280;
+    --border:    #eef0f3;
+    --white:     #ffffff;
+    --radius:    10px;
 }
 
-/* ── WhatsApp Button Base ── */
-.wa-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--green);
-  color: white;
-  padding: 13px 28px;
-  border-radius: 50px;
-  font-size: .92rem;
-  font-weight: 800;
-  font-family: 'Nunito', sans-serif;
-  text-decoration: none;
-  transition: all .3s;
-  box-shadow: 0 6px 20px rgba(46,175,110,.3);
-  white-space: nowrap;
-}
-.wa-cta-btn:hover {
-  background: var(--green-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(46,175,110,.4);
-}
-.wa-cta-btn--white {
-  background: white;
-  color: var(--green);
-  box-shadow: 0 6px 20px rgba(0,0,0,.15);
-}
-.wa-cta-btn--white:hover {
-  background: var(--green-light);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Outer wrapper ── */
+.noz-about-page {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
 }
 
-/* ── Responsive ── */
-@media (max-width: 1024px) {
-  .rx-delivery-grid { grid-template-columns: 1fr; }
+/* ══════════════════════════════════════════════════
+   LEFT SIDEBAR
+   ══════════════════════════════════════════════════ */
+.noz-about-sidebar {
+    width: 270px;
+    min-width: 270px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 16px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
-@media (max-width: 768px) {
-  /* About section */
-  .why-grid { display: flex !important; flex-direction: column !important; gap: 32px !important; }
-  .why-img-wrap { display: block !important; width: 100% !important; max-width: 100% !important; min-height: 280px !important; position: relative !important; }
-  .why-img, .why-img--real { display: block !important; width: 100% !important; height: 280px !important; overflow: hidden !important; border-radius: 16px !important; }
-  .why-img--real img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: top center !important; display: block !important; }
-  .why-blob { display: none; }
+/* sidebar card base */
+.noz-sb-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
 
-  /* Team */
-  .team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 14px; }
-  .t-img { height: 150px !important; }
-  .t-name { font-size: .82rem !important; }
-  .t-role { font-size: .65rem !important; }
-  .t-body { padding: 12px !important; }
-
-  /* WhatsApp button */
-  .wa-cta-btn {
-    font-size: .78rem;
-    padding: 11px 18px;
-    gap: 7px;
-    white-space: normal;
+/* pharmacy info widget */
+.noz-sb-pharmacy {
+    padding: 20px;
     text-align: center;
-    max-width: 280px;
-    width: 100%;
-  }
-  .wa-cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    background: linear-gradient(160deg, var(--pk) 0%, #b0255f 100%);
+    color: #fff;
+}
+.noz-sb-pharmacy .sb-logo-circle {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    border: 2px solid rgba(255,255,255,.35);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 700;
+    color: #fff;
+}
+.noz-sb-pharmacy h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+.noz-sb-pharmacy p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,.82);
+    line-height: 1.5;
 }
 
-@media (max-width: 480px) {
-  /* Stats */
-  .stat-num { font-size: 1.8rem; }
+/* quick stats */
+.noz-sb-stats {
+    padding: 16px 20px;
+}
+.noz-sb-stats h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+.noz-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+.noz-stat-row:last-child { border-bottom: none; }
+.noz-stat-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--pk-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--pk);
+}
+.noz-stat-icon.teal { background: var(--teal-light); color: var(--teal); }
+.noz-stat-val {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.1;
+}
+.noz-stat-lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+}
 
-  /* Team */
-  .team-grid { grid-template-columns: 1fr 1fr !important; gap: 10px; }
-  .t-img { height: 120px !important; }
-  .t-name { font-size: .75rem !important; }
-  .t-role { font-size: .6rem !important; }
-  .t-soc { width: 24px !important; height: 24px !important; }
-  .t-socials { gap: 5px !important; }
+/* contact widget */
+.noz-sb-contact {
+    padding: 16px 20px;
+}
+.noz-sb-contact h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+.noz-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+.noz-contact-item:last-child { border-bottom: none; }
+.noz-ci-icon {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--teal);
+    margin-top: 1px;
+}
+.noz-ci-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+}
+.noz-ci-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1px;
+}
 
-  /* WhatsApp button */
-  .wa-cta-btn {
-    font-size: .72rem;
-    padding: 10px 14px;
-    gap: 6px;
-    max-width: 260px;
-  }
-  .wa-cta-btn svg { width: 14px; height: 14px; }
+/* CTA button */
+.noz-sb-cta {
+    display: block;
+    background: var(--teal);
+    color: #fff;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 13px 20px;
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: background .2s, transform .18s;
+    letter-spacing: .4px;
+}
+.noz-sb-cta:hover { background: #138a74; transform: translateY(-1px); }
 
-  /* Why section */
-  .why-img-wrap { min-height: 220px !important; }
-  .why-img, .why-img--real { height: 220px !important; }
+/* ══════════════════════════════════════════════════
+   MAIN CONTENT
+   ══════════════════════════════════════════════════ */
+.noz-about-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-  /* Delivery */
-  .delivery-info-box { padding: 18px; }
-  .di-label { font-size: .76rem; }
-  .di-desc { font-size: .7rem; }
+/* ── Hero banner ── */
+.noz-hero {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--pk);
+    padding: 52px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 220px;
+}
+.noz-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    pointer-events: none;
+}
+.noz-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: 80px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.04);
+    pointer-events: none;
+}
+.noz-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,.16);
+    border: 1px solid rgba(255,255,255,.26);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    padding: 5px 14px 5px 9px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    width: fit-content;
+    backdrop-filter: blur(6px);
+}
+.noz-hero-tag-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #f9c5d6;
+    flex-shrink: 0;
+}
+.noz-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 20px rgba(0,0,0,.15);
+}
+.noz-hero p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.72;
+    color: rgba(255,255,255,.85);
+    max-width: 580px;
+}
+
+/* ── Feature cards row ── */
+.noz-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+.noz-feat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow .2s, transform .2s;
+}
+.noz-feat-card:hover {
+    box-shadow: 0 6px 24px rgba(0,0,0,.08);
+    transform: translateY(-3px);
+}
+.noz-feat-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--pk-light);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pk);
+}
+.noz-feat-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.3;
+}
+.noz-feat-card p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+.noz-feat-badge {
+    margin-top: auto;
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+/* ── Story section ── */
+.noz-story {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.noz-story-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.noz-story-text {
+    padding: 36px;
+    border-right: 1px solid var(--border);
+}
+.noz-story-text .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--pk);
+    margin-bottom: 14px;
+}
+.noz-story-text .section-label::before {
+    content: '';
+    width: 18px; height: 2px;
+    background: var(--pk);
+    border-radius: 2px;
+}
+.noz-story-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(24px, 2.8vw, 36px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+.noz-story-text p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+.noz-story-text p:last-of-type { margin-bottom: 0; }
+
+.noz-story-stats {
+    padding: 36px;
+    background: #fafbfc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.noz-big-stat {
+    text-align: center;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+.noz-big-stat .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--pk);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+}
+.noz-big-stat .lbl {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+}
+
+/* ── Values strip ── */
+.noz-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+.noz-val-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    text-align: center;
+    transition: box-shadow .2s, transform .2s;
+}
+.noz-val-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); transform: translateY(-2px); }
+.noz-val-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--pk);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.noz-val-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+.noz-val-card p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.55;
+}
+
+/* ── Trust CTA strip ── */
+.noz-trust {
+    background: linear-gradient(135deg, var(--pk) 0%, #b0255f 100%);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.noz-trust-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.6vw, 32px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+}
+.noz-trust-text p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,.82);
+    line-height: 1.6;
+    max-width: 480px;
+}
+.noz-trust-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--pk);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 13px 26px;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    transition: transform .18s, box-shadow .2s;
+}
+.noz-trust-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.24); }
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+    .noz-values { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .noz-about-page {
+        flex-direction: column;
+        padding: 16px 14px 32px;
+        gap: 16px;
+    }
+    .noz-about-sidebar {
+        width: 100%;
+        min-width: 0;
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .noz-sb-pharmacy { flex: 1 1 220px; }
+    .noz-sb-stats     { flex: 1 1 220px; }
+    .noz-sb-contact   { flex: 1 1 220px; }
+    .noz-sb-cta       { flex: 1 1 100%; }
+
+    .noz-features { grid-template-columns: repeat(2, 1fr); }
+
+    .noz-story-inner { grid-template-columns: 1fr; }
+    .noz-story-text  { border-right: none; border-bottom: 1px solid var(--border); }
+    .noz-story-stats { flex-direction: row; flex-wrap: wrap; gap: 12px; }
+    .noz-big-stat    { flex: 1 1 120px; }
+}
+
+@media (max-width: 640px) {
+    .noz-about-sidebar { flex-direction: column; }
+    .noz-hero { padding: 32px 24px; }
+    .noz-features { grid-template-columns: 1fr; }
+    .noz-values   { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .noz-story-text { padding: 24px 20px; }
+    .noz-story-stats { padding: 20px; }
+    .noz-trust { flex-direction: column; text-align: center; padding: 28px 22px; }
+    .noz-trust-text p { max-width: 100%; }
+}
+
+@media (max-width: 400px) {
+    .noz-values { grid-template-columns: 1fr; }
 }
 </style>
 
-<section class="why-sec" style="padding-top:56px;">
-  <div class="why-grid">
-    <div class="why-img-wrap">
-      <div class="why-blob"></div>
-      <div class="why-img why-img--real" style="overflow:hidden;">
-        <img src="<?php echo get_template_directory_uri(); ?>/assets/js/images/doctors.png"
-             alt="Our Pharmacists"
-             style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">
-      </div>
-      <div class="why-years">
-        <div class="why-years-n">12</div>
-        <div class="why-years-t">YEARS<br>SERVING</div>
-      </div>
-    </div>
-    <div>
-      <div class="sec-tag sec-tag-outline reveal">About Us</div>
-      <h1 class="sec-title reveal rd1">About <span>Travotech Agencies</span></h1>
-      <p class="sec-desc reveal rd2">Kenya's most trusted pharmacy serving thousands of families with quality, affordable and certified medicines since 2012. Licensed by the Pharmacy and Poisons Board of Kenya.</p>
-      <div class="why-feats" style="margin-top:28px;">
-        <div class="why-feat reveal rd1">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-          <div><div class="wf-title">Our Mission</div><div class="wf-desc">To provide every Kenyan family with access to quality, affordable and certified healthcare products.</div></div>
-        </div>
-        <div class="why-feat reveal rd2">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-          <div><div class="wf-title">Our Vision</div><div class="wf-desc">To be Kenya's most trusted and accessible pharmacy, online and in-store.</div></div>
-        </div>
-        <div class="why-feat reveal rd3">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-          <div><div class="wf-title">Our Values</div><div class="wf-desc">Integrity, care, excellence and accessibility in everything we do for our customers.</div></div>
-        </div>
-        <div class="why-feat reveal rd4">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-          <div><div class="wf-title">Award Winning</div><div class="wf-desc">Recognized for excellence in healthcare delivery across Kenya.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="noz-about-page">
 
-<!-- STATS -->
-<section style="background:var(--green);padding:48px 5%;">
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:24px;text-align:center;">
-    <div class="reveal">
-      <div class="stat-num" data-target="12" data-suffix="+">0+</div>
-      <div style="font-size:.82rem;color:rgba(255,255,255,.7);font-weight:700;margin-top:4px;">Years of Service</div>
-    </div>
-    <div class="reveal rd1">
-      <div class="stat-num" data-target="5" data-suffix="K+">0K+</div>
-      <div style="font-size:.82rem;color:rgba(255,255,255,.7);font-weight:700;margin-top:4px;">Happy Customers</div>
-    </div>
-    <div class="reveal rd2">
-      <div class="stat-num" data-target="2" data-suffix="K+">0K+</div>
-      <div style="font-size:.82rem;color:rgba(255,255,255,.7);font-weight:700;margin-top:4px;">Products Available</div>
-    </div>
-    <div class="reveal rd3">
-      <div class="stat-num" data-target="24" data-suffix="/7">0/7</div>
-      <div style="font-size:.82rem;color:rgba(255,255,255,.7);font-weight:700;margin-top:4px;">WhatsApp Support</div>
-    </div>
-  </div>
-</section>
+    <!-- ══ LEFT SIDEBAR ══ -->
+    <aside class="noz-about-sidebar">
 
-<script>
-(function(){
-  function animateCounter(el) {
-    var target = parseInt(el.getAttribute('data-target'));
-    var suffix = el.getAttribute('data-suffix');
-    var duration = 1800;
-    var start = null;
-    function step(ts) {
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.floor(eased * target);
-      el.textContent = current + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target + suffix;
-    }
-    requestAnimationFrame(step);
-  }
-  var counters = document.querySelectorAll('.stat-num');
-  if ('IntersectionObserver' in window) {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) { animateCounter(entry.target); obs.unobserve(entry.target); }
-      });
-    }, { threshold: 0.3 });
-    counters.forEach(function(c) { obs.observe(c); });
-  } else {
-    counters.forEach(function(c) { animateCounter(c); });
-  }
-})();
-</script>
-
-<!-- SERVICES -->
-<section class="srv-sec">
-  <div style="text-align:center">
-    <div class="sec-tag sec-tag-solid reveal">What We Do</div>
-    <h2 class="sec-title reveal rd1">Our <span>Services</span></h2>
-  </div>
-  <div class="srv-grid">
-    <div class="srv-card reveal"><div class="srv-icon-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="srv-name">Prescription<br>Medicines</div></div>
-    <div class="srv-card hl reveal rd1"><div class="srv-icon-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="srv-name">24/7 Emergency<br>Services</div></div>
-    <div class="srv-card reveal rd2"><div class="srv-icon-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="srv-name">Free<br>Consultation</div></div>
-    <div class="srv-card reveal rd3"><div class="srv-icon-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/></svg></div><div class="srv-name">Excellence<br>Rewards</div></div>
-    <div class="srv-card reveal rd4"><div class="srv-icon-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="srv-name">CountryWide<br>Delivery</div></div>
-    <div class="srv-card reveal rd1"><div class="srv-icon-c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="srv-name">Professional<br>Pharmacists</div></div>
-  </div>
-</section>
-
-<!-- DELIVERY SCHEDULE -->
-<section class="rx-delivery">
-  <div style="text-align:center;margin-bottom:32px;">
-    <div class="sec-tag sec-tag-solid reveal">Delivery Info</div>
-    <h2 class="sec-title reveal rd1">Delivery <span>Schedule</span></h2>
-    <p class="sec-desc reveal rd2" style="margin:0 auto;">We deliver across Nairobi same day and countrywide within 1-2 days.</p>
-  </div>
-  <div class="rx-delivery-grid">
-
-    <!-- Nairobi -->
-    <div class="delivery-info-box reveal">
-      <div class="di-title">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Nairobi: Same Day Delivery
-      </div>
-      <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div>
-          <div class="di-label">Order by 3:00 PM <span class="di-badge di-badge--green">Same Day</span></div>
-          <div class="di-desc">Orders placed before 3:00 PM are dispatched the same day and delivered within Nairobi by evening.</div>
+        <!-- Brand card -->
+        <div class="noz-sb-card noz-sb-pharmacy">
+            <div class="sb-logo-circle">N</div>
+            <h3>Nozaltah</h3>
+            <p>Licensed online pharmacy serving Kenya since 2018. Regulated &amp; trusted.</p>
         </div>
-      </div>
-      <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-        <div>
-          <div class="di-label">3:00 PM – 6:00 PM <span class="di-badge di-badge--orange">Possible Same Day</span></div>
-          <div class="di-desc">Orders between 3–6 PM may still be delivered same day depending on location. Our team will confirm via WhatsApp.</div>
-        </div>
-      </div>
-      <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div>
-          <div class="di-label">After 6:00 PM <span class="di-badge di-badge--orange">Next Morning</span></div>
-          <div class="di-desc">Orders received after 6:00 PM are processed the following morning and delivered next day.</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Countrywide -->
-    <div class="delivery-info-box reveal rd1">
-      <div class="di-title">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Outside Nairobi: Countrywide
-      </div>
-      <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div>
-          <div class="di-label">Nearby Counties <span class="di-badge di-badge--green">Next Day</span></div>
-          <div class="di-desc">Kiambu, Machakos, Kajiado, Murang'a and surrounding areas typically receive orders the next day.</div>
+        <!-- Quick stats -->
+        <div class="noz-sb-card noz-sb-stats">
+            <h4>At a Glance</h4>
+
+            <div class="noz-stat-row">
+                <div class="noz-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div>
+                    <div class="noz-stat-val">500,000+</div>
+                    <div class="noz-stat-lbl">Happy Customers</div>
+                </div>
+            </div>
+
+            <div class="noz-stat-row">
+                <div class="noz-stat-icon teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <div>
+                    <div class="noz-stat-val">25,000+</div>
+                    <div class="noz-stat-lbl">Products in Stock</div>
+                </div>
+            </div>
+
+            <div class="noz-stat-row">
+                <div class="noz-stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                    <div class="noz-stat-val">200+</div>
+                    <div class="noz-stat-lbl">Licensed Suppliers</div>
+                </div>
+            </div>
+
+            <div class="noz-stat-row">
+                <div class="noz-stat-icon teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                    <div class="noz-stat-val">24/7</div>
+                    <div class="noz-stat-lbl">Pharmacist Support</div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e65100" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <div>
-          <div class="di-label">Distant Counties <span class="di-badge di-badge--orange">1–2 Days</span></div>
-          <div class="di-desc">Mombasa, Kisumu, Nakuru, Eldoret and farther counties take 1–2 days depending on courier routes.</div>
+
+        <!-- Contact widget -->
+        <div class="noz-sb-card noz-sb-contact">
+            <h4>Contact Us</h4>
+
+            <div class="noz-contact-item">
+                <div class="noz-ci-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+                </div>
+                <div class="noz-ci-text">
+                    <strong>Phone</strong>
+                    +254 796 038 686
+                </div>
+            </div>
+
+            <div class="noz-contact-item">
+                <div class="noz-ci-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div class="noz-ci-text">
+                    <strong>Email</strong>
+                    info@nozaltah.co.ke
+                </div>
+            </div>
+
+            <div class="noz-contact-item">
+                <div class="noz-ci-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="noz-ci-text">
+                    <strong>Location</strong>
+                    Nairobi, Kenya
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div>
-          <div class="di-label">WhatsApp Confirmation</div>
-          <div class="di-desc">We always confirm your expected delivery time via WhatsApp before dispatching your order.</div>
-        </div>
-      </div>
-    </div>
 
-  </div>
+        <!-- CTA -->
+        <a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" class="noz-sb-cta">
+            Shop Now &rarr;
+        </a>
 
-  <!-- WHATSAPP BUTTON -->
-  <div style="text-align:center;margin-top:40px;" class="reveal">
-    <p style="font-size:.88rem;color:var(--text-mid);font-weight:600;margin-bottom:16px;">Have delivery questions? Chat with us directly!</p>
-    <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have a delivery enquiry.'); ?>"
-       class="wa-cta-btn"
-       target="_blank"
-       rel="noopener">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      Chat on WhatsApp: +254 720 737 151.
-    </a>
-  </div>
+    </aside>
 
-</section>
+    <!-- ══ MAIN CONTENT ══ -->
+    <main class="noz-about-main">
 
-<!-- TEAM -->
-<section class="team-sec">
-  <div class="team-hdr">
-    <div class="sec-tag sec-tag-solid reveal">Our Team</div>
-    <h2 class="sec-title reveal rd1">Meet Our Best <span>Pharmacists</span></h2>
-  </div>
-  <div class="team-grid">
-    <?php
-    $team = [
-      ['Dr. Sarah Wanjiku', 'Lead Pharmacist'],
-      ['Dr. James Otieno',  'Clinical Pharmacist'],
-      ['Dr. Grace Kamau',   'Pharmaceutical Tech'],
-      ['Dr. Peter Mwangi',  'Pharmacy Manager'],
-    ];
-    $delays = ['reveal', 'reveal rd1', 'reveal rd2', 'reveal rd3'];
-    foreach ($team as $i => $member): ?>
-    <div class="t-card <?php echo $delays[$i]; ?>">
-      <div class="t-img">
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5">
-          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </div>
-      <div class="t-body">
-        <div class="t-name"><?php echo esc_html($member[0]); ?></div>
-        <div class="t-role"><?php echo esc_html($member[1]); ?></div>
-        <div class="t-socials">
-          <a href="#" class="t-soc" aria-label="LinkedIn">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="t-soc" aria-label="Facebook">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="mailto:<?php echo esc_attr(travotech_email()); ?>" class="t-soc" aria-label="Email">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <?php endforeach; ?>
-  </div>
-</section>
+        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<!-- CTA -->
-<section class="cta-sec">
-  <div class="cta-b1"></div><div class="cta-b2"></div>
-  <div style="text-align:center;position:relative;z-index:1;">
-    <div class="sec-tag sec-tag-solid reveal" style="background:rgba(255,255,255,.2)">Get In Touch</div>
-    <h2 class="sec-title reveal rd1" style="color:white;">Have Questions? <span style="color:var(--green-mid);">We're Here</span></h2>
-    <p class="sec-desc reveal rd2" style="color:rgba(255,255,255,.8);margin:0 auto 28px;">Reach out via WhatsApp or visit us at Utawala Astrol (Nairobi).</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="reveal rd3">
-      <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
-         class="wa-cta-btn wa-cta-btn--white"
-         target="_blank"
-         rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Chat on WhatsApp
-      </a>
-      <a href="<?php echo home_url('/contact'); ?>" class="btn-outline" style="border-color:rgba(255,255,255,.5);color:white;">Contact Us</a>
-    </div>
-  </div>
-</section>
+            <div class="noz-hero">
+                <span class="noz-hero-tag"><span class="noz-hero-tag-dot"></span>Our Story</span>
+                <h1><?php the_title(); ?></h1>
+                <?php the_content(); ?>
+            </div>
+
+        <?php endwhile; else : ?>
+
+            <!-- ── Hero banner ── -->
+            <div class="noz-hero">
+                <span class="noz-hero-tag"><span class="noz-hero-tag-dot"></span>Our Story</span>
+                <h1>About Nozaltah</h1>
+                <p>Your trusted online pharmacy. Committed to delivering genuine medicines, health supplements, and wellness products right to your door — with care, speed, and expertise.</p>
+            </div>
+
+            <!-- ── Feature cards ── -->
+            <div class="noz-features">
+
+                <div class="noz-feat-card">
+                    <div class="noz-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>100% Genuine Products</h3>
+                    <p>Every product sourced directly from licensed manufacturers and distributors. No counterfeits, ever.</p>
+                    <span class="noz-feat-badge">Verified</span>
+                </div>
+
+                <div class="noz-feat-card">
+                    <div class="noz-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <h3>Fast &amp; Free Delivery</h3>
+                    <p>Orders over KSh 9,999 ship free. Same-day dispatch on orders placed before 2 PM.</p>
+                    <span class="noz-feat-badge">Free over 9,999</span>
+                </div>
+
+                <div class="noz-feat-card">
+                    <div class="noz-feat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+                    </div>
+                    <h3>24/7 Expert Support</h3>
+                    <p>Licensed pharmacists and customer care available around the clock for your peace of mind.</p>
+                    <span class="noz-feat-badge">Always On</span>
+                </div>
+
+            </div>
+
+            <!-- ── Our Story ── -->
+            <div class="noz-story">
+                <div class="noz-story-inner">
+                    <div class="noz-story-text">
+                        <span class="section-label">Who We Are</span>
+                        <h2>Built on Trust,<br>Driven by Care</h2>
+                        <p>Nozaltah was founded with a simple mission: to make quality healthcare accessible and affordable for everyone in Kenya. What started as a small online store has grown into one of the most trusted digital pharmacies — serving over 500,000 customers nationwide.</p>
+                        <p>We partner with over 200 licensed suppliers and carry more than 25,000 products across medicine, wellness, beauty, fitness, and devices categories. Every order is handled by certified pharmacy professionals to ensure you receive exactly what you need, safely and on time.</p>
+                    </div>
+                    <div class="noz-story-stats">
+                        <div class="noz-big-stat">
+                            <span class="num">500K+</span>
+                            <span class="lbl">Customers Served</span>
+                        </div>
+                        <div class="noz-big-stat">
+                            <span class="num">25K+</span>
+                            <span class="lbl">Products Available</span>
+                        </div>
+                        <div class="noz-big-stat">
+                            <span class="num">200+</span>
+                            <span class="lbl">Trusted Suppliers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── Values ── -->
+            <div class="noz-values">
+                <div class="noz-val-card">
+                    <div class="noz-val-num">01</div>
+                    <h4>Authenticity</h4>
+                    <p>Only genuine, licensed products from verified manufacturers.</p>
+                </div>
+                <div class="noz-val-card">
+                    <div class="noz-val-num">02</div>
+                    <h4>Accessibility</h4>
+                    <p>Affordable healthcare delivered anywhere in Kenya, fast.</p>
+                </div>
+                <div class="noz-val-card">
+                    <div class="noz-val-num">03</div>
+                    <h4>Expertise</h4>
+                    <p>Licensed pharmacists guiding every step of your wellness journey.</p>
+                </div>
+                <div class="noz-val-card">
+                    <div class="noz-val-num">04</div>
+                    <h4>Integrity</h4>
+                    <p>Transparent pricing, honest advice, and your privacy protected.</p>
+                </div>
+            </div>
+
+            <!-- ── Trust CTA ── */
+            <div class="noz-trust">
+                <div class="noz-trust-text">
+                    <h2>Ready to experience better healthcare?</h2>
+                    <p>Browse over 25,000 genuine products and have them delivered to your door today.</p>
+                </div>
+                <a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" class="noz-trust-btn">
+                    Shop Now
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+        <?php endif; ?>
+
+    </main>
+
+</div><!-- /.noz-about-page -->
 
 <?php get_footer(); ?>
