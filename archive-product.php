@@ -351,6 +351,13 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
 @media (max-width:900px){
     .sh .sh-promo-img{flex:0 0 auto;height:160px;min-height:0;}
 }
+
+/* ---- Fixes v10 ---- */
+.sh .sh-promo{flex:0 0 auto !important;}
+.sh .sh-promo-img{flex:0 0 auto !important;height:110px !important;min-height:0 !important;max-height:110px !important;}
+.sh .sh-promo-text{padding:8px 14px 10px !important;}
+.sh .sh-promo-text .sh-wt{color:var(--th-dk,#0c3a27) !important;font-size:.92rem !important;line-height:1.3;margin:0 0 4px !important;}
+.sh .sh-promo-text p{font-size:.8rem !important;line-height:1.45 !important;margin:0 0 4px !important;}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
