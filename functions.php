@@ -1268,3 +1268,38 @@ function travotech_defer_order_mail() {
 }
 add_action( 'wp_ajax_travotech_send_order_email', 'travotech_defer_order_mail', 1 );
 add_action( 'wp_ajax_nopriv_travotech_send_order_email', 'travotech_defer_order_mail', 1 );
+
+/* mobile-font-v1: bigger text on phones and small tablets, desktop untouched */
+add_action( 'wp_footer', function () {
+    echo '<style id="mobile-font-v1">
+@media (max-width:768px){
+html{font-size:112.5% !important;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+
+/* form fields: 16px stops the iPhone zoom on tap */
+html body input,html body select,html body textarea{font-size:16px !important;}
+html body button{font-size:max(1em,15px);}
+
+/* header and menu (fixed px sizes) */
+html body .th-search input[type="search"]{font-size:16px !important;}
+html body .th-search button{font-size:15px !important;}
+html body .th-cart-amt{font-size:13px !important;}
+html body .th-badge{font-size:11px !important;}
+html body .th-mnav a{font-size:16px !important;}
+html body .th-mnav details>summary{font-size:16px !important;}
+html body .th-mnav details a{font-size:15px !important;}
+html body .th-mnav details details a{font-size:14.5px !important;}
+html body .th-mflag{font-size:14px !important;}
+html body .site-breadcrumb{font-size:15px !important;}
+
+/* shop, product and cart text that uses small fixed sizes */
+html body .sp-wrap p,html body .sp-wrap li,html body .sp-wrap label,html body .sp-wrap span{font-size:max(1em,15px);}
+html body .woocommerce-checkout-review-order-table th,
+html body .woocommerce-checkout-review-order-table td{font-size:15px !important;}
+html body .chkp-fg label{font-size:15px !important;}
+html body .chkp-field-error{font-size:13px !important;}
+}
+@media (max-width:480px){
+html body .th-cart-amt{font-size:12px !important;}
+}
+</style>';
+}, 99999 );
