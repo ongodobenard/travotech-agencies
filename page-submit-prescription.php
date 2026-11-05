@@ -22,7 +22,7 @@ get_header(); ?>
   font-size: 0.8rem; font-weight: 700; opacity: .6;
   text-transform: uppercase; letter-spacing: .04em; transition: color .2s;
 }
-.fg label span.req { color: var(--green,#1863ee); margin-left: 2px; }
+.fg label span.req { color: var(--green,#36d0cd); margin-left: 2px; }
 .fg input,.fg select,.fg textarea {
   padding: 11px 14px; border: 1.5px solid rgba(0,0,0,.1);
   border-radius: 10px; font-size: 0.9rem; outline: none;
@@ -30,8 +30,8 @@ get_header(); ?>
   width: 100%; box-sizing: border-box; font-family: inherit; background: #fff;
 }
 .fg input:focus,.fg select:focus,.fg textarea:focus {
-  border-color: var(--green,#1863ee);
-  box-shadow: 0 0 0 3px rgba(24,99,238,.12);
+  border-color: var(--green,#36d0cd);
+  box-shadow: 0 0 0 3px rgba(54,208,205,.12);
 }
 .fg textarea { min-height: 90px; resize: vertical; }
 
@@ -52,17 +52,17 @@ get_header(); ?>
 /* Gender radios */
 .gender-wrap { display: flex; gap: 16px; padding: 10px 0 4px; transition: border-color .2s; border-radius: 10px; }
 .gender-opt { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
-.gender-opt input[type="radio"] { width: 18px; height: 18px; accent-color: var(--green,#1863ee); cursor: pointer; flex-shrink: 0; }
+.gender-opt input[type="radio"] { width: 18px; height: 18px; accent-color: var(--green,#36d0cd); cursor: pointer; flex-shrink: 0; }
 
 /* File upload */
-.fg-file { border: 2px dashed rgba(24,99,238,.4); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; background: rgba(24,99,238,.03); }
-.fg-file:hover { border-color: var(--green,#1863ee); background: rgba(24,99,238,.06); }
+.fg-file { border: 2px dashed rgba(54,208,205,.4); border-radius: 10px; padding: 20px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; background: rgba(54,208,205,.03); }
+.fg-file:hover { border-color: var(--green,#36d0cd); background: rgba(54,208,205,.06); }
 .fg-file input[type="file"] { display: none; }
 .fg-file-label { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
 .fg-file-label svg { opacity: .5; }
 .fg-file-label span { font-size: 0.85rem; opacity: .7; font-weight: 600; }
 .fg-file-label small { font-size: 0.72rem; opacity: .45; }
-#fileName { font-size: 0.8rem; color: var(--green,#1863ee); font-weight: 700; margin-top: 4px; }
+#fileName { font-size: 0.8rem; color: var(--green,#36d0cd); font-weight: 700; margin-top: 4px; }
 
 /* ── Feedback Toast ── */
 .rx-toast {
@@ -92,9 +92,9 @@ get_header(); ?>
 }
 .rx-toast svg { flex-shrink: 0; margin-top: 2px; }
 .rx-toast.rx-success {
-  background: #eaf1fd;
-  color: #0941a8;
-  border-color: #5489ea;
+  background: #ebfcfc;
+  color: #2ab5b2;
+  border-color: #57e7e5;
 }
 .rx-toast.rx-error {
   background: #fff0f0;
@@ -111,15 +111,15 @@ get_header(); ?>
 /* ════════════════════════════════════════════
    DELIVERY INFO BOXES
 ════════════════════════════════════════════ */
-.delivery-info-box { background: #fff; border-radius: 14px; border: 1.5px solid var(--green-light,#e4ecfc); padding: 20px 22px; }
-.delivery-info-box .di-title { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--green,#1863ee); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--green-light,#e4ecfc); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; line-height: 1.4; }
+.delivery-info-box { background: #fff; border-radius: 14px; border: 1.5px solid var(--green-light,#e5fbfb); padding: 20px 22px; }
+.delivery-info-box .di-title { font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--green,#36d0cd); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--green-light,#e5fbfb); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; line-height: 1.4; }
 .delivery-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
 .delivery-row:last-child { border-bottom: none; padding-bottom: 0; }
-.di-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-light,#e4ecfc); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.di-label { font-size: .82rem; font-weight: 800; color: var(--dark,#0e2248); margin-bottom: 3px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-.di-desc { font-size: .75rem; color: var(--text-light,#6282be); line-height: 1.55; font-weight: 500; }
+.di-icon { width: 36px; height: 36px; border-radius: 10px; background: var(--green-light,#e5fbfb); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.di-label { font-size: .82rem; font-weight: 800; color: var(--dark,#0e4847); margin-bottom: 3px; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.di-desc { font-size: .75rem; color: var(--text-light,#4bd5d3); line-height: 1.55; font-weight: 500; }
 .di-badge { display: inline-block; font-size: .62rem; font-weight: 800; padding: 2px 8px; border-radius: 50px; }
-.di-badge--green  { background: var(--green-light,#e4ecfc); color: var(--green,#1863ee); }
+.di-badge--green  { background: var(--green-light,#e5fbfb); color: var(--green,#36d0cd); }
 .di-badge--orange { background: #fff3e0; color: #e65100; }
 .delivery-note-banner { display: flex; align-items: flex-start; gap: 14px; background: #fff8e1; border: 1.5px solid #ffe082; border-radius: 12px; padding: 16px 20px; max-width: 900px; margin: 24px auto 0; }
 .delivery-note-banner .dnb-icon { width: 36px; height: 36px; border-radius: 10px; background: #ffe082; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -132,14 +132,14 @@ get_header(); ?>
 .rx-img-col { position: relative; }
 .rx-bubble-main {
   position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 110%; height: 78%; background: var(--green-light, #e4ecfc);
+  width: 110%; height: 78%; background: var(--green-light, #e5fbfb);
   border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; z-index: 0;
   animation: bubbleFloat1 6s ease-in-out infinite;
 }
-.rx-bubble-2 { position: absolute; bottom: 80px; left: -20px; width: 160px; height: 160px; background: var(--green, #1863ee); border-radius: 50%; z-index: 0; opacity: .18; animation: bubbleFloat2 8s ease-in-out infinite; }
-.rx-bubble-3 { position: absolute; bottom: 90px; right: -10px; width: 100px; height: 100px; background: var(--green, #1863ee); border-radius: 50%; z-index: 0; opacity: .12; animation: bubbleFloat3 7s ease-in-out infinite; }
-.rx-bubble-4 { position: absolute; top: 10px; right: -15px; width: 70px; height: 70px; background: var(--green-mid, #abc6f9); border-radius: 50%; z-index: 0; opacity: .5; animation: bubbleFloat2 5s ease-in-out infinite reverse; }
-.rx-bubble-5 { position: absolute; top: 20px; left: -10px; width: 50px; height: 50px; background: var(--green-mid, #abc6f9); border-radius: 50%; z-index: 0; opacity: .4; animation: bubbleFloat3 9s ease-in-out infinite; }
+.rx-bubble-2 { position: absolute; bottom: 80px; left: -20px; width: 160px; height: 160px; background: var(--green, #36d0cd); border-radius: 50%; z-index: 0; opacity: .18; animation: bubbleFloat2 8s ease-in-out infinite; }
+.rx-bubble-3 { position: absolute; bottom: 90px; right: -10px; width: 100px; height: 100px; background: var(--green, #36d0cd); border-radius: 50%; z-index: 0; opacity: .12; animation: bubbleFloat3 7s ease-in-out infinite; }
+.rx-bubble-4 { position: absolute; top: 10px; right: -15px; width: 70px; height: 70px; background: var(--green-mid, #b0f4f3); border-radius: 50%; z-index: 0; opacity: .5; animation: bubbleFloat2 5s ease-in-out infinite reverse; }
+.rx-bubble-5 { position: absolute; top: 20px; left: -10px; width: 50px; height: 50px; background: var(--green-mid, #b0f4f3); border-radius: 50%; z-index: 0; opacity: .4; animation: bubbleFloat3 9s ease-in-out infinite; }
 @keyframes bubbleFloat1 {
   0%, 100% { border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%; transform: translateX(-50%) scale(1); }
   33%       { border-radius: 45% 55% 55% 45% / 45% 35% 65% 55%; transform: translateX(-50%) scale(1.02); }
@@ -155,37 +155,37 @@ get_header(); ?>
 }
 .rx-delivery-img-wrap { position: relative; z-index: 1; text-align: center; overflow: visible; }
 .rx-delivery-img-wrap img { width: 100%; max-width: 420px; height: auto; object-fit: cover; object-position: top center; display: block; margin: 0 auto; position: relative; z-index: 1; -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 92%); mask-image: linear-gradient(to bottom, black 55%, transparent 92%); }
-.rx-img-overlay-badge { position: relative; z-index: 2; background: var(--green, #1863ee); color: white; border-radius: 14px; padding: 14px 20px; margin: -24px auto 0; max-width: 320px; text-align: center; box-shadow: 0 8px 28px rgba(24,99,238,.35); }
+.rx-img-overlay-badge { position: relative; z-index: 2; background: var(--green, #36d0cd); color: white; border-radius: 14px; padding: 14px 20px; margin: -24px auto 0; max-width: 320px; text-align: center; box-shadow: 0 8px 28px rgba(54,208,205,.35); }
 .rx-img-overlay-badge h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: white; margin: 0 0 4px; }
 .rx-img-overlay-badge p { font-size: .76rem; color: rgba(255,255,255,.85); font-weight: 600; margin: 0; line-height: 1.5; }
 .rx-img-overlay-badge .rx-badge-dots { display: flex; justify-content: center; gap: 4px; margin-top: 8px; }
 .rx-img-overlay-badge .rx-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.5); }
 .rx-img-overlay-badge .rx-dot.active { background: white; width: 18px; border-radius: 3px; }
 .rx-delivery-badges { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; position: relative; z-index: 2; }
-.rx-delivery-badge { display: flex; align-items: center; gap: 12px; background: white; border-radius: 12px; padding: 11px 14px; box-shadow: 0 4px 15px rgba(24,99,238,.08); border: 1.5px solid var(--green-light,#e4ecfc); transition: transform .2s, box-shadow .2s; }
-.rx-delivery-badge:hover { transform: translateX(4px); box-shadow: 0 8px 24px rgba(24,99,238,.15); }
+.rx-delivery-badge { display: flex; align-items: center; gap: 12px; background: white; border-radius: 12px; padding: 11px 14px; box-shadow: 0 4px 15px rgba(54,208,205,.08); border: 1.5px solid var(--green-light,#e5fbfb); transition: transform .2s, box-shadow .2s; }
+.rx-delivery-badge:hover { transform: translateX(4px); box-shadow: 0 8px 24px rgba(54,208,205,.15); }
 .rx-delivery-badge-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.rx-delivery-badge-icon.green  { background: var(--green-light,#e4ecfc); }
+.rx-delivery-badge-icon.green  { background: var(--green-light,#e5fbfb); }
 .rx-delivery-badge-icon.orange { background: #fff3e0; }
-.rx-delivery-badge-icon.blue   { background: #e8f0ff; }
-.rx-delivery-badge-title { font-size: .8rem; font-weight: 800; color: var(--text,#101e38); margin-bottom: 1px; }
-.rx-delivery-badge-sub   { font-size: .7rem; color: var(--text-light,#6e8dc6); font-weight: 600; }
-.rx-only-notice { display: flex; align-items: flex-start; gap: 14px; background: #e8f0ff; border: 1.5px solid #b3c6ff; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
-.rx-only-notice .rx-only-icon { width: 40px; height: 40px; border-radius: 10px; background: #b3c6ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.rx-only-notice p { font-size: .82rem; font-weight: 600; color: #1a237e; line-height: 1.6; margin: 0; }
-.rx-only-notice strong { color: #0d1b6e; }
+.rx-delivery-badge-icon.blue   { background: #ebfcfc; }
+.rx-delivery-badge-title { font-size: .8rem; font-weight: 800; color: var(--text,#103837); margin-bottom: 1px; }
+.rx-delivery-badge-sub   { font-size: .7rem; color: var(--text-light,#5bd9d7); font-weight: 600; }
+.rx-only-notice { display: flex; align-items: flex-start; gap: 14px; background: #ebfcfc; border: 1.5px solid #bcf5f5; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+.rx-only-notice .rx-only-icon { width: 40px; height: 40px; border-radius: 10px; background: #bcf5f5; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.rx-only-notice p { font-size: .82rem; font-weight: 600; color: #26a09e; line-height: 1.6; margin: 0; }
+.rx-only-notice strong { color: #0f6c6a; }
 
 /* ════════════════════════════════════════════
    PAGE SECTIONS
 ════════════════════════════════════════════ */
-.rx-hero { padding: 56px 5%; text-align: center; background: linear-gradient(135deg,#e8f0ff,#d8e8ff); }
+.rx-hero { padding: 56px 5%; text-align: center; background: linear-gradient(135deg,#ebfcfc,#ddfafa); }
 .rx-how  { background: #fff; padding: 56px 5%; }
 .rx-how-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; text-align: center; }
-.rx-delivery { background: var(--green-pale,#edf3fd); padding: 48px 5%; }
+.rx-delivery { background: var(--green-pale,#eefcfc); padding: 48px 5%; }
 .rx-delivery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto; }
 .rx-form-sec { background: #fff; padding: 48px 5% 56px; }
 .rx-two-col { display: grid; grid-template-columns: 1fr 1.5fr; gap: 48px; align-items: start; }
-.rx-cta { background: var(--green,#1863ee); padding: 40px 5%; text-align: center; position: relative; overflow: hidden; }
+.rx-cta { background: var(--green,#36d0cd); padding: 40px 5%; text-align: center; position: relative; overflow: hidden; }
 
 /* ════════════════════════════════════════════
    RESPONSIVE
@@ -225,12 +225,12 @@ get_header(); ?>
 <div style="background:white;padding:24px 5% 0;">
   <div class="rx-only-notice" style="max-width:1100px;margin:0 auto;">
     <div class="rx-only-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a237e" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#26a09e" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
     </div>
     <p>
       <strong>Prescription Medicines Only:</strong> This form is strictly for <strong>doctor-prescribed medicines</strong>. We cannot process orders without a valid prescription signed by a licensed medical practitioner.
       For <strong>over-the-counter medicines</strong>, please visit our
-      <a href="<?php echo function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop'); ?>" style="color:#1a237e;font-weight:800;text-decoration:underline;">Shop page</a>.
+      <a href="<?php echo function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop'); ?>" style="color:#26a09e;font-weight:800;text-decoration:underline;">Shop page</a>.
     </p>
   </div>
 </div>
@@ -278,7 +278,7 @@ get_header(); ?>
         Nairobi: Same Day Delivery
       </div>
       <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#1863ee)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#36d0cd)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <div><div class="di-label">Order by 3:00 PM <span class="di-badge di-badge--green">Same Day</span></div><div class="di-desc">Orders placed before 3:00 PM are dispatched the same day and delivered within Nairobi by evening.</div></div>
       </div>
       <div class="delivery-row">
@@ -286,7 +286,7 @@ get_header(); ?>
         <div><div class="di-label">3:00 PM – 6:00 PM <span class="di-badge di-badge--orange">Possible Same Day</span></div><div class="di-desc">Orders between 3–6 PM may still be delivered same day. Our team will confirm via phone or email.</div></div>
       </div>
       <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#1863ee)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#36d0cd)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <div><div class="di-label">After 6:00 PM <span class="di-badge di-badge--orange">Next Morning</span></div><div class="di-desc">Orders received after 6:00 PM are processed the following morning.</div></div>
       </div>
     </div>
@@ -296,7 +296,7 @@ get_header(); ?>
         Outside Nairobi: Countrywide
       </div>
       <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#1863ee)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#36d0cd)" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <div><div class="di-label">Nearby Counties <span class="di-badge di-badge--green">Next Day</span></div><div class="di-desc">Kiambu, Machakos, Kajiado, Murang'a and surrounding areas receive orders next day.</div></div>
       </div>
       <div class="delivery-row">
@@ -304,7 +304,7 @@ get_header(); ?>
         <div><div class="di-label">Distant Counties <span class="di-badge di-badge--orange">1–2 Days</span></div><div class="di-desc">Mombasa, Kisumu, Nakuru, Eldoret and farther counties take 1–2 days.</div></div>
       </div>
       <div class="delivery-row">
-        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#1863ee)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="di-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green,#36d0cd)" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         <div><div class="di-label">Confirmation Call</div><div class="di-desc">We always confirm your expected delivery time before dispatching your order.</div></div>
       </div>
     </div>
@@ -354,7 +354,7 @@ get_header(); ?>
           <div><div class="rx-delivery-badge-title">Confirmation Call</div><div class="rx-delivery-badge-sub">We confirm delivery time before dispatch</div></div>
         </div>
         <div class="rx-delivery-badge reveal rd3">
-          <div class="rx-delivery-badge-icon blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a80f0" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="rx-delivery-badge-icon blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60dad8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div><div class="rx-delivery-badge-title">Licensed Pharmacists</div><div class="rx-delivery-badge-sub">All prescriptions reviewed by certified pharmacists</div></div>
         </div>
       </div>
@@ -466,7 +466,7 @@ get_header(); ?>
 <section class="rx-cta">
   <div class="cta-b1"></div><div class="cta-b2"></div>
   <div style="position:relative;z-index:1;">
-    <h2 class="sec-title reveal" style="color:white;">Need Help? <span style="color:var(--green-mid,#abc6f9);">Call Us Now</span></h2>
+    <h2 class="sec-title reveal" style="color:white;">Need Help? <span style="color:var(--green-mid,#b0f4f3);">Call Us Now</span></h2>
     <p style="color:rgba(255,255,255,.8);font-size:.88rem;margin:10px 0 24px;" class="reveal rd1">Our pharmacists are available Mon–Sat 8am–6pm to assist you.</p>
     <a href="tel:+254720737151" class="btn-green reveal rd2" style="background:white;color:var(--green);">
       <?php echo esc_html(travotech_phone()); ?>

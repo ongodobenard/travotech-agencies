@@ -17,7 +17,7 @@ wp_enqueue_style( 'dashicons' );
 
 /* ── Banner ──────────────────────────────────────── */
 .privacy-policy-page .pp-banner {
-  background: linear-gradient(135deg, #0a4cc6 0%, #1863ee 60%, #407def 100%);
+  background: linear-gradient(135deg, #2dbebc 0%, #36d0cd 60%, #57d8d6 100%);
   color: #fff;
   padding: 64px 0 52px;
   text-align: center;
@@ -53,13 +53,13 @@ wp_enqueue_style( 'dashicons' );
   text-decoration: underline;
   font-weight: 700;
 }
-.privacy-policy-page .pp-breadcrumb a:hover { color: #abc6f9; }
+.privacy-policy-page .pp-breadcrumb a:hover { color: #b0f4f3; }
 
 /* ── Content section — bubble stage ─────────────── */
 .privacy-policy-page .pp-content {
   position: relative;
   padding: 60px 5%;
-  background: #e9f0fb;
+  background: #e9fbfb;
   overflow: hidden; /* clips bubbles to this zone only */
   z-index: 1;
 }
@@ -84,21 +84,21 @@ wp_enqueue_style( 'dashicons' );
   -webkit-backdrop-filter: blur(18px);
   padding: 44px 52px;
   border-radius: 20px;
-  border: 1.5px solid rgba(171,198,249,.7);
-  box-shadow: 0 8px 40px rgba(24,99,238,.12), 0 2px 12px rgba(0,0,0,.04);
+  border: 1.5px solid rgba(176,244,243,.7);
+  box-shadow: 0 8px 40px rgba(54,208,205,.12), 0 2px 12px rgba(0,0,0,.04);
 }
 .privacy-policy-page .policy-inner h2 {
   font-family: 'Nunito', sans-serif;
-  color: #101e38;
+  color: #103837;
   font-size: 1.15rem;
   font-weight: 800;
   margin: 36px 0 10px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #e4ecfc;
+  border-bottom: 2px solid #e5fbfb;
 }
 .privacy-policy-page .policy-inner h2:first-of-type { margin-top: 0; }
 .privacy-policy-page .policy-inner p {
-  color: #3e5d98;
+  color: #2dbebc;
   font-size: .88rem;
   line-height: 1.85;
   margin-bottom: 14px;
@@ -106,32 +106,32 @@ wp_enqueue_style( 'dashicons' );
 }
 .privacy-policy-page .policy-inner .pp-intro {
   font-size: .95rem;
-  color: #101e38;
+  color: #103837;
   font-weight: 600;
-  background: #edf3fd;
-  border-left: 4px solid #1863ee;
+  background: #eefcfc;
+  border-left: 4px solid #36d0cd;
   padding: 16px 20px;
   border-radius: 0 10px 10px 0;
   margin-bottom: 28px;
 }
 .privacy-policy-page .policy-inner .pp-date {
   font-size: .78rem;
-  color: #6e8dc6;
+  color: #5bd9d7;
   font-style: italic;
   margin-bottom: 32px;
   display: block;
 }
 .privacy-policy-page .policy-inner a {
-  color: #1863ee;
+  color: #36d0cd;
   text-decoration: underline;
   font-weight: 700;
 }
-.privacy-policy-page .policy-inner a:hover { color: #0a4cc6; }
+.privacy-policy-page .policy-inner a:hover { color: #2dbebc; }
 
 /* ── Contact box ─────────────────────────────────── */
 .privacy-policy-page .policy-inner .pp-contact-box {
-  background: #edf3fd;
-  border: 1.5px solid #abc6f9;
+  background: #eefcfc;
+  border: 1.5px solid #b0f4f3;
   border-radius: 12px;
   padding: 22px 26px;
   margin-top: 10px;
@@ -143,13 +143,13 @@ wp_enqueue_style( 'dashicons' );
   gap: 10px;
   margin-bottom: 10px;
   font-size: .88rem;
-  color: #3e5d98;
+  color: #2dbebc;
   font-weight: 500;
   min-width: 0; /* allow flex children to shrink */
 }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row:last-child { margin-bottom: 0; }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row .dashicons {
-  color: #1863ee;
+  color: #36d0cd;
   font-size: 18px;
   width: 18px;
   height: 18px;
@@ -162,7 +162,7 @@ wp_enqueue_style( 'dashicons' );
   min-width: 0;
 }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row a {
-  color: #1863ee;
+  color: #36d0cd;
   font-weight: 700;
   text-decoration: none;
   word-break: break-all;
@@ -170,7 +170,7 @@ wp_enqueue_style( 'dashicons' );
   min-width: 0;
 }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row a:hover {
-  color: #0a4cc6;
+  color: #2dbebc;
   text-decoration: underline;
 }
 
@@ -389,11 +389,11 @@ wp_enqueue_style( 'dashicons' );
 
   /* ── Bubble colours — theme greens ── */
   const COLORS = [
-    'rgba(24,99,238,BASE)',
-    'rgba(10,76,198,BASE)',
-    'rgba(64,125,239,BASE)',
-    'rgba(171,198,249,BASE)',
-    'rgba(74,131,238,BASE)',
+    'rgba(54,208,205,BASE)',
+    'rgba(45,190,188,BASE)',
+    'rgba(87,216,214,BASE)',
+    'rgba(176,244,243,BASE)',
+    'rgba(95,217,215,BASE)',
   ];
 
   const COUNT   = 18;

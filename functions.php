@@ -582,67 +582,67 @@ function travotech_build_and_send_order( $args ) {
     $items_html = '';
     foreach ( $cart_lines as $item ) {
         $items_html .= '<tr>
-            <td style="padding:10px 14px;border-bottom:1px solid #e4ecfc;font-family:Arial,sans-serif;font-size:14px;color:#101e38;">' . esc_html( $item['name'] ) . '</td>
-            <td style="padding:10px 14px;border-bottom:1px solid #e4ecfc;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#3e5d98;">' . intval( $item['qty'] ) . '</td>
-            <td style="padding:10px 14px;border-bottom:1px solid #e4ecfc;text-align:right;font-family:Arial,sans-serif;font-size:14px;color:#1863ee;font-weight:700;">KES ' . number_format( $item['sub'], 2 ) . '</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #e5fbfb;font-family:Arial,sans-serif;font-size:14px;color:#103837;">' . esc_html( $item['name'] ) . '</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #e5fbfb;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#2dbebc;">' . intval( $item['qty'] ) . '</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #e5fbfb;text-align:right;font-family:Arial,sans-serif;font-size:14px;color:#36d0cd;font-weight:700;">KES ' . number_format( $item['sub'], 2 ) . '</td>
         </tr>';
     }
 
     $wc_block = $order_id
-        ? '<tr><td style="padding:12px 32px 0;"><div style="background:#e4ecfc;border:1.5px solid #abc6f9;border-radius:8px;padding:10px 16px;font-size:12px;color:#0a4cc6;">Order #' . $order_id . ' saved to WooCommerce, Status: <strong>Pending Payment</strong></div></td></tr>'
+        ? '<tr><td style="padding:12px 32px 0;"><div style="background:#e5fbfb;border:1.5px solid #b0f4f3;border-radius:8px;padding:10px 16px;font-size:12px;color:#2dbebc;">Order #' . $order_id . ' saved to WooCommerce, Status: <strong>Pending Payment</strong></div></td></tr>'
         : ( $order_error ? '<tr><td style="padding:12px 32px 0;"><div style="background:#fff0f0;border:1.5px solid #f0b8b8;border-radius:8px;padding:10px 16px;font-size:12px;color:#c0392b;">WC order creation failed: ' . esc_html( $order_error ) . '</div></td></tr>' : '' );
 
     $view_btn = $order_id
-        ? '<a href="' . esc_url( $order_url ) . '" style="display:inline-block;background:#1863ee;color:#fff;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;">View Order #' . $order_id . ' in WooCommerce</a>'
-        : '<a href="' . esc_url( admin_url( 'admin.php?page=wc-orders' ) ) . '" style="display:inline-block;background:#1863ee;color:#fff;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;">View WooCommerce Orders</a>';
+        ? '<a href="' . esc_url( $order_url ) . '" style="display:inline-block;background:#36d0cd;color:#fff;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;">View Order #' . $order_id . ' in WooCommerce</a>'
+        : '<a href="' . esc_url( admin_url( 'admin.php?page=wc-orders' ) ) . '" style="display:inline-block;background:#36d0cd;color:#fff;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;">View WooCommerce Orders</a>';
 
     $customer_rows = '
-        <tr><td style="padding:5px 0;font-size:13px;color:#6e8dc6;font-weight:700;width:130px;">Name</td><td style="padding:5px 0;font-size:13px;color:#101e38;font-weight:700;">' . esc_html( trim( $fname . ' ' . $lname ) ) . '</td></tr>'
-        . ( $company ? '<tr><td style="padding:5px 0;font-size:13px;color:#6e8dc6;font-weight:700;">Company</td><td style="padding:5px 0;font-size:13px;color:#101e38;">' . esc_html( $company ) . '</td></tr>' : '' )
-        . ( $phone   ? '<tr><td style="padding:5px 0;font-size:13px;color:#6e8dc6;font-weight:700;">Phone</td><td style="padding:5px 0;font-size:13px;color:#101e38;font-weight:700;"><a href="tel:' . esc_attr( $phone ) . '" style="color:#1863ee;">' . esc_html( $phone ) . '</a></td></tr>' : '' )
-        . ( is_email( $email ) ? '<tr><td style="padding:5px 0;font-size:13px;color:#6e8dc6;font-weight:700;">Email</td><td style="padding:5px 0;font-size:13px;color:#101e38;"><a href="mailto:' . esc_attr( $email ) . '" style="color:#1863ee;">' . esc_html( $email ) . '</a></td></tr>' : '' )
-        . '<tr><td style="padding:5px 0;font-size:13px;color:#6e8dc6;font-weight:700;">Address</td><td style="padding:5px 0;font-size:13px;color:#101e38;">' . esc_html( implode( ', ', array_filter( [ $addr1, $addr2, $city, $state, $postcode, $country ] ) ) ) . '</td></tr>'
-        . '<tr><td style="padding:5px 0;font-size:13px;color:#6e8dc6;font-weight:700;">Payment</td><td style="padding:5px 0;font-size:13px;color:#101e38;">' . esc_html( ucwords( str_replace( [ '_', '-' ], ' ', $payment ) ) ) . '</td></tr>';
+        <tr><td style="padding:5px 0;font-size:13px;color:#5bd9d7;font-weight:700;width:130px;">Name</td><td style="padding:5px 0;font-size:13px;color:#103837;font-weight:700;">' . esc_html( trim( $fname . ' ' . $lname ) ) . '</td></tr>'
+        . ( $company ? '<tr><td style="padding:5px 0;font-size:13px;color:#5bd9d7;font-weight:700;">Company</td><td style="padding:5px 0;font-size:13px;color:#103837;">' . esc_html( $company ) . '</td></tr>' : '' )
+        . ( $phone   ? '<tr><td style="padding:5px 0;font-size:13px;color:#5bd9d7;font-weight:700;">Phone</td><td style="padding:5px 0;font-size:13px;color:#103837;font-weight:700;"><a href="tel:' . esc_attr( $phone ) . '" style="color:#36d0cd;">' . esc_html( $phone ) . '</a></td></tr>' : '' )
+        . ( is_email( $email ) ? '<tr><td style="padding:5px 0;font-size:13px;color:#5bd9d7;font-weight:700;">Email</td><td style="padding:5px 0;font-size:13px;color:#103837;"><a href="mailto:' . esc_attr( $email ) . '" style="color:#36d0cd;">' . esc_html( $email ) . '</a></td></tr>' : '' )
+        . '<tr><td style="padding:5px 0;font-size:13px;color:#5bd9d7;font-weight:700;">Address</td><td style="padding:5px 0;font-size:13px;color:#103837;">' . esc_html( implode( ', ', array_filter( [ $addr1, $addr2, $city, $state, $postcode, $country ] ) ) ) . '</td></tr>'
+        . '<tr><td style="padding:5px 0;font-size:13px;color:#5bd9d7;font-weight:700;">Payment</td><td style="padding:5px 0;font-size:13px;color:#103837;">' . esc_html( ucwords( str_replace( [ '_', '-' ], ' ', $payment ) ) ) . '</td></tr>';
 
     $wa_phone = preg_replace( '/[^0-9]/', '', $phone );
 
     // ── SALES NOTIFICATION EMAIL HTML ──
-    $html_sales = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#edf3fd;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="background:#edf3fd;padding:30px 0;">
+    $html_sales = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#eefcfc;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#eefcfc;padding:30px 0;">
       <tr><td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;max-width:600px;width:100%;">
-          <tr><td style="background:linear-gradient(135deg,#0a4cc6,#1863ee);padding:28px 32px;text-align:center;">
+          <tr><td style="background:linear-gradient(135deg,#2dbebc,#36d0cd);padding:28px 32px;text-align:center;">
             <div style="font-size:26px;font-weight:900;color:#fff;">' . esc_html( $store_name ) . '</div>
             <div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:4px;">New Order Notification</div>
           </td></tr>
           <tr><td style="padding:24px 32px 0;text-align:center;">
-            <div style="display:inline-block;background:#e4ecfc;border:1.5px solid #abc6f9;border-radius:50px;padding:7px 20px;font-size:13px;font-weight:800;color:#0a4cc6;">' . esc_html( $via_label ) . ' &nbsp;|&nbsp; Order ' . esc_html( $order_label ) . '</div>
+            <div style="display:inline-block;background:#e5fbfb;border:1.5px solid #b0f4f3;border-radius:50px;padding:7px 20px;font-size:13px;font-weight:800;color:#2dbebc;">' . esc_html( $via_label ) . ' &nbsp;|&nbsp; Order ' . esc_html( $order_label ) . '</div>
           </td></tr>
           ' . $wc_block . '
           <tr><td style="padding:24px 32px 0;">
-            <div style="font-size:15px;font-weight:800;color:#101e38;margin-bottom:12px;border-bottom:2px solid #e4ecfc;padding-bottom:8px;">Customer Details</div>
+            <div style="font-size:15px;font-weight:800;color:#103837;margin-bottom:12px;border-bottom:2px solid #e5fbfb;padding-bottom:8px;">Customer Details</div>
             <table width="100%" cellpadding="0" cellspacing="0">' . $customer_rows . '</table>
           </td></tr>
           <tr><td style="padding:24px 32px 0;">
-            <div style="font-size:15px;font-weight:800;color:#101e38;margin-bottom:12px;border-bottom:2px solid #e4ecfc;padding-bottom:8px;">Order Items</div>
-            <table width="100%" cellpadding="0" cellspacing="0" style="border:1.5px solid #e4ecfc;border-radius:8px;overflow:hidden;">
-              <thead><tr style="background:#f8fbff;">
-                <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:800;color:#6e8dc6;text-transform:uppercase;">Product</th>
-                <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:800;color:#6e8dc6;text-transform:uppercase;">Qty</th>
-                <th style="padding:9px 14px;text-align:right;font-size:11px;font-weight:800;color:#6e8dc6;text-transform:uppercase;">Total</th>
+            <div style="font-size:15px;font-weight:800;color:#103837;margin-bottom:12px;border-bottom:2px solid #e5fbfb;padding-bottom:8px;">Order Items</div>
+            <table width="100%" cellpadding="0" cellspacing="0" style="border:1.5px solid #e5fbfb;border-radius:8px;overflow:hidden;">
+              <thead><tr style="background:#f9fefe;">
+                <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:800;color:#5bd9d7;text-transform:uppercase;">Product</th>
+                <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:800;color:#5bd9d7;text-transform:uppercase;">Qty</th>
+                <th style="padding:9px 14px;text-align:right;font-size:11px;font-weight:800;color:#5bd9d7;text-transform:uppercase;">Total</th>
               </tr></thead>
               <tbody>' . $items_html . '</tbody>
-              <tfoot><tr style="background:#edf3fd;">
-                <td colspan="2" style="padding:12px 14px;font-size:15px;font-weight:900;color:#101e38;">ORDER TOTAL</td>
-                <td style="padding:12px 14px;text-align:right;font-size:17px;font-weight:900;color:#1863ee;">' . $total_fmt . '</td>
+              <tfoot><tr style="background:#eefcfc;">
+                <td colspan="2" style="padding:12px 14px;font-size:15px;font-weight:900;color:#103837;">ORDER TOTAL</td>
+                <td style="padding:12px 14px;text-align:right;font-size:17px;font-weight:900;color:#36d0cd;">' . $total_fmt . '</td>
               </tr></tfoot>
             </table>
           </td></tr>
-          ' . ( $notes ? '<tr><td style="padding:20px 32px 0;"><div style="background:#fff8e8;border:1.5px solid #f0d080;border-radius:8px;padding:12px 16px;"><div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:5px;text-transform:uppercase;">Customer Notes</div><div style="font-size:13px;color:#3e5d98;line-height:1.6;">' . esc_html( $notes ) . '</div></div></td></tr>' : '' ) . '
+          ' . ( $notes ? '<tr><td style="padding:20px 32px 0;"><div style="background:#fff8e8;border:1.5px solid #f0d080;border-radius:8px;padding:12px 16px;"><div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:5px;text-transform:uppercase;">Customer Notes</div><div style="font-size:13px;color:#2dbebc;line-height:1.6;">' . esc_html( $notes ) . '</div></div></td></tr>' : '' ) . '
           <tr><td style="padding:20px 32px 0;">
-            <div style="background:#edf3fd;border:1.5px solid #abc6f9;border-radius:8px;padding:14px 16px;">
-              <div style="font-size:12px;font-weight:800;color:#1863ee;text-transform:uppercase;margin-bottom:8px;">Payment Reminder</div>
-              <div style="font-size:12px;color:#3e5d98;line-height:1.8;">
+            <div style="background:#eefcfc;border:1.5px solid #b0f4f3;border-radius:8px;padding:14px 16px;">
+              <div style="font-size:12px;font-weight:800;color:#36d0cd;text-transform:uppercase;margin-bottom:8px;">Payment Reminder</div>
+              <div style="font-size:12px;color:#2dbebc;line-height:1.8;">
                 Nairobi: Collect Cash on delivery<br>
                 Other Counties: Full payment before dispatch<br>
                 
@@ -653,9 +653,9 @@ function travotech_build_and_send_order( $args ) {
             ' . $view_btn . '
             ' . ( $wa_phone ? '<div style="margin-top:14px;"><a href="https://wa.me/' . esc_attr( $wa_phone ) . '" style="font-size:12px;color:#25d366;text-decoration:none;font-weight:700;">WhatsApp Customer</a></div>' : '' ) . '
           </td></tr>
-          <tr><td style="background:#f8fbff;border-top:2px solid #e4ecfc;padding:16px 32px;text-align:center;">
-            <div style="font-size:11px;color:#6e8dc6;">Automated notification from ' . esc_html( $store_name ) . '</div>
-            <div style="font-size:11px;color:#6e8dc6;margin-top:3px;">+254 720 737 151 &nbsp;|&nbsp; ' . esc_html( home_url( '/' ) ) . '</div>
+          <tr><td style="background:#f9fefe;border-top:2px solid #e5fbfb;padding:16px 32px;text-align:center;">
+            <div style="font-size:11px;color:#5bd9d7;">Automated notification from ' . esc_html( $store_name ) . '</div>
+            <div style="font-size:11px;color:#5bd9d7;margin-top:3px;">+254 720 737 151 &nbsp;|&nbsp; ' . esc_html( home_url( '/' ) ) . '</div>
           </td></tr>
         </table>
       </td></tr>
@@ -692,99 +692,99 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
     $items_html = '';
     foreach ( $cart_lines as $item ) {
         $items_html .= '<tr>
-            <td style="padding:10px 14px;border-bottom:1px solid #e4ecfc;font-family:Arial,sans-serif;font-size:14px;color:#101e38;">' . esc_html( $item['name'] ) . '</td>
-            <td style="padding:10px 14px;border-bottom:1px solid #e4ecfc;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#3e5d98;">' . intval( $item['qty'] ) . '</td>
-            <td style="padding:10px 14px;border-bottom:1px solid #e4ecfc;text-align:right;font-family:Arial,sans-serif;font-size:14px;color:#1863ee;font-weight:700;">KES ' . number_format( $item['sub'], 2 ) . '</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #e5fbfb;font-family:Arial,sans-serif;font-size:14px;color:#103837;">' . esc_html( $item['name'] ) . '</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #e5fbfb;text-align:center;font-family:Arial,sans-serif;font-size:14px;color:#2dbebc;">' . intval( $item['qty'] ) . '</td>
+            <td style="padding:10px 14px;border-bottom:1px solid #e5fbfb;text-align:right;font-family:Arial,sans-serif;font-size:14px;color:#36d0cd;font-weight:700;">KES ' . number_format( $item['sub'], 2 ) . '</td>
         </tr>';
     }
 
     // ── FIX: Use STORE WhatsApp number so customer contacts the shop, not themselves ──
     $store_wa = preg_replace( '/[^0-9]/', '', function_exists( 'travotech_wa' ) ? travotech_wa() : '254720737151' );
 
-    $html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#edf3fd;">
-    <table width="100%" cellpadding="0" cellspacing="0" style="background:#edf3fd;padding:30px 0;">
+    $html = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#eefcfc;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#eefcfc;padding:30px 0;">
       <tr><td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;max-width:600px;width:100%;">
 
-          <tr><td style="background:linear-gradient(135deg,#0a4cc6,#1863ee);padding:30px 32px;text-align:center;">
+          <tr><td style="background:linear-gradient(135deg,#2dbebc,#36d0cd);padding:30px 32px;text-align:center;">
             <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;">' . esc_html( $store_name ) . '</div>
             <div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:4px;font-style:italic;">Trusted Care, Delivered Daily</div>
           </td></tr>
 
           <tr><td style="padding:28px 32px 10px;text-align:center;">
-            <div style="font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#101e38;margin-bottom:6px;">Order Confirmed</div>
-            <div style="font-family:Arial,sans-serif;font-size:14px;color:#3e5d98;line-height:1.6;">
+            <div style="font-family:Arial,sans-serif;font-size:22px;font-weight:900;color:#103837;margin-bottom:6px;">Order Confirmed</div>
+            <div style="font-family:Arial,sans-serif;font-size:14px;color:#2dbebc;line-height:1.6;">
               Thank you, <strong>' . esc_html( $fname ) . '</strong>! Your order has been received and our team will contact you shortly to confirm delivery.
             </div>
-            <div style="display:inline-block;background:#e4ecfc;border:1.5px solid #abc6f9;border-radius:50px;padding:7px 20px;font-size:13px;font-weight:800;color:#0a4cc6;margin-top:14px;">
+            <div style="display:inline-block;background:#e5fbfb;border:1.5px solid #b0f4f3;border-radius:50px;padding:7px 20px;font-size:13px;font-weight:800;color:#2dbebc;margin-top:14px;">
               Order ' . esc_html( $order_label ) . '
             </div>
           </td></tr>
 
           <tr><td style="padding:20px 32px 0;">
-            <div style="font-size:15px;font-weight:800;color:#101e38;margin-bottom:12px;border-bottom:2px solid #e4ecfc;padding-bottom:8px;">Your Order</div>
-            <table width="100%" cellpadding="0" cellspacing="0" style="border:1.5px solid #e4ecfc;border-radius:8px;overflow:hidden;">
-              <thead><tr style="background:#f8fbff;">
-                <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:800;color:#6e8dc6;text-transform:uppercase;">Product</th>
-                <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:800;color:#6e8dc6;text-transform:uppercase;">Qty</th>
-                <th style="padding:9px 14px;text-align:right;font-size:11px;font-weight:800;color:#6e8dc6;text-transform:uppercase;">Total</th>
+            <div style="font-size:15px;font-weight:800;color:#103837;margin-bottom:12px;border-bottom:2px solid #e5fbfb;padding-bottom:8px;">Your Order</div>
+            <table width="100%" cellpadding="0" cellspacing="0" style="border:1.5px solid #e5fbfb;border-radius:8px;overflow:hidden;">
+              <thead><tr style="background:#f9fefe;">
+                <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:800;color:#5bd9d7;text-transform:uppercase;">Product</th>
+                <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:800;color:#5bd9d7;text-transform:uppercase;">Qty</th>
+                <th style="padding:9px 14px;text-align:right;font-size:11px;font-weight:800;color:#5bd9d7;text-transform:uppercase;">Total</th>
               </tr></thead>
               <tbody>' . $items_html . '</tbody>
-              <tfoot><tr style="background:#edf3fd;">
-                <td colspan="2" style="padding:12px 14px;font-size:15px;font-weight:900;color:#101e38;">ORDER TOTAL</td>
-                <td style="padding:12px 14px;text-align:right;font-size:17px;font-weight:900;color:#1863ee;">' . $total_fmt . '</td>
+              <tfoot><tr style="background:#eefcfc;">
+                <td colspan="2" style="padding:12px 14px;font-size:15px;font-weight:900;color:#103837;">ORDER TOTAL</td>
+                <td style="padding:12px 14px;text-align:right;font-size:17px;font-weight:900;color:#36d0cd;">' . $total_fmt . '</td>
               </tr></tfoot>
             </table>
           </td></tr>
 
-          ' . ( $notes ? '<tr><td style="padding:16px 32px 0;"><div style="background:#fff8e8;border:1.5px solid #f0d080;border-radius:8px;padding:12px 16px;"><div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:5px;text-transform:uppercase;">Your Notes</div><div style="font-size:13px;color:#3e5d98;line-height:1.6;">' . esc_html( $notes ) . '</div></div></td></tr>' : '' ) . '
+          ' . ( $notes ? '<tr><td style="padding:16px 32px 0;"><div style="background:#fff8e8;border:1.5px solid #f0d080;border-radius:8px;padding:12px 16px;"><div style="font-size:12px;font-weight:800;color:#b8860b;margin-bottom:5px;text-transform:uppercase;">Your Notes</div><div style="font-size:13px;color:#2dbebc;line-height:1.6;">' . esc_html( $notes ) . '</div></div></td></tr>' : '' ) . '
 
           <tr><td style="padding:16px 32px 0;">
-            <div style="background:#edf3fd;border:1.5px solid #abc6f9;border-radius:8px;padding:14px 16px;">
-              <div style="font-size:12px;font-weight:800;color:#1863ee;text-transform:uppercase;margin-bottom:8px;">Payment: ' . esc_html( ucwords( str_replace( [ '_', '-' ], ' ', $payment ) ) ) . '</div>
-              <div style="font-size:12px;color:#3e5d98;line-height:1.9;">
+            <div style="background:#eefcfc;border:1.5px solid #b0f4f3;border-radius:8px;padding:14px 16px;">
+              <div style="font-size:12px;font-weight:800;color:#36d0cd;text-transform:uppercase;margin-bottom:8px;">Payment: ' . esc_html( ucwords( str_replace( [ '_', '-' ], ' ', $payment ) ) ) . '</div>
+              <div style="font-size:12px;color:#2dbebc;line-height:1.9;">
                 Nairobi: Pay Cash on delivery<br>
                 Other Counties: Full payment before dispatch<br>
                 
-                Total to pay: <span style="color:#1863ee;font-weight:800;">' . $total_fmt . '</span>
+                Total to pay: <span style="color:#36d0cd;font-weight:800;">' . $total_fmt . '</span>
               </div>
             </div>
           </td></tr>
 
           <tr><td style="padding:16px 32px 0;">
-            <div style="font-size:15px;font-weight:800;color:#101e38;margin-bottom:10px;border-bottom:2px solid #e4ecfc;padding-bottom:8px;">What Happens Next</div>
+            <div style="font-size:15px;font-weight:800;color:#103837;margin-bottom:10px;border-bottom:2px solid #e5fbfb;padding-bottom:8px;">What Happens Next</div>
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="width:32px;vertical-align:top;padding:4px 0;">
-                  <div style="width:22px;height:22px;background:#1863ee;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">1</div>
+                  <div style="width:22px;height:22px;background:#36d0cd;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">1</div>
                 </td>
-                <td style="padding:4px 0 4px 8px;font-size:13px;color:#3e5d98;font-family:Arial,sans-serif;line-height:1.5;">Our pharmacist reviews your order and verifies stock availability.</td>
+                <td style="padding:4px 0 4px 8px;font-size:13px;color:#2dbebc;font-family:Arial,sans-serif;line-height:1.5;">Our pharmacist reviews your order and verifies stock availability.</td>
               </tr>
               <tr>
                 <td style="width:32px;vertical-align:top;padding:4px 0;">
-                  <div style="width:22px;height:22px;background:#1863ee;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">2</div>
+                  <div style="width:22px;height:22px;background:#36d0cd;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">2</div>
                 </td>
-                <td style="padding:4px 0 4px 8px;font-size:13px;color:#3e5d98;font-family:Arial,sans-serif;line-height:1.5;">We call or WhatsApp you on <strong>' . esc_html( $phone ) . '</strong> to confirm delivery details.</td>
+                <td style="padding:4px 0 4px 8px;font-size:13px;color:#2dbebc;font-family:Arial,sans-serif;line-height:1.5;">We call or WhatsApp you on <strong>' . esc_html( $phone ) . '</strong> to confirm delivery details.</td>
               </tr>
               <tr>
                 <td style="width:32px;vertical-align:top;padding:4px 0;">
-                  <div style="width:22px;height:22px;background:#1863ee;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">3</div>
+                  <div style="width:22px;height:22px;background:#36d0cd;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">3</div>
                 </td>
-                <td style="padding:4px 0 4px 8px;font-size:13px;color:#3e5d98;font-family:Arial,sans-serif;line-height:1.5;">Your order is dispatched and delivered to your address.</td>
+                <td style="padding:4px 0 4px 8px;font-size:13px;color:#2dbebc;font-family:Arial,sans-serif;line-height:1.5;">Your order is dispatched and delivered to your address.</td>
               </tr>
             </table>
           </td></tr>
 
           <tr><td style="padding:24px 32px;text-align:center;">
             <a href="https://wa.me/' . esc_attr( $store_wa ) . '" style="display:inline-block;background:#25d366;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Chat on WhatsApp</a>
-            <a href="tel:+254720737151" style="display:inline-block;background:#1863ee;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Call Us</a>
+            <a href="tel:+254720737151" style="display:inline-block;background:#36d0cd;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Call Us</a>
           </td></tr>
 
-          <tr><td style="background:#f8fbff;border-top:2px solid #e4ecfc;padding:16px 32px;text-align:center;">
-            <div style="font-size:12px;color:#3e5d98;font-weight:700;">' . esc_html( $store_name ) . ' :Trusted Care, Delivered Daily</div>
-            <div style="font-size:11px;color:#6e8dc6;margin-top:4px;">+254 720 737 151 &nbsp;|&nbsp; sales@travotechagencies.co.ke</div>
-            <div style="font-size:11px;color:#6e8dc6;margin-top:2px;">' . esc_html( home_url( '/' ) ) . '</div>
-            <div style="font-size:10px;color:#9db3db;margin-top:8px;">This is an automated order confirmation email. Please do not reply directly.</div>
+          <tr><td style="background:#f9fefe;border-top:2px solid #e5fbfb;padding:16px 32px;text-align:center;">
+            <div style="font-size:12px;color:#2dbebc;font-weight:700;">' . esc_html( $store_name ) . ' :Trusted Care, Delivered Daily</div>
+            <div style="font-size:11px;color:#5bd9d7;margin-top:4px;">+254 720 737 151 &nbsp;|&nbsp; sales@travotechagencies.co.ke</div>
+            <div style="font-size:11px;color:#5bd9d7;margin-top:2px;">' . esc_html( home_url( '/' ) ) . '</div>
+            <div style="font-size:10px;color:#9ddbda;margin-top:8px;">This is an automated order confirmation email. Please do not reply directly.</div>
           </td></tr>
 
         </table>
