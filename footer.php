@@ -53,6 +53,28 @@ $trv_contact = $trv_page( array( 'contact', 'contact-us' ), '/contact/' );
 $trv_return  = $trv_page( array( 'return-and-refund-policy', 'return-policy', 'refund-policy', 'returns' ), '/return-policy/' );
 $trv_terms   = $trv_page( array( 'terms-and-conditions', 'terms', 'terms-conditions' ), '/terms/' );
 
+/* Find the real pages by template file first, then by slug text */
+$trv_find = function ( array $tpls, array $needles, $fallback ) {
+    $pages = get_pages( array( 'post_status' => 'publish' ) );
+    foreach ( $pages as $p ) {
+        if ( in_array( get_page_template_slug( $p->ID ), $tpls, true ) ) {
+            return get_permalink( $p );
+        }
+    }
+    foreach ( $needles as $n ) {
+        foreach ( $pages as $p ) {
+            if ( false !== strpos( $p->post_name, $n ) ) {
+                return get_permalink( $p );
+            }
+        }
+    }
+    return home_url( $fallback );
+};
+$trv_about   = $trv_find( array( 'page-about.php' ), array( 'about' ), '/about-us/' );
+$trv_contact = $trv_find( array( 'page-contact.php' ), array( 'contact' ), '/contact/' );
+$trv_return  = $trv_find( array( 'page-refund.php', 'page-return.php', 'page-returns.php', 'page-return-policy.php', 'page-refund-policy.php', 'page-return-refund.php' ), array( 'refund', 'return' ), '/return-policy/' );
+$trv_terms   = $trv_find( array( 'page-terms.php', 'page-terms-conditions.php' ), array( 'terms' ), '/terms/' );
+
 $trv_logo = '';
 if ( get_theme_mod( 'custom_logo' ) ) {
     $trv_logo = wp_get_attachment_image_url( get_theme_mod( 'custom_logo' ), 'full' );
@@ -340,6 +362,21 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
   .trv-footer .trv-foot-bottom{padding-bottom:0 !important;margin:0 !important;}
   .trv-footer .trv-foot-bottom-inner{gap:2px !important;padding-top:10px !important;padding-bottom:10px !important;}
   .trv-footer .trv-foot-copy,.trv-footer .trv-foot-credit{line-height:1.4 !important;}
+}
+
+/* ---- Footer v2 ---- */
+@media (min-width:901px){
+    .trv-footer .trv-foot-bottom-inner{display:flex !important;flex-wrap:nowrap !important;align-items:center;justify-content:space-between;gap:24px;padding-right:90px;}
+    .trv-footer .trv-foot-copy{order:1;}
+    .trv-footer .trv-foot-legal{order:2;display:flex !important;gap:22px;}
+    .trv-footer .trv-foot-credit{order:3;text-align:right;}
+}
+@media (max-width:900px){
+    .trv-footer .trv-foot-bottom{padding-bottom:56px !important;}
+    .trv-footer .trv-foot-bottom-inner{gap:0 !important;}
+    .trv-footer .trv-foot-copy{font-size:.75rem !important;line-height:1.5 !important;margin:0 0 10px !important;}
+    .trv-footer .trv-foot-credit{display:block;font-size:.7rem !important;line-height:1.5 !important;margin:0 !important;padding-top:10px;border-top:1px solid var(--trv-line);width:100%;max-width:300px;}
+    .trv-footer .trv-foot-credit a{font-size:.7rem !important;font-weight:600;}
 }
 </style>
 
