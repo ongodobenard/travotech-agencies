@@ -10,10 +10,10 @@ $rp_refund_days = '7 to 10 working days';
 $rp_restock = '10%';
 $rp_updated = 'November 2026';
 
-$rp_phone_show = '+254 796 038686';
-$rp_phone_link = '+254796038686';
-$rp_wa = '254796038686';
-$rp_email = 'info@travotech.co.ke';
+$rp_phone_show = '0720737151';
+$rp_phone_link = '+254720737151';
+$rp_wa = '254720737151';
+$rp_email = 'sales@travotechagencies.co.ke';
 $contact = home_url( '/contact/' );
 $shop = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
 

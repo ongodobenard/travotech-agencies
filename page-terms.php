@@ -5,10 +5,10 @@ Template Name: Terms & Conditions
 
 /* ---- Edit these to match your business ---- */
 $tm_updated = 'November 2026';
-$tm_phone_show = '+254 796 038686';
-$tm_phone_link = '+254796038686';
-$tm_wa = '254796038686';
-$tm_email = 'info@travotech.co.ke';
+$tm_phone_show = '0720737151';
+$tm_phone_link = '+254720737151';
+$tm_wa = '254720737151';
+$tm_email = 'sales@travotechagencies.co.ke';
 $contact = home_url( '/contact/' );
 $refund = home_url( '/return-refund-policy/' ); /* change if your refund page uses another URL */
 
