@@ -296,9 +296,9 @@ footer{background:#072525;color:rgba(255,255,255,.7);padding:56px 5% 26px;}
 .wc-meta-label{font-weight:800;color:var(--text);min-width:90px;}
 .wc-meta-val{color:var(--text-mid);}
 .wc-actions{display:flex;flex-direction:column;gap:10px;}
-.wc-wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:white;padding:14px 28px;border-radius:50px;font-size:.92rem;font-weight:900;font-family:'Inter',system-ui,sans-serif;border:none;transition:all .3s;box-shadow:0 6px 20px rgba(37,211,102,.35);text-decoration:none;}
+.wc-wa-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#25d366;color:white;padding:14px 28px;border-radius:14px !important;font-size:.92rem;font-weight:900;font-family:'Inter',system-ui,sans-serif;border:none;transition:all .3s;box-shadow:0 6px 20px rgba(37,211,102,.35);text-decoration:none;}
 .wc-wa-btn:hover{background:#22adb0;transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,211,102,.45);}
-.wc-cart-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:white;padding:13px 28px;border-radius:50px;font-size:.92rem;font-weight:900;font-family:'Inter',system-ui,sans-serif;border:none;transition:all .3s;box-shadow:0 6px 20px rgba(34,173,176,.3);}
+.wc-cart-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:white;padding:13px 28px;border-radius:14px !important;font-size:.92rem;font-weight:900;font-family:'Inter',system-ui,sans-serif;border:none;transition:all .3s;box-shadow:0 6px 20px rgba(34,173,176,.3);}
 .wc-cart-btn:hover{background:var(--green-dark);transform:translateY(-2px);}
 
 /* ─── SHOP / ARCHIVE PAGE ────────────────────── */
@@ -309,7 +309,7 @@ footer{background:#072525;color:rgba(255,255,255,.7);padding:56px 5% 26px;}
 .sidebar-cat-list{display:flex;flex-direction:column;gap:8px;}
 .sidebar-cat-list a{font-size:.82rem;color:var(--text-mid);font-weight:600;text-decoration:none;display:flex;justify-content:space-between;align-items:center;transition:color .2s;}
 .sidebar-cat-list a:hover{color:var(--green);}
-.sidebar-cat-list a span{background:var(--green-light);color:var(--green);font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:50px;}
+.sidebar-cat-list a span{background:var(--green-light);color:var(--green);font-size:.68rem;font-weight:800;padding:2px 8px;border-radius:14px !important;}
 .shop-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
 .shop-results{font-size:.82rem;color:var(--text-mid);font-weight:700;}
 .shop-sort{padding:8px 14px;border:1.5px solid var(--green-light);border-radius:8px;font-family:'Inter',system-ui,sans-serif;font-size:.82rem;outline:none;}
@@ -377,3 +377,6 @@ body button[class*="whatsapp"],
 body [class*="whatsapp-float"],
 body [class*="wa-float"],
 body [class*="float-wa"]{border-radius:14px !important;}
+
+/* ---- wa-square3: WhatsApp float not circular ---- */
+body a[href*="wa.me"], body a[href*="whatsapp.com"], body [class*="whatsapp"], body [class*="wa-float"], body [class*="wa-fab"], body [class*="th-wa"], body [id*="whatsapp"] { border-radius:14px !important; }

@@ -124,7 +124,7 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 .th-msep{margin:0 26px;opacity:.4;}
 @media (prefers-reduced-motion:reduce){.th-marq-track{animation:none;}}
 .th-soc-wrap{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.th-soc{width:28px;height:28px;border-radius:50%;background:#fff;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;transition:transform .2s;}
+.th-soc{width:28px;height:28px;border-radius:14px !important;background:#fff;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;transition:transform .2s;}
 .th-soc:hover{transform:translateY(-2px) scale(1.1);}
 .th-soc i{line-height:1;}
 .th-soc-facebook{color:#22adb0;}.th-soc-linkedin{color:#22adb0;}.th-soc-x{color:#000;}.th-soc-whatsapp{color:#25D366;}

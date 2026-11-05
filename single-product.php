@@ -90,7 +90,7 @@ while (have_posts()): the_post();
 .sp-atc-btn:hover { opacity: .88; transform: translateY(-1px); color: #fff; }
 .sp-atc-btn svg { flex-shrink: 0; }
 .sp-atc-btn.atc-loading { opacity: .7; pointer-events: none; }
-.sp-atc-btn .atc-spinner { display: none; width: 16px; height: 16px; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spinBtn .6s linear infinite; flex-shrink: 0; }
+.sp-atc-btn .atc-spinner { display: none; width: 16px; height: 16px; border: 2.5px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius:14px !important; animation: spinBtn .6s linear infinite; flex-shrink: 0; }
 .sp-atc-btn.atc-loading .atc-spinner { display: block; }
 .sp-atc-btn.atc-loading .atc-icon    { display: none; }
 @keyframes spinBtn { to { transform: rotate(360deg); } }
@@ -174,7 +174,7 @@ while (have_posts()): the_post();
 .sp-related-grid .p-btn-wa { background: var(--green,#22adb0); color: #fff; box-shadow: 0 2px 8px rgba(34,173,176,.25); }
 .sp-related-grid .p-btn-wa .p-btn-ico { background: rgba(255,255,255,.2); color: #fff; }
 .sp-rel-pagination { display: flex; gap: 6px; justify-content: center; align-items: center; margin-top: 28px; flex-wrap: wrap; }
-.sp-rel-page-btn { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; text-decoration: none; border: 1.5px solid rgba(0,0,0,.12); color: var(--text-mid,#22adb0); transition: background .15s, color .15s, border-color .15s, transform .15s; }
+.sp-rel-page-btn { width: 36px; height: 36px; border-radius:14px !important; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; text-decoration: none; border: 1.5px solid rgba(0,0,0,.12); color: var(--text-mid,#22adb0); transition: background .15s, color .15s, border-color .15s, transform .15s; }
 .sp-rel-page-btn:hover { background: var(--green,#22adb0); color: #fff; border-color: var(--green,#22adb0); transform: scale(1.08); }
 .sp-rel-page-btn.active { background: var(--green,#22adb0); color: #fff; border-color: var(--green,#22adb0); box-shadow: 0 4px 14px rgba(34,173,176,.35); }
 .sp-rel-page-btn.dots { border: none; background: none; pointer-events: none; width: auto; letter-spacing: .1em; }

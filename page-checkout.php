@@ -135,9 +135,9 @@ wp_enqueue_style( 'dashicons' );
 
 /* ── BUTTONS ── */
 .chkp-actions{display:flex;flex-direction:column;gap:10px;}
-.chkp-wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:13px 14px;border-radius:50px;font-family:'Inter',system-ui,sans-serif;font-size:.9rem;font-weight:900;text-decoration:none;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(37,211,102,.3);transition:all .3s;width:100%;box-sizing:border-box;text-align:center;}
+.chkp-wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:13px 14px;border-radius:14px !important;font-family:'Inter',system-ui,sans-serif;font-size:.9rem;font-weight:900;text-decoration:none;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(37,211,102,.3);transition:all .3s;width:100%;box-sizing:border-box;text-align:center;}
 .chkp-wa-btn:hover{background:#22adb0;transform:translateY(-2px);color:#fff;}
-.chkp-place-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#22adb0;color:#fff;padding:12px 14px;border-radius:50px;font-family:'Inter',system-ui,sans-serif;font-size:.88rem;font-weight:900;border:none;cursor:pointer;width:100%;box-sizing:border-box;box-shadow:0 5px 18px rgba(34,173,176,.3);transition:all .3s;}
+.chkp-place-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#22adb0;color:#fff;padding:12px 14px;border-radius:14px !important;font-family:'Inter',system-ui,sans-serif;font-size:.88rem;font-weight:900;border:none;cursor:pointer;width:100%;box-sizing:border-box;box-shadow:0 5px 18px rgba(34,173,176,.3);transition:all .3s;}
 .chkp-place-btn:hover:not(:disabled){background:#22adb0;transform:translateY(-2px);}
 .chkp-place-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
 .chkp-or{display:flex;align-items:center;gap:8px;color:#5bd9d7;font-size:.7rem;font-weight:700;font-family:'Inter',system-ui,sans-serif;}

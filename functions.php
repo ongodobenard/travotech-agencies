@@ -756,19 +756,19 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="width:32px;vertical-align:top;padding:4px 0;">
-                  <div style="width:22px;height:22px;background:#22adb0;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">1</div>
+                  <div style="width:22px;height:22px;background:#22adb0;border-radius:14px !important;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">1</div>
                 </td>
                 <td style="padding:4px 0 4px 8px;font-size:13px;color:#22adb0;font-family:Arial,sans-serif;line-height:1.5;">Our pharmacist reviews your order and verifies stock availability.</td>
               </tr>
               <tr>
                 <td style="width:32px;vertical-align:top;padding:4px 0;">
-                  <div style="width:22px;height:22px;background:#22adb0;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">2</div>
+                  <div style="width:22px;height:22px;background:#22adb0;border-radius:14px !important;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">2</div>
                 </td>
                 <td style="padding:4px 0 4px 8px;font-size:13px;color:#22adb0;font-family:Arial,sans-serif;line-height:1.5;">We call or WhatsApp you on <strong>' . esc_html( $phone ) . '</strong> to confirm delivery details.</td>
               </tr>
               <tr>
                 <td style="width:32px;vertical-align:top;padding:4px 0;">
-                  <div style="width:22px;height:22px;background:#22adb0;border-radius:50%;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">3</div>
+                  <div style="width:22px;height:22px;background:#22adb0;border-radius:14px !important;text-align:center;color:#fff;font-size:11px;font-weight:900;line-height:22px;">3</div>
                 </td>
                 <td style="padding:4px 0 4px 8px;font-size:13px;color:#22adb0;font-family:Arial,sans-serif;line-height:1.5;">Your order is dispatched and delivered to your address.</td>
               </tr>
@@ -776,8 +776,8 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
           </td></tr>
 
           <tr><td style="padding:24px 32px;text-align:center;">
-            <a href="https://wa.me/' . esc_attr( $store_wa ) . '" style="display:inline-block;background:#25d366;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Chat on WhatsApp</a>
-            <a href="tel:+254720737151" style="display:inline-block;background:#22adb0;color:#fff;padding:12px 24px;border-radius:50px;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Call Us</a>
+            <a href="https://wa.me/' . esc_attr( $store_wa ) . '" style="display:inline-block;background:#25d366;color:#fff;padding:12px 24px;border-radius:14px !important;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Chat on WhatsApp</a>
+            <a href="tel:+254720737151" style="display:inline-block;background:#22adb0;color:#fff;padding:12px 24px;border-radius:14px !important;font-size:14px;font-weight:800;text-decoration:none;margin:0 6px 10px;">Call Us</a>
           </td></tr>
 
           <tr><td style="background:#f9fefe;border-top:2px solid #e5fbfb;padding:16px 32px;text-align:center;">
