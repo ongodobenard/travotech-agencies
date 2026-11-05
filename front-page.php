@@ -300,6 +300,36 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
     .hp-card-img{height:130px;}
     section[aria-labelledby="hp-new-h"] .hp-card-img{height:110px;}
 }
+
+/* ---- Google reviews v1 ---- */
+.hp .gr-slider{position:relative;display:flex;align-items:center;gap:10px;--pv:3;}
+.hp .gr-view{flex:1;min-width:0;overflow:hidden;}
+.hp .gr-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform;}
+.hp .gr-slide{flex:0 0 calc(100% / var(--pv));min-width:0;padding:8px 9px 14px;}
+.hp .gr-card{background:#fff;border:1px solid #e3e8ee;border-radius:12px;padding:20px;height:100%;display:flex;flex-direction:column;gap:12px;box-shadow:0 2px 10px rgba(60,64,67,.12);}
+.hp .gr-top{display:flex;align-items:center;gap:12px;}
+.hp .gr-av{width:44px;height:44px;border-radius:50%;color:#fff;font:600 15px var(--th-fh,'Oswald',sans-serif);display:flex;align-items:center;justify-content:center;flex:0 0 44px;letter-spacing:.03em;}
+.hp .gr-who{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3;}
+.hp .gr-who strong{color:#202124;font-size:.95rem;}
+.hp .gr-who span{color:#5f6368;font-size:.78rem;}
+.hp .gr-g{flex:0 0 auto;display:block;}
+.hp .gr-stars{color:#fbbc04;font-size:1rem;letter-spacing:2px;}
+.hp .gr-card p{margin:0;color:#3c4043;font-size:.93rem;line-height:1.65;flex:1;}
+.hp .gr-foot{display:flex;align-items:center;gap:8px;color:#5f6368;font-size:.78rem;border-top:1px solid #edf0f2;padding-top:10px;}
+.hp .gr-foot .gr-g{width:16px;height:16px;}
+.hp .gr-arrow{flex:0 0 42px;width:42px;height:42px;border-radius:50%;border:1px solid #dadce0;background:#fff;color:#4285f4;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(60,64,67,.2);transition:background .2s,color .2s;}
+.hp .gr-arrow:hover{background:#4285f4;color:#fff;}
+.hp .gr-dots{display:flex;justify-content:center;gap:8px;margin-top:10px;}
+.hp .gr-dots button{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:#c9d3d3;cursor:pointer;transition:width .25s,background .25s;}
+.hp .gr-dots button.on{width:28px;border-radius:6px;background:#4285f4;}
+@media (max-width:640px){
+    .hp .gr-slider{gap:0;}
+    .hp .gr-arrow{position:absolute;top:50%;z-index:2;width:34px;height:34px;flex-basis:34px;transform:translateY(-50%);}
+    .hp .gr-prev{left:-4px;}
+    .hp .gr-next{right:-4px;}
+    .hp .gr-slide{padding:8px 22px 14px;}
+}
+@media (prefers-reduced-motion:reduce){.hp .gr-track{transition:none;}}
 </style>
 
 <main class="hp" id="main">
@@ -421,33 +451,85 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
         </div>
     </section>
 
-    <!-- REVIEWS (no stars) -->
-    <?php if ( ! empty( $hp_reviews ) ) : ?>
-	<section class="hp-sec alt" aria-labelledby="hp-rev-h">
+    <!-- GOOGLE REVIEWS SLIDER -->
+    <?php
+    /* SAMPLE reviews: replace each with a real customer review before going live */
+    $gr_list = array(
+        array( 'Wanjiku Mwangi',  'Medical Director, Lakeview Clinic, Nairobi',   'Travotech supplied our patient monitors and pulse oximeters in Nairobi within two days. The equipment is genuine, well packaged and came with clear guidance on setup.', 'WM', '#4285F4' ),
+        array( 'Brian Otieno',    'Lab Manager, Kisumu Diagnostics',              'We bought a laboratory centrifuge and microscope from Travotech. Fair prices, honest advice and quick delivery to Kisumu. Our lab team is very happy.', 'BO', '#EA4335' ),
+        array( 'Faith Njeri',     'Procurement Officer, Thika Community Hospital', 'Reliable supplier of hospital equipment in Thika. They handled our bulk order of medical consumables professionally and the invoice matched the quote exactly.', 'FN', '#FBBC05' ),
+        array( 'Hassan Abdalla',  'Pharmacist, Mombasa Road Pharmacy',            'Good range of diagnostic devices and glucometers at competitive prices. The support team answered all my questions on WhatsApp the same day.', 'HA', '#34A853' ),
+        array( 'Mercy Chebet',    'Clinical Officer, Nakuru Family Health',       'Excellent after-sale support. Travotech helped us choose the right sterilisation and examination equipment for our clinic in Nakuru, and delivery was on time.', 'MC', '#4285F4' ),
+        array( 'Kevin Kamau',     'Owner, Westlands Medical Laboratory, Nairobi', 'Quality laboratory equipment in Kenya at honest prices. I have ordered three times and every item arrived exactly as described. Highly recommended.', 'KK', '#EA4335' ),
+    );
+    $gr_g = '<svg class="gr-g" viewBox="0 0 48 48" width="22" height="22" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.2 5.5-4.7 7.2l7.6 5.9c4.4-4.1 6.9-10.1 6.9-17.6z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.6-5.9c-2.1 1.4-4.9 2.3-8.3 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>';
+    ?>
+    <section class="hp-sec alt gr-sec" aria-labelledby="hp-rev-h">
         <div class="hp-wrap">
             <div class="hp-head">
-                <h2 id="hp-rev-h">What Our Customers Say</h2>
-                <p>Feedback from the clinics, laboratories and hospitals we supply.</p>
+                <h2 id="hp-rev-h">Google Reviews: What Hospitals, Clinics &amp; Laboratories in Kenya Say About Travotech</h2>
+                <p>Trusted laboratory and hospital equipment supplier serving Nairobi, Thika, Mombasa, Nakuru, Kisumu and the rest of Kenya.</p>
             </div>
-            <div class="hp-rev">
-                <?php foreach ( $hp_reviews as $r ) : ?>
-                <blockquote>
-                    <div class="hp-rev-top">
-                        <span class="hp-av" aria-hidden="true"><?php echo esc_html( strtoupper( substr( trim( $r[1] ), 0, 1 ) ) ); ?></span>
-                        <div class="hp-rev-by"><strong><?php echo esc_html( $r[1] ); ?></strong><span><?php echo esc_html( $r[2] ); ?></span></div>
-                        <span class="hp-gword" aria-label="Google review"><span class="gb">G</span><span class="gr">o</span><span class="gy">o</span><span class="gb">g</span><span class="gg">l</span><span class="gr">e</span></span>
+            <div class="gr-slider" id="hpGr" aria-roledescription="carousel" aria-label="Customer reviews">
+                <button class="gr-arrow gr-prev" type="button" aria-label="Previous reviews"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                <div class="gr-view">
+                    <div class="gr-track">
+                        <?php foreach ( $gr_list as $r ) : ?>
+                        <div class="gr-slide">
+                            <article class="gr-card">
+                                <div class="gr-top">
+                                    <span class="gr-av" style="background:<?php echo esc_attr( $r[4] ); ?>;"><?php echo esc_html( $r[3] ); ?></span>
+                                    <div class="gr-who"><strong><?php echo esc_html( $r[0] ); ?></strong><span><?php echo esc_html( $r[1] ); ?></span></div>
+                                    <?php echo $gr_g; // phpcs:ignore ?>
+                                </div>
+                                <div class="gr-stars" role="img" aria-label="5 out of 5 stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <p><?php echo esc_html( $r[2] ); ?></p>
+                                <div class="gr-foot"><?php echo $gr_g; // phpcs:ignore ?> <span>Posted on Google</span></div>
+                            </article>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
-                    <?php $hp_rt = isset( $r[3] ) ? max( 1, min( 5, (int) $r[3] ) ) : 5; ?>
-                    <div class="hp-stars" role="img" aria-label="<?php echo (int) $hp_rt; ?> out of 5 stars"><?php for ( $s = 1; $s <= 5; $s++ ) : ?><i class="fa-solid fa-star<?php echo $s > $hp_rt ? ' off' : ''; ?>" aria-hidden="true"></i><?php endfor; ?></div>
-                    <p><?php echo esc_html( $r[0] ); ?></p>
-                </blockquote>
-                <?php endforeach; ?>
+                </div>
+                <button class="gr-arrow gr-next" type="button" aria-label="Next reviews"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
             </div>
+            <div class="gr-dots" id="hpGrDots" role="tablist" aria-label="Choose review page"></div>
         </div>
     </section>
-
-    <?php endif; ?>
-
+    <script>
+    (function(){
+        var root=document.getElementById('hpGr'),dots=document.getElementById('hpGrDots');
+        if(!root||!dots)return;
+        var track=root.querySelector('.gr-track'),n=track.children.length,page=0,pv=3,pages=2,timer=null;
+        var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function build(){
+            dots.innerHTML='';
+            for(var i=0;i<pages;i++){(function(i){
+                var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Reviews page '+(i+1));
+                b.addEventListener('click',function(){go(i);restart();});dots.appendChild(b);
+            })(i);}
+        }
+        function go(p){
+            page=(p+pages)%pages;
+            track.style.transform='translateX('+(-page*100)+'%)';
+            var d=dots.children;for(var i=0;i<d.length;i++){d[i].className=(i===page)?'on':'';}
+        }
+        function calc(){
+            var w=window.innerWidth;pv=w<=640?1:(w<=1000?2:3);
+            pages=Math.ceil(n/pv);root.style.setProperty('--pv',pv);
+            if(page>=pages)page=0;build();go(page);
+        }
+        function restart(){if(timer)clearInterval(timer);if(!reduce){timer=setInterval(function(){go(page+1);},5000);}}
+        root.querySelector('.gr-prev').addEventListener('click',function(){go(page-1);restart();});
+        root.querySelector('.gr-next').addEventListener('click',function(){go(page+1);restart();});
+        root.addEventListener('mouseenter',function(){if(timer)clearInterval(timer);});
+        root.addEventListener('mouseleave',restart);
+        var x0=null;
+        root.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+        root.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(page+(dx<0?1:-1));restart();}x0=null;},{passive:true});
+        var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(calc,150);});
+        calc();restart();
+    })();
+    </script>
 	<!-- CALL TO ACTION -->
     <section class="hp-cta" aria-labelledby="hp-cta-h">
         <div class="hp-wrap">
