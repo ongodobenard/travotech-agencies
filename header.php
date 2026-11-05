@@ -93,16 +93,19 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 :root{--th-g:#22adb0;--th-gd:#1a8f92;--th-dk:#093c3c;--th-nv:#072f2f;--th-lt:#e4fafa;--th-red:#e53935;--th-px:48px;--th-fh:'Oswald','Arial Narrow',sans-serif;--th-fb:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
 
 /* ===== Loader ===== */
-#th-loader{position:fixed;inset:0;z-index:9999999;background:var(--th-dk);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;opacity:1;transition:opacity .45s ease;}
+#th-loader{position:fixed;inset:0;z-index:9999999;background:transparent;display:flex;align-items:center;justify-content:center;opacity:1;transition:opacity .45s ease;}
 #th-loader.th-out{opacity:0;pointer-events:none;}
-.th-ld-box{background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 0 0 0 rgba(34,173,176,.4);animation:th-pulse 1.8s ease-in-out infinite;}
-.th-ld-box img{display:block;height:60px;width:auto;max-width:230px;}
-@keyframes th-pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,173,176,0);}50%{box-shadow:0 0 0 14px rgba(34,173,176,.22);}}
-.th-ld-bar{width:clamp(180px,40vw,260px);height:3px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;}
-.th-ld-bar i{display:block;height:100%;width:0;background:#22adb0;animation:th-fill 1.6s cubic-bezier(.4,0,.2,1) forwards;}
-@keyframes th-fill{to{width:100%;}}
-@media (prefers-reduced-motion:reduce){.th-ld-box,.th-ld-bar i{animation:none !important;}.th-ld-bar i{width:100%;}}
-
+.th-lo{position:relative;width:150px;height:150px;display:flex;align-items:center;justify-content:center;}
+.th-lo-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 1px 3px rgba(0,0,0,.18));}
+.th-lo-svg g{transform-origin:60px 60px;}
+.th-lo-svg ellipse{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-dasharray:130 100;}
+.th-lo-r1{animation:th-spin 2.2s linear infinite;}
+.th-lo-r2{animation:th-spin 2.8s linear infinite reverse;}
+.th-lo-r3{animation:th-spin 3.4s linear infinite;}
+@keyframes th-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.th-lo-txt{position:relative;z-index:1;font:600 13px var(--th-fh,'Oswald',sans-serif);letter-spacing:.12em;color:#093c3c;animation:th-blink 1.6s ease-in-out infinite;}
+@keyframes th-blink{0%,100%{opacity:1;}50%{opacity:.45;}}
+@media (prefers-reduced-motion:reduce){.th-lo-r1,.th-lo-r2,.th-lo-r3,.th-lo-txt{animation:none !important;}}
 /* ===== Flag ===== */
 .ke-flag{display:inline-block;flex:0 0 auto;width:24px;height:16px;border-radius:2px;position:relative;vertical-align:middle;box-shadow:0 0 0 1px rgba(0,0,0,.25);background:#000;}
 .ke-flag::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:10px;transform:translate(-50%,-50%);border-radius:50%;background:#fff;}
@@ -355,8 +358,14 @@ html body .th-cart .th-badge{left:50%;right:auto;top:-3px;margin-left:2px;}
 <body <?php body_class(); ?>>
 
 <div id="th-loader" aria-hidden="true">
-    <div class="th-ld-box"><img src="<?php echo esc_url( $th_logo ); ?>" alt="Travotech Agencies"></div>
-    <div class="th-ld-bar"><i></i></div>
+    <div class="th-lo">
+        <svg class="th-lo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <g class="th-lo-r1"><ellipse cx="60" cy="60" rx="48" ry="19" transform="rotate(-30 60 60)" stroke="#e53935"/></g>
+            <g class="th-lo-r2"><ellipse cx="60" cy="60" rx="48" ry="19" transform="rotate(30 60 60)" stroke="#22adb0"/></g>
+            <g class="th-lo-r3"><ellipse cx="60" cy="60" rx="48" ry="19" transform="rotate(90 60 60)" stroke="#093c3c"/></g>
+        </svg>
+        <span class="th-lo-txt">Loading...</span>
+    </div>
 </div>
 <script>
 (function(){
