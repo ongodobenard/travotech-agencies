@@ -275,6 +275,18 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 .th-cdrop .th-cd-item img{width:48px !important;height:48px !important;max-width:48px !important;}
 @media (max-width:960px){.th-sticky{--th-lh:36px;--th-lw:150px;}}
 @media (max-width:380px){.th-sticky{--th-lh:30px;--th-lw:120px;}}
+
+/* ---- Mobile search height ---- */
+@media (max-width:960px){
+    .th-search{padding:10px 11px;}
+    .th-search form{min-height:48px;}
+    .th-search input[type="search"]{min-height:48px;height:48px;padding:0 14px;font-size:15px;}
+    .th-search button{min-height:48px;height:48px;padding:0 18px;font-size:14px;}
+}
+@media (max-width:380px){
+    .th-search input[type="search"]{font-size:14px;padding:0 10px;}
+    .th-search button{padding:0 12px;font-size:13px;}
+}
 </style>
 <?php wp_head(); ?>
 </head>
