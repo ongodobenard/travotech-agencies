@@ -38,8 +38,8 @@ $pj_faq = array(
     array( 'How do I request a quote for my facility?', 'Call or WhatsApp us, or use the contact page. Tell us what equipment you need and where your facility is, and we will reply with options and prices.' ),
 );
 
-$pj_title = 'Our Projects | Medical & Laboratory Equipment Installation in Kenya | Travotech Agencies';
-$pj_desc  = 'Travotech Agencies projects: top, best-value, professional and affordable medical and laboratory equipment installation in Nairobi, Kisumu, Nyeri and across Kenya.';
+$pj_title = 'Medical Equipment Projects in Kenya | Travotech Agencies';
+$pj_desc  = 'Top, professional and affordable medical equipment supply and installation in Nairobi, Kisumu, Nyeri and across Kenya.';
 
 if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
     add_filter( 'pre_get_document_title', function () use ( $pj_title ) { return $pj_title; } );
@@ -92,13 +92,13 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 
 /* Top banner (no photo) */
 .pj-top{position:relative;background:var(--pj-dk);color:#fff;overflow:hidden;}
-.pj-top-in{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:clamp(46px,8vw,90px) clamp(16px,4vw,48px);}
+.pj-top-in{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:clamp(24px,3.6vw,40px) clamp(16px,4vw,48px) clamp(44px,5vw,56px);}
 .pj-top-txt{max-width:660px;}
 .pj-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.82rem;font-weight:600;padding:5px 14px;border-radius:6px;margin-bottom:16px;}
 .pj .pj-top h1{color:#fff;font-size:clamp(1.7rem,4.4vw,3rem);margin-bottom:14px;}
 .pj-line{display:block;width:70px;height:4px;background:var(--pj-red);border-radius:2px;margin-bottom:16px;}
 .pj .pj-top p{color:rgba(255,255,255,.9);font-size:clamp(.95rem,1.8vw,1.1rem);margin:0;}
-.pj-top-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;}
+.pj-top-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;}
 .pj-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;border-radius:6px;font:600 14px var(--th-fh,'Oswald',sans-serif);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;background:var(--pj-g);color:#fff !important;border:2px solid var(--pj-g);transition:background .2s,border-color .2s;cursor:pointer;}
 .pj-btn:hover{background:var(--pj-dk);border-color:var(--pj-dk);}
 .pj-btn-red{background:var(--pj-red);border-color:var(--pj-red);}
@@ -127,7 +127,7 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 @media (max-width:640px){.pj-ha{opacity:.32;width:100%;}.pj .pj-a2,.pj .pj-a5{display:none;}}
 
 /* Highlights */
-.pj-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-34px;position:relative;z-index:5;}
+.pj-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-26px;position:relative;z-index:5;}
 .pj-sum div{background:#fff;border:1px solid var(--pj-line);border-radius:10px;padding:18px 16px;box-shadow:0 8px 22px rgba(9,60,60,.10);}
 .pj-sum i{font-size:1.5rem;color:var(--pj-g);margin-bottom:8px;display:block;}
 .pj-sum b{display:block;font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--pj-dk);font-size:1.02rem;margin-bottom:4px;}
@@ -165,7 +165,7 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 
 /* Locations */
 .pj-locs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.pj-locs div{background:#fff;border:1px solid var(--pj-line);border-left:4px solid var(--pj-red);border-radius:10px;padding:18px;}
+.pj-locs div{background:#fff;border:1px solid var(--pj-line);border-radius:10px;padding:18px;}
 .pj-locs h3{font-size:1.05rem;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
 .pj-locs h3 i{color:var(--pj-g);}
 .pj-locs p{margin:0;font-size:.88rem;}
@@ -178,12 +178,12 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 .pj-steps p{margin:0;font-size:.88rem;}
 
 /* FAQ */
-.pj-faq{max-width:900px;margin:0 auto;display:grid;gap:10px;}
+.pj-faq{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start;}
 .pj-faq details{background:#fff;border:1px solid var(--pj-line);border-radius:10px;padding:0;}
 .pj-faq summary{cursor:pointer;list-style:none;padding:15px 18px;font:600 1rem var(--th-fh,'Oswald',sans-serif);color:var(--pj-dk);display:flex;justify-content:space-between;align-items:center;gap:12px;}
 .pj-faq summary::-webkit-details-marker{display:none;}
-.pj-faq summary::after{content:"+";font-size:1.4rem;color:var(--pj-red);line-height:1;}
-.pj-faq details[open] summary::after{content:"\2212";}
+.pj-faq summary::after{content:"\f067";font-family:"Font Awesome 6 Free";font-weight:900;font-size:.85rem;color:var(--pj-red);line-height:1;flex-shrink:0;}
+.pj-faq details[open] summary::after{content:"\f068";}
 .pj-faq details[open]{border-color:var(--pj-g);}
 .pj-faq details p{padding:0 18px 16px;margin:0;font-size:.92rem;}
 
@@ -215,6 +215,10 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 .pj-grid{grid-template-columns:1fr;}
 .pj-chip{padding:7px 13px;font-size:12px;}
 }
+
+/* pj-v2: compact banner, 2-column FAQ */
+@media (max-width:900px){.pj-faq{grid-template-columns:1fr;}}
+@media (max-width:640px){.pj-top-in{padding-bottom:40px;}}
 </style>
 
 <main class="pj" id="main">
@@ -236,9 +240,9 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 <div class="pj-top-in">
 <div class="pj-top-txt">
 <span class="pj-badge"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Our Projects</span>
-<h1 id="pj-h1">Top Medical &amp; Laboratory Equipment Projects in Kisumu, Nairobi, Nyeri and Across Kenya</h1>
+<h1 id="pj-h1">Top Medical Equipment Projects in Kenya</h1>
 <span class="pj-line"></span>
-<p>Professional supply and installation, affordable prices and reliable support. See how Travotech Agencies equips hospitals, clinics and laboratories in Kenya.</p>
+<p>Professional, affordable equipment supply and installation in Nairobi, Kisumu, Nyeri and across Kenya.</p>
 <div class="pj-top-btns">
 <a class="pj-btn pj-btn-red" href="<?php echo esc_url( $contact ); ?>"><i class="fa-solid fa-handshake" aria-hidden="true"></i> Partner with us</a>
 <a class="pj-btn pj-btn-ghost" href="<?php echo esc_url( $shop ); ?>"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Shop equipment</a>
