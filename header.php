@@ -288,10 +288,25 @@ if ( taxonomy_exists( 'product_cat' ) ) {
     .th-search button{padding:0 12px;font-size:13px;}
 }
 
-/* ---- Hero overlay ---- */
+/* ---- Hero overlay v2 ---- */
 html body [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
 html body [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
-html body .ct .ct-band-bg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,rgba(6,18,30,.82) 0%,rgba(6,18,30,.60) 40%,rgba(6,18,30,0) 78%) !important;}
+html body .ct .ct-band-bg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(11,74,140,.55) !important;}
+html body.home [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body.home [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body.home .ct .ct-band-bg::after,
+html body.post-type-archive-product [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body.post-type-archive-product [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body.post-type-archive-product .ct .ct-band-bg::after,
+html body.woocommerce-shop [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body.woocommerce-shop [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body.woocommerce-shop .ct .ct-band-bg::after,
+html body[class*="page-template-page-about-us"] [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body[class*="page-template-page-about-us"] [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body[class*="page-template-page-about-us"] .ct .ct-band-bg::after,
+html body[class*="page-template-page-contact"] [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body[class*="page-template-page-contact"] [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body[class*="page-template-page-contact"] .ct .ct-band-bg::after{background:linear-gradient(to right,rgba(11,74,140,.9) 0%,rgba(11,74,140,.65) 40%,rgba(11,74,140,0) 78%) !important;}
 html body [class$="hero"],html body [class*="hero "]{position:relative;}
 html body [class$="hero"]:not(.rp-hero) h1,html body [class*="hero "]:not(.rp-hero) h1,
 html body [class$="hero"]:not(.rp-hero) h2,html body [class*="hero "]:not(.rp-hero) h2,
@@ -302,9 +317,21 @@ html body [class*="hero"] img{opacity:1 !important;filter:none !important;}
 html body [class*="hero"] h1,html body [class*="hero"] h2,html body [class*="hero"] p,
 html body .ct .ct-band h1,html body .ct .ct-band p{text-shadow:0 1px 3px rgba(0,0,0,.6),0 3px 18px rgba(0,0,0,.5);}
 @media (max-width:800px){
-html body [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
-html body [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
-html body .ct .ct-band-bg::after{background:linear-gradient(rgba(6,18,30,.58),rgba(6,18,30,.58)) !important;}
+html body.home [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body.home [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body.home .ct .ct-band-bg::after,
+html body.post-type-archive-product [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body.post-type-archive-product [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body.post-type-archive-product .ct .ct-band-bg::after,
+html body.woocommerce-shop [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body.woocommerce-shop [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body.woocommerce-shop .ct .ct-band-bg::after,
+html body[class*="page-template-page-about-us"] [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body[class*="page-template-page-about-us"] [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body[class*="page-template-page-about-us"] .ct .ct-band-bg::after,
+html body[class*="page-template-page-contact"] [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body[class*="page-template-page-contact"] [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body[class*="page-template-page-contact"] .ct .ct-band-bg::after{background:rgba(11,74,140,.6) !important;}
 }
 </style>
 <?php wp_head(); ?>
