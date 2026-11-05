@@ -461,6 +461,26 @@ html body #whatsapp-float,
 html body .wa-fab,
 html body .whatsapp-fab,
 html body .floating-whatsapp{border-radius:6px !important;}
+
+/* ---- tight-v1: compact banners on Terms and Refund, small breadcrumb everywhere ---- */
+html body .site-breadcrumb{padding-top:6px !important;padding-bottom:6px !important;margin:0 !important;min-height:0 !important;line-height:1.3 !important;font-size:.85rem !important;}
+
+/* Terms */
+html body main.tm .tm-hero-in{padding:22px 5% 46px !important;}
+html body main.tm .tm-hero-txt{max-width:820px !important;}
+html body main.tm .tm-hero h1{font-size:clamp(1.5rem,3vw,2.3rem) !important;margin:0 0 10px !important;}
+html body main.tm .tm-badge{margin-bottom:10px !important;}
+html body main.tm .tm-hero-line{margin-bottom:10px !important;}
+html body main.tm .tm-upd{margin-top:10px !important;}
+html body main.tm .tm-sum{margin-top:-26px !important;}
+
+/* Refund */
+html body .rp-hero{min-height:0 !important;padding-top:20px !important;padding-bottom:44px !important;}
+html body .rp-hero > div,
+html body .rp-hero [class*="-in"],
+html body .rp-hero [class*="inner"],
+html body .rp-hero [class*="wrap"]{padding-top:0 !important;padding-bottom:0 !important;min-height:0 !important;}
+html body .rp-hero h1{font-size:clamp(1.5rem,3vw,2.3rem) !important;margin:0 0 10px !important;}
 </style>
 <?php wp_head(); ?>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/live-search.js?v=1" defer></script>
