@@ -90,7 +90,7 @@ if ( taxonomy_exists( 'product_cat' ) ) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <style>
-:root{--th-g:#2bb3b1;--th-gd:#1f9593;--th-dk:#093c3c;--th-nv:#072f2f;--th-lt:#e4fafa;--th-red:#e53935;--th-px:48px;--th-fh:'Oswald','Arial Narrow',sans-serif;--th-fb:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
+:root{--th-g:#22adb0;--th-gd:#1a8f92;--th-dk:#093c3c;--th-nv:#072f2f;--th-lt:#e4fafa;--th-red:#e53935;--th-px:48px;--th-fh:'Oswald','Arial Narrow',sans-serif;--th-fb:'Inter',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;}
 
 /* ===== Loader ===== */
 #th-loader{position:fixed;inset:0;z-index:9999999;background:var(--th-dk);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;opacity:1;transition:opacity .45s ease;}
