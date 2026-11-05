@@ -296,6 +296,20 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
 @media (min-width:901px){
     .sh .sh-wrap{max-width:1400px;padding-right:clamp(10px,1.5vw,20px);}
 }
+
+/* ---- Fixes v6 ---- */
+/* Sidebar: three separate boxes, no inner scrolling, not sticky */
+.sh .sh-side{position:static;max-height:none;overflow:visible;}
+@media (min-width:901px){
+    .sh .sh-wb>.sh-cats{max-height:420px;overflow-y:auto;}
+}
+
+/* Desktop and tablet: 3 products per row, same image height as the home page cards */
+@media (min-width:701px){
+    .sh .sh-grid:not(.is-list){grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+    .sh .sh-img{height:clamp(150px,16vw,210px);padding:10px;}
+    .sh .sh-name{font-size:1rem;}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
