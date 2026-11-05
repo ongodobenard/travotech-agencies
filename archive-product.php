@@ -278,6 +278,24 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     .sh .sh-img,.sh .sh-grid.is-list .sh-img{height:105px !important;}
     .sh .sh-b{font-size:10px;}
 }
+
+/* ---- Fixes v5 ---- */
+/* Hide the sidebar and category-list scrollbars (scrolling still works) */
+.sh .sh-side,.sh .sh-cats{scrollbar-width:none;-ms-overflow-style:none;}
+.sh .sh-side::-webkit-scrollbar,.sh .sh-cats::-webkit-scrollbar{display:none;width:0;height:0;}
+
+/* Phones and tablets: no scrollbar on the page itself, sidebar never scrolls on its own */
+@media (max-width:900px){
+    html,body{scrollbar-width:none;-ms-overflow-style:none;}
+    html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0;}
+    .sh .sh-side{max-height:none;overflow:visible;}
+    .sh .sh-wb>.sh-cats{max-height:none;overflow:visible;}
+}
+
+/* Desktop: smaller right margin, wider product cards */
+@media (min-width:901px){
+    .sh .sh-wrap{max-width:1400px;padding-right:clamp(10px,1.5vw,20px);}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
