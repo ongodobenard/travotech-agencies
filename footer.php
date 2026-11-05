@@ -423,6 +423,13 @@ html body .trv-footer .trv-fab-tip{font-size:1rem;}
     html body .trv-footer .trv-foot-credit a{font-size:.88rem !important;line-height:1.5 !important;}
     html body .trv-footer .trv-foot-links a{padding:4px 0 !important;}
 }
+
+/* ---- footer-email-v1: email stays on one line on every screen ---- */
+html body .trv-footer .trv-foot-contact li:nth-child(2) a{white-space:nowrap !important;overflow-wrap:normal !important;word-break:normal !important;font-size:clamp(.82rem,1.3vw,1.05rem) !important;}
+html body .trv-footer .trv-foot-contact li:nth-child(2){min-width:0;}
+@media (max-width:900px){
+    html body .trv-footer .trv-foot-contact li:nth-child(2) a{font-size:clamp(.8rem,4.2vw,1.05rem) !important;}
+}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
