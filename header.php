@@ -352,6 +352,24 @@ html body .th-cart .th-badge{left:50%;right:auto;top:-3px;margin-left:2px;}
 @media (max-width:640px){
     html body .th-cart .th-badge{min-width:16px;height:16px;font-size:9px;top:-2px;}
 }
+
+/* ---- wa-nohover-v1: Order via WhatsApp buttons keep their colour on hover ---- */
+html body .hp-btn.hp-btn-sm.hp-btn-wa:hover,
+html body .hp-btn.hp-btn-sm.hp-btn-wa:focus,
+html body .hp-btn.hp-btn-sm.hp-btn-wa:active,
+html body .hp-btn.hp-btn-sm.hp-btn-wa:focus-visible,
+html body .sh-b.wa:hover,
+html body .sh-b.wa:focus,
+html body .sh-b.wa:active,
+html body .sh-b.wa:focus-visible,
+html body .hp-b.wa:hover,
+html body .hp-b.wa:focus,
+html body .hp-b.wa:active,
+html body .hp-b.wa:focus-visible,
+html body .chkp-wa-btn:hover,
+html body .chkp-wa-btn:focus,
+html body .chkp-wa-btn:active,
+html body .chkp-wa-btn:focus-visible{background:#25d366 !important;background-color:#25d366 !important;border-color:#25d366 !important;color:#fff !important;}
 </style>
 <?php wp_head(); ?>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/live-search.js?v=1" defer></script>
