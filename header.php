@@ -354,6 +354,7 @@ html body .th-cart .th-badge{left:50%;right:auto;top:-3px;margin-left:2px;}
 }
 </style>
 <?php wp_head(); ?>
+<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/live-search.js?v=1" defer></script>
 </head>
 <body <?php body_class(); ?>>
 
