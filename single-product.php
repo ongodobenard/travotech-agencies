@@ -248,7 +248,23 @@ while (have_posts()): the_post();
   .spx-two{grid-template-columns:1fr;}
   .spx-spec th{width:42%;}
   .spx-submit{width:100%;justify-self:stretch;}
-}</style>
+}
+/* ---- spx-atc-v1: green WhatsApp buttons + animated add to cart ---- */
+html body .sp-wrap .sp-wa-btn,
+html body .sp-wrap .sp-wa-btn:hover,
+html body .sp-wrap .sp-wa-btn:focus,
+html body .sp-wrap .sp-wa-btn:active,
+html body .sp-wrap .sp-related-grid .p-btn-wa,
+html body .sp-wrap .sp-related-grid .p-btn-wa:hover,
+html body .sp-wrap .sp-related-grid .p-btn-wa:focus{background:#25D366 !important;background-color:#25D366 !important;border-color:#25D366 !important;color:#fff !important;box-shadow:none !important;opacity:1 !important;}
+html body .sp-wrap .sp-atc-btn.atc-loading,
+html body .sp-wrap .p-btn-cart.atc-loading{opacity:.75;pointer-events:none;}
+html body .sp-wrap .sp-atc-btn.atc-loading .atc-spinner{display:block;border-radius:50% !important;}
+html body .sp-wrap .sp-atc-btn.atc-done{background:#093c3c !important;opacity:1;}
+html body .sp-wrap .p-btn-cart.atc-done{background:#093c3c !important;color:#fff !important;border-color:#093c3c !important;}
+html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
+@keyframes spxPop{0%{transform:scale(.85);opacity:.4;}100%{transform:scale(1);opacity:1;}}
+</style>
 
 <!-- TOAST -->
 <div id="travotech-toast" role="alert" aria-live="assertive">
@@ -357,9 +373,7 @@ while (have_posts()): the_post();
           <span class="atc-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg>
           </span>
-          <div class="atc-spinner"></div>
-          Add to Cart
-        </button>
+          <div class="atc-spinner"></div><span class="t">Add to Cart</span></button>
         <?php else: ?>
         <?php woocommerce_template_single_add_to_cart(); ?>
         <?php endif; ?>
@@ -524,9 +538,7 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
               data-pid="<?php echo esc_attr($rid); ?>"
               data-nonce="<?php echo esc_attr(wp_create_nonce('woocommerce-add-to-cart')); ?>"
               data-name="<?php echo esc_attr($rname_s); ?>">
-              <span class="p-btn-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span>
-              Add to Cart
-            </button>
+              <span class="p-btn-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span><span class="t">Add to Cart</span></button>
             <?php else: ?>
             <a href="<?php echo get_permalink($rid); ?>" class="p-btn-cart">
               <span class="p-btn-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span>
@@ -803,4 +815,61 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
   };
 })();
 </script>
-<?php endwhile; get_footer(); ?>
+<script>
+/* spx-atc-v1: add to cart in the background, no reload, no scroll */
+(function(){
+  var timer=null;
+  function toast(name){
+    var t=document.getElementById('travotech-toast');if(!t)return;
+    var n=document.getElementById('cv-toast-name');if(n)n.textContent=name||'';
+    var bar=document.getElementById('cv-toast-bar');
+    if(bar){bar.style.animation='none';void bar.offsetWidth;bar.style.animation='';}
+    t.classList.add('cv-show');
+    if(timer)clearTimeout(timer);
+    timer=setTimeout(function(){t.classList.remove('cv-show');},5000);
+  }
+  function swapCart(html){
+    try{
+      var doc=new DOMParser().parseFromString(html,'text/html');
+      var fresh=doc.querySelector('.th-cartwrap'),cur=document.querySelector('.th-cartwrap');
+      if(!fresh||!cur)return false;
+      cur.innerHTML=fresh.innerHTML;
+      return true;
+    }catch(e){return false;}
+  }
+  window.addEventListener('click',function(e){
+    var btn=e.target.closest?e.target.closest('#sp-main-atc,.travotech-rel-atc'):null;
+    if(!btn)return;
+    e.preventDefault();e.stopImmediatePropagation();
+    if(btn.getAttribute('data-busy'))return;
+    var pid=btn.getAttribute('data-pid');if(!pid)return;
+    var qi=document.getElementById('sp-qty-input');
+    var qty=(btn.id==='sp-main-atc'&&qi)?Math.max(1,parseInt(qi.value,10)||1):1;
+    var name=btn.getAttribute('data-name')||'Product';
+    var u=new URL(window.location.href);
+    ['add-to-cart','added-to-cart','quantity','cv_added_name'].forEach(function(k){u.searchParams.delete(k);});
+    u.hash='';
+    u.searchParams.set('add-to-cart',pid);
+    u.searchParams.set('quantity',qty);
+    var t=btn.querySelector('.t'),old=t?t.textContent:'';
+    btn.setAttribute('data-busy','1');
+    btn.classList.add('atc-loading');
+    if(t)t.textContent='Adding...';
+    fetch(u.toString(),{credentials:'same-origin',headers:{'X-Requested-With':'XMLHttpRequest'}})
+    .then(function(r){if(!r.ok)throw new Error('http');return r.text();})
+    .then(function(html){
+      if(!swapCart(html))throw new Error('nocart');
+      btn.classList.remove('atc-loading');
+      btn.classList.add('atc-done');
+      if(t)t.textContent='Added';
+      toast(name);
+      setTimeout(function(){
+        btn.classList.remove('atc-done');
+        if(t)t.textContent=old;
+        btn.removeAttribute('data-busy');
+      },1600);
+    })
+    .catch(function(){ window.location.href=u.toString(); });
+  },true);
+})();
+</script><?php endwhile; get_footer(); ?>
