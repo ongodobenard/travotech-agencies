@@ -246,6 +246,10 @@ wp_enqueue_style( 'dashicons' );
   .chkp-wa-btn{font-size:.78rem;padding:10px 8px;gap:6px;}
   .chkp-place-btn{font-size:.76rem;padding:10px 8px;}
 }
+
+/* ---- Simple checkout ---- */
+.chkp-grid.chkp-simple{grid-template-columns:1fr !important;gap:12px;}
+.chkp-wrap #payment{display:none !important;}
 </style>
 
 <?php if ( function_exists( 'wc_clear_notices' ) ) wc_clear_notices(); ?>
@@ -308,141 +312,50 @@ wp_enqueue_style( 'dashicons' );
 
       <?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-      <!-- BILLING — strict 2 fields per row, no exceptions -->
+      <!-- YOUR DETAILS (simple) -->
       <div class="chkp-card" id="chkp-card-billing">
         <div class="chkp-card-head">
           <span class="dashicons dashicons-admin-users"></span>
-          <h3>Contact &amp; Billing Information</h3>
+          <h3>Your Details</h3>
         </div>
         <div class="chkp-card-body">
-          <div class="chkp-grid">
+          <div class="chkp-grid chkp-simple">
 
-            <!-- Row 1: First name | Last name -->
             <div class="chkp-fg" data-field="billing_first_name">
-              <label>First name <span class="req">*</span></label>
-              <input type="text" name="billing_first_name" id="billing_first_name" value="<?php echo $val( 'billing_first_name' ); ?>" placeholder="First name" autocomplete="given-name">
-              <span class="chkp-field-error">First name is required</span>
+              <label>Full name <span class="req">*</span></label>
+              <input type="text" name="billing_first_name" id="billing_first_name" value="<?php echo $val( 'billing_first_name' ); ?>" placeholder="Your full name" autocomplete="name">
+              <span class="chkp-field-error">Your name is required</span>
             </div>
 
-            <div class="chkp-fg" data-field="billing_last_name">
-              <label>Last name <span class="req">*</span></label>
-              <input type="text" name="billing_last_name" id="billing_last_name" value="<?php echo $val( 'billing_last_name' ); ?>" placeholder="Last name" autocomplete="family-name">
-              <span class="chkp-field-error">Last name is required</span>
-            </div>
-
-            <!-- Row 2: Company | Country -->
-            <div class="chkp-fg" data-field="billing_company">
-              <label>Company <span class="opt">(optional)</span></label>
-              <input type="text" name="billing_company" id="billing_company" value="<?php echo $val( 'billing_company' ); ?>" placeholder="Company name" autocomplete="organization">
-            </div>
-
-            <div class="chkp-fg" data-field="billing_country">
-              <label>Country / Region <span class="req">*</span></label>
-              <select name="billing_country" id="billing_country">
-                <?php foreach ( $countries as $code => $name ) : ?>
-                  <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $sel_country, $code ); ?>><?php echo esc_html( $name ); ?></option>
-                <?php endforeach; ?>
-              </select>
-              <span class="chkp-field-error">Country is required</span>
-            </div>
-
-            <!-- Row 3: Phone | Email -->
             <div class="chkp-fg" data-field="billing_phone">
-              <label>Phone <span class="req">*</span></label>
+              <label>Phone number <span class="req">*</span></label>
               <input type="tel" name="billing_phone" id="billing_phone" value="<?php echo $val( 'billing_phone' ); ?>" placeholder="+254 7XX XXX XXX" autocomplete="tel">
               <span class="chkp-field-error">Phone number is required</span>
             </div>
 
             <div class="chkp-fg" data-field="billing_email">
-              <label>Email <span class="req">*</span> <span class="opt">(confirmation sent here)</span></label>
+              <label>Email <span class="req">*</span></label>
               <input type="email" name="billing_email" id="billing_email" value="<?php echo $val( 'billing_email' ); ?>" placeholder="your@email.com" autocomplete="email">
               <span class="chkp-field-error">A valid email address is required</span>
-              <div class="chkp-email-note">
-                <span class="dashicons dashicons-email-alt" style="font-size:12px;width:12px;height:12px;color:#22adb0;"></span>
-                Order confirmation will be sent here.
-              </div>
             </div>
 
-            <!-- Row 4: Street address | Apartment -->
             <div class="chkp-fg" data-field="billing_address_1">
               <label>Street address <span class="req">*</span></label>
-              <input type="text" name="billing_address_1" id="billing_address_1" value="<?php echo $val( 'billing_address_1' ); ?>" placeholder="House number and street" autocomplete="address-line1">
+              <input type="text" name="billing_address_1" id="billing_address_1" value="<?php echo $val( 'billing_address_1' ); ?>" placeholder="House number, street, estate / area" autocomplete="street-address">
               <span class="chkp-field-error">Street address is required</span>
             </div>
 
-            <div class="chkp-fg" data-field="billing_address_2">
-              <label>Apartment / Suite <span class="opt">(optional)</span></label>
-              <input type="text" name="billing_address_2" id="billing_address_2" value="<?php echo $val( 'billing_address_2' ); ?>" placeholder="Apartment, suite, unit, etc." autocomplete="address-line2">
-            </div>
+          </div>
 
-            <!-- Row 5: City | State -->
-            <div class="chkp-fg" data-field="billing_city">
-              <label>Town / City <span class="req">*</span></label>
-              <input type="text" name="billing_city" id="billing_city" value="<?php echo $val( 'billing_city' ); ?>" placeholder="City" autocomplete="address-level2">
-              <span class="chkp-field-error">City is required</span>
-            </div>
-
-            <div class="chkp-fg" data-field="billing_state">
-              <label>State / County <span class="req">*</span></label>
-              <?php if ( $states ) : ?>
-                <select name="billing_state" id="billing_state">
-                  <option value="">Select county...</option>
-                  <?php foreach ( $states as $code => $name ) : ?>
-                    <option value="<?php echo esc_attr( $code ); ?>" <?php selected( $sel_state, $code ); ?>><?php echo esc_html( $name ); ?></option>
-                  <?php endforeach; ?>
-                </select>
-              <?php else : ?>
-                <input type="text" name="billing_state" id="billing_state" value="<?php echo $sel_state; ?>" placeholder="State / County">
-              <?php endif; ?>
-              <span class="chkp-field-error">State / County is required</span>
-            </div>
-
-            <!-- Row 6: Postcode | (empty spacer kept as invisible placeholder to maintain grid) -->
-            <div class="chkp-fg" data-field="billing_postcode">
-              <label>Postcode / ZIP <span class="opt">(optional)</span></label>
-              <input type="text" name="billing_postcode" id="billing_postcode" value="<?php echo $val( 'billing_postcode' ); ?>" placeholder="Postcode" autocomplete="postal-code">
-            </div>
-
-            <!-- Row 6 col 2: empty spacer (keeps grid tidy) -->
-            <div class="chkp-fg" style="visibility:hidden;" aria-hidden="true"></div>
-
-          </div><!-- /.chkp-grid -->
+          <!-- defaults for the fields we no longer ask for -->
+          <input type="hidden" name="billing_country" id="billing_country" value="KE">
+          
+          <input type="hidden" name="billing_city" id="billing_city" value="To be confirmed">
+          <input type="hidden" name="payment_method" value="cod">
         </div>
       </div>
 
       <?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
-
-      <!-- PAYMENT -->
-      <div class="chkp-card" id="chkp-card-payment">
-        <div class="chkp-card-head">
-          <span class="dashicons dashicons-money-alt"></span>
-          <h3>Payment Method</h3>
-        </div>
-        <div class="chkp-card-body">
-          <div class="chkp-pay-pills">
-            
-            <div class="chkp-pay-pill"><span class="dashicons dashicons-money-alt"></span>Cash on Delivery</div>
-            <div class="chkp-pay-pill"><span class="dashicons dashicons-credit-card"></span>Visa / Mastercard</div>
-            <div class="chkp-pay-pill"><span class="dashicons dashicons-bank"></span>Bank Transfer</div>
-          </div>
-          <?php do_action( 'woocommerce_checkout_payment' ); ?>
-        </div>
-      </div>
-
-      <!-- ORDER NOTES -->
-      <div class="chkp-card" id="chkp-card-notes">
-        <div class="chkp-card-head">
-          <span class="dashicons dashicons-edit-page"></span>
-          <h3>Order Notes <span style="font-size:.68rem;color:#5bd9d7;font-weight:500;">(optional)</span></h3>
-        </div>
-        <div class="chkp-card-body">
-          <div class="chkp-fg">
-            <textarea name="order_comments" id="order_comments" rows="3"
-                      placeholder="Any special instructions? e.g. gate number, delivery time preference..."
-                      style="resize:vertical;"></textarea>
-          </div>
-        </div>
-      </div>
 
       <!-- ACTIONS — DESKTOP ONLY -->
       <div class="chkp-card" id="chkp-actions-card-desktop">
@@ -513,7 +426,7 @@ wp_enqueue_style( 'dashicons' );
         <span class="dashicons dashicons-list-view"></span>
         <h3 id="chkp-summary-title">Order Summary <?php $cnt = intval( WC()->cart->get_cart_contents_count() ); echo '(' . $cnt . ' item' . ( $cnt !== 1 ? 's' : '' ) . ')'; ?></h3>
       </div>
-      <?php do_action( 'woocommerce_checkout_order_review' ); ?>
+      <?php woocommerce_order_review(); ?>
       <div class="chkp-pay-note">
         <div class="chkp-pnr nairobi"><span class="dashicons dashicons-location"></span><span><strong>Nairobi:</strong> Pay on delivery: Cash</span></div>
         <div class="chkp-pnr county"><span class="dashicons dashicons-warning"></span><span><strong>Other Counties:</strong> Full payment before dispatch</span></div>
@@ -597,14 +510,10 @@ wp_enqueue_style( 'dashicons' );
 
   /* ── REQUIRED FIELDS — email mandatory ── */
   var required = [
-    {id:'billing_first_name', label:'First name'},
-    {id:'billing_last_name',  label:'Last name'},
-    {id:'billing_country',    label:'Country'},
+    {id:'billing_first_name', label:'Full name'},
     {id:'billing_phone',      label:'Phone'},
     {id:'billing_email',      label:'Email address', type:'email'},
-    {id:'billing_address_1',  label:'Street address'},
-    {id:'billing_city',       label:'Town / City'},
-    {id:'billing_state',      label:'State / County'},
+    {id:'billing_address_1', label:'Street address'}
   ];
 
   function getVal(id){ var el=document.getElementById(id); return el?el.value.trim():''; }
@@ -644,7 +553,10 @@ wp_enqueue_style( 'dashicons' );
 
   function collectFormData(via){
     var form = document.getElementById('chkp-form');
-    var fd   = new FormData(form);
+    var fd = new FormData(form);
+    var fullName = getVal('billing_first_name').split(/\s+/);
+    fd.set('billing_first_name', fullName.shift() || '');
+    fd.set('billing_last_name', fullName.join(' ') || '-');
     fd.append('action',              'travotech_send_order_email');
     fd.append('travotech_order_nonce', ORDER_NONCE);
     fd.append('order_via',           via || 'website');
@@ -673,7 +585,7 @@ wp_enqueue_style( 'dashicons' );
     var msg='Hello Travotech Agencies,\n\nORDER REQUEST\n============================\n\nCUSTOMER DETAILS:\n';
     msg+='Name: '+fname+' '+lname+'\n';
     if(company)msg+='Company: '+company+'\n';
-    msg+='Phone: '+phone+'\nEmail: '+email+'\nAddress: '+addr1+(addr2?', '+addr2:'')+', '+city+', '+stateVal+(postcode?' '+postcode:'')+'\n\nORDER ITEMS:\n';
+    msg+='Phone: '+phone+'\nEmail: '+email+'\nAddress: '+addr1+'\n\nORDER ITEMS:\n';
     if(itemLines.length){itemLines.forEach(function(l){msg+=l+'\n';});}
     msg+='\n----------------------------\nORDER TOTAL: '+grandTotal+'\n----------------------------\n';
     if(notes)msg+='\nNOTES: '+notes+'\n';
@@ -841,7 +753,7 @@ wp_enqueue_style( 'dashicons' );
   function handleWaOrder(isDesktop){
     var valMsg    = isDesktop ? 'chkp-val-msg'    : 'chkp-val-msg-mobile';
     var valDetail = isDesktop ? 'chkp-val-detail' : 'chkp-val-detail-mobile';
-    var waRequired = ['billing_first_name','billing_last_name','billing_country','billing_phone','billing_address_1','billing_city','billing_state'];
+    var waRequired = ['billing_first_name','billing_phone','billing_address_1'];
     var missing=[], hasError=false;
     waRequired.forEach(function(id){
       var wrap=document.querySelector('[data-field="'+id+'"]');
