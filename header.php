@@ -370,6 +370,51 @@ html body .chkp-wa-btn:hover,
 html body .chkp-wa-btn:focus,
 html body .chkp-wa-btn:active,
 html body .chkp-wa-btn:focus-visible{background:#25d366 !important;background-color:#25d366 !important;border-color:#25d366 !important;color:#fff !important;}
+
+/* ---- Category side panel v1 ---- */
+@media (min-width:961px){ .th-has-dd .th-dd{display:none !important;} }
+@media (max-width:960px){ .th-side{display:none !important;} }
+.th-side{display:none;position:absolute;left:0;top:0;width:var(--th-sw,290px);z-index:450;background:#fff;flex-direction:column;box-shadow:6px 0 24px rgba(9,60,60,.18);border-right:3px solid var(--th-red);font-family:var(--th-fh);box-sizing:border-box;}
+.th-side *{box-sizing:border-box;}
+.th-side.open{display:flex;}
+.th-side.is-fixed{position:fixed;}
+.th-side-head{flex:0 0 auto;background:var(--th-dk);color:#fff;padding:14px 18px;font:600 15px var(--th-fh);letter-spacing:.04em;text-transform:uppercase;display:flex;align-items:center;gap:10px;border-bottom:3px solid var(--th-red);}
+.th-side-list{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;list-style:none;margin:0;padding:8px;scrollbar-width:thin;scrollbar-color:var(--th-g) var(--th-lt);}
+.th-side-list::-webkit-scrollbar{width:8px;}
+.th-side-list::-webkit-scrollbar-track{background:var(--th-lt);}
+.th-side-list::-webkit-scrollbar-thumb{background:var(--th-g);border-radius:6px;}
+.th-side-item{list-style:none;margin:0 0 2px;padding:0;}
+.th-side-row{display:flex;align-items:center;border-radius:8px;transition:background .15s;}
+.th-side-row:hover{background:var(--th-lt);}
+.th-side-row>a{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:11px 10px;font:600 14px var(--th-fh);letter-spacing:.02em;color:var(--th-dk);text-decoration:none;line-height:1.3;}
+.th-side-row>a i{width:22px;text-align:center;color:var(--th-g);font-size:1.05rem;flex:0 0 auto;}
+.th-side-row>a:hover{color:var(--th-g);}
+.th-side-tg{flex:0 0 38px;height:38px;border:0;background:transparent;color:var(--th-dk);cursor:pointer;border-radius:8px;}
+.th-side-tg i{font-size:.8rem;transition:transform .2s;}
+.th-side-item.open .th-side-tg i{transform:rotate(90deg);}
+.th-side-sub{display:none;list-style:none;margin:2px 0 6px 22px;padding:0 0 0 10px;border-left:2px solid #d7f0f0;}
+.th-side-item.open .th-side-sub{display:block;}
+.th-side-sub a{display:block;padding:8px 10px;font:500 13.5px var(--th-fh);color:var(--th-dk);text-decoration:none;border-radius:6px;}
+.th-side-sub a:hover{background:var(--th-lt);color:var(--th-g);}
+.th-side-foot{flex:0 0 auto;padding:10px;background:#f4fcfc;border-top:1px solid #d7f0f0;}
+.th-side-foot a{display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 12px;border-radius:8px;background:var(--th-g);color:#fff;font:600 13px var(--th-fh);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;}
+.th-side-foot a:hover{background:var(--th-dk);}
+html.th-push{overflow-x:clip;}
+html body .th-pushed{margin-left:var(--th-sw,290px) !important;width:auto !important;max-width:none !important;}
+
+/* ---- Mobile menu: our font, bigger text, scrollable ---- */
+@media (max-width:960px){
+    html body .th-mnav{height:100vh;height:100dvh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:48px;}
+    html body .th-mnav a,html body .th-mnav details>summary{font-family:var(--th-fh);font-size:16px;letter-spacing:.03em;line-height:1.35;padding-top:14px;padding-bottom:14px;}
+    html body .th-mnav details a{font-family:var(--th-fh);font-size:15px;font-weight:500;text-transform:none;letter-spacing:.01em;}
+    html body .th-mnav details details>summary{font-family:var(--th-fh);font-size:15px;text-transform:none;}
+    html body .th-mnav details details a{font-size:14.5px;}
+}
+
+/* ---- WhatsApp floating icon pulse ---- */
+@keyframes th-wapulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.65);}70%{box-shadow:0 0 0 20px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
+html body .th-wa-pulse,html body [class*="whatsapp-float"],html body [class*="wa-float"],html body [class*="float-wa"],html body #whatsapp-float,html body .wa-fab,html body .whatsapp-fab,html body .floating-whatsapp{animation:th-wapulse 1.8s ease-out infinite;}
+@media (prefers-reduced-motion:reduce){html body .th-wa-pulse,html body [class*="whatsapp-float"],html body [class*="wa-float"],html body [class*="float-wa"]{animation:none;}}
 </style>
 <?php wp_head(); ?>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/live-search.js?v=1" defer></script>
@@ -596,6 +641,97 @@ html body .chkp-wa-btn:focus-visible{background:#25d366 !important;background-co
 </nav>
 
 </div><!-- /.th-sticky -->
+
+<?php
+$th_ic = function ( $n ) {
+    $n   = strtolower( $n );
+    $map = array( 'glove' => 'fa-hand', 'consum' => 'fa-hand', 'furnit' => 'fa-bed', 'hospital' => 'fa-bed', 'bed' => 'fa-bed', 'surg' => 'fa-scissors', 'diagnos' => 'fa-stethoscope', 'lab' => 'fa-flask', 'monitor' => 'fa-heart-pulse', 'pharm' => 'fa-pills', 'medic' => 'fa-pills', 'access' => 'fa-kit-medical', 'test' => 'fa-vial', 'ppe' => 'fa-mask-face', 'protect' => 'fa-mask-face', 'well' => 'fa-heart' );
+    foreach ( $map as $k => $i ) { if ( strpos( $n, $k ) !== false ) { return $i; } }
+    return 'fa-box-open';
+};
+?>
+<aside class="th-side" id="thSide" aria-label="Product categories">
+    <div class="th-side-head"><i class="fa-solid fa-table-cells-large" aria-hidden="true"></i> Products Categories</div>
+    <ul class="th-side-list">
+        <?php foreach ( $th_cats as $th_c ) : $has = ! empty( $th_c[2] ); ?>
+        <li class="th-side-item">
+            <div class="th-side-row">
+                <a href="<?php echo esc_url( $th_c[1] ); ?>"><i class="fa-solid <?php echo esc_attr( $th_ic( $th_c[0] ) ); ?>" aria-hidden="true"></i><span><?php echo esc_html( $th_c[0] ); ?></span></a>
+                <?php if ( $has ) : ?><button type="button" class="th-side-tg" aria-expanded="false" aria-label="Show <?php echo esc_attr( $th_c[0] ); ?> sub-categories"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button><?php endif; ?>
+            </div>
+            <?php if ( $has ) : ?>
+            <ul class="th-side-sub">
+                <?php foreach ( $th_c[2] as $k ) : ?><li><a href="<?php echo esc_url( $k[1] ); ?>"><?php echo esc_html( $k[0] ); ?></a></li><?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <div class="th-side-foot"><a href="<?php echo esc_url( $th_shop ); ?>">View all products <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+</aside>
+<script>
+(function(){
+    var li=document.querySelector('.th-has-dd'),side=document.getElementById('thSide');
+    if(!li||!side)return;
+    var sel='[class$="hero"],[class*="hero "],[class*="-hero"],.ct-band,.chkp-banner';
+    var hero=null,timer=null;
+    function desk(){return window.innerWidth>960;}
+    function findHero(){
+        var l=document.querySelectorAll(sel);
+        for(var i=0;i<l.length;i++){var e=l[i];
+            if(e.closest('.th-sticky,.th-side,.th-mnav,.th-top,#th-loader,footer'))continue;
+            if(e.offsetHeight>80)return e;}
+        return null;
+    }
+    function unpush(){if(hero){hero.classList.remove('th-pushed');}document.documentElement.classList.remove('th-push');hero=null;}
+    function place(){
+        var hd=document.getElementById('thSticky'),hb=hd?hd.getBoundingClientRect().bottom:0;
+        var h=findHero(),r=h?h.getBoundingClientRect():null;
+        side.classList.add('open');
+        if(h&&r.top>=hb-6&&r.bottom>hb+120){
+            hero=h;
+            side.classList.remove('is-fixed');
+            side.style.top=(r.top+window.pageYOffset)+'px';
+            side.style.height=Math.max(h.offsetHeight,300)+'px';
+            document.documentElement.classList.add('th-push');
+            h.style.transition='margin-left .25s ease';
+            h.classList.add('th-pushed');
+            setTimeout(function(){if(hero===h){side.style.height=Math.max(h.offsetHeight,300)+'px';}},300);
+        }else{
+            side.classList.add('is-fixed');
+            side.style.top=hb+'px';
+            side.style.height=Math.min(window.innerHeight-hb-12,560)+'px';
+        }
+    }
+    function open(){if(!desk())return;clearTimeout(timer);if(side.classList.contains('open'))return;place();}
+    function close(){side.classList.remove('open','is-fixed');unpush();}
+    function shut(){clearTimeout(timer);timer=setTimeout(close,350);}
+    li.addEventListener('mouseenter',open);
+    li.addEventListener('mouseleave',shut);
+    li.addEventListener('focusin',open);
+    side.addEventListener('mouseenter',function(){clearTimeout(timer);});
+    side.addEventListener('mouseleave',shut);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    window.addEventListener('resize',close);
+    side.addEventListener('click',function(e){
+        var b=e.target.closest('.th-side-tg');if(!b)return;
+        var it=b.closest('.th-side-item'),o=it.classList.toggle('open');
+        b.setAttribute('aria-expanded',o?'true':'false');
+    });
+})();
+(function(){
+    function mark(){
+        var a=document.querySelectorAll('a[href*="wa.me"],a[href*="api.whatsapp.com"],a[href*="whatsapp.com/send"]');
+        for(var i=0;i<a.length;i++){
+            var e=a[i];if(e.closest('.th-top,.th-soc-wrap'))continue;
+            if(getComputedStyle(e).position==='fixed'){e.classList.add('th-wa-pulse');}
+            else{var p=e.parentElement;if(p&&getComputedStyle(p).position==='fixed'){p.classList.add('th-wa-pulse');}}
+        }
+    }
+    document.addEventListener('DOMContentLoaded',mark);
+    window.addEventListener('load',function(){mark();setTimeout(mark,1500);});
+})();
+</script>
 
 <script>
 (function(){

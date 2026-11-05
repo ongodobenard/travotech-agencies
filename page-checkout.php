@@ -290,6 +290,26 @@ body #chkp-place-btn-mobile{border-radius:8px !important;}
   .chkp-sidebar .woocommerce-checkout-review-order-table thead th{position:sticky;top:0;z-index:2;}
   .chkp-sidebar .chkp-pay-note{flex:0 0 auto;}
 }
+
+/* ---- Checkout summary v2: items scroll, totals stay fixed ---- */
+@media (min-width:961px){
+    html body .chkp-layout{align-items:stretch;}
+    html body .chkp-sidebar{position:relative !important;top:auto !important;min-height:460px;}
+    html body .chkp-sidebar .chkp-summary-card{position:absolute;top:0;right:0;bottom:0;left:0;margin:0;display:flex;flex-direction:column;}
+    html body .chkp-sidebar .chkp-summary-head{flex:0 0 auto;}
+    html body .chkp-sidebar #order_review{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;}
+    html body .chkp-sidebar .chkp-pay-note{flex:0 0 auto;}
+}
+@media (max-width:960px){
+    html body .chkp-sidebar #order_review{max-height:380px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+}
+html body .chkp-summary-card .woocommerce-checkout-review-order-table{border-collapse:separate !important;border-spacing:0 !important;}
+html body .chkp-summary-card .woocommerce-checkout-review-order-table thead th{position:sticky;top:0;z-index:3;background:#f9fefe !important;}
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot{position:sticky;bottom:0;z-index:4;}
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot th,
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot td{background:#fff !important;}
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:first-child th,
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:first-child td{border-top:2px solid #b0f4f3 !important;}
 </style>
 
 <?php if ( function_exists( 'wc_clear_notices' ) ) wc_clear_notices(); ?>

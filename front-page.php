@@ -54,8 +54,9 @@ $hp_cat_img = function ( $term ) {
     return $tid ? (string) wp_get_attachment_image_url( $tid, 'medium' ) : '';
 };
 $hp_card = function ( $p ) use ( $hp_wa ) {
-    $name = $p->get_name();
-    $url  = get_permalink( $p->get_id() );
+    $name  = $p->get_name();
+    $pid   = $p->get_id();
+    $url   = get_permalink( $pid );
     $pc    = $p->get_price();
     $isvar = $p->is_type( 'variable' );
     $can   = $p->is_type( 'simple' ) && $p->is_purchasable() && $p->is_in_stock() && $pc !== '';
@@ -72,28 +73,15 @@ $hp_card = function ( $p ) use ( $hp_wa ) {
         <div class="hp-card-body">
             <h3><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $name ); ?></a></h3>
             <div class="hp-price"><?php echo wp_kses_post( $p->get_price_html() ); ?></div>
-            <?php
-            $wa    = preg_replace( '/\D+/', '', (string) get_option( 'travotech_wa', get_option( 'trovatech_wa', '254720737151' ) ) );
-            $msg   = rawurlencode( 'Hello Travotech Agencies, I would like to order: ' . $name . ' - ' . $url );
-            $can   = $p->is_purchasable() && $p->is_in_stock();
-            $ajax  = $can && $p->supports( 'ajax_add_to_cart' );
-            ?>
             <div class="hp-actions">
                 <?php if ( $can ) : ?>
-                <a href="<?php echo esc_url( $p->add_to_cart_url() ); ?>" data-quantity="1" data-product_id="<?php echo (int) $p->get_id(); ?>" data-product_sku="<?php echo esc_attr( $p->get_sku() ); ?>" aria-label="Add <?php echo esc_attr( $name ); ?> to your cart" rel="nofollow" class="hp-btn hp-btn-sm product_type_<?php echo esc_attr( $p->get_type() ); ?><?php echo $ajax ? ' add_to_cart_button ajax_add_to_cart' : ''; ?>"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> <?php echo esc_html( $p->add_to_cart_text() ); ?></a>
-                <?php else : ?>
-                <div class="hp-btns">
-                <?php if ( $can ) : ?>
-                <button type="button" class="hp-b hp-atc" data-pid="<?php echo (int) $p->get_id(); ?>" data-name="<?php echo esc_attr( $short ); ?>"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> <span class="t">Add to cart</span></button>
+                <button type="button" class="hp-btn hp-btn-sm hp-atc" data-pid="<?php echo (int) $pid; ?>" data-name="<?php echo esc_attr( $short ); ?>"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> <span class="t">Add to cart</span></button>
                 <?php elseif ( $oos ) : ?>
-                <span class="hp-b off"><i class="fa-solid fa-ban" aria-hidden="true"></i> Out of stock</span>
+                <span class="hp-btn hp-btn-sm hp-off"><i class="fa-solid fa-ban" aria-hidden="true"></i> Out of stock</span>
                 <?php else : ?>
-                <a class="hp-b" href="<?php echo esc_url( $url ); ?>"><i class="fa-solid fa-list-check" aria-hidden="true"></i> <?php echo $isvar ? 'Select options' : 'View details'; ?></a>
+                <a class="hp-btn hp-btn-sm" href="<?php echo esc_url( $url ); ?>"><i class="fa-solid fa-list-check" aria-hidden="true"></i> <?php echo $isvar ? 'Select options' : 'View details'; ?></a>
                 <?php endif; ?>
-                <a class="hp-b wa" href="https://wa.me/<?php echo esc_attr( $hp_wa ); ?>?text=<?php echo $wamsg; // phpcs:ignore ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</a>
-            </div>
-                <?php endif; ?>
-                <a class="hp-btn hp-btn-sm hp-btn-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo esc_attr( $msg ); ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</a>
+                <a class="hp-btn hp-btn-sm hp-btn-wa" href="<?php echo esc_url( 'https://wa.me/' . $hp_wa . '?text=' . $wamsg ); ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</a>
             </div>
         </div>
     </article>
@@ -370,7 +358,15 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
 #travotech-toast .cv-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--th-g,#22adb0);transform-origin:left;}
 #travotech-toast.cv-show .cv-bar{animation:cvCount 5s linear forwards;}
 @keyframes cvCount{from{transform:scaleX(1);}to{transform:scaleX(0);}}
-@media (max-width:560px){#travotech-toast{right:12px;left:12px;width:auto;bottom:84px;}}</style>
+@media (max-width:560px){#travotech-toast{right:12px;left:12px;width:auto;bottom:84px;}}
+/* ---- Home add to cart v1 ---- */
+.hp-actions{display:grid;gap:7px;margin-top:4px;}
+.hp-actions .hp-btn{width:100%;font-size:12px;padding:10px 8px;line-height:1.2;text-align:center;cursor:pointer;}
+.hp-btn-wa{background:#25D366;border-color:#25D366;color:#fff;}
+.hp-btn-wa:hover{background:#25D366;border-color:#25D366;color:#fff;}
+.hp-btn.hp-off{background:#e5e9e7;border-color:#e5e9e7;color:#6b7280;pointer-events:none;}
+.hp-btn.hp-atc-loading{opacity:.65;pointer-events:none;}
+</style>
 
 <main class="hp" id="main">
 
