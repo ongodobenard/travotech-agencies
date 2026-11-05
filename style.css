@@ -368,3 +368,12 @@ footer{background:#072525;color:rgba(255,255,255,.7);padding:56px 5% 26px;}
   .foot-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
 }
+
+/* ---- wa-square: WhatsApp buttons not circular ---- */
+body a[href*="wa.me"],
+body a[href*="api.whatsapp.com"],
+body a[href*="web.whatsapp.com"],
+body button[class*="whatsapp"],
+body [class*="whatsapp-float"],
+body [class*="wa-float"],
+body [class*="float-wa"]{border-radius:14px !important;}

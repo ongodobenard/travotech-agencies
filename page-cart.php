@@ -317,7 +317,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   color: #22adb0;
   border: 2px solid #22adb0;
   padding: 8px 12px;
-  border-radius: 50px;
+  border-radius: 8px;
   font-family: 'Nunito', sans-serif;
   font-size: .72rem;
   font-weight: 800;
@@ -335,7 +335,7 @@ button[name="update_cart"] {
   color: #b0f4f3 !important;
   border: 2px solid #b0f4f3 !important;
   padding: 8px 14px !important;
-  border-radius: 50px !important;
+  border-radius: 8px !important;
   font-family: 'Nunito', sans-serif !important;
   font-size: .72rem !important;
   font-weight: 800 !important;
@@ -380,7 +380,7 @@ button[name="update_cart"].cart-changed {
 .cart-empty-box a.btn-shop {
   display: inline-flex; align-items: center; gap: 7px;
   background: #22adb0; color: #fff;
-  padding: 11px 22px; border-radius: 50px;
+  padding: 11px 22px; border-radius: 8px;
   font-size: .84rem; font-weight: 800; text-decoration: none;
   font-family: 'Nunito', sans-serif;
   box-shadow: 0 6px 18px rgba(34,173,176,.3); transition: all .25s;
@@ -445,7 +445,7 @@ button[name="update_cart"].cart-changed {
   display: flex; align-items: center; justify-content: center; gap: 8px;
   background: #22adb0; color: #fff;
   padding: clamp(11px,2vw,14px) 18px;
-  border-radius: 50px;
+  border-radius: 8px;
   font-family: 'Nunito', sans-serif;
   font-size: clamp(.82rem,2vw,.92rem);
   font-weight: 900; text-decoration: none;
@@ -607,7 +607,7 @@ button[name="update_cart"].cart-changed {
     color: #22adb0;
     border: 2px solid #22adb0;
     padding: 8px 12px;
-    border-radius: 50px;
+    border-radius: 8px;
     font-family: 'Nunito', sans-serif;
     font-size: .72rem; font-weight: 800;
     cursor: pointer; white-space: nowrap;
