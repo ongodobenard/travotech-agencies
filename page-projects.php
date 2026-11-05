@@ -39,7 +39,7 @@ $pj_faq = array(
 );
 
 $pj_title = 'Our Projects | Medical & Laboratory Equipment Installation in Kenya | Travotech Agencies';
-$pj_desc  = 'See Travotech Agencies projects: top, professional and affordable medical and laboratory equipment supply and installation in Nairobi, Kisumu, Nyeri and across Kenya.';
+$pj_desc  = 'Travotech Agencies projects: top, best-value, professional and affordable medical and laboratory equipment installation in Nairobi, Kisumu, Nyeri and across Kenya.';
 
 if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
     add_filter( 'pre_get_document_title', function () use ( $pj_title ) { return $pj_title; } );
@@ -299,7 +299,7 @@ font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#1d4847;overflow-x:h
 <div class="pj-wrap">
 <div class="pj-head"><h2 id="pj-why-h">Why Kenyan Facilities Choose Travotech Agencies</h2></div>
 <div class="pj-copy">
-<p>Looking for a top supplier of medical and laboratory equipment in Kenya? Travotech Agencies helps hospitals, clinics, pharmacies, schools and laboratories get the right equipment at a fair price, with professional installation and friendly support. Whether you are in Nairobi, Kisumu, Nyeri or another county, we make the process simple from the first call to the final handover.</p>
+<p>Looking for the best supplier of professional, affordable medical and laboratory equipment in Kenya? Travotech Agencies helps hospitals, clinics, pharmacies, schools and laboratories get the right equipment at a fair price, with professional installation and friendly support. Whether you are in Nairobi, Kisumu, Nyeri or another county, we make the process simple from the first call to the final handover.</p>
 </div>
 <div class="pj-feat">
 <div><i class="fa-solid fa-user-doctor" aria-hidden="true"></i><h3>Professional team</h3><p>Experienced staff who understand hospital and laboratory equipment.</p></div>
