@@ -190,6 +190,13 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
     .ct-people-m{height:clamp(250px,64vw,400px);margin-top:10px;}
     .ct-cards-wrap{margin:-24px auto 0;padding:0 5% 26px;}
 }
+
+/* ---- Hero fix v4 ---- */
+/* Desktop only: bigger people image, anchored to the bottom right */
+@media (min-width:1001px){
+    .ct-people-d{width:min(52%,680px);}
+    .ct-people-d img{transform:scale(1.2);transform-origin:bottom right;}
+}
 </style>
 
 <main class="ct">
