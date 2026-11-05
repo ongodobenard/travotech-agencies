@@ -218,6 +218,28 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     #travotech-toast{right:12px;left:12px;width:auto;bottom:84px;}
 }
 @media (max-width:340px){.sh-grid{grid-template-columns:1fr;}}
+
+/* ---- Fixes v2 ---- */
+/* Sidebar box titles: white on dark green */
+.sh .sh-wt,.sh h2.sh-wt{color:#fff;}
+.sh .sh-wt i{color:#fff;}
+
+/* Phones: always 2 products per row, no list view */
+@media (max-width:700px){
+    .sh .sh-view{display:none;}
+    .sh .sh-grid,.sh .sh-grid.is-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+    .sh .sh-grid.is-list .sh-card{flex-direction:column;}
+    .sh .sh-grid.is-list .sh-img{width:auto;height:140px;min-height:0;}
+    .sh .sh-grid.is-list .sh-btns{grid-template-columns:1fr;max-width:none;}
+    .sh .sh-grid.is-list .sh-name{font-size:.86rem;min-height:2.6em;}
+    .sh .sh-grid.is-list .sh-price{margin-top:auto;}
+}
+@media (max-width:380px){
+    .sh .sh-img{height:120px !important;}
+    .sh .sh-b{font-size:10px;padding:8px 2px;}
+    .sh .sh-name{font-size:.8rem;}
+    .sh .sh-body{padding:8px;}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
