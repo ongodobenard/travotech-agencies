@@ -11,8 +11,10 @@ $ct_email1 = 'travogencies@yahoo.com';
 $ct_email2 = 'sales@travotechagencies.co.ke';
 $ct_social = array(
     array( 'fa-brands fa-facebook-f', 'Facebook', '' ),
+    array( 'fa-brands fa-x-twitter', 'X', '' ),
     array( 'fa-brands fa-linkedin-in', 'LinkedIn', '' ),
     array( 'fa-brands fa-youtube', 'YouTube', '' ),
+    array( 'fa-brands fa-tiktok', 'TikTok', '' ),
 );
 $ct_branches = array(
     array( 'Head Office - Kahawa Sukari', 'Kahawa Sukari, Bungoma Road, Bungoma Close - Gate No.4', '0720737151', 'Kahawa Sukari, Bungoma Road, Bungoma Close, Nairobi, Kenya' ),
@@ -20,9 +22,8 @@ $ct_branches = array(
     array( 'Travotech Meru', 'Tom Mboya Street, Meru Town, directly opposite Post Bank Meru / YETU Sacco', '0725282453', 'Tom Mboya Street, Meru Town, Kenya' ),
 );
 $img = esc_url( get_template_directory_uri() ) . '/assets/js/images/';
-/* Hero images: background and the people. Swap the filenames if they look the wrong way round. */
-$ct_bg  = file_exists( get_template_directory() . '/assets/js/images/contactbg.png' ) ? 'contactbg.png' : 'contact.png';
-$ct_ppl = 'whyus.png';
+$ct_bg  = 'contact.png';  /* hero background */
+$ct_ppl = 'whyus.png';    /* the people */
 $page_url = get_permalink();
 
 /* ---- Handle the form ---- */
@@ -73,25 +74,25 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ct p{margin:0 0 10px;line-height:1.65;font-size:.95rem;}
 .ct-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;}
 
-/* Top: hero band + overlapping cards + people */
-.ct-top{position:relative;background:linear-gradient(180deg,#fff 0,#f1f8f4 100%);}
+/* Top: background band + people + overlapping cards */
+.ct-top{position:relative;background:linear-gradient(180deg,#f4faf6 0,#e6f3ec 100%);}
 .ct-band{position:relative;background:var(--ct-dk);color:#fff;overflow:hidden;}
-.ct-band-bg{position:absolute;inset:0;}
-.ct-band-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
-.ct-band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ct-dk) 0%,var(--ct-dk) 36%,rgba(12,58,39,.15) 70%,rgba(12,58,39,0) 100%);}
-.ct-band-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:30px 5% 100px;}
-.ct-txt{max-width:560px;}
-.ct .ct-band h1{color:#fff;font-size:clamp(2.2rem,5.2vw,3.6rem);line-height:1.05;margin-bottom:8px;}
-.ct .ct-band h1 small{display:block;font-size:clamp(.95rem,1.8vw,1.15rem);font-weight:500;line-height:1.35;margin-top:8px;color:#9fe0bf;}
-.ct-sub{font-family:var(--th-fh,'Oswald',sans-serif);font-size:clamp(1.1rem,2.2vw,1.45rem);color:#fff;margin:0 0 6px !important;}
+.ct-band-bg{position:absolute;inset:0;background:var(--ct-dk);isolation:isolate;}
+.ct-band-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;mix-blend-mode:luminosity;opacity:.75;}
+.ct-band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ct-dk) 0%,var(--ct-dk) 34%,rgba(12,58,39,.25) 68%,rgba(12,58,39,0) 100%);}
+.ct-band-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:28px 5% 96px;}
+.ct-txt{max-width:600px;}
+.ct .ct-band h1{color:#fff;font-size:clamp(2.4rem,5.6vw,4rem);line-height:1.05;margin-bottom:8px;}
+.ct .ct-band h1 small{display:block;font-size:clamp(.95rem,1.7vw,1.1rem);font-weight:500;line-height:1.35;margin-top:8px;color:#9fe0bf;}
+.ct-sub{font-family:var(--th-fh,'Oswald',sans-serif);font-size:clamp(1.15rem,2.3vw,1.6rem);color:#fff;margin:0 0 6px !important;}
 .ct .ct-band p{color:rgba(255,255,255,.95);}
-.ct-band-line{display:block;width:70px;height:4px;background:var(--ct-red);border-radius:2px;margin-top:10px;}
+.ct-band-line{display:block;width:80px;height:3px;background:#fff;border-radius:2px;margin-top:10px;}
 .ct-people-m{display:none;}
-.ct-people-d{position:absolute;top:0;bottom:0;right:max(0px,calc((100% - 1200px)/2));width:min(38%,460px);display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none;z-index:1;}
+.ct-people-d{position:absolute;top:0;bottom:0;right:max(0px,calc((100% - 1200px)/2));width:min(46%,580px);display:flex;align-items:flex-end;justify-content:flex-end;pointer-events:none;z-index:1;}
 .ct-people-d img{height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom right;display:block;}
 
-.ct-cards-wrap{position:relative;z-index:3;max-width:1200px;margin:-68px auto 0;padding:0 5% 28px;}
-.ct-cards{display:grid;grid-template-columns:1.1fr 1fr;max-width:740px;background:#fff;color:#2b3a33;border-radius:14px;box-shadow:0 14px 34px rgba(12,58,39,.22);overflow:hidden;}
+.ct-cards-wrap{position:relative;z-index:3;max-width:1200px;margin:-66px auto 0;padding:0 5% 26px;}
+.ct-cards{display:grid;grid-template-columns:1.1fr 1fr;max-width:720px;background:#fff;color:#2b3a33;border-radius:16px;box-shadow:0 14px 34px rgba(12,58,39,.22);overflow:hidden;}
 .ct-form-box{padding:20px 22px;}
 .ct-info-box{padding:20px 22px;background:var(--ct-tint);color:#2b3a33;}
 .ct-title{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
@@ -101,10 +102,10 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ct-field i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--ct-g);font-size:.9rem;}
 .ct-field.ct-ta i{top:16px;transform:none;}
 .ct-field input,.ct-field textarea{width:100%;border:1px solid var(--ct-line);border-radius:6px;background:#fff;padding:9px 12px 9px 38px;font:inherit;font-size:.9rem;color:#2b3a33;}
-.ct-field textarea{min-height:74px;resize:vertical;}
+.ct-field textarea{min-height:70px;resize:vertical;}
 .ct-field input:focus,.ct-field textarea:focus{outline:2px solid var(--ct-g);outline-offset:0;border-color:var(--ct-g);}
 .ct-hp{position:absolute !important;left:-9999px;width:1px;height:1px;overflow:hidden;}
-.ct-send{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:6px;background:var(--ct-g);color:#fff;font-weight:700;font-size:.92rem;padding:11px;cursor:pointer;transition:background .2s;}
+.ct-send{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:50px;background:var(--ct-g);color:#fff;font-weight:700;font-size:.92rem;padding:11px;cursor:pointer;transition:background .2s;}
 .ct-send:hover{background:var(--ct-gd);}
 .ct-note{border-radius:6px;padding:9px 12px;font-size:.86rem;margin-bottom:10px;}
 .ct-ok{background:#e3f6ea;border:1px solid #9bd5b2;color:#14532d;}
@@ -117,23 +118,23 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ct .ct-det a:hover{color:var(--ct-gd);text-decoration:underline;}
 .ct-follow{border-top:1px solid var(--ct-line);margin-top:6px;padding-top:10px;}
 .ct-follow b{font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ct-dk);display:block;margin-bottom:8px;}
-.ct-soc{display:flex;gap:10px;}
-.ct .ct-soc a{width:36px;height:36px;border-radius:50%;background:var(--ct-g);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s;}
+.ct-soc{display:flex;gap:8px;flex-wrap:wrap;}
+.ct .ct-soc a{width:34px;height:34px;border-radius:50%;background:var(--ct-g);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.85rem;transition:background .2s;}
 .ct .ct-soc a:hover{background:var(--ct-red);}
 
-/* Lower area: map, call-to-action, offices */
-.ct-lower{display:grid;grid-template-columns:1.2fr 1fr;grid-template-areas:"map cta" "off off";gap:20px;padding:6px 0 34px;}
-.ct-map{grid-area:map;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--ct-line);min-height:270px;}
+/* Lower area: map left, call-to-action right, then offices */
+.ct-lower{display:grid;grid-template-columns:1.15fr 1fr;grid-template-areas:"map cta" "off off";gap:20px;padding:6px 0 34px;}
+.ct-map{grid-area:map;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--ct-line);min-height:200px;}
 .ct-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
-.ct-map-tag{position:absolute;left:12px;top:12px;z-index:2;background:#fff;border-radius:8px;padding:10px 14px;box-shadow:0 4px 14px rgba(0,0,0,.2);max-width:210px;}
+.ct-map-tag{position:absolute;left:12px;top:12px;z-index:2;background:#fff;border-radius:8px;padding:9px 14px;box-shadow:0 4px 14px rgba(0,0,0,.2);max-width:210px;}
 .ct-map-tag b{display:block;font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ct-dk);}
 .ct-map-tag span{display:block;font-size:.8rem;line-height:1.4;color:#2b3a33;}
 .ct .ct-map-tag a{font-size:.8rem;font-weight:600;color:var(--ct-gd);}
-.ct-cta{grid-area:cta;background:var(--ct-red);color:#fff;border-radius:12px;padding:26px;display:flex;align-items:center;gap:20px;}
-.ct-cta>i{font-size:2.6rem;flex-shrink:0;}
-.ct .ct-cta h2{color:#fff;font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:6px;}
-.ct .ct-cta p{color:#fff;font-size:.9rem;margin-bottom:12px;}
-.ct .ct-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;background:#fff;color:var(--ct-dk);}
+.ct-cta{grid-area:cta;background:var(--ct-dk);color:#fff;border-radius:12px;padding:22px 26px;display:flex;align-items:center;gap:20px;}
+.ct-cta>i{font-size:2.6rem;flex-shrink:0;padding-right:20px;border-right:1px solid rgba(255,255,255,.35);}
+.ct .ct-cta h2{color:#fff;font-size:clamp(1.25rem,2.2vw,1.6rem);margin-bottom:6px;}
+.ct .ct-cta p{color:rgba(255,255,255,.92);font-size:.9rem;margin-bottom:12px;}
+.ct .ct-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:50px;font-weight:700;font-size:.9rem;text-decoration:none;background:#fff;color:var(--ct-dk);}
 .ct .ct-btn:hover{background:var(--ct-tint);}
 .ct-off{grid-area:off;padding-top:14px;}
 .ct .ct-h2{text-align:center;font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:14px;}
@@ -146,15 +147,14 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ct .ct-o a.ct-ph{font-weight:600;text-decoration:none;color:var(--ct-dk);}
 .ct .ct-o a.ct-mp{display:inline-flex;gap:6px;align-items:center;margin-top:6px;font-size:.85rem;font-weight:700;color:var(--ct-red);text-decoration:none;}
 
-/* Tablet and phone: text on the hero, people under it, map last */
+/* Tablet and phone: text on the hero, people under it, then cards, map last */
 @media (max-width:1000px){
 .ct-people-d{display:none;}
-.ct-band-bg::after{background:rgba(12,58,39,.62);}
-.ct-band-in{padding:26px 5% 0;}
-.ct .ct-band h1,.ct .ct-band p,.ct-sub{text-shadow:0 1px 6px rgba(0,0,0,.45);}
-.ct-people-m{display:flex;justify-content:center;align-items:flex-end;height:clamp(170px,38vw,260px);margin-top:12px;}
+.ct-band-bg::after{background:linear-gradient(180deg,rgba(12,58,39,.78) 0,rgba(12,58,39,.5) 100%);}
+.ct-band-in{padding:24px 5% 0;}
+.ct-people-m{display:flex;justify-content:center;align-items:flex-end;height:clamp(180px,42vw,280px);margin-top:12px;}
 .ct-people-m img{height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom center;display:block;}
-.ct-cards-wrap{margin-top:-26px;}
+.ct-cards-wrap{margin-top:-24px;}
 .ct-cards{max-width:100%;}
 .ct-lower{grid-template-columns:1fr;grid-template-areas:"cta" "off" "map";}
 .ct-map{min-height:290px;}
@@ -165,6 +165,7 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .ct-offs{grid-template-columns:1fr;}
 .ct-form-box,.ct-info-box{padding:18px;}
 .ct-cta{flex-direction:column;text-align:center;}
+.ct-cta>i{border-right:0;padding-right:0;}
 }
 </style>
 
@@ -173,7 +174,7 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 <div class="ct-top">
 
 <div class="ct-band">
-<div class="ct-band-bg"><img src="<?php echo $img . $ct_bg; ?>" alt="" width="1600" height="700" fetchpriority="high"></div>
+<div class="ct-band-bg"><img src="<?php echo $img . $ct_bg; ?>" alt="" width="1672" height="941" fetchpriority="high"></div>
 <div class="ct-band-in">
 <div class="ct-txt">
 <h1>Contact Us <small>Travotech Agencies, Medical &amp; Laboratory Equipment Supplier in Nairobi, Kenya</small></h1>
@@ -224,12 +225,17 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 <div class="ct-wrap">
 <div class="ct-lower">
 
+<div class="ct-map">
+<div class="ct-map-tag"><b>Travotech Nairobi</b><span>Nyambene House, Tom Mboya Street</span><a href="https://www.google.com/maps/search/?api=1&amp;query=<?php echo rawurlencode( 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ); ?>" target="_blank" rel="noopener">View larger map</a></div>
+<iframe title="Map of Travotech Nairobi, Nyambene House, Tom Mboya Street" src="https://www.google.com/maps?q=<?php echo rawurlencode( 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ); ?>&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+</div>
+
 <div class="ct-cta">
 <i class="fa-solid fa-handshake" aria-hidden="true"></i>
 <div>
 <h2>Let&rsquo;s Build a Healthier Kenya Together</h2>
 <p>Your health is our priority. Reach out today for the best laboratory and healthcare solutions.</p>
-<a class="ct-btn" href="tel:+254<?php echo esc_attr( substr( $ct_phone2, 1 ) ); ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Us Now</a>
+<a class="ct-btn" href="tel:+254<?php echo esc_attr( substr( $ct_phone2, 1 ) ); ?>">Call Us Now <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
 </div>
 </div>
 
@@ -247,11 +253,6 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 <?php endforeach; ?>
 </div>
 </section>
-
-<div class="ct-map">
-<div class="ct-map-tag"><b>Travotech Nairobi</b><span>Nyambene House, Tom Mboya Street</span><a href="https://www.google.com/maps/search/?api=1&amp;query=<?php echo rawurlencode( 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ); ?>" target="_blank" rel="noopener">View larger map</a></div>
-<iframe title="Map of Travotech Nairobi, Nyambene House, Tom Mboya Street" src="https://www.google.com/maps?q=<?php echo rawurlencode( 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ); ?>&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-</div>
 
 </div>
 </div>
