@@ -50,7 +50,7 @@ wp_enqueue_style( 'dashicons' );
 .woocommerce-notices-wrapper,.woocommerce-notices-wrapper *,.woocommerce-message,.woocommerce-info,.woocommerce-error,.wc-forward,ul.woocommerce-error,ul.woocommerce-message,ul.woocommerce-info,.woocommerce-NoticeGroup,.woocommerce-NoticeGroup-checkout,.woocommerce-NoticeGroup-updateOrderReview,.woocommerce>.woocommerce-message,.woocommerce>.woocommerce-info,.woocommerce>.woocommerce-error,body .woocommerce-message,body .woocommerce-info,div.woocommerce>.woocommerce-notices-wrapper,.chkp-wrap .woocommerce-notices-wrapper,.chkp-wrap .woocommerce-message,.chkp-wrap .woocommerce-info,.chkp-wrap ul.woocommerce-error,.chkp-wrap .woocommerce-NoticeGroup,.chkp-wrap .woocommerce-NoticeGroup-checkout{display:none!important;visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;border:none!important;opacity:0!important;pointer-events:none!important;}
 
 /* ── BANNER ── */
-.chkp-banner{background:linear-gradient(135deg,#1e8a54,#2eaf6e 60%,#3dc97e);padding:clamp(18px,3vw,36px) 5%;position:relative;overflow:hidden;}
+.chkp-banner{background:linear-gradient(135deg,#0a4cc6,#1863ee 60%,#407def);padding:clamp(18px,3vw,36px) 5%;position:relative;overflow:hidden;}
 .chkp-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(255,255,255,.07),transparent 65%);}
 .chkp-banner-inner{position:relative;z-index:1;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 .chkp-banner h1{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.9rem);font-weight:700;color:#fff;margin:0;display:flex;align-items:center;gap:8px;}
@@ -58,27 +58,27 @@ wp_enqueue_style( 'dashicons' );
 .chkp-breadcrumb a{color:#fff;text-decoration:underline;}
 
 /* ── STEPS ── */
-.chkp-steps{background:#fff;border-bottom:2px solid #e8f8f0;padding:10px 5%;}
+.chkp-steps{background:#fff;border-bottom:2px solid #e4ecfc;padding:10px 5%;}
 .chkp-steps-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;}
-.chkp-step{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;font-family:'Nunito',sans-serif;color:#8aaa98;white-space:nowrap;}
-.chkp-step.active{color:#2eaf6e;}.chkp-step.done{color:#1e8a54;}
-.chkp-step-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;flex-shrink:0;background:#e8f8f0;color:#8aaa98;}
-.chkp-step.active .chkp-step-num{background:#2eaf6e;color:#fff;}
-.chkp-step.done .chkp-step-num{background:#1e8a54;color:#fff;}
-.chkp-step-line{flex:1;height:2px;background:#e8f8f0;margin:0 6px;min-width:10px;}
-.chkp-step-line.done{background:#2eaf6e;}
+.chkp-step{display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;font-family:'Nunito',sans-serif;color:#6e8dc6;white-space:nowrap;}
+.chkp-step.active{color:#1863ee;}.chkp-step.done{color:#0a4cc6;}
+.chkp-step-num{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:900;flex-shrink:0;background:#e4ecfc;color:#6e8dc6;}
+.chkp-step.active .chkp-step-num{background:#1863ee;color:#fff;}
+.chkp-step.done .chkp-step-num{background:#0a4cc6;color:#fff;}
+.chkp-step-line{flex:1;height:2px;background:#e4ecfc;margin:0 6px;min-width:10px;}
+.chkp-step-line.done{background:#1863ee;}
 .chkp-step-lbl{display:inline;}
 
 /* ── LAYOUT ── */
-.chkp-wrap{background:#f0faf5;padding:clamp(14px,2.5vw,36px) 5%;min-height:60vh;}
+.chkp-wrap{background:#edf3fd;padding:clamp(14px,2.5vw,36px) 5%;min-height:60vh;}
 .chkp-layout{display:grid;grid-template-columns:1fr 300px;gap:18px;max-width:1200px;margin:0 auto;align-items:start;}
 
 /* ── CARDS ── */
-.chkp-card{background:#fff;border-radius:12px;border:1.5px solid #b8ecd4;box-shadow:0 3px 16px rgba(46,175,110,.07);overflow:hidden;margin-bottom:14px;}
+.chkp-card{background:#fff;border-radius:12px;border:1.5px solid #abc6f9;box-shadow:0 3px 16px rgba(24,99,238,.07);overflow:hidden;margin-bottom:14px;}
 .chkp-card:last-child{margin-bottom:0;}
-.chkp-card-head{padding:11px 16px;border-bottom:2px solid #e8f8f0;display:flex;align-items:center;gap:7px;background:#f8fffe;}
-.chkp-card-head .dashicons{color:#2eaf6e;font-size:15px;width:15px;height:15px;}
-.chkp-card-head h3{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:#1a2e25;margin:0;}
+.chkp-card-head{padding:11px 16px;border-bottom:2px solid #e4ecfc;display:flex;align-items:center;gap:7px;background:#f8fbff;}
+.chkp-card-head .dashicons{color:#1863ee;font-size:15px;width:15px;height:15px;}
+.chkp-card-head h3{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:#101e38;margin:0;}
 .chkp-card-body{padding:clamp(10px,2vw,18px);}
 
 /* ════════════════════════════════════════════════
@@ -93,28 +93,28 @@ wp_enqueue_style( 'dashicons' );
 .chkp-grid .span2{grid-column:unset;}
 
 .chkp-fg{display:flex;flex-direction:column;gap:4px;}
-.chkp-fg label{font-family:'Nunito',sans-serif;font-size:.76rem;font-weight:700;color:#4a6358;line-height:1.3;}
+.chkp-fg label{font-family:'Nunito',sans-serif;font-size:.76rem;font-weight:700;color:#3e5d98;line-height:1.3;}
 .chkp-fg label .req{color:#e53935;}
-.chkp-fg label .opt{color:#8aaa98;font-weight:500;}
+.chkp-fg label .opt{color:#6e8dc6;font-weight:500;}
 .chkp-fg input,.chkp-fg select,.chkp-fg textarea{
   width:100%;box-sizing:border-box;
   padding:9px 12px;
-  border:2px solid #b8ecd4;
+  border:2px solid #abc6f9;
   border-radius:8px;
   font-family:'Nunito',sans-serif;
-  font-size:.83rem;color:#1a2e25;
+  font-size:.83rem;color:#101e38;
   background:#fff;outline:none;
   -webkit-appearance:none;appearance:none;
   transition:border-color .2s,box-shadow .2s;
 }
-.chkp-fg input:focus,.chkp-fg select:focus,.chkp-fg textarea:focus{border-color:#2eaf6e;box-shadow:0 0 0 3px rgba(46,175,110,.1);}
+.chkp-fg input:focus,.chkp-fg select:focus,.chkp-fg textarea:focus{border-color:#1863ee;box-shadow:0 0 0 3px rgba(24,99,238,.1);}
 .chkp-fg input.error,.chkp-fg select.error,.chkp-fg textarea.error{border-color:#e53935!important;box-shadow:0 0 0 3px rgba(229,57,53,.1)!important;}
 .chkp-fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238aaa98' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;}
 .chkp-field-error{font-size:.7rem;color:#e53935;font-family:'Nunito',sans-serif;margin-top:2px;display:none;}
 .chkp-fg.has-error .chkp-field-error{display:block;}
 
 /* ── EMAIL NOTE ── */
-.chkp-email-note{font-size:.7rem;color:#2eaf6e;font-family:'Nunito',sans-serif;margin-top:4px;display:flex;align-items:center;gap:4px;}
+.chkp-email-note{font-size:.7rem;color:#1863ee;font-family:'Nunito',sans-serif;margin-top:4px;display:flex;align-items:center;gap:4px;}
 
 /* ── VALIDATION BANNER ── */
 .chkp-validation-msg{display:none;background:#fff0f0;border:1.5px solid #e53935;border-left:4px solid #e53935;border-radius:10px;padding:11px 14px;font-family:'Nunito',sans-serif;font-size:.83rem;color:#b71c1c;margin-bottom:12px;}
@@ -122,48 +122,48 @@ wp_enqueue_style( 'dashicons' );
 
 /* ── PAYMENT ── */
 .chkp-pay-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
-.chkp-pay-pill{display:inline-flex;align-items:center;gap:5px;background:#f0faf5;border:1.5px solid #b8ecd4;border-radius:50px;padding:5px 10px;font-size:.72rem;font-weight:700;color:#1a2e25;font-family:'Nunito',sans-serif;}
-.chkp-pay-pill .dashicons{color:#2eaf6e;font-size:12px;width:12px;height:12px;}
+.chkp-pay-pill{display:inline-flex;align-items:center;gap:5px;background:#edf3fd;border:1.5px solid #abc6f9;border-radius:50px;padding:5px 10px;font-size:.72rem;font-weight:700;color:#101e38;font-family:'Nunito',sans-serif;}
+.chkp-pay-pill .dashicons{color:#1863ee;font-size:12px;width:12px;height:12px;}
 .chkp-wrap #payment{background:transparent!important;border:none!important;padding:0!important;}
 .chkp-wrap #payment ul.payment_methods{list-style:none!important;border:none!important;padding:0!important;margin:0!important;background:transparent!important;}
-.chkp-wrap #payment ul.payment_methods li{background:#f0faf5!important;border:2px solid #b8ecd4!important;border-radius:9px!important;padding:10px 13px!important;margin-bottom:8px!important;cursor:pointer!important;transition:border-color .2s,background .2s!important;}
-.chkp-wrap #payment ul.payment_methods li:has(input:checked){border-color:#2eaf6e!important;background:#e8f8f0!important;}
-.chkp-wrap #payment ul.payment_methods li label{font-size:.84rem!important;font-weight:700!important;color:#1a2e25!important;margin:0!important;cursor:pointer!important;display:flex!important;align-items:center!important;gap:7px!important;}
-.chkp-wrap #payment ul.payment_methods li input[type="radio"]{accent-color:#2eaf6e!important;width:14px!important;height:14px!important;flex-shrink:0!important;}
-.chkp-wrap #payment .payment_box{background:#fff!important;border:1.5px solid #b8ecd4!important;border-radius:7px!important;padding:10px 12px!important;margin:7px 0 0!important;font-size:.8rem!important;color:#4a6358!important;font-family:'Nunito',sans-serif!important;line-height:1.6!important;display:block!important;}
+.chkp-wrap #payment ul.payment_methods li{background:#edf3fd!important;border:2px solid #abc6f9!important;border-radius:9px!important;padding:10px 13px!important;margin-bottom:8px!important;cursor:pointer!important;transition:border-color .2s,background .2s!important;}
+.chkp-wrap #payment ul.payment_methods li:has(input:checked){border-color:#1863ee!important;background:#e4ecfc!important;}
+.chkp-wrap #payment ul.payment_methods li label{font-size:.84rem!important;font-weight:700!important;color:#101e38!important;margin:0!important;cursor:pointer!important;display:flex!important;align-items:center!important;gap:7px!important;}
+.chkp-wrap #payment ul.payment_methods li input[type="radio"]{accent-color:#1863ee!important;width:14px!important;height:14px!important;flex-shrink:0!important;}
+.chkp-wrap #payment .payment_box{background:#fff!important;border:1.5px solid #abc6f9!important;border-radius:7px!important;padding:10px 12px!important;margin:7px 0 0!important;font-size:.8rem!important;color:#3e5d98!important;font-family:'Nunito',sans-serif!important;line-height:1.6!important;display:block!important;}
 .chkp-wrap #payment #place_order,.chkp-wrap #payment .place-order{display:none!important;}
 
 /* ── BUTTONS ── */
 .chkp-actions{display:flex;flex-direction:column;gap:10px;}
 .chkp-wa-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#25d366;color:#fff;padding:13px 14px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;text-decoration:none;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(37,211,102,.3);transition:all .3s;width:100%;box-sizing:border-box;text-align:center;}
-.chkp-wa-btn:hover{background:#1da851;transform:translateY(-2px);color:#fff;}
-.chkp-place-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#2eaf6e;color:#fff;padding:12px 14px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;border:none;cursor:pointer;width:100%;box-sizing:border-box;box-shadow:0 5px 18px rgba(46,175,110,.3);transition:all .3s;}
-.chkp-place-btn:hover:not(:disabled){background:#1e8a54;transform:translateY(-2px);}
+.chkp-wa-btn:hover{background:#0c57e2;transform:translateY(-2px);color:#fff;}
+.chkp-place-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#1863ee;color:#fff;padding:12px 14px;border-radius:50px;font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;border:none;cursor:pointer;width:100%;box-sizing:border-box;box-shadow:0 5px 18px rgba(24,99,238,.3);transition:all .3s;}
+.chkp-place-btn:hover:not(:disabled){background:#0a4cc6;transform:translateY(-2px);}
 .chkp-place-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;}
-.chkp-or{display:flex;align-items:center;gap:8px;color:#8aaa98;font-size:.7rem;font-weight:700;font-family:'Nunito',sans-serif;}
-.chkp-or::before,.chkp-or::after{content:'';flex:1;height:1px;background:#e0f0e8;}
-.chkp-back{display:flex;align-items:center;justify-content:center;gap:6px;color:#8aaa98;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif;text-decoration:none;transition:color .2s;}
-.chkp-back:hover{color:#2eaf6e;}
+.chkp-or{display:flex;align-items:center;gap:8px;color:#6e8dc6;font-size:.7rem;font-weight:700;font-family:'Nunito',sans-serif;}
+.chkp-or::before,.chkp-or::after{content:'';flex:1;height:1px;background:#dae4f6;}
+.chkp-back{display:flex;align-items:center;justify-content:center;gap:6px;color:#6e8dc6;font-size:.78rem;font-weight:700;font-family:'Nunito',sans-serif;text-decoration:none;transition:color .2s;}
+.chkp-back:hover{color:#1863ee;}
 
 /* ── SIDEBAR ── */
 .chkp-sidebar{position:sticky;top:85px;}
-.chkp-summary-card{background:#fff;border-radius:12px;border:1.5px solid #b8ecd4;box-shadow:0 3px 16px rgba(46,175,110,.07);overflow:hidden;margin-bottom:14px;}
-.chkp-summary-head{background:linear-gradient(135deg,#1e8a54,#2eaf6e);padding:12px 16px;display:flex;align-items:center;gap:7px;}
+.chkp-summary-card{background:#fff;border-radius:12px;border:1.5px solid #abc6f9;box-shadow:0 3px 16px rgba(24,99,238,.07);overflow:hidden;margin-bottom:14px;}
+.chkp-summary-head{background:linear-gradient(135deg,#0a4cc6,#1863ee);padding:12px 16px;display:flex;align-items:center;gap:7px;}
 .chkp-summary-head .dashicons{color:#fff;font-size:15px;width:15px;height:15px;}
 .chkp-summary-head h3{font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:800;color:#fff;margin:0;}
 .chkp-summary-card .woocommerce-checkout-review-order-table{width:100%!important;border-collapse:collapse!important;border:none!important;margin:0!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table th,.chkp-summary-card .woocommerce-checkout-review-order-table td{padding:8px 14px!important;border:none!important;border-bottom:1px solid #e8f8f0!important;font-family:'Nunito',sans-serif!important;font-size:.79rem!important;vertical-align:middle!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table thead th{font-size:.62rem!important;font-weight:800!important;color:#8aaa98!important;text-transform:uppercase!important;letter-spacing:.07em!important;background:#f8fffe!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table .product-name{color:#1a2e25!important;font-weight:700!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table .product-total .amount{color:#2eaf6e!important;font-weight:800!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table tfoot .order-total th{font-weight:800!important;color:#1a2e25!important;font-size:.84rem!important;}
-.chkp-summary-card .woocommerce-checkout-review-order-table tfoot .order-total .amount{font-size:1.05rem!important;font-weight:900!important;color:#2eaf6e!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table th,.chkp-summary-card .woocommerce-checkout-review-order-table td{padding:8px 14px!important;border:none!important;border-bottom:1px solid #e4ecfc!important;font-family:'Nunito',sans-serif!important;font-size:.79rem!important;vertical-align:middle!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table thead th{font-size:.62rem!important;font-weight:800!important;color:#6e8dc6!important;text-transform:uppercase!important;letter-spacing:.07em!important;background:#f8fbff!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table .product-name{color:#101e38!important;font-weight:700!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table .product-total .amount{color:#1863ee!important;font-weight:800!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table tfoot .order-total th{font-weight:800!important;color:#101e38!important;font-size:.84rem!important;}
+.chkp-summary-card .woocommerce-checkout-review-order-table tfoot .order-total .amount{font-size:1.05rem!important;font-weight:900!important;color:#1863ee!important;}
 .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:last-child td,.chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:last-child th{border-bottom:none!important;}
-.chkp-pay-note{background:#f0faf5;border-top:2px solid #e8f8f0;padding:11px 14px;font-family:'Nunito',sans-serif;}
-.chkp-pnr{display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;font-size:.72rem;color:#4a6358;line-height:1.45;}
+.chkp-pay-note{background:#edf3fd;border-top:2px solid #e4ecfc;padding:11px 14px;font-family:'Nunito',sans-serif;}
+.chkp-pnr{display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;font-size:.72rem;color:#3e5d98;line-height:1.45;}
 .chkp-pnr:last-child{margin-bottom:0;}
 .chkp-pnr .dashicons{font-size:12px;width:12px;height:12px;flex-shrink:0;margin-top:1px;}
-.chkp-pnr.nairobi .dashicons{color:#2eaf6e;}.chkp-pnr.county .dashicons{color:#f0a500;}.chkp-pnr.mpesa .dashicons{color:#4caf50;}
+.chkp-pnr.nairobi .dashicons{color:#1863ee;}.chkp-pnr.county .dashicons{color:#f0a500;}.chkp-pnr.mpesa .dashicons{color:#487cdb;}
 
 /* ── MOBILE ACTIONS ── */
 .chkp-mobile-actions{display:none;}
@@ -171,15 +171,15 @@ wp_enqueue_style( 'dashicons' );
 
 /* ── ORDER SUCCESS BANNER ── */
 .chkp-success-banner{
-  display:none;background:#edfaf3;border:1.5px solid #6fcf97;border-left:4px solid #2eaf6e;
+  display:none;background:#eaf1fd;border:1.5px solid #5489ea;border-left:4px solid #1863ee;
   border-radius:10px;padding:16px;font-family:'Nunito',sans-serif;margin-bottom:12px;
 }
 .chkp-success-banner.show{display:block;}
-.chkp-success-banner-title{font-size:.95rem;font-weight:900;color:#1a6e44;margin-bottom:6px;display:flex;align-items:center;gap:7px;}
-.chkp-success-banner-body{font-size:.8rem;color:#2d6b4a;line-height:1.6;}
-.chkp-success-banner-body a{color:#2eaf6e;font-weight:800;}
-.chkp-success-banner-order{display:inline-block;background:#2eaf6e;color:#fff;border-radius:50px;padding:3px 12px;font-size:.7rem;font-weight:800;margin-top:8px;}
-.chkp-success-email-note{margin-top:8px;font-size:.75rem;color:#2d6b4a;background:rgba(46,175,110,.1);border-radius:6px;padding:7px 10px;display:flex;align-items:center;gap:6px;}
+.chkp-success-banner-title{font-size:.95rem;font-weight:900;color:#0941a8;margin-bottom:6px;display:flex;align-items:center;gap:7px;}
+.chkp-success-banner-body{font-size:.8rem;color:#1e4da3;line-height:1.6;}
+.chkp-success-banner-body a{color:#1863ee;font-weight:800;}
+.chkp-success-banner-order{display:inline-block;background:#1863ee;color:#fff;border-radius:50px;padding:3px 12px;font-size:.7rem;font-weight:800;margin-top:8px;}
+.chkp-success-email-note{margin-top:8px;font-size:.75rem;color:#1e4da3;background:rgba(24,99,238,.1);border-radius:6px;padding:7px 10px;display:flex;align-items:center;gap:6px;}
 
 /* ── ERROR BANNER ── */
 .chkp-error-banner{
@@ -206,7 +206,7 @@ wp_enqueue_style( 'dashicons' );
   .chkp-layout{grid-template-columns:1fr;grid-template-rows:auto auto auto;}
   .chkp-left{order:1;}.chkp-sidebar{order:2;position:static;}
   .chkp-desktop-actions{display:none!important;}
-  .chkp-mobile-actions{display:flex!important;flex-direction:column;gap:10px;order:3;background:#fff;border-radius:12px;border:1.5px solid #b8ecd4;box-shadow:0 3px 16px rgba(46,175,110,.07);padding:16px;margin-top:0;}
+  .chkp-mobile-actions{display:flex!important;flex-direction:column;gap:10px;order:3;background:#fff;border-radius:12px;border:1.5px solid #abc6f9;box-shadow:0 3px 16px rgba(24,99,238,.07);padding:16px;margin-top:0;}
 }
 
 /* At 700px keep 2-col grid but reduce gaps */
@@ -358,7 +358,7 @@ wp_enqueue_style( 'dashicons' );
               <input type="email" name="billing_email" id="billing_email" value="<?php echo $val( 'billing_email' ); ?>" placeholder="your@email.com" autocomplete="email">
               <span class="chkp-field-error">A valid email address is required</span>
               <div class="chkp-email-note">
-                <span class="dashicons dashicons-email-alt" style="font-size:12px;width:12px;height:12px;color:#2eaf6e;"></span>
+                <span class="dashicons dashicons-email-alt" style="font-size:12px;width:12px;height:12px;color:#1863ee;"></span>
                 Order confirmation will be sent here.
               </div>
             </div>
@@ -433,7 +433,7 @@ wp_enqueue_style( 'dashicons' );
       <div class="chkp-card" id="chkp-card-notes">
         <div class="chkp-card-head">
           <span class="dashicons dashicons-edit-page"></span>
-          <h3>Order Notes <span style="font-size:.68rem;color:#8aaa98;font-weight:500;">(optional)</span></h3>
+          <h3>Order Notes <span style="font-size:.68rem;color:#6e8dc6;font-weight:500;">(optional)</span></h3>
         </div>
         <div class="chkp-card-body">
           <div class="chkp-fg">
@@ -459,14 +459,14 @@ wp_enqueue_style( 'dashicons' );
           <!-- Success banner -->
           <div class="chkp-success-banner" id="chkp-success-desktop">
             <div class="chkp-success-banner-title">
-              <span class="dashicons dashicons-yes-alt" style="color:#2eaf6e;font-size:18px;width:18px;height:18px;"></span>
+              <span class="dashicons dashicons-yes-alt" style="color:#1863ee;font-size:18px;width:18px;height:18px;"></span>
               Order Placed Successfully
             </div>
             <div class="chkp-success-banner-body">
               Your order has been saved and our team will contact you shortly to confirm delivery.<br>
               For urgent enquiries: <a href="https://wa.me/254720737151" target="_blank">WhatsApp +254 720 737 151</a>
               <div class="chkp-success-email-note" id="chkp-email-note-desktop" style="display:none;">
-                <span class="dashicons dashicons-email-alt" style="font-size:13px;width:13px;height:13px;color:#2eaf6e;flex-shrink:0;"></span>
+                <span class="dashicons dashicons-email-alt" style="font-size:13px;width:13px;height:13px;color:#1863ee;flex-shrink:0;"></span>
                 <span id="chkp-email-note-text-desktop">A confirmation email has been sent to your inbox.</span>
               </div>
               <div><span class="chkp-success-banner-order" id="chkp-order-badge-desktop"></span></div>
@@ -495,7 +495,7 @@ wp_enqueue_style( 'dashicons' );
 
           <a href="<?php echo esc_url( function_exists( 'wc_get_page_id' ) ? get_permalink( wc_get_page_id( 'shop' ) ) : home_url( '/shop' ) ); ?>"
              class="chkp-place-btn" id="chkp-continue-desktop"
-             style="display:none;text-decoration:none;margin-top:10px;background:#1e8a54;">
+             style="display:none;text-decoration:none;margin-top:10px;background:#0a4cc6;">
              <span class="dashicons dashicons-cart" style="font-size:14px;width:14px;height:14px;"></span>
              Continue Shopping
           </a>
@@ -531,14 +531,14 @@ wp_enqueue_style( 'dashicons' );
 
     <div class="chkp-success-banner" id="chkp-success-mobile">
       <div class="chkp-success-banner-title">
-        <span class="dashicons dashicons-yes-alt" style="color:#2eaf6e;font-size:18px;width:18px;height:18px;"></span>
+        <span class="dashicons dashicons-yes-alt" style="color:#1863ee;font-size:18px;width:18px;height:18px;"></span>
         Order Placed Successfully
       </div>
       <div class="chkp-success-banner-body">
         Your order has been saved and our team will contact you shortly to confirm delivery.<br>
         <a href="https://wa.me/254720737151" target="_blank">WhatsApp +254 720 737 151</a>
         <div class="chkp-success-email-note" id="chkp-email-note-mobile" style="display:none;">
-          <span class="dashicons dashicons-email-alt" style="font-size:13px;width:13px;height:13px;color:#2eaf6e;flex-shrink:0;"></span>
+          <span class="dashicons dashicons-email-alt" style="font-size:13px;width:13px;height:13px;color:#1863ee;flex-shrink:0;"></span>
           <span id="chkp-email-note-text-mobile">A confirmation email has been sent to your inbox.</span>
         </div>
         <div><span class="chkp-success-banner-order" id="chkp-order-badge-mobile"></span></div>
@@ -561,7 +561,7 @@ wp_enqueue_style( 'dashicons' );
 
     <a href="<?php echo esc_url( function_exists( 'wc_get_page_id' ) ? get_permalink( wc_get_page_id( 'shop' ) ) : home_url( '/shop' ) ); ?>"
        class="chkp-place-btn" id="chkp-continue-mobile"
-       style="display:none;text-decoration:none;background:#1e8a54;">
+       style="display:none;text-decoration:none;background:#0a4cc6;">
        <span class="dashicons dashicons-cart" style="font-size:14px;width:14px;height:14px;"></span>
        Continue Shopping
     </a>
@@ -741,7 +741,7 @@ wp_enqueue_style( 'dashicons' );
     });
 
     var tbody = document.querySelector('.woocommerce-checkout-review-order-table tbody');
-    if(tbody) tbody.innerHTML = '<tr><td colspan="2" style="padding:12px 14px;font-size:.8rem;color:#8aaa98;font-family:Nunito,sans-serif;text-align:center;">Cart cleared</td></tr>';
+    if(tbody) tbody.innerHTML = '<tr><td colspan="2" style="padding:12px 14px;font-size:.8rem;color:#6e8dc6;font-family:Nunito,sans-serif;text-align:center;">Cart cleared</td></tr>';
 
     var totCell = document.querySelector('.woocommerce-checkout-review-order-table tfoot .order-total .amount');
     if(totCell) totCell.textContent = 'KES 0.00';
