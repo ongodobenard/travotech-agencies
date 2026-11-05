@@ -132,6 +132,9 @@ html body main.tm .tm-hero.tm-hero.tm-hero.tm-hero.tm-hero::after{content:none !
 .tm .tm-a9{right:70%;bottom:14%;font-size:18px;color:#22adb0;opacity:.35;}
 @media (max-width:1000px){.tm .tm-ha{opacity:.55;width:75%;}}
 @media (max-width:640px){.tm .tm-ha{opacity:.35;width:100%;}}
+
+/* ---- two numbers and emails ---- */
+.tm-contact{grid-template-columns:repeat(auto-fit,minmax(230px,1fr)) !important;}
 </style>
 
 <main class="tm">
@@ -268,7 +271,9 @@ html body main.tm .tm-hero.tm-hero.tm-hero.tm-hero.tm-hero::after{content:none !
 <p>Questions about these terms? Reach our team and we will be happy to help.</p>
 <div class="tm-contact">
 <a href="tel:<?php echo esc_attr( $tm_phone_link ); ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small><?php echo esc_html( $tm_phone_show ); ?></span></a>
+<a href="tel:+254729080053"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us (second line)</small>0729080053</span></a>
 <a href="mailto:<?php echo esc_attr( $tm_email ); ?>"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email us</small><?php echo esc_html( $tm_email ); ?></span></a>
+<a href="mailto:travogencies@yahoo.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email us (second address)</small>travogencies@yahoo.com</span></a>
 <a href="https://wa.me/<?php echo esc_attr( $tm_wa ); ?>" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with us</span></a>
 </div>
 </section>
