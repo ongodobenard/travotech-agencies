@@ -438,3 +438,10 @@ body.single-product #review_form .form-submit input#submit:hover{background:var(
 body.single-product div.product form.cart .single_add_to_cart_button{border-radius:8px !important;background:var(--th-g,#22adb0);color:#fff;font:600 14px var(--th-fh,'Oswald',sans-serif) !important;letter-spacing:.05em;text-transform:uppercase;min-height:50px;padding:0 28px;border:0;}
 body.single-product div.product form.cart .single_add_to_cart_button:hover{background:var(--th-dk,#093c3c);}
 body.single-product div.product form.cart .quantity input.qty{height:50px;border:1.5px solid #c9d3cd;border-radius:8px;font:600 15px var(--th-fb,'Inter',sans-serif);}
+/* ---- wa-square2: floating WhatsApp not circular ---- */
+body [class*="whatsapp" i],
+body [id*="whatsapp" i],
+body [class*="whatsapp" i] > a,
+body [id*="whatsapp" i] > a,
+body a[href*="wa.me"],
+body a[href*="api.whatsapp.com"]{border-radius:14px !important;}

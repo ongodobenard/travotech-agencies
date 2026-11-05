@@ -186,7 +186,69 @@ while (have_posts()): the_post();
 @media(max-width:700px) { .sp-wrap { padding: 12px 14px 40px; } .sp-card { flex-direction: column; gap: 0; border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,.08); } .sp-gallery { flex: none; max-width: 100%; width: 100%; min-height: 240px; border-radius: 16px 16px 0 0; padding: 16px; } .sp-gallery img { max-height: 260px; } .sp-info { padding: 20px 18px 24px; gap: 10px; } .sp-title { font-size: clamp(1.1rem,5vw,1.4rem); } .sp-price-cur { font-size: clamp(1.1rem,5vw,1.4rem); } .sp-wa-btn { padding: 11px 14px; gap: 8px; } .woocommerce-tabs .wc-tabs li a { padding: 10px 14px !important; } .sp-related-title { font-size: clamp(1.2rem,6vw,1.6rem); } }
 @media(max-width:480px) { .sp-related-grid { grid-template-columns: repeat(2,1fr); gap: 8px; } .sp-wa-btn { padding: 10px 12px; gap: 6px; } }
 @media(max-width:400px) { .sp-info { padding: 16px 14px 20px; } .sp-gallery { min-height: 200px; } .sp-gallery img { max-height: 200px; } .sp-meta-card { padding: 10px; gap: 6px; } .sp-meta-badge { font-size: 0.7rem; padding: 4px 9px; } .sp-related-grid { grid-template-columns: 1fr; } }
-</style>
+
+/* ---- spx-v1: product page fonts, tabs, reviews ---- */
+.sp-wrap{font-family:var(--th-fb,'Inter',system-ui,sans-serif);color:#183332;}
+.sp-wrap h1,.sp-wrap h2,.sp-wrap h3,.sp-title,.sp-price-cur,.sp-related-title,.sp-related-grid .p-name{font-family:var(--th-fh,'Oswald','Arial Narrow',sans-serif);color:var(--th-dk,#093c3c);letter-spacing:.01em;}
+.sp-title{font-weight:600;}
+.sp-price-cur,.sp-related-grid .p-price-cur{color:var(--th-g,#22adb0);font-weight:600;}
+.sp-wrap .sp-wa-btn,.sp-wrap .sp-atc-btn,.sp-wrap .p-btn-cart,.sp-wrap .p-btn-wa,.sp-wrap .sp-actions .single_add_to_cart_button{font-family:var(--th-fh,'Oswald',sans-serif) !important;font-weight:600;letter-spacing:.04em;border-radius:8px !important;}
+.sp-wrap .sp-wa-btn{background:#25D366;box-shadow:none;}
+.sp-wrap .sp-atc-btn{background:var(--th-g,#22adb0);box-shadow:none;}
+.sp-wrap .sp-atc-btn:hover{background:var(--th-dk,#093c3c);opacity:1;}
+.sp-wrap .sp-atc-btn .atc-spinner{border-radius:50% !important;}
+.sp-wrap .sp-qty-wrap,.sp-wrap .sp-card,.sp-wrap .sp-gallery{border-radius:10px;}
+.sp-wrap .sp-meta-badge{border-radius:6px;}
+.sp-wrap .sp-rel-page-btn{border-radius:8px !important;}
+
+.spx-tabs{background:#fff;border:1px solid #d7f0f0;border-radius:10px;box-shadow:0 2px 10px rgba(9,60,60,.06);overflow:hidden;}
+.spx-tablist{display:flex;gap:4px;flex-wrap:wrap;background:#f1fafa;padding:8px 8px 0;border-bottom:2px solid #d7f0f0;}
+.spx-tab{border:0;background:transparent;padding:12px 22px;font:600 14px var(--th-fh,'Oswald',sans-serif);letter-spacing:.05em;text-transform:uppercase;color:var(--th-dk,#093c3c);cursor:pointer;border-radius:8px 8px 0 0;}
+.spx-tab:hover{background:#fff;}
+.spx-tab.on{background:var(--th-g,#22adb0);color:#fff;}
+.spx-panel{display:none;padding:clamp(16px,3vw,28px);font-size:.95rem;line-height:1.75;color:#1d4847;}
+.spx-panel.on{display:block;}
+.spx-panel p{margin:0 0 12px;}
+.spx-spec{width:100%;border-collapse:collapse;}
+.spx-spec th,.spx-spec td{padding:12px 14px;border-bottom:1px solid #e0f2f2;text-align:left;font-size:.92rem;}
+.spx-spec th{width:34%;font-weight:600;color:var(--th-dk,#093c3c);background:#f9fefe;}
+.spx-stars{display:inline-flex;gap:3px;color:var(--th-g,#22adb0);font-size:.9rem;}
+.spx-stars .off{color:#cfe3e2;}
+.spx-rev-top{margin-bottom:18px;}
+.spx-rev-score{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.spx-rev-score b{font:600 2.2rem var(--th-fh,'Oswald',sans-serif);color:var(--th-dk,#093c3c);line-height:1;}
+.spx-rev-score small{color:#6b7280;}
+.spx-rev-list{display:grid;gap:12px;margin-bottom:26px;}
+.spx-rev{display:flex;gap:14px;align-items:flex-start;border:1px solid #d7f0f0;border-radius:10px;padding:16px;background:#fff;}
+.spx-av{width:44px;height:44px;border-radius:50%;background:var(--th-g,#22adb0);color:#fff;display:flex;align-items:center;justify-content:center;font:600 1.1rem var(--th-fh,'Oswald',sans-serif);flex-shrink:0;}
+.spx-rev-b{flex:1;min-width:0;}
+.spx-rev-h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:4px;}
+.spx-rev-h strong{color:var(--th-dk,#093c3c);}
+.spx-rev-h span{font-size:.8rem;color:#6b7280;}
+.spx-rev-b p{margin:6px 0 0;}
+.spx-empty{background:#e6fafa;border-left:4px solid var(--th-g,#22adb0);border-radius:6px;padding:12px 14px;margin:0;}
+.spx-form{background:#f9fefe;border:1px solid #d7f0f0;border-radius:10px;padding:clamp(16px,3vw,26px);display:grid;gap:14px;}
+.spx-form h3{font:600 1.3rem var(--th-fh,'Oswald',sans-serif);margin:0;}
+.spx-f label{display:block;font-size:.88rem;font-weight:600;color:var(--th-dk,#093c3c);margin-bottom:6px;}
+.spx-f .req{color:var(--th-red,#e53935);}
+.spx-f input[type="text"],.spx-f input[type="email"],.spx-f textarea{width:100%;box-sizing:border-box;border:1.5px solid #c9d3cd;border-radius:8px;background:#fff;padding:0 14px;height:50px;font:500 15px var(--th-fb,'Inter',sans-serif);color:var(--th-dk,#093c3c);outline:none;}
+.spx-f textarea{height:auto;min-height:130px;padding:12px 14px;resize:vertical;}
+.spx-f input:focus,.spx-f textarea:focus{border-color:var(--th-g,#22adb0);box-shadow:0 0 0 3px rgba(34,173,176,.12);}
+.spx-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.spx-rate{display:inline-flex;flex-direction:row-reverse;gap:4px;position:relative;}
+.spx-rate input{position:absolute;opacity:0;width:0;height:0;}
+.spx-rate label{margin:0;font-size:1.7rem;color:#cfe3e2;cursor:pointer;line-height:1;transition:color .15s;}
+.spx-rate input:checked~label,.spx-rate label:hover,.spx-rate label:hover~label{color:var(--th-g,#22adb0);}
+.spx-rate input:focus-visible+label{outline:2px solid var(--th-red,#e53935);outline-offset:2px;border-radius:4px;}
+.spx-submit{justify-self:start;min-height:50px;padding:0 30px;border:0;border-radius:8px;background:var(--th-g,#22adb0);color:#fff;font:600 14px var(--th-fh,'Oswald',sans-serif);letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.spx-submit:hover{background:var(--th-dk,#093c3c);}
+.spx-note{margin:0;font-size:.8rem;color:#6b7280;}
+@media (max-width:600px){
+  .spx-tab{padding:10px 14px;font-size:13px;}
+  .spx-two{grid-template-columns:1fr;}
+  .spx-spec th{width:42%;}
+  .spx-submit{width:100%;justify-self:stretch;}
+}</style>
 
 <!-- TOAST -->
 <div id="travotech-toast" role="alert" aria-live="assertive">
@@ -308,7 +370,99 @@ while (have_posts()): the_post();
 
   <!-- TABS -->
   <div class="sp-tabs-section">
-    <?php woocommerce_output_product_data_tabs(); ?>
+    <?php
+$spx_desc  = $product->get_description();
+$spx_attrs = array();
+foreach ( $product->get_attributes() as $a ) {
+  if ( ! is_object( $a ) || ! $a->get_visible() ) { continue; }
+  $v = $product->get_attribute( $a->get_name() );
+  if ( $v !== '' ) { $spx_attrs[ wc_attribute_label( $a->get_name() ) ] = $v; }
+}
+if ( $product->get_weight() ) { $spx_attrs['Weight'] = $product->get_weight() . ' ' . get_option( 'woocommerce_weight_unit' ); }
+if ( $product->has_dimensions() ) { $spx_attrs['Dimensions'] = wc_format_dimensions( $product->get_dimensions( false ) ); }
+$spx_reviews = get_comments( array( 'post_id' => $pid, 'status' => 'approve', 'type__in' => array( 'review', 'comment' ), 'parent' => 0, 'order' => 'DESC' ) );
+$spx_count   = count( $spx_reviews );
+$spx_sum = 0; $spx_n = 0;
+foreach ( $spx_reviews as $rv ) { $rt = (int) get_comment_meta( $rv->comment_ID, 'rating', true ); if ( $rt > 0 ) { $spx_sum += $rt; $spx_n++; } }
+$spx_avg  = $spx_n ? $spx_sum / $spx_n : 0;
+$spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i class="fa-solid fa-star' . ( $i <= round( $n ) ? '' : ' off' ) . '" aria-hidden="true"></i>'; } return $o; };
+?>
+<div class="spx-tabs" id="spx-tabs">
+  <div class="spx-tablist" role="tablist">
+    <button type="button" class="spx-tab on" data-t="desc">Description</button>
+    <?php if ( $spx_attrs ) : ?><button type="button" class="spx-tab" data-t="spec">Specifications</button><?php endif; ?>
+    <button type="button" class="spx-tab" data-t="rev" id="spx-tab-rev">Reviews (<?php echo (int) $spx_count; ?>)</button>
+  </div>
+
+  <div class="spx-panel on" id="spx-p-desc">
+    <?php echo $spx_desc ? wp_kses_post( wpautop( $spx_desc ) ) : '<p>No description yet. Message us on WhatsApp for full product details.</p>'; ?>
+  </div>
+
+  <?php if ( $spx_attrs ) : ?>
+  <div class="spx-panel" id="spx-p-spec">
+    <table class="spx-spec"><tbody>
+      <?php foreach ( $spx_attrs as $k => $v ) : ?>
+      <tr><th><?php echo esc_html( $k ); ?></th><td><?php echo esc_html( $v ); ?></td></tr>
+      <?php endforeach; ?>
+    </tbody></table>
+  </div>
+  <?php endif; ?>
+
+  <div class="spx-panel" id="spx-p-rev">
+    <div class="spx-rev-top">
+      <div class="spx-rev-score">
+        <b><?php echo $spx_n ? number_format( $spx_avg, 1 ) : '0.0'; ?></b>
+        <span class="spx-stars"><?php echo $spx_star( $spx_avg ); // phpcs:ignore ?></span>
+        <small><?php echo (int) $spx_count; ?> review<?php echo $spx_count === 1 ? '' : 's'; ?></small>
+      </div>
+    </div>
+
+    <div class="spx-rev-list">
+      <?php if ( $spx_reviews ) : foreach ( $spx_reviews as $rv ) :
+        $rt = (int) get_comment_meta( $rv->comment_ID, 'rating', true ); ?>
+      <article class="spx-rev">
+        <div class="spx-av"><?php echo esc_html( mb_strtoupper( mb_substr( trim( $rv->comment_author ) ?: 'C', 0, 1 ) ) ); ?></div>
+        <div class="spx-rev-b">
+          <div class="spx-rev-h">
+            <strong><?php echo esc_html( $rv->comment_author ?: 'Customer' ); ?></strong>
+            <span><?php echo esc_html( mysql2date( 'j M Y', $rv->comment_date ) ); ?></span>
+          </div>
+          <?php if ( $rt ) : ?><div class="spx-stars"><?php echo $spx_star( $rt ); // phpcs:ignore ?></div><?php endif; ?>
+          <p><?php echo esc_html( $rv->comment_content ); ?></p>
+        </div>
+      </article>
+      <?php endforeach; else : ?>
+      <p class="spx-empty">No reviews yet. Be the first to review this product.</p>
+      <?php endif; ?>
+    </div>
+
+    <?php if ( comments_open( $pid ) ) : ?>
+    <form class="spx-form" action="<?php echo esc_url( site_url( '/wp-comments-post.php' ) ); ?>" method="post">
+      <h3>Write a review</h3>
+      <div class="spx-f">
+        <label>Your rating</label>
+        <div class="spx-rate">
+          <?php for ( $i = 5; $i >= 1; $i-- ) : ?><input type="radio" name="rating" id="spx-r<?php echo $i; ?>" value="<?php echo $i; ?>"><label for="spx-r<?php echo $i; ?>" title="<?php echo $i; ?> stars"><i class="fa-solid fa-star" aria-hidden="true"></i></label><?php endfor; ?>
+        </div>
+      </div>
+      <div class="spx-f">
+        <label for="spx-comment">Your review <span class="req">*</span></label>
+        <textarea id="spx-comment" name="comment" rows="5" required placeholder="Tell us what you think about this product"></textarea>
+      </div>
+      <?php if ( ! is_user_logged_in() ) : ?>
+      <div class="spx-two">
+        <div class="spx-f"><label for="spx-author">Name <span class="req">*</span></label><input type="text" id="spx-author" name="author" required placeholder="Your name"></div>
+        <div class="spx-f"><label for="spx-email">Email <span class="req">*</span></label><input type="email" id="spx-email" name="email" required placeholder="your@email.com"></div>
+      </div>
+      <?php endif; ?>
+      <input type="hidden" name="comment_post_ID" value="<?php echo (int) $pid; ?>">
+      <input type="hidden" name="comment_parent" value="0">
+      <button type="submit" class="spx-submit">Submit review</button>
+      <p class="spx-note">Reviews appear after our team approves them.</p>
+    </form>
+    <?php endif; ?>
+  </div>
+</div>
   </div>
 
   <!-- RELATED PRODUCTS -->
@@ -627,4 +781,26 @@ while (have_posts()): the_post();
 })();
 </script>
 
+<script>
+(function(){
+  /* tabs */
+  var tabs=document.querySelectorAll('.spx-tab');
+  function openTab(t){
+    tabs.forEach(function(b){b.classList.toggle('on',b.getAttribute('data-t')===t);});
+    document.querySelectorAll('.spx-panel').forEach(function(p){p.classList.toggle('on',p.id==='spx-p-'+t);});
+  }
+  tabs.forEach(function(b){b.addEventListener('click',function(){openTab(b.getAttribute('data-t'));});});
+  if(/#comment-|#reviews|#spx-rev/.test(window.location.hash)){openTab('rev');}
+
+  /* related products: add to cart (replaces the missing silentATC) */
+  window.silentATC=function(pid,qty,nonce,name){
+    try{sessionStorage.setItem('cv_scroll_y',String(window.pageYOffset||document.documentElement.scrollTop||0));sessionStorage.setItem('cv_toast_name',name||'');}catch(e){}
+    var u=new URL(window.location.href);
+    ['rel_page','add-to-cart','quantity'].forEach(function(k){if(k!=='rel_page')u.searchParams.delete(k);});
+    u.searchParams.set('add-to-cart',pid);
+    u.searchParams.set('quantity',qty||1);
+    window.location.href=u.toString();
+  };
+})();
+</script>
 <?php endwhile; get_footer(); ?>

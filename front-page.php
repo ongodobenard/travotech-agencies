@@ -53,9 +53,16 @@ $hp_cat_img = function ( $term ) {
     $tid = get_term_meta( $term->term_id, 'thumbnail_id', true );
     return $tid ? (string) wp_get_attachment_image_url( $tid, 'medium' ) : '';
 };
-$hp_card = function ( $p ) {
+$hp_card = function ( $p ) use ( $hp_wa ) {
     $name = $p->get_name();
     $url  = get_permalink( $p->get_id() );
+    $pc    = $p->get_price();
+    $isvar = $p->is_type( 'variable' );
+    $can   = $p->is_type( 'simple' ) && $p->is_purchasable() && $p->is_in_stock() && $pc !== '';
+    $oos   = ! $p->is_in_stock();
+    $short = mb_strlen( $name ) > 30 ? mb_substr( $name, 0, 30 ) . '...' : $name;
+    $pshow = $isvar ? (float) $p->get_variation_price( 'min' ) : (float) $pc;
+    $wamsg = rawurlencode( "Hello Travotech Agencies, I'd like to order: *" . $name . '*' . ( $pc !== '' ? ' - KES ' . number_format( $pshow, 2 ) : '' ) . '. Link: ' . $url );
     ?>
     <article class="hp-card">
         <a class="hp-card-img" href="<?php echo esc_url( $url ); ?>" aria-label="<?php echo esc_attr( $name ); ?>">
@@ -75,7 +82,16 @@ $hp_card = function ( $p ) {
                 <?php if ( $can ) : ?>
                 <a href="<?php echo esc_url( $p->add_to_cart_url() ); ?>" data-quantity="1" data-product_id="<?php echo (int) $p->get_id(); ?>" data-product_sku="<?php echo esc_attr( $p->get_sku() ); ?>" aria-label="Add <?php echo esc_attr( $name ); ?> to your cart" rel="nofollow" class="hp-btn hp-btn-sm product_type_<?php echo esc_attr( $p->get_type() ); ?><?php echo $ajax ? ' add_to_cart_button ajax_add_to_cart' : ''; ?>"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> <?php echo esc_html( $p->add_to_cart_text() ); ?></a>
                 <?php else : ?>
-                <a class="hp-btn hp-btn-sm" href="<?php echo esc_url( $url ); ?>"><i class="fa-solid fa-eye" aria-hidden="true"></i> View details</a>
+                <div class="hp-btns">
+                <?php if ( $can ) : ?>
+                <button type="button" class="hp-b hp-atc" data-pid="<?php echo (int) $p->get_id(); ?>" data-name="<?php echo esc_attr( $short ); ?>"><i class="fa-solid fa-cart-plus" aria-hidden="true"></i> <span class="t">Add to cart</span></button>
+                <?php elseif ( $oos ) : ?>
+                <span class="hp-b off"><i class="fa-solid fa-ban" aria-hidden="true"></i> Out of stock</span>
+                <?php else : ?>
+                <a class="hp-b" href="<?php echo esc_url( $url ); ?>"><i class="fa-solid fa-list-check" aria-hidden="true"></i> <?php echo $isvar ? 'Select options' : 'View details'; ?></a>
+                <?php endif; ?>
+                <a class="hp-b wa" href="https://wa.me/<?php echo esc_attr( $hp_wa ); ?>?text=<?php echo $wamsg; // phpcs:ignore ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</a>
+            </div>
                 <?php endif; ?>
                 <a class="hp-btn hp-btn-sm hp-btn-wa" href="https://wa.me/<?php echo esc_attr( $wa ); ?>?text=<?php echo esc_attr( $msg ); ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order via WhatsApp</a>
             </div>
@@ -330,7 +346,31 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
     .hp .gr-slide{padding:8px 22px 14px;}
 }
 @media (prefers-reduced-motion:reduce){.hp .gr-track{transition:none;}}
-</style>
+
+/* ---- shop-style card buttons + toast ---- */
+.hp-btns{display:grid;gap:7px;margin-top:4px;}
+.hp-b{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;padding:10px 8px;border-radius:6px;border:2px solid var(--th-g,#22adb0);background:var(--th-g,#22adb0);color:#fff;font:600 12px var(--th-fh,'Oswald',sans-serif);letter-spacing:.03em;text-transform:uppercase;line-height:1.2;text-align:center;cursor:pointer;transition:background .2s,border-color .2s;}
+.hp-b:hover{background:var(--th-dk,#093c3c);border-color:var(--th-dk,#093c3c);color:#fff;}
+.hp-b.wa{background:#25D366;border-color:#25D366;}
+.hp-b.wa:hover{background:#22adb0;border-color:#22adb0;}
+.hp-b.off{background:#e5e9e7;border-color:#e5e9e7;color:#6b7280;pointer-events:none;}
+.hp-b.cv-loading{opacity:.65;pointer-events:none;}
+@media (max-width:560px){.hp-b{font-size:10.5px;padding:8px 3px;gap:5px;letter-spacing:0;}}
+@media (max-width:380px){.hp-b{font-size:10px;}}
+#travotech-toast{position:fixed;bottom:100px;right:24px;z-index:999999;width:min(340px,calc(100vw - 24px));background:var(--th-dk,#093c3c);color:#fff;border-radius:12px;padding:14px 16px 18px;box-shadow:0 12px 40px rgba(0,0,0,.3);display:flex;align-items:flex-start;gap:12px;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s;pointer-events:none;overflow:hidden;font-family:var(--th-fb,sans-serif);}
+#travotech-toast.cv-show{opacity:1;transform:translateY(0);pointer-events:auto;}
+#travotech-toast .cv-ic{width:36px;height:36px;border-radius:50%;background:var(--th-g,#22adb0);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#travotech-toast .cv-body{flex:1;min-width:0;}
+#travotech-toast .cv-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#22adb0;margin-bottom:3px;}
+#travotech-toast .cv-name{font-size:.88rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:10px;}
+#travotech-toast .cv-act{display:flex;gap:8px;}
+#travotech-toast .cv-act a,#travotech-toast .cv-act button{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:6px;font:700 12px var(--th-fb,sans-serif);border:0;cursor:pointer;text-decoration:none;}
+#travotech-toast .cv-act a{background:var(--th-red,#e53935);color:#fff;}
+#travotech-toast .cv-act button{background:rgba(255,255,255,.12);color:#fff;}
+#travotech-toast .cv-bar{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--th-g,#22adb0);transform-origin:left;}
+#travotech-toast.cv-show .cv-bar{animation:cvCount 5s linear forwards;}
+@keyframes cvCount{from{transform:scaleX(1);}to{transform:scaleX(0);}}
+@media (max-width:560px){#travotech-toast{right:12px;left:12px;width:auto;bottom:84px;}}</style>
 
 <main class="hp" id="main">
 
@@ -542,4 +582,57 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
     </section>
 
 </main>
-<?php include get_template_directory() . '/home-cart.php'; get_footer(); ?>
+<div id="travotech-toast" role="alert" aria-live="assertive">
+    <div class="cv-ic"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
+    <div class="cv-body">
+        <div class="cv-title">Added to cart</div>
+        <div class="cv-name" id="cv-toast-name"></div>
+        <div class="cv-act">
+            <a href="<?php echo esc_url( wc_get_cart_url() ); ?>"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> View cart</a>
+            <button type="button" id="cv-toast-close">Dismiss</button>
+        </div>
+    </div>
+    <div class="cv-bar" id="cv-toast-bar"></div>
+</div>
+<script>
+(function(){
+    var $=function(id){return document.getElementById(id);};
+    var toast=$('travotech-toast'),tn=$('cv-toast-name'),bar=$('cv-toast-bar'),tc=$('cv-toast-close'),timer=null;
+    function showToast(name){
+        if(!toast)return;
+        if(tn)tn.textContent=name||'';
+        if(bar){bar.style.animation='none';void bar.offsetWidth;bar.style.animation='';}
+        toast.classList.add('cv-show');
+        if(timer)clearTimeout(timer);
+        timer=setTimeout(function(){toast.classList.remove('cv-show');},5000);
+    }
+    if(tc)tc.addEventListener('click',function(){toast.classList.remove('cv-show');if(timer)clearTimeout(timer);});
+
+    var params=new URLSearchParams(window.location.search);
+    var added=params.get('cv_added_name');
+    var saved=null;try{saved=sessionStorage.getItem('cv_scroll_pos');}catch(e){}
+    if(added){
+        if(saved!==null){window.scrollTo(0,parseInt(saved,10));}
+        window.addEventListener('load',function(){if(saved!==null){window.scrollTo(0,parseInt(saved,10));}try{sessionStorage.removeItem('cv_scroll_pos');}catch(e){}});
+        document.addEventListener('DOMContentLoaded',function(){showToast(added);});
+        var cu=new URL(window.location.href);
+        ['cv_added_name','added-to-cart','add-to-cart','quantity'].forEach(function(k){cu.searchParams.delete(k);});
+        window.history.replaceState(null,'',cu.toString());
+    }
+
+    document.querySelectorAll('.hp-atc').forEach(function(btn){
+        btn.addEventListener('click',function(e){
+            e.preventDefault();
+            try{sessionStorage.setItem('cv_scroll_pos',String(window.pageYOffset||document.documentElement.scrollTop||0));}catch(x){}
+            btn.classList.add('cv-loading');
+            var t=btn.querySelector('.t');if(t)t.textContent='Adding...';
+            var u=new URL(window.location.href);
+            u.searchParams.set('add-to-cart',btn.getAttribute('data-pid'));
+            u.searchParams.set('quantity','1');
+            u.searchParams.set('cv_added_name',btn.getAttribute('data-name'));
+            window.location.href=u.toString();
+        });
+    });
+})();
+</script>
+<?php get_footer(); ?>
