@@ -324,6 +324,23 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     .sh .sh-help .sh-wb{flex:1 1 auto;display:flex;flex-direction:column;}
     .sh .sh-help .sh-btn{margin-top:auto;}
 }
+
+/* ---- Fixes v8 ---- */
+.sh .sh-promo{display:flex;flex-direction:column;overflow:hidden;}
+.sh .sh-promo-text{padding:14px 16px;}
+.sh .sh-promo-text .sh-wt{padding:0;margin:0 0 8px;border:0;background:none;font-size:1rem;line-height:1.35;}
+.sh .sh-promo-text .sh-wt i{color:var(--th-g,#238a56);margin-right:6px;}
+.sh .sh-promo-text p{font-size:.85rem;line-height:1.65;margin:0 0 10px;color:#444;}
+.sh .sh-promo-link{font-weight:700;font-size:.85rem;color:var(--th-red,#d32f2f);text-decoration:none;}
+.sh .sh-promo-link:hover{color:#c62828;}
+.sh .sh-promo-img{position:relative;flex:1 1 auto;min-height:200px;}
+.sh .sh-promo-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+
+@media (min-width:901px){
+    .sh .sh-help{flex:0 0 auto;order:2;}
+    .sh .sh-promo{flex:1 1 auto;order:3;}
+    .sh .sh-why{order:1;}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
@@ -411,6 +428,16 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
                     <li><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order quickly via WhatsApp</li>
                     <li><i class="fa-solid fa-headset" aria-hidden="true"></i> Expert product support</li>
                 </ul>
+            </div>
+			<div class="sh-widget sh-promo">
+                <div class="sh-promo-text">
+                    <h2 class="sh-wt"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i> Trusted Laboratory &amp; Hospital Equipment Supplier in Kenya</h2>
+                    <p>Travotech supplies quality medical, laboratory and hospital equipment to clinics, hospitals, pharmacies, schools and research labs. Browse microscopes, centrifuges, autoclaves, hospital beds, diagnostic and sterilization equipment, with delivery in Nairobi, Thika and across Kenya.</p>
+                    <a class="sh-promo-link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Request a quote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="sh-promo-img">
+                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/images/homebg2.png" alt="Laboratory and hospital equipment supplier in Kenya - Travotech" loading="lazy" width="600" height="400">
+                </div>
             </div>
 			<div class="sh-widget sh-help">
                 <h2 class="sh-wt"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Quick order</h2>
