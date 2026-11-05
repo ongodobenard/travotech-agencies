@@ -687,6 +687,8 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
   /* ════════════════════════════════════════════════════════
      SILENT CART RESET via WooCommerce cart fragments AJAX
   ════════════════════════════════════════════════════════ */
+  var CART_URL = '<?php echo esc_js( wc_get_cart_url() ); ?>';
+  function goToCart(delay){ setTimeout(function(){ window.location.href = CART_URL; }, delay); }
   function refreshHeaderCart(){
     fetch(window.location.href,{credentials:'same-origin',cache:'no-store',headers:{'X-Requested-With':'XMLHttpRequest'}})
     .then(function(r){return r.text();})
@@ -797,6 +799,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
 
     if(succEl) succEl.scrollIntoView({behavior:'smooth',block:'center'});
     silentCartReset();
+    goToCart(2500);
   }
 
   function showError(msg, isDesktop){
@@ -874,7 +877,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
 
     window.open('https://wa.me/254720737151?text='+encodeURIComponent(buildWaMessage()), '_blank');
     sendOrderToServer('whatsapp', function(res){
-      if(res && (res.success || (res.data && res.data.order_id))){ silentCartReset(); }
+      if(res && (res.success || (res.data && res.data.order_id))){ silentCartReset(); goToCart(1200); }
     });
   }
 
