@@ -136,6 +136,11 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 
 /* ---- two numbers and emails ---- */
 .rp-contact{grid-template-columns:repeat(auto-fit,minmax(230px,1fr)) !important;}
+
+/* ---- rp-call: both numbers in one card ---- */
+.rp-contact .rp-call{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #cdf1f0;border-radius:10px;padding:14px;font-weight:600;font-size:.9rem;color:#093c3c;}
+.rp-contact .rp-call a{display:block;background:none;border:0;border-radius:0;padding:0;color:#093c3c;font-weight:600;text-decoration:none;line-height:1.7;}
+.rp-contact .rp-call a:hover{color:#22adb0;}
 </style>
 
 <main class="rp">
@@ -290,10 +295,8 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 <h2><i class="fa-solid fa-headset" aria-hidden="true"></i> Contact us</h2>
 <p>Questions about a return or refund? Reach our team and quote your order number.</p>
 <div class="rp-contact">
-<a href="tel:<?php echo esc_attr( $rp_phone_link ); ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small><?php echo esc_html( $rp_phone_show ); ?></span></a>
-<a href="tel:+254729080053"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us (second line)</small>0729080053</span></a>
+<div class="rp-call"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small><a href="tel:<?php echo esc_attr( $rp_phone_link ); ?>"><?php echo esc_html( $rp_phone_show ); ?></a><a href="tel:+254729080053">0729080053</a></span></div>
 <a href="mailto:<?php echo esc_attr( $rp_email ); ?>"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email us</small><?php echo esc_html( $rp_email ); ?></span></a>
-<a href="mailto:travogencies@yahoo.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email us (second address)</small>travogencies@yahoo.com</span></a>
 <a href="https://wa.me/<?php echo esc_attr( $rp_wa ); ?>" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with us</span></a>
 </div>
 </section>
