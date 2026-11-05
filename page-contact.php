@@ -206,6 +206,13 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
     .ct-people-d{right:0;width:min(55%,720px);}
     .ct-people-d img{transform:translateX(7%) scale(1.2);transform-origin:bottom right;}
 }
+
+/* ---- Contact image v2 ---- */
+html body main.ct .ct-top .ct-band .ct-band-bg img{mix-blend-mode:normal !important;opacity:1 !important;filter:none !important;}
+html body main.ct .ct-top .ct-band .ct-band-bg::after{background:linear-gradient(to right,rgba(9,60,60,.74) 0%,rgba(9,60,60,.5) 45%,rgba(9,60,60,.14) 100%) !important;}
+@media (max-width:1000px){
+html body main.ct .ct-top .ct-band .ct-band-bg::after{background:rgba(9,60,60,.55) !important;}
+}
 </style>
 
 <main class="ct">

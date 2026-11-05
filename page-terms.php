@@ -111,19 +111,44 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .tm-art{opacity:.3;width:100%;}
 .tm-t3,.tm-t5{display:none;}
 }
+
+/* ---- Terms v2 ---- */
+html body main.tm .tm-hero.tm-hero.tm-hero.tm-hero.tm-hero::before,
+html body main.tm .tm-hero.tm-hero.tm-hero.tm-hero.tm-hero::after{content:none !important;display:none !important;background:none !important;}
+.tm .tm-hero{background:var(--tm-dk);}
+.tm .tm-ha{position:absolute;right:0;top:0;height:100%;width:min(62%,680px);pointer-events:none;overflow:hidden;}
+.tm .tm-ha i{position:absolute;line-height:1;}
+.tm .tm-ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.10);}
+.tm .tm-ring1{width:340px;height:340px;right:-70px;top:-90px;}
+.tm .tm-ring2{width:220px;height:220px;right:-10px;top:-30px;}
+.tm .tm-a1{right:14%;top:16%;font-size:clamp(90px,13vw,170px);color:#5ad8d6;opacity:.38;}
+.tm .tm-a2{right:46%;bottom:12%;font-size:clamp(46px,6vw,76px);color:#fff;opacity:.14;}
+.tm .tm-a3{right:5%;bottom:10%;font-size:clamp(50px,7vw,86px);color:#fff;opacity:.14;}
+.tm .tm-a4{right:34%;top:12%;font-size:clamp(40px,5vw,60px);color:#fff;opacity:.12;}
+.tm .tm-a5{right:62%;top:30%;font-size:clamp(30px,4vw,46px);color:#5ad8d6;opacity:.30;}
+.tm .tm-a6{right:28%;bottom:8%;font-size:clamp(34px,4.5vw,54px);color:#d32f2f;opacity:.50;}
+.tm .tm-a7{right:50%;top:10%;font-size:24px;color:#5ad8d6;opacity:.45;}
+.tm .tm-a8{right:3%;top:58%;font-size:20px;color:#fff;opacity:.25;}
+.tm .tm-a9{right:70%;bottom:14%;font-size:18px;color:#5ad8d6;opacity:.35;}
+@media (max-width:1000px){.tm .tm-ha{opacity:.55;width:75%;}}
+@media (max-width:640px){.tm .tm-ha{opacity:.35;width:100%;}}
 </style>
 
 <main class="tm">
 
 <div class="tm-hero">
-<div class="tm-art" aria-hidden="true">
-<span class="tm-sq"></span>
-<span class="tm-sq tm-sq2"></span>
-<span class="tm-tile tm-t1"><i class="fa-solid fa-file-contract"></i></span>
-<span class="tm-tile tm-t2"><i class="fa-solid fa-scale-balanced"></i></span>
-<span class="tm-tile tm-t3"><i class="fa-solid fa-handshake"></i></span>
-<span class="tm-tile tm-t4"><i class="fa-solid fa-lock"></i></span>
-<span class="tm-tile tm-t5"><i class="fa-solid fa-check"></i></span>
+<div class="tm-ha" aria-hidden="true">
+<span class="tm-ring tm-ring1"></span>
+<span class="tm-ring tm-ring2"></span>
+<i class="fa-solid fa-file-contract tm-a1"></i>
+<i class="fa-solid fa-scale-balanced tm-a2"></i>
+<i class="fa-solid fa-handshake tm-a3"></i>
+<i class="fa-solid fa-shield-halved tm-a4"></i>
+<i class="fa-solid fa-gavel tm-a5"></i>
+<i class="fa-solid fa-lock tm-a6"></i>
+<i class="fa-solid fa-plus tm-a7"></i>
+<i class="fa-solid fa-plus tm-a8"></i>
+<i class="fa-solid fa-plus tm-a9"></i>
 </div>
 <div class="tm-hero-in">
 <div class="tm-hero-txt">
@@ -139,7 +164,7 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 <div class="tm-wrap">
 
 <div class="tm-sum">
-<div><i class="fa-solid fa-circle-check" aria-hidden="true"></i><b>Easy to follow</b><span>Short, plain terms. No hidden conditions.</span></div>
+<div><i class="fa-solid fa-book-open" aria-hidden="true"></i><b>Easy to follow</b><span>Short, plain terms. No hidden conditions.</span></div>
 <div><i class="fa-solid fa-credit-card" aria-hidden="true"></i><b>Clear payment</b><span>Prices in Kenya shillings, paid before dispatch unless agreed.</span></div>
 <div><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><b>Delivery in Kenya</b><span>We deliver to hospitals, clinics and labs across the country.</span></div>
 <div><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><b>Kenyan law</b><span>These terms are governed by the laws of Kenya.</span></div>
