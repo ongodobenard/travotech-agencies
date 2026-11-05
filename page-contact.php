@@ -1,426 +1,248 @@
 <?php
-/**
- * Template Name: Contact
- */
-get_header(); ?>
+/*
+Template Name: Contact Us
+*/
+
+/* ---- Edit these if anything changes ---- */
+$ct_to = get_option( 'admin_email' ); /* where the form messages are sent */
+$ct_phone1 = '0720737151';
+$ct_phone2 = '0729080053';
+$ct_email1 = 'travogencies@yahoo.com';
+$ct_email2 = 'sales@travotechagencies.co.ke';
+$ct_wa = '254720737151';
+$ct_social = array(
+    array( 'fa-brands fa-facebook-f', 'Facebook', '' ),
+    array( 'fa-brands fa-linkedin-in', 'LinkedIn', '' ),
+    array( 'fa-brands fa-youtube', 'YouTube', '' ),
+);
+$ct_branches = array(
+    array( 'Head Office - Kahawa Sukari', 'Kahawa Sukari, Bungoma Road, Bungoma Close - Gate No.4', '0720737151', 'Kahawa Sukari, Bungoma Road, Bungoma Close, Nairobi, Kenya' ),
+    array( 'Travotech Nairobi', 'Tom Mboya Street - Nyambene House, 1st floor, meters away from Afya Centre', '0729080053', 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ),
+    array( 'Travotech Meru', 'Tom Mboya Street, Meru Town, directly opposite Post Bank Meru / YETU Sacco', '0725282453', 'Tom Mboya Street, Meru Town, Kenya' ),
+);
+$img = esc_url( get_template_directory_uri() ) . '/assets/js/images/';
+$page_url = get_permalink();
+
+/* ---- Handle the form ---- */
+$ct_err = '';
+$ct_val = array( 'name' => '', 'email' => '', 'phone' => '', 'message' => '' );
+if ( 'POST' === $_SERVER['REQUEST_METHOD'] && isset( $_POST['ct_submit'] ) ) {
+    if ( ! isset( $_POST['ct_nonce'] ) || ! wp_verify_nonce( $_POST['ct_nonce'], 'travotech_contact' ) ) {
+        $ct_err = 'Your session expired. Please refresh the page and try again.';
+    } elseif ( ! empty( $_POST['ct_website'] ) ) {
+        wp_safe_redirect( $page_url ); exit;
+    } else {
+        $ct_val['name']    = sanitize_text_field( wp_unslash( $_POST['ct_name'] ?? '' ) );
+        $ct_val['email']   = sanitize_email( wp_unslash( $_POST['ct_email'] ?? '' ) );
+        $ct_val['phone']   = sanitize_text_field( wp_unslash( $_POST['ct_phone'] ?? '' ) );
+        $ct_val['message'] = sanitize_textarea_field( wp_unslash( $_POST['ct_message'] ?? '' ) );
+        if ( '' === $ct_val['name'] || '' === $ct_val['message'] ) {
+            $ct_err = 'Please enter your name and message.';
+        } elseif ( ! is_email( $ct_val['email'] ) ) {
+            $ct_err = 'Please enter a valid email address.';
+        } else {
+            $body = "Name: {$ct_val['name']}\nEmail: {$ct_val['email']}\nPhone: {$ct_val['phone']}\n\nMessage:\n{$ct_val['message']}\n";
+            $sent = wp_mail( $ct_to, '[Website] New message from ' . $ct_val['name'], $body, array( 'Reply-To: ' . $ct_val['name'] . ' <' . $ct_val['email'] . '>' ) );
+            if ( $sent ) { wp_safe_redirect( add_query_arg( 'sent', '1', $page_url ) . '#send' ); exit; }
+            $ct_err = 'Sorry, we could not send your message. Please call or WhatsApp us instead.';
+        }
+    }
+}
+
+if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
+    add_filter( 'pre_get_document_title', function () {
+        return 'Contact Travotech Agencies | Medical & Laboratory Equipment Nairobi';
+    } );
+    add_action( 'wp_head', function () {
+        echo '<meta name="description" content="' . esc_attr( 'Contact Travotech Agencies in Nairobi, Kenya for laboratory analyzers, hospital beds, patient monitors, reagents and medical supplies. Call, WhatsApp, email or visit our Nairobi, Kahawa Sukari and Meru offices.' ) . '">' . "\n";
+    }, 1 );
+}
+get_header();
+?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'LocalBusiness', 'name' => 'Travotech Agencies Limited', 'url' => home_url( '/' ), 'telephone' => '+254' . substr( $ct_phone2, 1 ), 'email' => $ct_email2, 'address' => array( '@type' => 'PostalAddress', 'streetAddress' => 'Nyambene House, Tom Mboya Street', 'addressLocality' => 'Nairobi', 'addressCountry' => 'KE' ) ), JSON_UNESCAPED_SLASHES ); ?>
+</script>
 
 <style>
-/* ── WhatsApp Button ── */
-.wa-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--green);
-  color: white;
-  padding: 13px 28px;
-  border-radius: 50px;
-  font-size: .92rem;
-  font-weight: 800;
-  font-family: 'Nunito', sans-serif;
-  text-decoration: none;
-  transition: all .3s;
-  box-shadow: 0 6px 20px rgba(46,175,110,.3);
-  white-space: nowrap;
-  border: none;
-  cursor: pointer;
-}
-.wa-cta-btn:hover {
-  background: var(--green-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(46,175,110,.4);
-}
+.ct{--ct-g:var(--th-g,#238a56);--ct-gd:var(--th-gd,#1b6d44);--ct-dk:var(--th-dk,#0c3a27);--ct-red:var(--th-red,#d32f2f);--ct-tint:#eaf6ef;--ct-line:#d6e8de;
+font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
+.ct *,.ct *::before,.ct *::after{box-sizing:border-box;}
+.ct h1,.ct h2,.ct h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--ct-dk);margin:0;line-height:1.2;letter-spacing:.01em;}
+.ct p{margin:0 0 10px;line-height:1.7;font-size:.95rem;}
+.ct a{color:inherit;}
+.ct-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;}
 
-/* ── Form Field Groups ── */
-.fg { position: relative; }
-.fg label {
-  display: block;
-  font-size: .78rem;
-  font-weight: 800;
-  color: var(--text-mid);
-  margin-bottom: 5px;
-  transition: color .2s;
-}
-.fg label .req { color: var(--green); margin-left: 2px; }
-.fg input,
-.fg select,
-.fg textarea {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1.5px solid var(--green-light);
-  border-radius: 8px;
-  font-size: .83rem;
-  font-family: 'Nunito', sans-serif;
-  color: var(--text);
-  outline: none;
-  transition: border-color .2s, box-shadow .2s;
-  background: white;
-  box-sizing: border-box;
-}
-.fg input:focus,
-.fg select:focus,
-.fg textarea:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(46,175,110,.1);
-}
+/* Hero */
+.ct-hero{position:relative;background:var(--ct-dk);color:#fff;overflow:hidden;}
+.ct-hero-img{position:absolute;top:0;right:0;bottom:0;width:100%;}
+.ct-hero-img img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block;}
+.ct-hero-img::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ct-dk) 0%,var(--ct-dk) 38%,rgba(12,58,39,0) 68%);z-index:1;}
+.ct-hero-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:clamp(34px,6vw,60px) 5% 40px;}
+.ct-hero-txt{max-width:600px;margin-bottom:34px;}
+.ct .ct-hero h1{color:#fff;font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;margin-bottom:10px;}
+.ct .ct-hero h1 small{display:block;font-size:clamp(1rem,2.2vw,1.35rem);font-weight:500;line-height:1.35;margin-top:10px;color:#9fe0bf;}
+.ct-sub{font-family:var(--th-fh,'Oswald',sans-serif);font-size:clamp(1.2rem,2.6vw,1.7rem);color:#fff;margin:0 0 8px !important;}
+.ct .ct-hero p{color:rgba(255,255,255,.92);}
+.ct-hero-line{display:block;width:70px;height:4px;background:var(--ct-red);border-radius:2px;margin-top:14px;}
 
-/* Invalid */
-.fg.invalid label,
-.fg.invalid .req { color: #e53935; }
-.fg.invalid input,
-.fg.invalid select,
-.fg.invalid textarea {
-  border-color: #e53935 !important;
-  box-shadow: 0 0 0 3px rgba(229,57,53,.1) !important;
-  background: #fff8f8;
-}
-.fg .error-msg {
-  font-size: .7rem;
-  color: #e53935;
-  font-weight: 700;
-  margin-top: 4px;
-  display: none;
-}
-.fg.invalid .error-msg { display: block; }
+/* Form and details cards */
+.ct-cards{display:grid;grid-template-columns:1.1fr 1fr;gap:0;max-width:820px;background:#fff;border-radius:14px;box-shadow:0 14px 34px rgba(0,0,0,.25);overflow:hidden;}
+.ct-form-box{padding:26px;}
+.ct-info-box{padding:26px;background:var(--ct-tint);}
+.ct-title{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.ct-title i{width:42px;height:42px;border-radius:50%;background:var(--ct-g);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ct .ct-title h2{font-size:1.3rem;}
+.ct-field{position:relative;margin-bottom:10px;}
+.ct-field i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ct-g);font-size:.95rem;}
+.ct-field.ct-ta i{top:18px;transform:none;}
+.ct-field input,.ct-field textarea{width:100%;border:1px solid var(--ct-line);border-radius:6px;background:#fff;padding:12px 12px 12px 42px;font:inherit;font-size:.92rem;color:#2b3a33;}
+.ct-field textarea{min-height:100px;resize:vertical;}
+.ct-field input:focus,.ct-field textarea:focus{outline:2px solid var(--ct-g);outline-offset:0;border-color:var(--ct-g);}
+.ct-hp{position:absolute !important;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.ct-send{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:6px;background:var(--ct-g);color:#fff;font-weight:700;font-size:.95rem;padding:13px;cursor:pointer;transition:background .2s;}
+.ct-send:hover{background:var(--ct-gd);}
+.ct-note{border-radius:6px;padding:10px 12px;font-size:.88rem;margin-bottom:12px;}
+.ct-ok{background:#e3f6ea;border:1px solid #9bd5b2;color:#14532d;}
+.ct-err{background:#fdecea;border:1px solid #f1a9a3;color:#8a1c14;}
 
-/* Valid */
-.fg.valid input,
-.fg.valid select,
-.fg.valid textarea { border-color: var(--green) !important; }
+.ct-det{display:flex;gap:12px;align-items:flex-start;padding:10px 0;}
+.ct-det>i{font-size:1.2rem;color:var(--ct-g);width:24px;text-align:center;margin-top:3px;flex-shrink:0;}
+.ct-det b{display:block;font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ct-dk);font-size:1rem;}
+.ct-det span,.ct-det a{display:block;font-size:.9rem;line-height:1.55;text-decoration:none;word-break:break-word;}
+.ct-det a:hover{color:var(--ct-gd);text-decoration:underline;}
+.ct-follow{border-top:1px solid var(--ct-line);margin-top:6px;padding-top:12px;}
+.ct-follow b{font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ct-dk);display:block;margin-bottom:8px;}
+.ct-soc{display:flex;gap:10px;}
+.ct-soc a{width:38px;height:38px;border-radius:50%;background:var(--ct-g);color:#fff !important;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s;}
+.ct-soc a:hover{background:var(--ct-red);}
 
-/* ── Feedback Toast ── */
-.cv-toast {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  border-radius: 12px;
-  padding: 0 18px;
-  font-size: .85rem;
-  font-weight: 700;
-  font-family: 'Nunito', sans-serif;
-  margin-top: 0;
-  border: 1.5px solid transparent;
-  line-height: 1.45;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  pointer-events: none;
-  transition: opacity .35s ease, max-height .45s ease, padding .45s ease, margin-top .45s ease;
-}
-.cv-toast.show {
-  opacity: 1;
-  max-height: 160px;
-  padding: 14px 18px;
-  margin-top: 16px;
-  pointer-events: auto;
-}
-.cv-toast svg { flex-shrink: 0; margin-top: 2px; }
-.cv-toast.cv-success {
-  background: #edfaf3;
-  color: #1a6e44;
-  border-color: #6fcf97;
-}
-.cv-toast.cv-error {
-  background: #fff0f0;
-  color: #b71c1c;
-  border-color: #ef9a9a;
-}
+/* Map and CTA */
+.ct-row{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;padding:30px 0 10px;}
+.ct-map{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--ct-line);min-height:260px;}
+.ct-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.ct-map-tag{position:absolute;left:12px;top:12px;z-index:2;background:#fff;border-radius:8px;padding:10px 14px;box-shadow:0 4px 14px rgba(0,0,0,.2);max-width:210px;}
+.ct-map-tag b{display:block;font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ct-dk);}
+.ct-map-tag span{display:block;font-size:.8rem;line-height:1.4;}
+.ct-map-tag a{font-size:.8rem;font-weight:600;color:var(--ct-gd);}
+.ct-cta{background:var(--ct-red);color:#fff;border-radius:12px;padding:26px;display:flex;align-items:center;gap:20px;}
+.ct-cta>i{font-size:2.6rem;flex-shrink:0;}
+.ct .ct-cta h2{color:#fff;font-size:clamp(1.3rem,2.4vw,1.7rem);margin-bottom:6px;}
+.ct .ct-cta p{color:#fff;font-size:.9rem;margin-bottom:12px;}
+.ct-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;background:#fff;color:var(--ct-dk) !important;}
+.ct-btn:hover{background:var(--ct-tint);}
 
-/* ── Responsive ── */
-@media (max-width: 768px) {
-  .contact-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-  .wa-cta-btn {
-    font-size: .78rem;
-    padding: 11px 18px;
-    gap: 7px;
-    white-space: normal;
-    text-align: center;
-    max-width: 280px;
-    width: 100%;
-  }
-  .wa-cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+/* Offices */
+.ct-off{padding:28px 0 34px;}
+.ct .ct-h2{text-align:center;font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:22px;display:flex;align-items:center;justify-content:center;gap:14px;}
+.ct .ct-h2::before,.ct .ct-h2::after{content:"";height:3px;width:clamp(26px,7vw,80px);background:var(--ct-g);border-radius:2px;}
+.ct-offs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.ct-o{border:1px solid var(--ct-line);border-radius:12px;padding:20px;background:#fff;box-shadow:0 6px 18px rgba(12,58,39,.06);}
+.ct-o>i{width:46px;height:46px;border-radius:50%;background:var(--ct-tint);color:var(--ct-g);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:10px;}
+.ct .ct-o h3{font-size:1.15rem;margin-bottom:6px;}
+.ct-o p{font-size:.88rem;margin-bottom:6px;}
+.ct-o a.ct-ph{font-weight:600;text-decoration:none;color:var(--ct-dk);}
+.ct-o a.ct-mp{display:inline-flex;gap:6px;align-items:center;margin-top:6px;font-size:.85rem;font-weight:700;color:var(--ct-red);text-decoration:none;}
+
+@media (max-width:1000px){
+.ct-hero-img::before{background:linear-gradient(90deg,var(--ct-dk) 0%,var(--ct-dk) 30%,rgba(12,58,39,0) 80%);}
+.ct-cards{max-width:100%;}
+.ct-offs{grid-template-columns:repeat(2,1fr);}
 }
-@media (max-width: 480px) {
-  .wa-cta-btn { font-size: .72rem; padding: 10px 14px; gap: 6px; max-width: 260px; }
-  .wa-cta-btn svg { width: 14px; height: 14px; }
-  .form-row { grid-template-columns: 1fr !important; }
-  .cv-toast { font-size: .78rem; gap: 8px; }
+@media (max-width:800px){
+.ct-hero-img{position:relative;width:100%;height:220px;}
+.ct-hero-img::before{display:none;}
+.ct-hero-img img{object-position:center top;}
+.ct-hero-in{padding-top:28px;}
+.ct-cards{grid-template-columns:1fr;}
+.ct-row{grid-template-columns:1fr;}
+.ct-map{min-height:280px;}
+}
+@media (max-width:600px){
+.ct-offs{grid-template-columns:1fr;}
+.ct-form-box,.ct-info-box{padding:20px;}
+.ct-cta{flex-direction:column;text-align:center;}
 }
 </style>
 
-<!-- Hero -->
-<section style="background:var(--green-pale);padding:56px 5%;text-align:center;">
-  <div class="sec-tag sec-tag-outline reveal">Get In Touch</div>
-  <h1 class="sec-title reveal rd1">Contact <span>Travotech Agencies</span></h1>
-  <p class="sec-desc reveal rd2" style="margin:0 auto;">Have a question or need help? We're always available via WhatsApp, phone or email.</p>
+<main class="ct">
+
+<div class="ct-hero">
+<div class="ct-hero-img">
+<img src="<?php echo $img; ?>contactbg.png" alt="Travotech Agencies healthcare team ready to help customers in Nairobi, Kenya" width="1600" height="800" fetchpriority="high">
+</div>
+<div class="ct-hero-in">
+<div class="ct-hero-txt">
+<h1>Contact Us <small>Travotech Agencies, Medical &amp; Laboratory Equipment Supplier in Nairobi, Kenya</small></h1>
+<p class="ct-sub">We&rsquo;re here to support your healthcare needs.</p>
+<p>Get in touch for quotes, product inquiries, delivery and after-sales support on laboratory analyzers, hospital beds, patient monitors, reagents and medical supplies across Kenya. Our team is always ready to help.</p>
+<span class="ct-hero-line"></span>
+</div>
+
+<div class="ct-cards" id="send">
+<div class="ct-form-box">
+<div class="ct-title"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i><h2>Send Us a Message</h2></div>
+<?php if ( isset( $_GET['sent'] ) ) : ?><div class="ct-note ct-ok" role="status">Thank you. Your message has been sent and our team will reply soon.</div><?php endif; ?>
+<?php if ( $ct_err ) : ?><div class="ct-note ct-err" role="alert"><?php echo esc_html( $ct_err ); ?></div><?php endif; ?>
+<form method="post" action="<?php echo esc_url( $page_url . '#send' ); ?>">
+<?php wp_nonce_field( 'travotech_contact', 'ct_nonce' ); ?>
+<div class="ct-hp" aria-hidden="true"><label>Website <input type="text" name="ct_website" tabindex="-1" autocomplete="off"></label></div>
+<div class="ct-field"><i class="fa-solid fa-user" aria-hidden="true"></i><input type="text" name="ct_name" placeholder="Your Name" aria-label="Your name" value="<?php echo esc_attr( $ct_val['name'] ); ?>" required></div>
+<div class="ct-field"><i class="fa-solid fa-envelope" aria-hidden="true"></i><input type="email" name="ct_email" placeholder="Your Email" aria-label="Your email" value="<?php echo esc_attr( $ct_val['email'] ); ?>" required></div>
+<div class="ct-field"><i class="fa-solid fa-phone" aria-hidden="true"></i><input type="tel" name="ct_phone" placeholder="Your Phone" aria-label="Your phone" value="<?php echo esc_attr( $ct_val['phone'] ); ?>"></div>
+<div class="ct-field ct-ta"><i class="fa-solid fa-comment-dots" aria-hidden="true"></i><textarea name="ct_message" placeholder="Your Message" aria-label="Your message" required><?php echo esc_textarea( $ct_val['message'] ); ?></textarea></div>
+<button class="ct-send" type="submit" name="ct_submit" value="1"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Message</button>
+</form>
+</div>
+
+<div class="ct-info-box">
+<div class="ct-title"><i class="fa-solid fa-phone" aria-hidden="true"></i><h2>Our Contact Details</h2></div>
+<div class="ct-det"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><b>Phone / WhatsApp</b><a href="tel:+254<?php echo esc_attr( substr( $ct_phone1, 1 ) ); ?>"><?php echo esc_html( $ct_phone1 ); ?></a><a href="tel:+254<?php echo esc_attr( substr( $ct_phone2, 1 ) ); ?>"><?php echo esc_html( $ct_phone2 ); ?></a></div></div>
+<div class="ct-det"><i class="fa-solid fa-envelope" aria-hidden="true"></i><div><b>Email Us</b><a href="mailto:<?php echo esc_attr( $ct_email1 ); ?>"><?php echo esc_html( $ct_email1 ); ?></a><a href="mailto:<?php echo esc_attr( $ct_email2 ); ?>"><?php echo esc_html( $ct_email2 ); ?></a></div></div>
+<div class="ct-det"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><b>Our Location</b><span>Travotech Nairobi, Tom Mboya Street, Nyambene House, 1st floor, Nairobi, Kenya</span></div></div>
+<?php $ct_have = array_filter( $ct_social, function ( $s ) { return '' !== $s[2]; } ); ?>
+<?php if ( $ct_have ) : ?>
+<div class="ct-follow"><b>Follow Us</b><div class="ct-soc">
+<?php foreach ( $ct_have as $s ) : ?><a href="<?php echo esc_url( $s[2] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $s[1] ); ?>"><i class="<?php echo esc_attr( $s[0] ); ?>" aria-hidden="true"></i></a><?php endforeach; ?>
+</div></div>
+<?php endif; ?>
+</div>
+</div>
+</div>
+</div>
+
+<div class="ct-wrap">
+
+<div class="ct-row">
+<div class="ct-map">
+<div class="ct-map-tag"><b>Travotech Nairobi</b><span>Nyambene House, Tom Mboya Street</span><a href="https://www.google.com/maps/search/?api=1&amp;query=<?php echo rawurlencode( 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ); ?>" target="_blank" rel="noopener">View larger map</a></div>
+<iframe title="Map of Travotech Nairobi, Nyambene House, Tom Mboya Street" src="https://www.google.com/maps?q=<?php echo rawurlencode( 'Nyambene House, Tom Mboya Street, Nairobi, Kenya' ); ?>&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+</div>
+<div class="ct-cta">
+<i class="fa-solid fa-handshake" aria-hidden="true"></i>
+<div>
+<h2>Let&rsquo;s Build a Healthier Kenya Together</h2>
+<p>Your health is our priority. Reach out today for the best laboratory and healthcare solutions.</p>
+<a class="ct-btn" href="tel:+254<?php echo esc_attr( substr( $ct_phone2, 1 ) ); ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i> Call Us Now</a>
+</div>
+</div>
+</div>
+
+<section class="ct-off">
+<h2 class="ct-h2">Our Offices</h2>
+<div class="ct-offs">
+<?php foreach ( $ct_branches as $b ) : ?>
+<div class="ct-o">
+<i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+<h3><?php echo esc_html( $b[0] ); ?></h3>
+<p><?php echo esc_html( $b[1] ); ?></p>
+<p><i class="fa-solid fa-phone" aria-hidden="true"></i> <a class="ct-ph" href="tel:+254<?php echo esc_attr( substr( $b[2], 1 ) ); ?>"><?php echo esc_html( $b[2] ); ?></a></p>
+<a class="ct-mp" href="https://www.google.com/maps/search/?api=1&amp;query=<?php echo rawurlencode( $b[3] ); ?>" target="_blank" rel="noopener"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Open in Google Maps</a>
+</div>
+<?php endforeach; ?>
+</div>
 </section>
 
-<!-- Main -->
-<section style="background:white;padding:56px 5%;">
-  <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start;">
-
-    <!-- Contact Info -->
-    <div>
-      <div class="sec-tag sec-tag-solid reveal">Contact Info</div>
-      <h2 class="sec-title reveal rd1">Reach Us <span>Anytime</span></h2>
-      <div class="why-feats" style="margin-top:24px;">
-
-        <div class="why-feat reveal">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-          <div>
-            <div class="wf-title">Phone / WhatsApp</div>
-            <div class="wf-desc"><a href="https://wa.me/254720737151" style="color:var(--green);font-weight:700;" target="_blank">+254 720 737 151</a></div>
-          </div>
-        </div>
-
-        <div class="why-feat reveal rd1">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div>
-            <div class="wf-title">Email Address</div>
-            <div class="wf-desc"><a href="mailto:<?php echo esc_attr(travotech_email()); ?>" style="color:var(--green);font-weight:700;"><?php echo esc_html(travotech_email()); ?></a></div>
-          </div>
-        </div>
-
-        <div class="why-feat reveal rd2">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div>
-            <div class="wf-title">Our Location</div>
-            <div class="wf-desc"><?php echo esc_html(travotech_address()); ?></div>
-          </div>
-        </div>
-
-        <div class="why-feat reveal rd3">
-          <div class="wf-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div>
-            <div class="wf-title">Working Hours</div>
-            <div class="wf-desc">Mon – Fri: 8:00 AM – 6:00 PM<br>Sat: 8:30 AM – 1:00 PM<br>Sunday &amp; Holidays: Closed</div>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="margin-top:28px;">
-        <div style="font-size:.82rem;font-weight:800;color:var(--text);margin-bottom:12px;">Follow Us:</div>
-        <div style="display:flex;gap:9px;">
-          <a href="<?php echo esc_url(get_option('travotech_facebook','#')); ?>" class="foot-soc" target="_blank">f</a>
-          <a href="<?php echo esc_url(get_option('travotech_instagram','#')); ?>" class="foot-soc" target="_blank">▶</a>
-          <a href="<?php echo esc_url(get_option('travotech_twitter','#')); ?>" class="foot-soc" target="_blank">𝕏</a>
-          <a href="https://wa.me/254720737151" class="foot-soc" target="_blank">W</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Form -->
-    <!-- data-cvform="1" is our private hook — main.js cannot find this -->
-    <div class="cta-form reveal rd1">
-      <div class="cta-form-title">Send Us a Message</div>
-      <form data-cvform="contact" method="post" novalidate>
-        <?php wp_nonce_field('travotech_nonce','nonce'); ?>
-        <input type="hidden" name="action" value="travotech_contact">
-
-        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
-          <div class="fg" id="fg-name">
-            <label for="cv_name">Full Name <span class="req">*</span></label>
-            <input type="text" id="cv_name" name="contact_name" placeholder="e.g. James Kamau">
-            <div class="error-msg">Please enter your full name</div>
-          </div>
-          <div class="fg" id="fg-email">
-            <label for="cv_email">Email Address <span class="req">*</span></label>
-            <input type="email" id="cv_email" name="contact_email" placeholder="e.g. james@email.com">
-            <div class="error-msg">Please enter a valid email</div>
-          </div>
-        </div>
-
-        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
-          <div class="fg" id="fg-phone">
-            <label for="cv_phone">Phone / WhatsApp <span class="req">*</span></label>
-            <input type="tel" id="cv_phone" name="contact_phone" placeholder="e.g. 0720 737 151">
-            <div class="error-msg">Please enter your phone number</div>
-          </div>
-          <div class="fg" id="fg-dept">
-            <label for="cv_dept">Department <span class="req">*</span></label>
-            <select id="cv_dept" name="contact_dept">
-              <option value="">Select department...</option>
-              <option value="Prescription">Prescription</option>
-              <option value="Product Enquiry">Product Enquiry</option>
-              <option value="Delivery">Delivery</option>
-              <option value="General">General</option>
-            </select>
-            <div class="error-msg">Please select a department</div>
-          </div>
-        </div>
-
-        <div class="fg" id="fg-msg" style="margin-bottom:16px;">
-          <label for="cv_msg">Your Message <span class="req">*</span></label>
-          <textarea id="cv_msg" name="contact_msg" placeholder="How can we help you?" style="min-height:120px;resize:vertical;"></textarea>
-          <div class="error-msg">Please enter your message (min 5 characters)</div>
-        </div>
-
-        <button type="button" class="form-submit" id="cvSubmitBtn">Send Message →</button>
-
-        <!-- ✅ Success Toast -->
-        <div class="cv-toast cv-success" id="cvSuccess" role="alert" aria-live="polite">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Thanks for contacting Travotech! Message received successfully. Our professional pharmacist will get back to you shortly. For urgent enquiries, call or WhatsApp us directly on <a href="https://wa.me/254720737151" style="color:inherit;text-decoration:underline;font-weight:900;" target="_blank">+254 720 737 151</a>.</span>
-        </div>
-
-        <!-- ❌ Error Toast -->
-        <div class="cv-toast cv-error" id="cvError" role="alert" aria-live="polite">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12" y2="16"/></svg>
-          <span id="cvErrorText"></span>
-        </div>
-
-      </form>
-    </div>
-
-  </div>
-</section>
-
-<!-- WhatsApp CTA -->
-<section style="background:var(--green-pale);padding:48px 5%;text-align:center;">
-  <div class="sec-tag sec-tag-solid reveal">Fastest Response</div>
-  <h2 class="sec-title reveal rd1">Chat With Us on <span>WhatsApp</span></h2>
-  <p class="sec-desc reveal rd2" style="margin:0 auto 28px;">Get instant responses from our pharmacists, available 24/7.</p>
-  <a href="https://wa.me/254720737151?text=<?php echo urlencode('Hello Travotech Agencies! I have an enquiry.'); ?>"
-     class="wa-cta-btn reveal rd3"
-     target="_blank"
-     rel="noopener">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    Open WhatsApp Chat: +254 720 737 151
-  </a>
-</section>
-
-<script>
-/* Runs after ALL other scripts including main.js / jQuery */
-window.addEventListener('load', function () {
-
-  var form      = document.querySelector('[data-cvform="contact"]');
-  if (!form) return;
-
-  /* ── Strip every listener main.js may have attached by cloning ── */
-  var fresh = form.cloneNode(true);
-  form.parentNode.replaceChild(fresh, form);
-  form = fresh; // work with the clean copy from here on
-
-  var successEl  = document.getElementById('cvSuccess');
-  var errorEl    = document.getElementById('cvError');
-  var errorText  = document.getElementById('cvErrorText');
-  var btn        = document.getElementById('cvSubmitBtn');
-  var toastTimer = null;
-  var isSending  = false;
-
-  /* ── Field definitions ── */
-  var fields = [
-    { id: 'fg-name',  input: 'cv_name',  check: function(v){ return v.trim().length >= 2; } },
-    { id: 'fg-email', input: 'cv_email', check: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); } },
-    { id: 'fg-phone', input: 'cv_phone', check: function(v){ return v.trim().replace(/\s/g,'').length >= 9; } },
-    { id: 'fg-dept',  input: 'cv_dept',  check: function(v){ return v !== ''; } },
-    { id: 'fg-msg',   input: 'cv_msg',   check: function(v){ return v.trim().length >= 5; } }
-  ];
-
-  /* ── Toast helpers ── */
-  function showToast(el, ms) {
-    clearTimeout(toastTimer);
-    if (successEl) successEl.classList.remove('show');
-    if (errorEl)   errorEl.classList.remove('show');
-    el.classList.add('show');
-    toastTimer = setTimeout(function(){ el.classList.remove('show'); }, ms || 6000);
-  }
-
-  /* ── Button helpers ── */
-  function btnLoading() { btn.textContent = 'Sending…'; btn.disabled = true;  isSending = true;  }
-  function btnReset()   { btn.textContent = 'Send Message →'; btn.disabled = false; isSending = false; }
-
-  /* ── Field validation ── */
-  function validateField(f, el, fg) {
-    var pass = f.check(el.value);
-    fg.classList.toggle('valid',   pass);
-    fg.classList.toggle('invalid', !pass);
-    return pass;
-  }
-
-  function validateAll() {
-    var ok = true;
-    fields.forEach(function(f) {
-      var el = document.getElementById(f.input);
-      var fg = document.getElementById(f.id);
-      if (el && fg && !validateField(f, el, fg)) ok = false;
-    });
-    return ok;
-  }
-
-  function resetForm() {
-    btnReset();           // button first — before form.reset() fires any events
-    form.reset();
-    fields.forEach(function(f) {
-      var fg = document.getElementById(f.id);
-      if (fg) fg.classList.remove('valid', 'invalid');
-    });
-  }
-
-  /* ── Live validation ── */
-  fields.forEach(function(f) {
-    var el = document.getElementById(f.input);
-    var fg = document.getElementById(f.id);
-    if (!el || !fg) return;
-    el.addEventListener('blur',   function(){ if (!isSending) validateField(f, el, fg); });
-    el.addEventListener('input',  function(){ if (!isSending && fg.classList.contains('invalid')) validateField(f, el, fg); });
-    el.addEventListener('change', function(){ if (!isSending && fg.classList.contains('invalid')) validateField(f, el, fg); });
-  });
-
-  /* ── Button click (type="button" — form submit event is never fired) ── */
-  btn.addEventListener('click', function () {
-    if (isSending) return;
-
-    // Validate — only show field errors, nothing else
-    if (!validateAll()) {
-      var first = form.querySelector('.fg.invalid');
-      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return; // hard stop — no toast, no fetch
-    }
-
-    btnLoading();
-
-    var formData = new FormData(form);
-
-    fetch('<?php echo esc_url(admin_url('admin-ajax.php')); ?>', {
-      method: 'POST',
-      body:   formData
-    })
-    .then(function(r){ return r.text(); })
-    .then(function(raw) {
-      var clean = raw.trim();
-      var s = clean.indexOf('{');
-      if (s > 0) clean = clean.substring(s);
-      var data;
-      try { data = JSON.parse(clean); }
-      catch(e) {
-        btnReset();
-        errorText.textContent = 'Server error. Please contact us via WhatsApp on +254 720 737 151.';
-        showToast(errorEl, 8000);
-        return;
-      }
-      if (data.success) {
-        resetForm();                  // resets button + clears fields
-        showToast(successEl, 7000);
-      } else {
-        btnReset();
-        errorText.textContent = (data.data && data.data.msg)
-          ? data.data.msg
-          : 'Mail delivery failed. Please contact us via WhatsApp on +254 720 737 151.';
-        showToast(errorEl, 7000);
-      }
-    })
-    .catch(function() {
-      btnReset();
-      errorText.textContent = 'Network error. Please check your connection and try again.';
-      showToast(errorEl, 7000);
-    });
-  });
-
-});
-</script>
+</div>
+</main>
 
 <?php get_footer(); ?>
