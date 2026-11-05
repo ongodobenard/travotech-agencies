@@ -375,6 +375,24 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
 .sh .sh-search button{height:48px;padding:0 22px;border:0;border-radius:8px;background:var(--th-g,#22adb0);color:#fff;font:600 13px var(--th-fh,'Oswald',sans-serif);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;}
 .sh .sh-search button:hover{background:var(--th-dk,#093c3c);}
 @media (max-width:560px){.sh .sh-search button{padding:0 14px;}}
+
+/* ---- shgap-v1: remove gap above search, align with Categories ---- */
+.sh .sh-wrap{align-items:start !important;}
+.sh .sh-wrap > section{margin:0 !important;padding:0 !important;align-self:start !important;}
+.sh .sh-wrap > section > *:first-child{margin-top:0 !important;}
+.sh .sh-wrap > section::before,.sh .sh-wrap > aside::before{display:none !important;content:none !important;}
+.sh .sh-search{margin:0 0 12px !important;}
+@media (min-width:901px){
+  .sh .sh-wrap{row-gap:0 !important;}
+  .sh .sh-side{align-self:start !important;}
+}
+@media (max-width:900px){
+  .sh .sh-wrap{row-gap:10px !important;padding-top:10px !important;}
+  .sh .sh-filter-toggle{margin:0 !important;}
+  .sh .sh-side{margin:0 !important;}
+  .sh .sh-side:not(.open){display:none !important;}
+  .sh .sh-search{margin:0 0 10px !important;}
+}
 </style>
 </style>
 
