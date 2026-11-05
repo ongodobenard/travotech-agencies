@@ -250,6 +250,32 @@ wp_enqueue_style( 'dashicons' );
 /* ---- Simple checkout ---- */
 .chkp-grid.chkp-simple{grid-template-columns:1fr !important;gap:12px;}
 .chkp-wrap #payment{display:none !important;}
+
+/* ---- chkp-fields-v2: layout, sizes, square-ish corners ---- */
+body .chkp-grid.chkp-simple{display:grid !important;grid-template-columns:1fr 1fr !important;gap:16px 20px !important;}
+body .chkp-grid.chkp-simple .chkp-fg{margin:0 !important;min-width:0;}
+body .chkp-fg input[type="text"],
+body .chkp-fg input[type="tel"],
+body .chkp-fg input[type="email"]{height:54px !important;font-size:16px !important;padding:0 16px !important;border-radius:8px !important;box-sizing:border-box;width:100%;}
+body .chkp-fg label{font-size:15px !important;}
+body .chkp-card{border-radius:12px !important;}
+body .chkp-wrap button,
+body .chkp-wrap .button,
+body #chkp-wa-btn,
+body #chkp-place-btn-desktop,
+body #chkp-place-btn-mobile{border-radius:8px !important;}
+
+@media (max-width:768px){
+  body .chkp-grid.chkp-simple{grid-template-columns:1fr !important;gap:14px !important;}
+  body .chkp-fg input[type="text"],
+  body .chkp-fg input[type="tel"],
+  body .chkp-fg input[type="email"]{height:60px !important;font-size:18px !important;padding:0 18px !important;}
+  body .chkp-fg label{font-size:16px !important;}
+  body .chkp-wrap button,
+  body #chkp-wa-btn,
+  body #chkp-place-btn-desktop,
+  body #chkp-place-btn-mobile{min-height:56px;font-size:17px !important;}
+}
 </style>
 
 <?php if ( function_exists( 'wc_clear_notices' ) ) wc_clear_notices(); ?>
