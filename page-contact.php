@@ -197,6 +197,15 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
     .ct-people-d{width:min(52%,680px);}
     .ct-people-d img{transform:scale(1.2);transform-origin:bottom right;}
 }
+
+/* ---- Hero fix v5 ---- */
+/* Desktop only: narrower form card, people pushed to the right so both faces show */
+@media (min-width:1001px){
+    .ct-cards{max-width:600px;grid-template-columns:1.05fr 1fr;}
+    .ct-form-box,.ct-info-box{padding:18px 18px;}
+    .ct-people-d{right:0;width:min(55%,720px);}
+    .ct-people-d img{transform:translateX(7%) scale(1.2);transform-origin:bottom right;}
+}
 </style>
 
 <main class="ct">
