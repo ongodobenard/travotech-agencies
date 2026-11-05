@@ -310,6 +310,26 @@ html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot th,
 html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot td{background:#fff !important;}
 html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:first-child th,
 html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:first-child td{border-top:2px solid #b0f4f3 !important;}
+
+/* ---- Checkout summary v3: scrollable items, fixed Total, no shipping row ---- */
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr.cart-subtotal,
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr.shipping,
+html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr.woocommerce-shipping-totals{display:none !important;}
+html body .chkp-scroll{scrollbar-width:thin;scrollbar-color:#22adb0 #e5fbfb;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+html body .chkp-scroll::-webkit-scrollbar{width:8px;}
+html body .chkp-scroll::-webkit-scrollbar-track{background:#e5fbfb;}
+html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius:6px;}
+@media (min-width:961px){
+    html body .chkp-layout{align-items:stretch;}
+    html body .chkp-sidebar{position:relative !important;top:auto !important;min-height:480px;}
+    html body .chkp-sidebar .chkp-summary-card{position:absolute;top:0;right:0;bottom:0;left:0;margin:0;display:flex;flex-direction:column;overflow:hidden;}
+    html body .chkp-sidebar .chkp-summary-head{flex:0 0 auto;}
+    html body .chkp-sidebar .chkp-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;}
+    html body .chkp-sidebar .chkp-pay-note{flex:0 0 auto;}
+}
+@media (max-width:960px){
+    html body .chkp-scroll{max-height:380px;overflow-y:auto;}
+}
 </style>
 
 <?php if ( function_exists( 'wc_clear_notices' ) ) wc_clear_notices(); ?>
@@ -486,7 +506,7 @@ html body .chkp-summary-card .woocommerce-checkout-review-order-table tfoot tr:f
         <span class="dashicons dashicons-list-view"></span>
         <h3 id="chkp-summary-title">Order Summary <?php $cnt = intval( WC()->cart->get_cart_contents_count() ); echo '(' . $cnt . ' item' . ( $cnt !== 1 ? 's' : '' ) . ')'; ?></h3>
       </div>
-      <?php woocommerce_order_review(); ?>
+      <div class="chkp-scroll" id="chkp-scroll"><?php woocommerce_order_review(); ?></div>
       <div class="chkp-pay-note">
         <div class="chkp-pnr nairobi"><span class="dashicons dashicons-location"></span><span><strong>Nairobi:</strong> Pay on delivery: Cash</span></div>
         <div class="chkp-pnr county"><span class="dashicons dashicons-warning"></span><span><strong>Other Counties:</strong> Full payment before dispatch</span></div>
