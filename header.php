@@ -423,6 +423,44 @@ html body .th-side-head{border-bottom:0;}
 html body .th-side-sub{border-left:0;padding-left:0;margin-left:34px;}
 @media (max-width:960px){ html body .th-side{display:none !important;} }
 html body .cv-loading{opacity:.65;pointer-events:none;}
+
+/* ---- btn-radius-v1: every button uses the Add to Cart radius ---- */
+html body .th-cd-btns a,
+html body .th-cd-view,
+html body .th-cd-go,
+html body .cart-checkout-btn,
+html body .cart-coupon-group button[name="apply_coupon"],
+html body .mobile-apply-btn,
+html body button[name="update_cart"],
+html body .cart-empty-box a.btn-shop,
+html body .chkp-wa-btn,
+html body .chkp-place-btn,
+html body .chkp-wrap button,
+html body #chkp-wa-btn,
+html body #chkp-wa-btn-mobile,
+html body #chkp-place-btn-desktop,
+html body #chkp-place-btn-mobile,
+html body .sp-wa-btn,
+html body .sp-atc-btn,
+html body .sp-wrap .p-btn-cart,
+html body .sp-wrap .p-btn-wa,
+html body .single_add_to_cart_button,
+html body .hp-btn,
+html body .hp-b,
+html body .sh-b,
+html body .sh-btn,
+html body .spx-submit,
+html body a[href*="wa.me"]:not(.th-soc),
+html body a[href*="api.whatsapp.com"]:not(.th-soc),
+html body a[href*="whatsapp.com/send"]:not(.th-soc),
+html body [class*="whatsapp-float"],
+html body [class*="wa-float"],
+html body [class*="float-wa"],
+html body .th-wa-pulse,
+html body #whatsapp-float,
+html body .wa-fab,
+html body .whatsapp-fab,
+html body .floating-whatsapp{border-radius:6px !important;}
 </style>
 <?php wp_head(); ?>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/js/live-search.js?v=1" defer></script>

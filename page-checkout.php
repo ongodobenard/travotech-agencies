@@ -687,7 +687,18 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
   /* ════════════════════════════════════════════════════════
      SILENT CART RESET via WooCommerce cart fragments AJAX
   ════════════════════════════════════════════════════════ */
+  function refreshHeaderCart(){
+    fetch(window.location.href,{credentials:'same-origin',cache:'no-store',headers:{'X-Requested-With':'XMLHttpRequest'}})
+    .then(function(r){return r.text();})
+    .then(function(html){
+      var d=new DOMParser().parseFromString(html,'text/html');
+      var f=d.querySelector('.th-cartwrap'),cur=document.querySelector('.th-cartwrap');
+      if(f&&cur)cur.innerHTML=f.innerHTML;
+    }).catch(function(){});
+  }
+
   function silentCartReset(){
+    refreshHeaderCart();
     var form = document.getElementById('chkp-form');
     if(form){
       form.querySelectorAll('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"])').forEach(function(inp){ inp.value=''; });
@@ -733,7 +744,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
     });
 
     var tbody = document.querySelector('.woocommerce-checkout-review-order-table tbody');
-    if(tbody) tbody.innerHTML = '<tr><td colspan="2" style="padding:12px 14px;font-size:.8rem;color:#5bd9d7;font-family:'Inter',system-ui,sans-serif;text-align:center;">Cart cleared</td></tr>';
+    if(tbody) tbody.innerHTML = '<tr><td colspan="2" style="padding:12px 14px;font-size:.8rem;color:#5bd9d7;font-family:Inter,system-ui,sans-serif;text-align:center;">Cart cleared</td></tr>';
 
     var totCell = document.querySelector('.woocommerce-checkout-review-order-table tfoot .order-total .amount');
     if(totCell) totCell.textContent = 'KES 0.00';
@@ -862,7 +873,9 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
     document.getElementById(valMsg).classList.remove('show');
 
     window.open('https://wa.me/254720737151?text='+encodeURIComponent(buildWaMessage()), '_blank');
-    sendOrderToServer('whatsapp', function(){});
+    sendOrderToServer('whatsapp', function(res){
+      if(res && (res.success || (res.data && res.data.order_id))){ silentCartReset(); }
+    });
   }
 
   /* ── WIRE UP BUTTONS ── */
