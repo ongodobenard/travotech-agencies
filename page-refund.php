@@ -108,6 +108,9 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 .rp-cta{flex-direction:column;text-align:center;}
 .rp-hero-art{opacity:.3;width:100%;}
 }
+
+/* ---- Refund v2 ---- */
+.rp-body li i.rp-dot{font-size:.45rem;margin-top:10px;color:var(--rp-g);}
 </style>
 
 <main class="rp">
@@ -172,13 +175,13 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 </section>
 
 <section id="eligible">
-<h2><i class="fa-solid fa-circle-check" aria-hidden="true"></i> What can be returned</h2>
+<h2><i class="fa-solid fa-box-open" aria-hidden="true"></i> What can be returned</h2>
 <p>You may ask to return equipment such as analyzers, patient monitors, hospital beds, examination couches and trolleys when all of the following apply:</p>
 <ul>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> You contact us within <?php echo esc_html( $rp_return_days ); ?> days of delivery.</li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> The item is unused, undamaged and has not been installed or commissioned.</li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> It is in its original packaging with all accessories, manuals and seals.</li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> You can show your order number or proof of purchase.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> You contact us within <?php echo esc_html( $rp_return_days ); ?> days of delivery.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> The item is unused, undamaged and has not been installed or commissioned.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> It is in its original packaging with all accessories, manuals and seals.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> You can show your order number or proof of purchase.</li>
 </ul>
 </section>
 
@@ -207,7 +210,7 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 </section>
 
 <section id="how">
-<h2><i class="fa-solid fa-list-check" aria-hidden="true"></i> How to return an item</h2>
+<h2><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> How to return an item</h2>
 <ol class="rp-steps">
 <li><div><b>Contact us.</b> Call, email or message us on WhatsApp with your order number, the product name and the reason for the return.</div></li>
 <li><div><b>Get approval.</b> Our team reviews your request and replies with a return authorisation and instructions. Please do not send anything back before this.</div></li>
@@ -220,10 +223,10 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 <section id="refunds">
 <h2><i class="fa-solid fa-money-bill-transfer" aria-hidden="true"></i> Refunds</h2>
 <ul>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> Approved refunds are paid to your original payment method, for example M-Pesa, bank transfer or card, within <?php echo esc_html( $rp_refund_days ); ?> after inspection.</li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> Returns that are not caused by a fault may be charged a restocking fee of up to <?php echo esc_html( $rp_restock ); ?> of the product price, plus the cost of return transport.</li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> Faulty, damaged or wrong items are refunded in full, including delivery charges.</li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> Your bank or mobile money provider may need extra time to show the money in your account.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> Approved refunds are paid to your original payment method, for example M-Pesa, bank transfer or card, within <?php echo esc_html( $rp_refund_days ); ?> after inspection.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> Returns that are not caused by a fault may be charged a restocking fee of up to <?php echo esc_html( $rp_restock ); ?> of the product price, plus the cost of return transport.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> Faulty, damaged or wrong items are refunded in full, including delivery charges.</li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> Your bank or mobile money provider may need extra time to show the money in your account.</li>
 </ul>
 </section>
 
@@ -246,13 +249,13 @@ font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
 <section id="terms">
 <h2><i class="fa-solid fa-file-contract" aria-hidden="true"></i> Terms and conditions</h2>
 <ul>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Orders and prices.</b> Prices are in Kenya shillings and may change without notice. An order is confirmed when we accept it and, where needed, receive payment.</span></li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Availability.</b> We work hard to keep stock accurate. If an item is unavailable we will offer a replacement, a later delivery date or a full refund.</span></li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Delivery.</b> Delivery times are estimates. Risk passes to you once the goods are delivered and signed for.</span></li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Proper use.</b> Medical and laboratory equipment must be used by trained staff following the manufacturer's instructions and local regulations. You are responsible for choosing products suitable for your facility.</span></li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Liability.</b> Our liability for any claim is limited to the price paid for the product concerned, except where the law does not allow this limit.</span></li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Changes to this policy.</b> We may update this page from time to time. The version on the site when you order is the one that applies to your order.</span></li>
-<li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><b>Governing law.</b> These terms are governed by the laws of the Republic of Kenya.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Orders and prices.</b> Prices are in Kenya shillings and may change without notice. An order is confirmed when we accept it and, where needed, receive payment.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Availability.</b> We work hard to keep stock accurate. If an item is unavailable we will offer a replacement, a later delivery date or a full refund.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Delivery.</b> Delivery times are estimates. Risk passes to you once the goods are delivered and signed for.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Proper use.</b> Medical and laboratory equipment must be used by trained staff following the manufacturer's instructions and local regulations. You are responsible for choosing products suitable for your facility.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Liability.</b> Our liability for any claim is limited to the price paid for the product concerned, except where the law does not allow this limit.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Changes to this policy.</b> We may update this page from time to time. The version on the site when you order is the one that applies to your order.</span></li>
+<li><i class="fa-solid fa-circle rp-dot" aria-hidden="true"></i> <span><b>Governing law.</b> These terms are governed by the laws of the Republic of Kenya.</span></li>
 </ul>
 </section>
 
