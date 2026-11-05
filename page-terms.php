@@ -1,577 +1,265 @@
 <?php
-/**
- * Terms & Conditions Page Template
- * Slug: terms  (or terms-and-conditions — match your WP page slug)
- * WordPress loads this directly — get_header() / get_footer() required here.
- */
+/*
+Template Name: Terms & Conditions
+*/
 
+/* ---- Edit these to match your business ---- */
+$tm_updated = 'November 2026';
+$tm_phone_show = '+254 796 038686';
+$tm_phone_link = '+254796038686';
+$tm_wa = '254796038686';
+$tm_email = 'info@travotech.co.ke';
+$contact = home_url( '/contact/' );
+$refund = home_url( '/return-refund-policy/' ); /* change if your refund page uses another URL */
+
+if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
+    add_filter( 'pre_get_document_title', function () {
+        return 'Terms & Conditions | Travotech Agencies Kenya';
+    } );
+    add_action( 'wp_head', function () {
+        echo '<meta name="description" content="' . esc_attr( 'Read the Travotech Agencies terms and conditions for buying laboratory analyzers, hospital beds, patient monitors, reagents and medical equipment in Kenya.' ) . '">' . "\n";
+    }, 1 );
+}
 get_header();
-wp_enqueue_style( 'dashicons' );
 ?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( array( '@context' => 'https://schema.org', '@type' => 'WebPage', 'name' => 'Terms and Conditions', 'url' => get_permalink(), 'publisher' => array( '@type' => 'Organization', 'name' => 'Travotech Agencies Limited', 'url' => home_url( '/' ) ) ), JSON_UNESCAPED_SLASHES ); ?>
+</script>
 
 <style>
-/* ── Page wrapper ────────────────────────────────── */
-.terms-page { position: relative; }
+.tm{--tm-g:var(--th-g,#238a56);--tm-gd:var(--th-gd,#1b6d44);--tm-dk:var(--th-dk,#0c3a27);--tm-red:var(--th-red,#d32f2f);--tm-tint:#eaf6ef;--tm-line:#d6e8de;
+font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
+.tm *,.tm *::before,.tm *::after{box-sizing:border-box;}
+.tm h1,.tm h2,.tm h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--tm-dk);margin:0;line-height:1.2;letter-spacing:.01em;}
+.tm p{margin:0 0 12px;line-height:1.75;font-size:.95rem;}
+.tm a{color:var(--tm-gd);}
+.tm-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;}
 
-/* ── Banner ──────────────────────────────────────── */
-.terms-page .tp-banner {
-  background: linear-gradient(135deg, #1e8a54 0%, #2eaf6e 60%, #3dc97e 100%);
-  color: #fff;
-  padding: 64px 0 52px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-.terms-page .tp-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,.08) 0%, transparent 70%);
-}
-.terms-page .tp-banner .tp-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 12px;
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 20px rgba(0,0,0,.15);
-}
-.terms-page .tp-breadcrumb {
-  font-size: .82rem;
-  font-weight: 600;
-  color: rgba(255,255,255,.8);
-  position: relative;
-  z-index: 1;
-}
-.terms-page .tp-breadcrumb a {
-  color: #fff;
-  text-decoration: underline;
-  font-weight: 700;
-}
-.terms-page .tp-breadcrumb a:hover { color: #b8ecd4; }
+/* Hero */
+.tm-hero{position:relative;background:var(--tm-dk);color:#fff;overflow:hidden;}
+.tm-hero-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:clamp(44px,8vw,86px) 5%;}
+.tm-hero-txt{max-width:640px;}
+.tm-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.82rem;font-weight:600;padding:5px 14px;border-radius:6px;margin-bottom:16px;}
+.tm .tm-hero h1{color:#fff;font-size:clamp(1.7rem,4.4vw,3rem);margin-bottom:14px;}
+.tm-hero-line{display:block;width:70px;height:4px;background:var(--tm-red);border-radius:2px;margin-bottom:16px;}
+.tm .tm-hero p{color:rgba(255,255,255,.9);font-size:clamp(.95rem,1.8vw,1.1rem);margin:0;}
+.tm .tm-upd{margin-top:16px;font-size:.85rem;color:#9fe0bf;}
 
-/* ── Content section — bubble stage ─────────────── */
-.terms-page .tp-content {
-  position: relative;
-  padding: 60px 5%;
-  background: #edf8f3;
-  overflow: hidden;
-  z-index: 1;
-}
+/* Hero art: dotted grid, tilted square and icon tiles */
+.tm-art{position:absolute;right:0;top:0;height:100%;width:min(58%,660px);pointer-events:none;overflow:hidden;}
+.tm-art::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.6px);background-size:22px 22px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 60%);mask-image:linear-gradient(90deg,transparent 0,#000 60%);}
+.tm-sq{position:absolute;right:8%;top:50%;width:min(300px,42vw);height:min(300px,42vw);border:2px solid rgba(159,224,191,.35);border-radius:28px;transform:translateY(-50%) rotate(14deg);}
+.tm-sq2{right:14%;width:min(210px,30vw);height:min(210px,30vw);border-color:rgba(255,255,255,.14);transform:translateY(-50%) rotate(-10deg);}
+.tm-tile{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:20px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.18);}
+.tm-t1{right:22%;top:50%;transform:translateY(-50%);width:clamp(86px,11vw,132px);height:clamp(86px,11vw,132px);font-size:clamp(2.2rem,4.6vw,3.6rem);background:var(--tm-g);border-color:rgba(255,255,255,.35);}
+.tm-t2{right:5%;top:16%;width:clamp(54px,6.4vw,78px);height:clamp(54px,6.4vw,78px);font-size:clamp(1.3rem,2.6vw,2rem);}
+.tm-t3{right:42%;top:14%;width:clamp(46px,5.4vw,66px);height:clamp(46px,5.4vw,66px);font-size:clamp(1.1rem,2.2vw,1.7rem);color:#9fe0bf;}
+.tm-t4{right:6%;bottom:14%;width:clamp(50px,6vw,72px);height:clamp(50px,6vw,72px);font-size:clamp(1.2rem,2.4vw,1.8rem);}
+.tm-t5{right:44%;bottom:12%;width:clamp(42px,5vw,60px);height:clamp(42px,5vw,60px);font-size:clamp(1rem,2vw,1.5rem);background:var(--tm-red);border-color:rgba(255,255,255,.3);}
 
-/* Canvas scoped to content section only */
-#tp-bubble-canvas {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
+/* Summary cards */
+.tm-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-34px;position:relative;z-index:5;}
+.tm-sum div{background:#fff;border:1px solid var(--tm-line);border-radius:10px;padding:18px 16px;box-shadow:0 8px 22px rgba(12,58,39,.10);}
+.tm-sum i{font-size:1.5rem;color:var(--tm-g);margin-bottom:8px;display:block;}
+.tm-sum b{display:block;font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--tm-dk);font-size:1.02rem;margin-bottom:4px;}
+.tm-sum span{font-size:.85rem;line-height:1.55;display:block;}
 
-/* ── Main card ───────────────────────────────────── */
-.terms-page .tp-inner {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  margin: 0 auto;
-  background: rgba(255,255,255,.90);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  padding: 44px 52px;
-  border-radius: 20px;
-  border: 1.5px solid rgba(184,236,212,.7);
-  box-shadow: 0 8px 40px rgba(46,175,110,.12), 0 2px 12px rgba(0,0,0,.04);
-}
+/* Layout */
+.tm-layout{display:grid;grid-template-columns:270px 1fr;gap:34px;align-items:start;padding:40px 0 20px;}
+.tm-toc{position:sticky;top:20px;background:var(--tm-tint);border:1px solid var(--tm-line);border-radius:10px;padding:18px;}
+.tm-toc h2{font-size:1.1rem;margin-bottom:10px;}
+.tm-toc ol{margin:0;padding:0;list-style:none;counter-reset:toc;display:grid;gap:2px;}
+.tm-toc li{counter-increment:toc;}
+.tm-toc a{display:flex;gap:8px;padding:6px 8px;border-radius:6px;text-decoration:none;font-size:.88rem;color:var(--tm-dk);font-weight:500;}
+.tm-toc a::before{content:counter(toc) ".";color:var(--tm-g);font-weight:700;min-width:20px;}
+.tm-toc a:hover{background:#fff;}
 
-/* ── Section headings ────────────────────────────── */
-.terms-page .tp-inner h2 {
-  font-family: 'Nunito', sans-serif;
-  color: #1a2e25;
-  font-size: 1.12rem;
-  font-weight: 800;
-  margin: 36px 0 12px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #e8f8f0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.terms-page .tp-inner h2 .dashicons {
-  color: #2eaf6e;
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-.terms-page .tp-inner h2:first-of-type { margin-top: 0; }
+.tm-body section{padding:0 0 26px;margin-bottom:26px;border-bottom:1px solid var(--tm-line);scroll-margin-top:90px;}
+.tm-body section:last-of-type{border-bottom:0;margin-bottom:0;padding-bottom:0;}
+.tm-body h2{font-size:clamp(1.3rem,2.6vw,1.7rem);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.tm-body h2 i{color:var(--tm-g);font-size:1.2rem;}
+.tm-body ul{margin:0 0 12px;padding-left:0;list-style:none;display:grid;gap:8px;}
+.tm-body li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;line-height:1.6;}
+.tm-body li i{font-size:.45rem;margin-top:10px;color:var(--tm-g);flex-shrink:0;}
+.tm-note{background:#fff7e6;border-left:4px solid #e8a317;border-radius:6px;padding:12px 14px;font-size:.9rem;margin:12px 0;}
 
-/* ── Body text ───────────────────────────────────── */
-.terms-page .tp-inner p {
-  color: #4a6358;
-  font-size: .88rem;
-  line-height: 1.88;
-  margin-bottom: 14px;
-  font-weight: 500;
-}
-.terms-page .tp-inner a {
-  color: #2eaf6e;
-  text-decoration: underline;
-  font-weight: 700;
-}
-.terms-page .tp-inner a:hover { color: #1e8a54; }
+/* Contact */
+.tm-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;}
+.tm-contact a{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--tm-line);border-radius:10px;padding:14px;text-decoration:none;color:var(--tm-dk);font-weight:600;font-size:.9rem;word-break:break-word;}
+.tm-contact i{width:40px;height:40px;border-radius:50%;background:var(--tm-g);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tm-contact small{display:block;font-weight:400;color:#5a6b62;}
 
-/* ── Intro bar ───────────────────────────────────── */
-.terms-page .tp-inner .tp-intro {
-  font-size: .95rem;
-  color: #1a2e25;
-  font-weight: 600;
-  background: #f0faf5;
-  border-left: 4px solid #2eaf6e;
-  padding: 16px 20px;
-  border-radius: 0 10px 10px 0;
-  margin-bottom: 28px;
-}
-.terms-page .tp-inner .tp-date {
-  font-size: .78rem;
-  color: #8aaa98;
-  font-style: italic;
-  margin-bottom: 32px;
-  display: block;
-}
+/* CTA */
+.tm-cta{background:var(--tm-red);color:#fff;border-radius:12px;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:10px 0 36px;}
+.tm .tm-cta h2{color:#fff;font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:4px;}
+.tm .tm-cta p{margin:0;color:#fff;font-size:.9rem;}
+.tm .tm-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;background:#fff;color:var(--tm-dk);white-space:nowrap;}
+.tm .tm-btn:hover{background:var(--tm-tint);}
 
-/* ── Callout boxes ───────────────────────────────── */
-.tp-callout {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 14px 18px;
-  border-radius: 10px;
-  margin: 16px 0;
-  font-size: .85rem;
-  font-weight: 600;
-  line-height: 1.65;
+@media (max-width:1000px){
+.tm-sum{grid-template-columns:repeat(2,1fr);}
+.tm-layout{grid-template-columns:1fr;gap:22px;padding-top:28px;}
+.tm-toc{position:static;}
+.tm-toc ol{grid-template-columns:repeat(2,1fr);}
+.tm-art{opacity:.5;width:75%;}
 }
-.tp-callout .dashicons {
-  font-size: 20px; width: 20px; height: 20px;
-  flex-shrink: 0; margin-top: 1px;
-}
-.tp-callout.info    { background:#e8f4ff; border-left:4px solid #4a80f0; color:#1a3070; }
-.tp-callout.info    .dashicons { color:#4a80f0; }
-.tp-callout.warning { background:#fff8e8; border-left:4px solid #f0a500; color:#6b4a00; }
-.tp-callout.warning .dashicons { color:#f0a500; }
-.tp-callout.success { background:#e8f8f0; border-left:4px solid #2eaf6e; color:#1a4030; }
-.tp-callout.success .dashicons { color:#2eaf6e; }
-.tp-callout.danger  { background:#fff0f0; border-left:4px solid #e53935; color:#7a1010; }
-.tp-callout.danger  .dashicons { color:#e53935; }
-
-/* ── Payment zone cards ──────────────────────────── */
-.tp-zone-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 18px 0 24px;
-}
-.tp-zone-card {
-  border-radius: 14px;
-  padding: 22px 20px;
-  border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
-}
-.tp-zone-card.nairobi {
-  background: linear-gradient(135deg, #e8f8f0, #d0f2e4);
-  border-color: #2eaf6e;
-}
-.tp-zone-card.county {
-  background: linear-gradient(135deg, #fff8e8, #fdeec8);
-  border-color: #f0a500;
-}
-.tp-zone-card .tz-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: .72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  padding: 4px 12px;
-  border-radius: 50px;
-  margin-bottom: 12px;
-}
-.tp-zone-card.nairobi .tz-badge { background:#2eaf6e; color:#fff; }
-.tp-zone-card.county  .tz-badge { background:#f0a500; color:#fff; }
-.tp-zone-card .tz-title  { font-size:1rem; font-weight:900; color:#1a2e25; margin-bottom:6px; font-family:'Nunito',sans-serif; }
-.tp-zone-card .tz-amount { font-size:1.9rem; font-weight:900; font-family:'Playfair Display',serif; line-height:1; margin-bottom:6px; }
-.tp-zone-card.nairobi .tz-amount { color:#1e8a54; }
-.tp-zone-card.county  .tz-amount { color:#c47d00; }
-.tp-zone-card .tz-sub { font-size:.78rem; color:#4a6358; font-weight:600; line-height:1.5; }
-.tp-zone-card .tz-icon { position:absolute; top:14px; right:16px; font-size:2rem; opacity:.12; }
-
-/* ── Bullet list ─────────────────────────────────── */
-.tp-list {
-  margin: 12px 0 18px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.tp-list-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: .87rem;
-  color: #4a6358;
-  font-weight: 500;
-  line-height: 1.65;
-}
-.tp-list-item .dashicons {
-  color: #2eaf6e;
-  font-size: 16px;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* ── Payment methods ─────────────────────────────── */
-.tp-methods {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 14px 0;
-}
-.tp-method {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #f0faf5;
-  border: 1.5px solid #b8ecd4;
-  border-radius: 50px;
-  padding: 8px 16px;
-  font-size: .82rem;
-  font-weight: 700;
-  color: #1a2e25;
-}
-.tp-method .dashicons { color:#2eaf6e; font-size:16px; width:16px; height:16px; }
-
-/* ── Contact box ─────────────────────────────────── */
-.tp-contact-box {
-  background: #f0faf5;
-  border: 1.5px solid #b8ecd4;
-  border-radius: 12px;
-  padding: 22px 26px;
-  margin-top: 10px;
-  overflow: hidden;
-}
-.tp-contact-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  font-size: .88rem;
-  color: #4a6358;
-  font-weight: 500;
-  min-width: 0;
-}
-.tp-contact-row:last-child { margin-bottom: 0; }
-.tp-contact-row .dashicons { color:#2eaf6e; font-size:18px; width:18px; height:18px; flex-shrink:0; }
-.tp-contact-row a {
-  color: #2eaf6e; font-weight: 700; text-decoration: none;
-  word-break: break-all; overflow-wrap: anywhere; min-width: 0;
-}
-.tp-contact-row a:hover { color:#1e8a54; text-decoration:underline; }
-.tp-contact-row span, .tp-contact-row strong {
-  word-break: break-word; overflow-wrap: anywhere; min-width: 0;
-}
-
-@media(max-width:768px){
-  .terms-page .tp-inner { padding: 28px 20px; }
-  .tp-zone-grid { grid-template-columns: 1fr; }
+@media (max-width:640px){
+.tm-sum{grid-template-columns:1fr;margin-top:-24px;}
+.tm-toc ol{grid-template-columns:1fr;}
+.tm-contact{grid-template-columns:1fr;}
+.tm-cta{flex-direction:column;text-align:center;}
+.tm-art{opacity:.3;width:100%;}
+.tm-t3,.tm-t5{display:none;}
 }
 </style>
 
-<div class="terms-page">
+<main class="tm">
 
-  <!-- ── Banner ── -->
-  <section class="tp-banner">
-    <div style="max-width:1200px;margin:0 auto;padding:0 5%;">
-      <h1 class="tp-title">Terms &amp; Conditions</h1>
-      <nav class="tp-breadcrumb" aria-label="Breadcrumb">
-        <a href="<?php echo esc_url( home_url() ); ?>">Home</a>
-        &rsaquo;
-        <span>Terms &amp; Conditions</span>
-      </nav>
-    </div>
-  </section>
+<div class="tm-hero">
+<div class="tm-art" aria-hidden="true">
+<span class="tm-sq"></span>
+<span class="tm-sq tm-sq2"></span>
+<span class="tm-tile tm-t1"><i class="fa-solid fa-file-contract"></i></span>
+<span class="tm-tile tm-t2"><i class="fa-solid fa-scale-balanced"></i></span>
+<span class="tm-tile tm-t3"><i class="fa-solid fa-handshake"></i></span>
+<span class="tm-tile tm-t4"><i class="fa-solid fa-lock"></i></span>
+<span class="tm-tile tm-t5"><i class="fa-solid fa-check"></i></span>
+</div>
+<div class="tm-hero-in">
+<div class="tm-hero-txt">
+<span class="tm-badge"><i class="fa-solid fa-file-contract" aria-hidden="true"></i> Legal</span>
+<h1>Terms &amp; Conditions for Buying Medical and Laboratory Equipment in Kenya</h1>
+<span class="tm-hero-line"></span>
+<p>These simple terms explain how you can use our website and buy from Travotech Agencies Limited. Please read them before you place an order.</p>
+<p class="tm-upd"><i class="fa-regular fa-calendar" aria-hidden="true"></i> Last updated: <?php echo esc_html( $tm_updated ); ?></p>
+</div>
+</div>
+</div>
 
-  <!-- ── Content with bubbles ── -->
-  <section class="tp-content">
+<div class="tm-wrap">
 
-    <canvas id="tp-bubble-canvas"></canvas>
+<div class="tm-sum">
+<div><i class="fa-solid fa-circle-check" aria-hidden="true"></i><b>Easy to follow</b><span>Short, plain terms. No hidden conditions.</span></div>
+<div><i class="fa-solid fa-credit-card" aria-hidden="true"></i><b>Clear payment</b><span>Prices in Kenya shillings, paid before dispatch unless agreed.</span></div>
+<div><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><b>Delivery in Kenya</b><span>We deliver to hospitals, clinics and labs across the country.</span></div>
+<div><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i><b>Kenyan law</b><span>These terms are governed by the laws of Kenya.</span></div>
+</div>
 
-    <div class="tp-inner">
+<div class="tm-layout">
 
-      <p class="tp-intro">Welcome to <strong>Travotech Agencies</strong>. By accessing our website, placing an order, or using any of our services, you agree to be bound by these Terms &amp; Conditions. Please read them carefully before proceeding.</p>
-      <span class="tp-date">Last updated: <?php echo date( 'F Y' ); ?></span>
+<aside class="tm-toc" aria-label="Page contents">
+<h2>On this page</h2>
+<ol>
+<li><a href="#about">About these terms</a></li>
+<li><a href="#website">Using our website</a></li>
+<li><a href="#products">Products and information</a></li>
+<li><a href="#orders">Orders and prices</a></li>
+<li><a href="#payment">Payment</a></li>
+<li><a href="#delivery">Delivery</a></li>
+<li><a href="#returns">Returns and refunds</a></li>
+<li><a href="#use">Proper use of equipment</a></li>
+<li><a href="#liability">Liability</a></li>
+<li><a href="#privacy">Privacy</a></li>
+<li><a href="#changes">Changes and law</a></li>
+<li><a href="#contact">Contact us</a></li>
+</ol>
+</aside>
 
-      <!-- 1. About Us -->
-      <h2><span class="dashicons dashicons-store"></span> 1. About Travotech Agencies</h2>
-      <p><strong>Travotech Agencies</strong> is a licensed pharmacy operating under the Pharmacy and Poisons Board of Kenya. We provide prescription and over-the-counter medicines, healthcare products, and pharmaceutical consultations to customers across Kenya, with delivery services available nationwide.</p>
-      <p>By using our website or services, you confirm that you are at least 18 years of age, or are acting under the supervision of a parent or legal guardian.</p>
+<div class="tm-body">
 
-      <!-- 2. Use of Website -->
-      <h2><span class="dashicons dashicons-admin-site-alt3"></span> 2. Use of Our Website</h2>
-      <p>You agree to use this website only for lawful purposes and in a manner that does not infringe the rights of others. You must not:</p>
-      <div class="tp-list">
-        <div class="tp-list-item"><span class="dashicons dashicons-no-alt"></span><span>Use the site to transmit any harmful, fraudulent, or unlawful content.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-no-alt"></span><span>Attempt to gain unauthorised access to any part of our website or systems.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-no-alt"></span><span>Submit false prescriptions or misrepresent your identity or medical information.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-no-alt"></span><span>Use automated tools to scrape, copy, or republish content from this site.</span></div>
-      </div>
-      <p>We reserve the right to suspend or terminate access to any user who violates these terms.</p>
+<section id="about">
+<h2><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About these terms</h2>
+<p>Travotech Agencies Limited supplies laboratory equipment, patient monitoring, hospital furniture and medical consumables to hospitals, clinics, pharmacies, schools and laboratories across Kenya.</p>
+<p>By using this website or placing an order, you agree to these terms. If you do not agree, please do not use the site or place an order.</p>
+</section>
 
-      <!-- 3. Orders & Prescriptions -->
-      <h2><span class="dashicons dashicons-clipboard"></span> 3. Orders &amp; Prescription Requirements</h2>
-      <p>All prescription medicines require a valid prescription from a licensed healthcare provider registered in Kenya. By placing an order for prescription medicine, you confirm that:</p>
-      <div class="tp-list">
-        <div class="tp-list-item"><span class="dashicons dashicons-yes-alt"></span><span>The prescription was issued to you personally by a licensed doctor or healthcare provider.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-yes-alt"></span><span>You have provided an accurate, unaltered copy of the prescription.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-yes-alt"></span><span>The prescription has not expired and has not already been dispensed in full elsewhere.</span></div>
-      </div>
-      <div class="tp-callout danger">
-        <span class="dashicons dashicons-warning"></span>
-        <span>Submitting a forged, altered, or fraudulent prescription is a criminal offence under Kenyan law and will be reported to the relevant authorities immediately.</span>
-      </div>
-      <p>We reserve the right to verify prescriptions with the issuing healthcare provider before dispensing any medication.</p>
+<section id="website">
+<h2><i class="fa-solid fa-globe" aria-hidden="true"></i> Using our website</h2>
+<ul>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Use the site only for lawful purposes and to find or buy our products.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Give correct information when you contact us or place an order.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Do not try to damage the site, copy its data or interfere with how it works.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> All text, images and logos on this site belong to Travotech Agencies or its partners. Please do not copy them without our permission.</li>
+</ul>
+</section>
 
-      <!-- 4. Payment Terms -->
-      <h2><span class="dashicons dashicons-money-alt"></span> 4. Payment Terms</h2>
-      <p>Payment terms vary based on your delivery location. Please review the zone that applies to your order:</p>
+<section id="products">
+<h2><i class="fa-solid fa-microscope" aria-hidden="true"></i> Products and information</h2>
+<p>We try to keep product descriptions, images and specifications accurate. Small differences can happen, because manufacturers update their products. If you need exact details for your facility, ask us before you order and we will confirm them in writing.</p>
+</section>
 
-      <div class="tp-zone-grid">
-        <div class="tp-zone-card nairobi">
-          <span class="tz-icon dashicons dashicons-building"></span>
-          <div class="tz-badge">
-            <span class="dashicons dashicons-yes-alt" style="font-size:14px;width:14px;height:14px;"></span>
-            Nairobi
-          </div>
-          <div class="tz-title">Nairobi County</div>
-          <div class="tz-amount">Pay on Delivery</div>
-          <div class="tz-sub">Pay in full when your order arrives, by our rider in Cash. No advance payment needed.</div>
-        </div>
-        <div class="tp-zone-card county">
-          <span class="tz-icon dashicons dashicons-admin-site-alt3"></span>
-          <div class="tz-badge">
-            <span class="dashicons dashicons-warning" style="font-size:14px;width:14px;height:14px;"></span>
-            Other Counties
-          </div>
-          <div class="tz-title">Outside Nairobi</div>
-          <div class="tz-amount">Full Payment</div>
-          <div class="tz-sub">100% of the order total must be fully paid and confirmed before your order is dispatched for delivery.</div>
-        </div>
-      </div>
+<section id="orders">
+<h2><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> Orders and prices</h2>
+<ul>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Prices are in Kenya shillings and may change without notice.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> An order is confirmed only when we accept it and, where needed, receive payment.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> If an item is out of stock, we will offer a replacement, a later delivery date or a full refund.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> We may cancel an order if there is a pricing error or we cannot supply the item. You will be refunded in full.</li>
+</ul>
+</section>
 
-      <div class="tp-callout warning">
-        <span class="dashicons dashicons-warning"></span>
-        <span>Orders destined for counties outside Nairobi will <strong>not be dispatched</strong> until the <strong>full order payment</strong> has been received and confirmed by our team. Contact us on <a href="tel:+254720737151">+254 720 737 151</a> after completing your payment.</span>
-      </div>
+<section id="payment">
+<h2><i class="fa-solid fa-credit-card" aria-hidden="true"></i> Payment</h2>
+<p>We accept payment by M-Pesa, bank transfer and other methods shown at checkout or on your quotation. Unless we agree otherwise in writing, payment is due before dispatch. Large orders may need a deposit.</p>
+</section>
 
-      <p>We accept the following payment methods:</p>
-      <div class="tp-methods">
-        
-        <div class="tp-method"><span class="dashicons dashicons-money-alt"></span> Cash on Delivery</div>
-        <div class="tp-method"><span class="dashicons dashicons-credit-card"></span> Visa / Mastercard</div>
-        <div class="tp-method"><span class="dashicons dashicons-bank"></span> Bank Transfer</div>
-      </div>
+<section id="delivery">
+<h2><i class="fa-solid fa-truck-fast" aria-hidden="true"></i> Delivery</h2>
+<ul>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Delivery times are estimates and can change because of stock, transport or weather.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Please check your goods when they arrive and report any damage straight away.</li>
+<li><i class="fa-solid fa-circle" aria-hidden="true"></i> Risk passes to you once the goods are delivered and signed for.</li>
+</ul>
+</section>
 
-      <!-- 5. Delivery -->
-      <h2><span class="dashicons dashicons-car"></span> 5. Delivery Terms</h2>
-      <p><strong>Nairobi:</strong> Same-day or next-day delivery for orders confirmed before 2:00 PM on business days.</p>
-      <p><strong>Other Counties:</strong> 1–3 business days after dispatch. Delivery times are estimates and may vary due to courier availability, public holidays, or circumstances beyond our control.</p>
-      <div class="tp-callout info">
-        <span class="dashicons dashicons-info"></span>
-        <span>You are responsible for providing an accurate delivery address and ensuring someone is available to receive and pay for the order. Failed deliveries due to incorrect addresses or unavailability may incur a re-delivery fee.</span>
-      </div>
+<section id="returns">
+<h2><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Returns and refunds</h2>
+<p>Our <a href="<?php echo esc_url( $refund ); ?>">Return &amp; Refund Policy</a> explains what can be returned, how long you have and how refunds are paid. It forms part of these terms.</p>
+</section>
 
-      <!-- 6. Cancellation & Refunds -->
-      <h2><span class="dashicons dashicons-undo"></span> 6. Cancellations &amp; Refunds</h2>
-      <p><strong>Before dispatch:</strong> You may cancel your order at any time before it is dispatched. Any payment made will be refunded in full within 1–3 business days.</p>
-      <p><strong>After dispatch:</strong> Orders cannot be cancelled once dispatched. You may refuse delivery, but return shipping costs will be deducted from any applicable refund.</p>
-      <p><strong>Refund eligibility:</strong></p>
-      <div class="tp-list">
-        <div class="tp-list-item"><span class="dashicons dashicons-yes-alt"></span><span><strong>Full refund:</strong> Wrong product received, damaged or expired product on arrival, or order not delivered.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-yes-alt"></span><span><strong>Partial refund:</strong> Missing items or partial order fulfilment errors.</span></div>
-        <div class="tp-list-item"><span class="dashicons dashicons-no-alt"></span><span><strong>No refund:</strong> Dispensed prescription medicines, opened or used products, or orders cancelled after dispatch.</span></div>
-      </div>
-      <p>All refund requests must be submitted within <strong>48 hours</strong> of delivery by contacting us on <a href="tel:+254720737151">+254 720 737 151</a>.</p>
+<section id="use">
+<h2><i class="fa-solid fa-user-doctor" aria-hidden="true"></i> Proper use of equipment</h2>
+<p>Medical and laboratory equipment must be used by trained staff and in line with the manufacturer&rsquo;s instructions and local regulations. You are responsible for choosing products that suit your facility.</p>
+<div class="tm-note"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Our website and staff give product information, not medical advice. Always follow your own clinical and safety procedures.</div>
+</section>
 
-      <!-- 7. Pricing -->
-      <h2><span class="dashicons dashicons-tag"></span> 7. Pricing &amp; Availability</h2>
-      <p>All prices on our website are displayed in Kenyan Shillings (KES) and are inclusive of applicable taxes unless otherwise stated. Prices are subject to change without prior notice. In the event of a pricing error, we reserve the right to cancel or amend your order and will notify you promptly.</p>
-      <p>Product availability is not guaranteed. If a product becomes unavailable after your order is placed, we will contact you to offer a suitable alternative or a full refund.</p>
+<section id="liability">
+<h2><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Liability</h2>
+<p>Equipment comes with the manufacturer&rsquo;s warranty, as stated on the product page or your quotation. Our liability for any claim is limited to the price paid for the product concerned, except where the law does not allow this limit. We are not responsible for delays or losses caused by events outside our control.</p>
+</section>
 
-      <!-- 8. Intellectual Property -->
-      <h2><span class="dashicons dashicons-lock"></span> 8. Intellectual Property</h2>
-      <p>All content on this website, including text, images, logos, graphics, and product descriptions is the property of Travotech Agencies or its content suppliers and is protected under Kenyan and international intellectual property law.</p>
-      <p>You may not reproduce, distribute, or use any content from this website for commercial purposes without our express written permission.</p>
+<section id="privacy">
+<h2><i class="fa-solid fa-lock" aria-hidden="true"></i> Privacy</h2>
+<p>We use your name, phone number, email and address only to reply to you, process orders and arrange delivery. We do not sell your details. We share them only with partners who help us deliver or support your order, or when the law requires it.</p>
+</section>
 
-      <!-- 9. Limitation of Liability -->
-      <h2><span class="dashicons dashicons-shield"></span> 9. Limitation of Liability</h2>
-      <p>Travotech Agencies shall not be liable for any indirect, incidental, or consequential damages arising from the use of our website or services. Our total liability in any matter arising from these terms shall not exceed the value of the order in question.</p>
-      <div class="tp-callout info">
-        <span class="dashicons dashicons-info-outline"></span>
-        <span>Health information provided on our website is for general guidance only and does not constitute medical advice. Always consult a qualified healthcare provider before starting, stopping, or changing any medication.</span>
-      </div>
+<section id="changes">
+<h2><i class="fa-solid fa-gavel" aria-hidden="true"></i> Changes and governing law</h2>
+<p>We may update these terms from time to time. The version on the site when you order is the one that applies to your order. These terms are governed by the laws of the Republic of Kenya, and the Kenyan courts will handle any dispute.</p>
+</section>
 
-      <!-- 10. Privacy -->
-      <h2><span class="dashicons dashicons-privacy"></span> 10. Privacy</h2>
-      <p>Your use of our website and services is also governed by our <a href="<?php echo esc_url( home_url('/privacy-policy/') ); ?>">Privacy Policy</a>, which is incorporated into these Terms &amp; Conditions by reference. By using our services, you consent to the collection and use of your information as described in that policy.</p>
+<section id="contact">
+<h2><i class="fa-solid fa-headset" aria-hidden="true"></i> Contact us</h2>
+<p>Questions about these terms? Reach our team and we will be happy to help.</p>
+<div class="tm-contact">
+<a href="tel:<?php echo esc_attr( $tm_phone_link ); ?>"><i class="fa-solid fa-phone" aria-hidden="true"></i><span><small>Call us</small><?php echo esc_html( $tm_phone_show ); ?></span></a>
+<a href="mailto:<?php echo esc_attr( $tm_email ); ?>"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span><small>Email us</small><?php echo esc_html( $tm_email ); ?></span></a>
+<a href="https://wa.me/<?php echo esc_attr( $tm_wa ); ?>" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span><small>WhatsApp</small>Chat with us</span></a>
+</div>
+</section>
 
-      <!-- 11. Governing Law -->
-      <h2><span class="dashicons dashicons-admin-home"></span> 11. Governing Law</h2>
-      <p>These Terms &amp; Conditions are governed by and construed in accordance with the laws of the Republic of Kenya. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the Kenyan courts.</p>
-      <p>We are also bound by the regulations of the <strong>Pharmacy and Poisons Board of Kenya</strong> and the <strong>Kenya Data Protection Act, 2019</strong>.</p>
+</div>
+</div>
 
-      <!-- 12. Changes to Terms -->
-      <h2><span class="dashicons dashicons-edit"></span> 12. Changes to These Terms</h2>
-      <p>We reserve the right to update or revise these Terms &amp; Conditions at any time. The revised version will be posted on this page with an updated date. Your continued use of our website or services after any changes constitutes your acceptance of the new terms.</p>
+<div class="tm-cta">
+<div>
+<h2>Need help with an order?</h2>
+<p>Our team will guide you on terms, delivery and choosing the right equipment.</p>
+</div>
+<a class="tm-btn" href="<?php echo esc_url( $contact ); ?>">Contact Us <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+</div>
 
-      <!-- 13. Contact -->
-      <h2><span class="dashicons dashicons-phone"></span> 13. Contact Us</h2>
-      <p>If you have any questions about these Terms &amp; Conditions, please contact us:</p>
-
-      <div class="tp-contact-box">
-        <div class="tp-contact-row">
-          <span class="dashicons dashicons-store"></span>
-          <strong>Travotech Agencies</strong>
-        </div>
-        <div class="tp-contact-row">
-          <span class="dashicons dashicons-location"></span>
-          <span>Utawala Astrol (Nairobi)</span>
-        </div>
-        <div class="tp-contact-row">
-          <span class="dashicons dashicons-phone"></span>
-          <a href="tel:+254720737151">+254 720 737 151</a>
-        </div>
-        <div class="tp-contact-row">
-          <span class="dashicons dashicons-whatsapp" style="color:#25d366;"></span>
-          <a href="https://wa.me/254720737151" target="_blank" rel="noopener">WhatsApp: +254 720 737 151</a>
-        </div>
-        <div class="tp-contact-row">
-          <span class="dashicons dashicons-email-alt"></span>
-          <a href="mailto:sales@travotechagencies.co.ke">sales@travotechagencies.co.ke</a>
-        </div>
-        <div class="tp-contact-row">
-          <span class="dashicons dashicons-admin-site-alt3"></span>
-          <a href="<?php echo esc_url( home_url() ); ?>"><?php echo esc_url( home_url() ); ?></a>
-        </div>
-      </div>
-
-    </div><!-- /.tp-inner -->
-  </section><!-- /.tp-content -->
-
-</div><!-- /.terms-page -->
-
-<script>
-(function () {
-  const canvas  = document.getElementById('tp-bubble-canvas');
-  if (!canvas) return;
-  const section = canvas.closest('.tp-content');
-  const ctx     = canvas.getContext('2d');
-
-  function resize() {
-    canvas.width  = section.offsetWidth;
-    canvas.height = section.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  new ResizeObserver(resize).observe(section);
-
-  function rand(a, b) { return Math.random() * (b - a) + a; }
-
-  function drawCross(ctx, x, y, r) {
-    const arm = r * 0.38, thick = r * 0.13;
-    ctx.save();
-    ctx.globalAlpha = 0.72;
-    ctx.fillStyle = '#e53935';
-    ctx.beginPath(); ctx.roundRect(x - arm, y - thick, arm * 2, thick * 2, thick * 0.5); ctx.fill();
-    ctx.beginPath(); ctx.roundRect(x - thick, y - arm, thick * 2, arm * 2, thick * 0.5); ctx.fill();
-    ctx.fillStyle = 'rgba(255,255,255,0.55)';
-    ctx.beginPath(); ctx.arc(x, y, thick * 0.55, 0, Math.PI * 2); ctx.fill();
-    ctx.restore();
-  }
-
-  function draw3DBubble(ctx, x, y, r, baseColor) {
-    const bg = ctx.createRadialGradient(x-r*.25, y-r*.25, r*.05, x, y, r);
-    bg.addColorStop(0,   'rgba(255,255,255,0.55)');
-    bg.addColorStop(0.4, baseColor.replace('BASE','0.18'));
-    bg.addColorStop(0.8, baseColor.replace('BASE','0.32'));
-    bg.addColorStop(1,   baseColor.replace('BASE','0.50'));
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=bg; ctx.fill();
-
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-    ctx.strokeStyle=baseColor.replace('BASE','0.55'); ctx.lineWidth=r*.045; ctx.stroke();
-
-    const g1=ctx.createRadialGradient(x-r*.32,y-r*.36,r*.01,x-r*.20,y-r*.20,r*.52);
-    g1.addColorStop(0,'rgba(255,255,255,0.80)'); g1.addColorStop(.5,'rgba(255,255,255,0.20)'); g1.addColorStop(1,'rgba(255,255,255,0.00)');
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g1; ctx.fill();
-
-    const g2=ctx.createRadialGradient(x+r*.30,y+r*.28,0,x+r*.30,y+r*.28,r*.18);
-    g2.addColorStop(0,'rgba(255,255,255,0.45)'); g2.addColorStop(1,'rgba(255,255,255,0.00)');
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fillStyle=g2; ctx.fill();
-
-    ctx.save();
-    ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.clip();
-    const cg=ctx.createRadialGradient(x,y+r*.85,r*.1,x,y+r,r*.6);
-    cg.addColorStop(0,baseColor.replace('BASE','0.35')); cg.addColorStop(1,'rgba(255,255,255,0.00)');
-    ctx.beginPath(); ctx.arc(x,y+r*.72,r*.55,0,Math.PI*2); ctx.fillStyle=cg; ctx.fill();
-    ctx.restore();
-
-    drawCross(ctx, x, y, r);
-  }
-
-  const COLORS = [
-    'rgba(46,175,110,BASE)','rgba(30,138,84,BASE)',
-    'rgba(61,201,126,BASE)','rgba(184,236,212,BASE)',
-    'rgba(102,210,155,BASE)',
-  ];
-
-  const bubbles = [];
-  const COUNT   = 18;
-
-  function makeBubble(forceBottom) {
-    const r = rand(50, 115);
-    return {
-      x : rand(r, canvas.width - r),
-      y : forceBottom ? rand(canvas.height, canvas.height + r*2) : rand(r, canvas.height - r),
-      r,
-      color  : COLORS[Math.floor(rand(0, COLORS.length))],
-      dx     : rand(-0.45, 0.45),
-      dy     : rand(-0.55, -0.15),
-      phase  : rand(0, Math.PI * 2),
-      wobble : rand(0.004, 0.010),
-    };
-  }
-
-  for (let i = 0; i < COUNT; i++) bubbles.push(makeBubble(false));
-
-  function tick() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    bubbles.forEach((b, i) => {
-      b.phase += b.wobble;
-      b.x += b.dx + Math.sin(b.phase * 0.7) * 0.3;
-      b.y += b.dy;
-      if (b.x - b.r < 0)            { b.x = b.r;                b.dx =  Math.abs(b.dx); }
-      if (b.x + b.r > canvas.width) { b.x = canvas.width - b.r; b.dx = -Math.abs(b.dx); }
-      if (b.y + b.r < 0)            { bubbles[i] = makeBubble(true); return; }
-      draw3DBubble(ctx, b.x, b.y, b.r, b.color);
-    });
-    requestAnimationFrame(tick);
-  }
-  tick();
-})();
-</script>
+</div>
+</main>
 
 <?php get_footer(); ?>
