@@ -50,7 +50,7 @@ if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
 </script>
 
 <style>
-.ab{--ab-g:var(--th-g,#2dbebc);--ab-gd:var(--th-gd,#2ab4b1);--ab-dk:var(--th-dk,#093c3c);--ab-red:var(--th-red,#d32f2f);--ab-tint:#e6fafa;--ab-line:#cdf1f0;
+.ab{--ab-g:var(--th-g,#22adb0);--ab-gd:var(--th-gd,#22adb0);--ab-dk:var(--th-dk,#093c3c);--ab-red:var(--th-red,#d32f2f);--ab-tint:#e6fafa;--ab-line:#cdf1f0;
 font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .ab *,.ab *::before,.ab *::after{box-sizing:border-box;}
 .ab img{max-width:100%;display:block;}

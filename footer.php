@@ -116,9 +116,9 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 :root{
   --trv-bg:#093c3c;
   --trv-bg-deep:#072f2f;
-  --trv-brand:#36d0cd;
-  --trv-brand-dark:#2dbebc;
-  --trv-accent:#5ad8d6;
+  --trv-brand:#22adb0;
+  --trv-brand-dark:#22adb0;
+  --trv-accent:#22adb0;
   --trv-line:rgba(255,255,255,.16);
   --trv-text:rgba(255,255,255,.84);
   --trv-text-dim:rgba(255,255,255,.66);
@@ -278,9 +278,9 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 
 /* ---- Social icons: real brand colors ---- */
 .trv-foot-soc{border:0 !important;color:#fff !important;}
-.trv-soc-facebook{background:#39d1ce !important;}
+.trv-soc-facebook{background:#22adb0 !important;}
 .trv-soc-instagram{background:#feda75 !important;}
-.trv-soc-linkedin{background:#2dbebc !important;}
+.trv-soc-linkedin{background:#22adb0 !important;}
 .trv-soc-x{background:#000 !important;box-shadow:0 0 0 1.5px rgba(255,255,255,.35);}
 .trv-soc-tiktok{background:#000 !important;box-shadow:2px 2px 0 #fe2c55,-2px -2px 0 #5ae8e5;}
 .trv-foot-soc:hover,.trv-foot-soc:focus-visible{filter:brightness(1.12);transform:translateY(-2px);}
@@ -296,8 +296,8 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 .trv-foot-soc.trv-soc-tiktok,
 .trv-foot-soc.trv-soc-linkedin,
 .trv-foot-soc.trv-soc-x{background:#fff !important;border:0 !important;box-shadow:none !important;}
-.trv-foot-soc.trv-soc-facebook{color:#39d1ce !important;}
-.trv-foot-soc.trv-soc-linkedin{color:#2dbebc !important;}
+.trv-foot-soc.trv-soc-facebook{color:#22adb0 !important;}
+.trv-foot-soc.trv-soc-linkedin{color:#22adb0 !important;}
 .trv-foot-soc.trv-soc-x{color:#000 !important;}
 .trv-foot-soc.trv-soc-tiktok{color:#000 !important;}
 .trv-foot-soc.trv-soc-tiktok i{text-shadow:1.5px 1.5px 0 #FE2C55,-1.5px -1.5px 0 #5ae8e5;}
@@ -306,7 +306,7 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
 .trv-foot-soc:hover,.trv-foot-soc:focus-visible{background:#e6fbfb !important;filter:none !important;transform:translateY(-2px);}
 
 /* Contact icons */
-.trv-foot-contact li:nth-child(1) i{color:#57d8d6;}
+.trv-foot-contact li:nth-child(1) i{color:#22adb0;}
 .trv-foot-contact li:nth-child(2) i{color:#FF6B5E;}
 .trv-foot-contact li:nth-child(3) i{color:#FF5A4D;}
 .trv-foot-contact li:nth-child(4) i{color:#FFC73A;}

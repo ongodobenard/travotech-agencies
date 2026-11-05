@@ -27,7 +27,7 @@ get_header();
 </script>
 
 <style>
-.tm{--tm-g:var(--th-g,#2dbebc);--tm-gd:var(--th-gd,#2ab4b1);--tm-dk:var(--th-dk,#093c3c);--tm-red:var(--th-red,#d32f2f);--tm-tint:#e6fafa;--tm-line:#cdf1f0;
+.tm{--tm-g:var(--th-g,#22adb0);--tm-gd:var(--th-gd,#22adb0);--tm-dk:var(--th-dk,#093c3c);--tm-red:var(--th-red,#d32f2f);--tm-tint:#e6fafa;--tm-line:#cdf1f0;
 font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .tm *,.tm *::before,.tm *::after{box-sizing:border-box;}
 .tm h1,.tm h2,.tm h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--tm-dk);margin:0;line-height:1.2;letter-spacing:.01em;}
@@ -121,15 +121,15 @@ html body main.tm .tm-hero.tm-hero.tm-hero.tm-hero.tm-hero::after{content:none !
 .tm .tm-ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.10);}
 .tm .tm-ring1{width:340px;height:340px;right:-70px;top:-90px;}
 .tm .tm-ring2{width:220px;height:220px;right:-10px;top:-30px;}
-.tm .tm-a1{right:14%;top:16%;font-size:clamp(90px,13vw,170px);color:#5ad8d6;opacity:.38;}
+.tm .tm-a1{right:14%;top:16%;font-size:clamp(90px,13vw,170px);color:#22adb0;opacity:.38;}
 .tm .tm-a2{right:46%;bottom:12%;font-size:clamp(46px,6vw,76px);color:#fff;opacity:.14;}
 .tm .tm-a3{right:5%;bottom:10%;font-size:clamp(50px,7vw,86px);color:#fff;opacity:.14;}
 .tm .tm-a4{right:34%;top:12%;font-size:clamp(40px,5vw,60px);color:#fff;opacity:.12;}
-.tm .tm-a5{right:62%;top:30%;font-size:clamp(30px,4vw,46px);color:#5ad8d6;opacity:.30;}
+.tm .tm-a5{right:62%;top:30%;font-size:clamp(30px,4vw,46px);color:#22adb0;opacity:.30;}
 .tm .tm-a6{right:28%;bottom:8%;font-size:clamp(34px,4.5vw,54px);color:#d32f2f;opacity:.50;}
-.tm .tm-a7{right:50%;top:10%;font-size:24px;color:#5ad8d6;opacity:.45;}
+.tm .tm-a7{right:50%;top:10%;font-size:24px;color:#22adb0;opacity:.45;}
 .tm .tm-a8{right:3%;top:58%;font-size:20px;color:#fff;opacity:.25;}
-.tm .tm-a9{right:70%;bottom:14%;font-size:18px;color:#5ad8d6;opacity:.35;}
+.tm .tm-a9{right:70%;bottom:14%;font-size:18px;color:#22adb0;opacity:.35;}
 @media (max-width:1000px){.tm .tm-ha{opacity:.55;width:75%;}}
 @media (max-width:640px){.tm .tm-ha{opacity:.35;width:100%;}}
 </style>

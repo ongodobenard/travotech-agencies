@@ -32,7 +32,7 @@ get_header();
 </script>
 
 <style>
-.rp{--rp-g:var(--th-g,#2dbebc);--rp-gd:var(--th-gd,#2ab4b1);--rp-dk:var(--th-dk,#093c3c);--rp-red:var(--th-red,#d32f2f);--rp-tint:#e6fafa;--rp-line:#cdf1f0;
+.rp{--rp-g:var(--th-g,#22adb0);--rp-gd:var(--th-gd,#22adb0);--rp-dk:var(--th-dk,#093c3c);--rp-red:var(--th-red,#d32f2f);--rp-tint:#e6fafa;--rp-line:#cdf1f0;
 font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .rp *,.rp *::before,.rp *::after{box-sizing:border-box;}
 .rp h1,.rp h2,.rp h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--rp-dk);margin:0;line-height:1.2;letter-spacing:.01em;}
@@ -122,15 +122,15 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .rp .rp-ring{position:absolute;border-radius:50%;border:2px solid rgba(255,255,255,.10);}
 .rp .rp-ring1{width:340px;height:340px;right:-70px;top:-90px;}
 .rp .rp-ring2{width:220px;height:220px;right:-10px;top:-30px;}
-.rp .rp-a1{right:14%;top:16%;font-size:clamp(90px,13vw,170px);color:#5ad8d6;opacity:.38;}
+.rp .rp-a1{right:14%;top:16%;font-size:clamp(90px,13vw,170px);color:#22adb0;opacity:.38;}
 .rp .rp-a2{right:46%;bottom:12%;font-size:clamp(46px,6vw,76px);color:#fff;opacity:.14;}
 .rp .rp-a3{right:5%;bottom:10%;font-size:clamp(50px,7vw,86px);color:#fff;opacity:.14;}
 .rp .rp-a4{right:34%;top:12%;font-size:clamp(40px,5vw,60px);color:#fff;opacity:.12;}
-.rp .rp-a5{right:62%;top:30%;font-size:clamp(30px,4vw,46px);color:#5ad8d6;opacity:.30;}
+.rp .rp-a5{right:62%;top:30%;font-size:clamp(30px,4vw,46px);color:#22adb0;opacity:.30;}
 .rp .rp-a6{right:28%;bottom:8%;font-size:clamp(34px,4.5vw,54px);color:#d32f2f;opacity:.50;}
-.rp .rp-a7{right:50%;top:10%;font-size:24px;color:#5ad8d6;opacity:.45;}
+.rp .rp-a7{right:50%;top:10%;font-size:24px;color:#22adb0;opacity:.45;}
 .rp .rp-a8{right:3%;top:58%;font-size:20px;color:#fff;opacity:.25;}
-.rp .rp-a9{right:70%;bottom:14%;font-size:18px;color:#5ad8d6;opacity:.35;}
+.rp .rp-a9{right:70%;bottom:14%;font-size:18px;color:#22adb0;opacity:.35;}
 @media (max-width:1000px){.rp .rp-hero-art{opacity:.55;width:75%;}}
 @media (max-width:640px){.rp .rp-hero-art{opacity:.35;width:100%;}}
 </style>

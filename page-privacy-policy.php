@@ -17,7 +17,7 @@ wp_enqueue_style( 'dashicons' );
 
 /* ── Banner ──────────────────────────────────────── */
 .privacy-policy-page .pp-banner {
-  background: #2dbebc;
+  background: #22adb0;
   color: #fff;
   padding: 64px 0 52px;
   text-align: center;
@@ -85,7 +85,7 @@ wp_enqueue_style( 'dashicons' );
   padding: 44px 52px;
   border-radius: 20px;
   border: 1.5px solid rgba(176,244,243,.7);
-  box-shadow: 0 8px 40px rgba(54,208,205,.12), 0 2px 12px rgba(0,0,0,.04);
+  box-shadow: 0 8px 40px rgba(34,173,176,.12), 0 2px 12px rgba(0,0,0,.04);
 }
 .privacy-policy-page .policy-inner h2 {
   font-family: 'Nunito', sans-serif;
@@ -98,7 +98,7 @@ wp_enqueue_style( 'dashicons' );
 }
 .privacy-policy-page .policy-inner h2:first-of-type { margin-top: 0; }
 .privacy-policy-page .policy-inner p {
-  color: #2dbebc;
+  color: #22adb0;
   font-size: .88rem;
   line-height: 1.85;
   margin-bottom: 14px;
@@ -109,7 +109,7 @@ wp_enqueue_style( 'dashicons' );
   color: #103837;
   font-weight: 600;
   background: #eefcfc;
-  border-left: 4px solid #36d0cd;
+  border-left: 4px solid #22adb0;
   padding: 16px 20px;
   border-radius: 0 10px 10px 0;
   margin-bottom: 28px;
@@ -122,11 +122,11 @@ wp_enqueue_style( 'dashicons' );
   display: block;
 }
 .privacy-policy-page .policy-inner a {
-  color: #36d0cd;
+  color: #22adb0;
   text-decoration: underline;
   font-weight: 700;
 }
-.privacy-policy-page .policy-inner a:hover { color: #2dbebc; }
+.privacy-policy-page .policy-inner a:hover { color: #22adb0; }
 
 /* ── Contact box ─────────────────────────────────── */
 .privacy-policy-page .policy-inner .pp-contact-box {
@@ -143,13 +143,13 @@ wp_enqueue_style( 'dashicons' );
   gap: 10px;
   margin-bottom: 10px;
   font-size: .88rem;
-  color: #2dbebc;
+  color: #22adb0;
   font-weight: 500;
   min-width: 0; /* allow flex children to shrink */
 }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row:last-child { margin-bottom: 0; }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row .dashicons {
-  color: #36d0cd;
+  color: #22adb0;
   font-size: 18px;
   width: 18px;
   height: 18px;
@@ -162,7 +162,7 @@ wp_enqueue_style( 'dashicons' );
   min-width: 0;
 }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row a {
-  color: #36d0cd;
+  color: #22adb0;
   font-weight: 700;
   text-decoration: none;
   word-break: break-all;
@@ -170,7 +170,7 @@ wp_enqueue_style( 'dashicons' );
   min-width: 0;
 }
 .privacy-policy-page .policy-inner .pp-contact-box .pp-contact-row a:hover {
-  color: #2dbebc;
+  color: #22adb0;
   text-decoration: underline;
 }
 
@@ -389,9 +389,9 @@ wp_enqueue_style( 'dashicons' );
 
   /* ── Bubble colours — theme greens ── */
   const COLORS = [
-    'rgba(54,208,205,BASE)',
-    'rgba(45,190,188,BASE)',
-    'rgba(87,216,214,BASE)',
+    'rgba(34,173,176,BASE)',
+    'rgba(34,173,176,BASE)',
+    'rgba(34,173,176,BASE)',
     'rgba(176,244,243,BASE)',
     'rgba(95,217,215,BASE)',
   ];

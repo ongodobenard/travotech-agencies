@@ -67,7 +67,7 @@ get_header();
 </script>
 
 <style>
-.ct{--ct-g:var(--th-g,#2dbebc);--ct-gd:var(--th-gd,#2ab4b1);--ct-dk:var(--th-dk,#093c3c);--ct-red:var(--th-red,#d32f2f);--ct-tint:#e6fafa;--ct-line:#cdf1f0;
+.ct{--ct-g:var(--th-g,#22adb0);--ct-gd:var(--th-gd,#22adb0);--ct-dk:var(--th-dk,#093c3c);--ct-red:var(--th-red,#d32f2f);--ct-tint:#e6fafa;--ct-line:#cdf1f0;
 font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .ct *,.ct *::before,.ct *::after{box-sizing:border-box;}
 .ct h1,.ct h2,.ct h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--ct-dk);margin:0;line-height:1.2;letter-spacing:.01em;}
