@@ -47,7 +47,7 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 
 /* Hero art: dotted grid, tilted square and icon tiles */
 .tm-art{position:absolute;right:0;top:0;height:100%;width:min(58%,660px);pointer-events:none;overflow:hidden;}
-.tm-art::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.5px,transparent 1.6px);background-size:22px 22px;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 60%);mask-image:linear-gradient(90deg,transparent 0,#000 60%);}
+.tm-art::before{content:"";position:absolute;inset:0;background-color:rgba(255,255,255,.22);background-size:22px 22px;-webkit-mask-image:rgba(0,0,0,.45);mask-image:rgba(0,0,0,.45);}
 .tm-sq{position:absolute;right:8%;top:50%;width:min(300px,42vw);height:min(300px,42vw);border:2px solid rgba(144,239,238,.35);border-radius:28px;transform:translateY(-50%) rotate(14deg);}
 .tm-sq2{right:14%;width:min(210px,30vw);height:min(210px,30vw);border-color:rgba(255,255,255,.14);transform:translateY(-50%) rotate(-10deg);}
 .tm-tile{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:20px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.18);}

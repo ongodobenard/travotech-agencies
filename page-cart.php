@@ -24,7 +24,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
    BANNER
 ════════════════════════════════════════ */
 .cart-banner {
-  background: linear-gradient(135deg, #2dbebc 0%, #36d0cd 60%, #57d8d6 100%);
+  background: #2dbebc;
   padding: clamp(18px,4vw,40px) clamp(16px,5%,60px);
   position: relative;
   overflow: hidden;
@@ -33,7 +33,7 @@ body.woocommerce-cart .woocommerce > .woocommerce-notices-wrapper {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,.07) 0%, transparent 65%);
+  background: rgba(255,255,255,.07);
 }
 .cart-banner-inner {
   position: relative;
@@ -399,7 +399,7 @@ button[name="update_cart"].cart-changed {
   overflow: hidden;
 }
 .cart-totals-head {
-  background: linear-gradient(135deg, #2dbebc, #36d0cd);
+  background: #2dbebc;
   padding: 13px 16px;
   display: flex; align-items: center; gap: 8px;
 }

@@ -611,7 +611,7 @@ function travotech_build_and_send_order( $args ) {
     <table width="100%" cellpadding="0" cellspacing="0" style="background:#eefcfc;padding:30px 0;">
       <tr><td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;max-width:600px;width:100%;">
-          <tr><td style="background:linear-gradient(135deg,#2dbebc,#36d0cd);padding:28px 32px;text-align:center;">
+          <tr><td style="background:#2dbebc;padding:28px 32px;text-align:center;">
             <div style="font-size:26px;font-weight:900;color:#fff;">' . esc_html( $store_name ) . '</div>
             <div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:4px;">New Order Notification</div>
           </td></tr>
@@ -706,7 +706,7 @@ function travotech_send_customer_confirmation( $email, $fname, $lname, $phone, $
       <tr><td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;max-width:600px;width:100%;">
 
-          <tr><td style="background:linear-gradient(135deg,#2dbebc,#36d0cd);padding:30px 32px;text-align:center;">
+          <tr><td style="background:#2dbebc;padding:30px 32px;text-align:center;">
             <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:-0.5px;">' . esc_html( $store_name ) . '</div>
             <div style="font-size:13px;color:rgba(255,255,255,.8);margin-top:4px;font-style:italic;">Trusted Care, Delivered Daily</div>
           </td></tr>

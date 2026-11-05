@@ -141,7 +141,7 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
 /* Hero */
 .hp-hero{position:relative;min-height:clamp(430px,60vh,620px);display:flex;align-items:center;background:var(--th-dk,#093c3c);overflow:hidden;}
 .hp-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center;}
-.hp-hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,47,47,.92) 0%,rgba(7,47,47,.78) 45%,rgba(7,47,47,.15) 100%);}
+.hp-hero::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(7,47,47,.92);}
 .hp-hero .hp-wrap{position:relative;z-index:2;width:100%;}
 .hp-hero-txt{max-width:640px;color:#fff;padding:36px 0;}
 .hp-hero h1{color:#fff;font-size:clamp(1.9rem,5vw,3.4rem);}
@@ -205,7 +205,7 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
 .hp-rev span{font-size:.85rem;color:#6b7280;}
 
 /* CTA */
-.hp-cta{background:linear-gradient(135deg,var(--th-nv,#072f2f),var(--th-g,#2dbebc));color:#fff;padding:clamp(30px,5vw,48px) 0;border-top:4px solid var(--th-red,#e53935);}
+.hp-cta{background:var(--th-nv,#072f2f);color:#fff;padding:clamp(30px,5vw,48px) 0;border-top:4px solid var(--th-red,#e53935);}
 .hp-cta .hp-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
 .hp-cta h2{color:#fff;font-size:clamp(1.4rem,3vw,2rem);}
 .hp-cta p{margin:6px 0 0;color:rgba(255,255,255,.9);}
@@ -222,7 +222,7 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
     .hp-trust li:nth-child(-n+2){border-bottom:1px solid #e0f2f2;}
     .hp-about{grid-template-columns:1fr;}
     .hp-rev{grid-template-columns:1fr;}
-    .hp-hero::before{background:linear-gradient(180deg,rgba(7,47,47,.85),rgba(7,47,47,.7));}
+    .hp-hero::before{background:rgba(7,47,47,.85);}
 }
 @media (max-width:560px){
     .hp-cats{grid-template-columns:repeat(2,1fr);gap:12px;}
@@ -237,11 +237,11 @@ echo '<script type="application/ld+json">' . wp_json_encode( array(
 
 /* ---- Fixes v2 ---- */
 /* Hero: clearer image */
-.hp-hero::before{background:linear-gradient(90deg,rgba(7,47,47,.8) 0%,rgba(7,47,47,.5) 34%,rgba(7,47,47,0) 62%);}
+.hp-hero::before{background:rgba(7,47,47,.8);}
 .hp-hero-txt{max-width:580px;}
 .hp .hp-hero h1{font-size:clamp(1.8rem,4vw,2.9rem);text-shadow:0 2px 12px rgba(0,0,0,.45);}
 .hp-hero p{text-shadow:0 1px 8px rgba(0,0,0,.5);}
-@media (max-width:900px){.hp-hero::before{background:linear-gradient(180deg,rgba(7,47,47,.62),rgba(7,47,47,.45));}}
+@media (max-width:900px){.hp-hero::before{background:rgba(7,47,47,.62);}}
 
 /* Categories: image on top, name bar below, equal heights */
 .hp-cats{gap:14px;}

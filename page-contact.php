@@ -75,11 +75,11 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 .ct-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;}
 
 /* Top: background band + people + overlapping cards */
-.ct-top{position:relative;background:linear-gradient(180deg,#f2fcfc 0,#e1f8f8 100%);}
+.ct-top{position:relative;background:#f2fcfc;}
 .ct-band{position:relative;background:var(--ct-dk);color:#fff;overflow:hidden;}
 .ct-band-bg{position:absolute;inset:0;background:var(--ct-dk);isolation:isolate;}
 .ct-band-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;mix-blend-mode:luminosity;opacity:.75;}
-.ct-band-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ct-dk) 0%,var(--ct-dk) 34%,rgba(9,60,60,.25) 68%,rgba(9,60,60,0) 100%);}
+.ct-band-bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.4);}
 .ct-band-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:28px 5% 96px;}
 .ct-txt{max-width:600px;}
 .ct .ct-band h1{color:#fff;font-size:clamp(2.4rem,5.6vw,4rem);line-height:1.05;margin-bottom:8px;}
@@ -150,7 +150,7 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 /* Tablet and phone: text on the hero, people under it, then cards, map last */
 @media (max-width:1000px){
 .ct-people-d{display:none;}
-.ct-band-bg::after{background:linear-gradient(180deg,rgba(9,60,60,.78) 0,rgba(9,60,60,.5) 100%);}
+.ct-band-bg::after{background:rgba(9,60,60,.78);}
 .ct-band-in{padding:24px 5% 0;}
 .ct-people-m{display:flex;justify-content:center;align-items:flex-end;height:clamp(180px,42vw,280px);margin-top:12px;}
 .ct-people-m img{height:100%;width:auto;max-width:100%;object-fit:contain;object-position:bottom center;display:block;}
@@ -184,7 +184,7 @@ font-family:'Inter',system-ui,sans-serif;color:#1d4847;overflow-x:hidden;}
 /* ---- Hero fix v3 ---- */
 /* Desktop keeps v2. Phone and tablet go back to the earlier layout, with a bigger people image */
 @media (max-width:1000px){
-    .ct-top{background:linear-gradient(180deg,#f2fcfc 0,#e1f8f8 100%);overflow:visible;}
+    .ct-top{background:#f2fcfc;overflow:visible;}
     .ct-band{position:relative;overflow:hidden;background:var(--ct-dk);}
     .ct-band-in{padding:24px 5% 0;}
     .ct-people-m{height:clamp(250px,64vw,400px);margin-top:10px;}

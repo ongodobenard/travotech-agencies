@@ -17,7 +17,7 @@ wp_enqueue_style( 'dashicons' );
 
 /* ── Banner ──────────────────────────────────────── */
 .privacy-policy-page .pp-banner {
-  background: linear-gradient(135deg, #2dbebc 0%, #36d0cd 60%, #57d8d6 100%);
+  background: #2dbebc;
   color: #fff;
   padding: 64px 0 52px;
   text-align: center;
@@ -29,7 +29,7 @@ wp_enqueue_style( 'dashicons' );
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,.08) 0%, transparent 70%);
+  background: rgba(255,255,255,.08);
 }
 .privacy-policy-page .pp-banner .pp-title {
   font-family: 'Playfair Display', serif;
