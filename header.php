@@ -288,16 +288,24 @@ if ( taxonomy_exists( 'product_cat' ) ) {
     .th-search button{padding:0 12px;font-size:13px;}
 }
 
-/* ---- Clear hero images ---- */
-html body [class*="hero"][class*="hero"][class*="hero"]:not([class*="line"]):not([class*="title"]):not([class*="txt"]):not([class*="text"])::before,
-html body [class*="hero"][class*="hero"][class*="hero"]:not([class*="line"]):not([class*="title"]):not([class*="txt"]):not([class*="text"])::after,
-html body .ab .ab-hero::before,
-html body .ct .ct-band-bg::after,
-html body [class*="hero"] [class*="overlay"],
-html body [class*="hero"] [class*="-ov"]{background:transparent !important;background-image:none !important;}
+/* ---- Hero overlay ---- */
+html body [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body .ct .ct-band-bg::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,rgba(6,18,30,.82) 0%,rgba(6,18,30,.60) 40%,rgba(6,18,30,0) 78%) !important;}
+html body [class$="hero"],html body [class*="hero "]{position:relative;}
+html body [class$="hero"]:not(.rp-hero) h1,html body [class*="hero "]:not(.rp-hero) h1,
+html body [class$="hero"]:not(.rp-hero) h2,html body [class*="hero "]:not(.rp-hero) h2,
+html body [class$="hero"]:not(.rp-hero) p,html body [class*="hero "]:not(.rp-hero) p,
+html body [class$="hero"]:not(.rp-hero) a,html body [class*="hero "]:not(.rp-hero) a,
+html body [class$="hero"]:not(.rp-hero) button,html body [class*="hero "]:not(.rp-hero) button{position:relative;z-index:3;}
 html body [class*="hero"] img{opacity:1 !important;filter:none !important;}
 html body [class*="hero"] h1,html body [class*="hero"] h2,html body [class*="hero"] p,
 html body .ct .ct-band h1,html body .ct .ct-band p{text-shadow:0 1px 3px rgba(0,0,0,.6),0 3px 18px rgba(0,0,0,.5);}
+@media (max-width:800px){
+html body [class$="hero"][class$="hero"][class$="hero"]:not(.rp-hero)::before,
+html body [class*="hero "][class*="hero "][class*="hero "]:not(.rp-hero)::before,
+html body .ct .ct-band-bg::after{background:linear-gradient(rgba(6,18,30,.58),rgba(6,18,30,.58)) !important;}
+}
 </style>
 <?php wp_head(); ?>
 </head>
