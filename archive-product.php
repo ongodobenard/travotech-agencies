@@ -366,6 +366,16 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     .sh .sh-promo-text .sh-wt{margin:0 0 8px !important;}
     .sh .sh-promo-text p{margin:0 0 10px !important;}
 }
+
+/* ---- Fixes v12: search ---- */
+.sh .sh-search{position:relative;display:flex;gap:8px;margin:0 0 14px;}
+.sh .sh-search i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--th-g,#22adb0);pointer-events:none;}
+.sh .sh-search input[type="search"]{flex:1;min-width:0;height:48px;padding:0 14px 0 40px;border:1.5px solid #c9d3cd;border-radius:8px;background:#fff;font:500 15px var(--th-fb,'Inter',sans-serif);color:var(--th-dk,#093c3c);outline:none;-webkit-appearance:none;appearance:none;}
+.sh .sh-search input[type="search"]:focus{border-color:var(--th-g,#22adb0);box-shadow:0 0 0 3px rgba(34,173,176,.12);}
+.sh .sh-search button{height:48px;padding:0 22px;border:0;border-radius:8px;background:var(--th-g,#22adb0);color:#fff;font:600 13px var(--th-fh,'Oswald',sans-serif);letter-spacing:.04em;text-transform:uppercase;cursor:pointer;}
+.sh .sh-search button:hover{background:var(--th-dk,#093c3c);}
+@media (max-width:560px){.sh .sh-search button{padding:0 14px;}}
+</style>
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
@@ -475,6 +485,12 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
 
         <!-- PRODUCTS -->
         <section aria-label="Products">
+            <form class="sh-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="Search products..." aria-label="Search products">
+                <input type="hidden" name="post_type" value="product">
+                <button type="submit">Search</button>
+            </form>
             <div class="sh-bar">
                 <div class="sh-sort">
                     <select id="shSort" aria-label="Sort products">

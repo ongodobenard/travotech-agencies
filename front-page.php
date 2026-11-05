@@ -542,4 +542,4 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
     </section>
 
 </main>
-<?php get_footer(); ?>
+<?php include get_template_directory() . '/home-cart.php'; get_footer(); ?>
