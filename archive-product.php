@@ -310,6 +310,20 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     .sh .sh-img{height:clamp(150px,16vw,210px);padding:10px;}
     .sh .sh-name{font-size:1rem;}
 }
+
+/* ---- Fixes v7 ---- */
+.sh .sh-why-list{list-style:none;margin:0;padding:12px 16px 14px;display:grid;gap:12px;}
+.sh .sh-why-list li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;font-weight:600;color:var(--th-dk,#0c3a27);}
+.sh .sh-why-list li i{color:var(--th-g,#238a56);margin-top:3px;width:18px;text-align:center;flex-shrink:0;}
+
+/* Desktop: sidebar ends on the same line as the pagination */
+@media (min-width:901px){
+    .sh .sh-wrap{align-items:stretch;}
+    .sh .sh-side{display:flex;flex-direction:column;}
+    .sh .sh-help{flex:1 1 auto;display:flex;flex-direction:column;}
+    .sh .sh-help .sh-wb{flex:1 1 auto;display:flex;flex-direction:column;}
+    .sh .sh-help .sh-btn{margin-top:auto;}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
@@ -389,7 +403,16 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
                 </div>
             </div>
 
-            <div class="sh-widget sh-help">
+            <div class="sh-widget sh-why">
+                <h2 class="sh-wt"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Why buy from us</h2>
+                <ul class="sh-wb sh-why-list">
+                    <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Quality assured products</li>
+                    <li><i class="fa-solid fa-truck-fast" aria-hidden="true"></i> Delivery in Nairobi, Thika and across Kenya</li>
+                    <li><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Order quickly via WhatsApp</li>
+                    <li><i class="fa-solid fa-headset" aria-hidden="true"></i> Expert product support</li>
+                </ul>
+            </div>
+			<div class="sh-widget sh-help">
                 <h2 class="sh-wt"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Quick order</h2>
                 <div class="sh-wb" style="padding:14px 16px 16px;">
                     <p>Can&rsquo;t find what you need? Send us a WhatsApp message.</p>
