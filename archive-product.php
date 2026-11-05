@@ -256,6 +256,28 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
 .sh .sh-track{display:block;height:28px;}
 .sh .sh-track input{display:block;}
 .sh .sh-btn{min-height:44px;}
+
+/* ---- Fixes v4 ---- */
+/* Phones: narrower side margins and shorter product cards */
+@media (max-width:700px){
+    .sh .sh-wrap{padding-left:8px;padding-right:8px;padding-top:12px;padding-bottom:40px;}
+    .sh .sh-grid,.sh .sh-grid.is-list{gap:8px;}
+    .sh .sh-card{border-radius:8px;}
+    .sh .sh-img,.sh .sh-grid.is-list .sh-img{height:115px;padding:6px;}
+    .sh .sh-body{padding:8px;gap:5px;}
+    .sh .sh-chips{gap:4px;}
+    .sh .sh-chip{font-size:9px;padding:1px 6px;}
+    .sh .sh-name,.sh .sh-grid.is-list .sh-name{font-size:.82rem;line-height:1.25;min-height:2.5em;}
+    .sh .sh-price{font-size:.88rem;}
+    .sh .sh-btns{gap:5px;margin-top:2px;}
+    .sh .sh-b{padding:7px 3px;font-size:10.5px;gap:5px;letter-spacing:0;}
+    .sh .sh-badge{top:6px;left:6px;font-size:10px;padding:2px 7px;}
+    .sh .sh-bar{gap:8px;margin-bottom:12px;}
+}
+@media (max-width:380px){
+    .sh .sh-img,.sh .sh-grid.is-list .sh-img{height:105px !important;}
+    .sh .sh-b{font-size:10px;}
+}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
