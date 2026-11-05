@@ -287,6 +287,17 @@ if ( taxonomy_exists( 'product_cat' ) ) {
     .th-search input[type="search"]{font-size:14px;padding:0 10px;}
     .th-search button{padding:0 12px;font-size:13px;}
 }
+
+/* ---- Clear hero images ---- */
+html body [class*="hero"][class*="hero"][class*="hero"]:not([class*="line"]):not([class*="title"]):not([class*="txt"]):not([class*="text"])::before,
+html body [class*="hero"][class*="hero"][class*="hero"]:not([class*="line"]):not([class*="title"]):not([class*="txt"]):not([class*="text"])::after,
+html body .ab .ab-hero::before,
+html body .ct .ct-band-bg::after,
+html body [class*="hero"] [class*="overlay"],
+html body [class*="hero"] [class*="-ov"]{background:transparent !important;background-image:none !important;}
+html body [class*="hero"] img{opacity:1 !important;filter:none !important;}
+html body [class*="hero"] h1,html body [class*="hero"] h2,html body [class*="hero"] p,
+html body .ct .ct-band h1,html body .ct .ct-band p{text-shadow:0 1px 3px rgba(0,0,0,.6),0 3px 18px rgba(0,0,0,.5);}
 </style>
 <?php wp_head(); ?>
 </head>
