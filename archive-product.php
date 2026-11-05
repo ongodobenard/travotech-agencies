@@ -240,6 +240,22 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
     .sh .sh-name{font-size:.8rem;}
     .sh .sh-body{padding:8px;}
 }
+
+/* ---- Fixes v3 ---- */
+/* Sidebar boxes must never shrink */
+.sh .sh-widget{flex:0 0 auto;overflow:visible;}
+.sh .sh-wt{border-radius:10px 10px 0 0;}
+.sh .sh-wb,.sh .sh-pr{display:block;min-height:0;}
+.sh .sh-widget:last-child{border-radius:10px;}
+
+/* Long category lists scroll inside their own box */
+.sh .sh-wb>.sh-cats{max-height:320px;overflow-y:auto;scrollbar-width:thin;padding-right:4px;}
+
+/* Price slider: make sure it is visible and clickable */
+.sh .sh-pr{padding:16px 16px 18px;}
+.sh .sh-track{display:block;height:28px;}
+.sh .sh-track input{display:block;}
+.sh .sh-btn{min-height:44px;}
 </style>
 
 <div id="travotech-toast" role="alert" aria-live="assertive">
