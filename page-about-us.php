@@ -1,791 +1,294 @@
 <?php
-/**
- * Template Name: About Us
- *
- * Refined About Us page — left sidebar + main content, fully responsive.
- * Matches the Nozaltah / Pharmacare brand (deep rose-pink + teal accent).
- *
- * HOW TO DEPLOY (fixes the 404):
- * 1. Upload THIS file to: /wp-content/themes/YOUR-ACTIVE-THEME/page-about-us.php
- * 2. In WP Admin → Settings → Permalinks → click "Save Changes" (flushes rewrites)
- * 3. In WP Admin → Pages → check if an "About Us" page exists.
- *    - If YES: edit it → Page Attributes → Template → select "About Us" → Update
- *    - If NO:  create a new Page titled "About Us", slug "about-us", publish it,
- *              then set Template → "About Us"
- * 4. Clear any caching plugin cache + browser cache
- * 5. Visit /about-us/ — it should now render correctly.
- */
-
-if ( ! defined( 'ABSPATH' ) ) exit; // security: no direct access
-
+/*
+Template Name: About Us
+*/
 get_header();
-?>
 
-<!-- Google Fonts — consistent with front-page -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700;1,800&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+$img  = esc_url( get_template_directory_uri() ) . '/assets/js/images/';
+$shop = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
+$contact = home_url( '/contact/' );
+
+/* Images: change the filenames here if you want different pictures */
+$ab_hero    = 'aboutbg.png';
+$ab_who     = 'aboutbg2.png';
+$ab_why     = 'doctors.png';
+$ab_quality = 'homebg2.png';
+
+/* Team: names and roles are placeholders taken from the mockup. Replace with real staff. */
+$ab_team = array(
+    array( 'male1.png',   'Dr. Michael Otieno', 'Medical Director',  'Leading our team with professionalism and care.' ),
+    array( 'female1.png', 'Dr. Grace Wanjiru',  'Head Pharmacist',   'Ensuring safe and quality medicines for you.' ),
+    array( 'male2.png',   'Dr. Peter Kamau',    'Senior Clinician',  'Committed to your health and wellbeing.' ),
+    array( 'female2.png', 'Dr. Susan Njeri',    'Healthcare Support','Providing compassionate care at all times.' ),
+);
+
+/* Meta description (skipped when Yoast or Rank Math handles it) */
+if ( ! defined( 'WPSEO_VERSION' ) && ! defined( 'RANK_MATH_VERSION' ) ) {
+    add_action( 'wp_head', function () {
+        echo '<meta name="description" content="' . esc_attr( 'Travotech Agencies Limited is a trusted supplier of quality pharmaceutical, laboratory and healthcare products in Nairobi and across Kenya. Meet our mission, values and team.' ) . '">' . "\n";
+    }, 1 );
+}
+?>
+<script type="application/ld+json">
+<?php echo wp_json_encode( array(
+    '@context' => 'https://schema.org',
+    '@type'    => 'AboutPage',
+    'name'     => 'About Travotech Agencies Limited',
+    'url'      => get_permalink(),
+    'about'    => array(
+        '@type' => 'Organization',
+        'name'  => 'Travotech Agencies Limited',
+        'url'   => home_url( '/' ),
+        'areaServed' => 'Kenya',
+    ),
+), JSON_UNESCAPED_SLASHES ); ?>
+</script>
 
 <style>
-/* ══════════════════════════════════════════════════
-   VARIABLES
-   ══════════════════════════════════════════════════ */
-:root {
-    --pk:        #8B1A4A;
-    --pk-light:  #f9edf3;
-    --teal:      #1aaa8f;
-    --teal-light:#e8f5f2;
-    --text:      #1a1a2e;
-    --muted:     #6b7280;
-    --border:    #eef0f3;
-    --white:     #ffffff;
-    --radius:    10px;
-}
+.ab{--ab-g:var(--th-g,#238a56);--ab-gd:var(--th-gd,#1b6d44);--ab-dk:var(--th-dk,#0c3a27);--ab-red:var(--th-red,#d32f2f);--ab-tint:#eaf6ef;--ab-line:#d6e8de;
+font-family:'Inter',system-ui,sans-serif;color:#2b3a33;overflow-x:hidden;}
+.ab *,.ab *::before,.ab *::after{box-sizing:border-box;}
+.ab img{max-width:100%;display:block;}
+.ab h1,.ab h2,.ab h3{font-family:var(--th-fh,'Oswald',sans-serif);color:var(--ab-dk);margin:0;line-height:1.15;letter-spacing:.01em;}
+.ab p{margin:0;line-height:1.7;}
+.ab-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 5%;}
+.ab-sec{padding:clamp(36px,6vw,64px) 0;}
+.ab-h2{font-size:clamp(1.5rem,3.2vw,2.2rem);text-align:center;display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:28px;}
+.ab-h2::before,.ab-h2::after{content:"";height:3px;width:clamp(30px,8vw,90px);background:var(--ab-g);border-radius:2px;}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* Hero */
+.ab-hero{position:relative;height:clamp(180px,32vw,380px);overflow:hidden;}
+.ab-hero img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+.ab-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(to bottom,transparent,#fff);}
 
-/* ── Outer wrapper ── */
-.noz-about-page {
-    max-width: 1380px;
-    margin: 0 auto;
-    padding: 24px 20px 40px;
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-}
+/* Who we are */
+.ab-who{display:grid;grid-template-columns:1.15fr 1.2fr 1fr;gap:28px;align-items:center;}
+.ab-pill{display:inline-block;background:var(--ab-tint);color:var(--ab-gd);font-weight:600;font-size:.85rem;padding:4px 14px;border-radius:6px;margin-bottom:10px;}
+.ab-who h1{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:12px;}
+.ab-who h1 span{color:var(--ab-g);}
+.ab-who p{font-size:.95rem;}
+.ab-who-line{width:60px;height:4px;background:var(--ab-red);border-radius:2px;margin-top:16px;}
+.ab-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+.ab-tile{background:var(--ab-tint);border:1px solid var(--ab-line);border-radius:10px;padding:16px 10px;text-align:center;}
+.ab-tile i{font-size:1.7rem;color:var(--ab-g);margin-bottom:8px;display:block;}
+.ab-tile b{font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ab-dk);font-size:.95rem;}
+.ab-who-img img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;}
 
-/* ══════════════════════════════════════════════════
-   LEFT SIDEBAR
-   ══════════════════════════════════════════════════ */
-.noz-about-sidebar {
-    width: 270px;
-    min-width: 270px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 16px;
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
+/* Mission and vision */
+.ab-mv-bg{background:linear-gradient(180deg,#fff,var(--ab-tint));}
+.ab-mv{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.ab-card{background:#fff;border:1px solid var(--ab-line);border-radius:10px;padding:24px;display:flex;gap:18px;align-items:flex-start;box-shadow:0 6px 18px rgba(12,58,39,.06);}
+.ab-ic{flex:0 0 64px;height:64px;border-radius:50%;background:var(--ab-g);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.ab-card h3{font-size:1.3rem;margin-bottom:6px;}
+.ab-card p{font-size:.92rem;}
 
-/* sidebar card base */
-.noz-sb-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-}
+/* Core values */
+.ab-vals{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.ab-val{border:1px solid var(--ab-line);border-radius:10px;padding:22px 14px;text-align:center;background:#fff;}
+.ab-val i{font-size:2rem;color:var(--ab-g);margin-bottom:10px;display:block;}
+.ab-val h3{font-size:1.1rem;margin-bottom:4px;}
+.ab-val p{font-size:.86rem;line-height:1.5;}
 
-/* pharmacy info widget */
-.noz-sb-pharmacy {
-    padding: 20px;
-    text-align: center;
-    background: linear-gradient(160deg, var(--pk) 0%, #b0255f 100%);
-    color: #fff;
-}
-.noz-sb-pharmacy .sb-logo-circle {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.18);
-    border: 2px solid rgba(255,255,255,.35);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 12px;
-    font-size: 28px;
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 700;
-    color: #fff;
-}
-.noz-sb-pharmacy h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 20px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 4px;
-}
-.noz-sb-pharmacy p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    color: rgba(255,255,255,.82);
-    line-height: 1.5;
-}
+/* Why choose */
+.ab-why{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;background:var(--ab-tint);}
+.ab-why-img{min-height:280px;position:relative;}
+.ab-why-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;}
+.ab-why-txt{padding:clamp(24px,5vw,56px);}
+.ab-why-txt h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:10px;}
+.ab-why-txt>p{font-weight:600;color:var(--ab-dk);margin-bottom:14px;}
+.ab-ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.ab-ticks li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;}
+.ab-ticks i{color:var(--ab-g);margin-top:4px;}
 
-/* quick stats */
-.noz-sb-stats {
-    padding: 16px 20px;
-}
-.noz-sb-stats h4 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-}
-.noz-stat-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-}
-.noz-stat-row:last-child { border-bottom: none; }
-.noz-stat-icon {
-    width: 36px; height: 36px;
-    border-radius: 8px;
-    background: var(--pk-light);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    color: var(--pk);
-}
-.noz-stat-icon.teal { background: var(--teal-light); color: var(--teal); }
-.noz-stat-val {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1.1;
-}
-.noz-stat-lbl {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    color: var(--muted);
-}
+/* Commitment banner */
+.ab-commit{position:relative;color:#fff;background:var(--ab-dk);overflow:hidden;}
+.ab-commit img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.28;}
+.ab-commit-in{position:relative;padding:clamp(32px,6vw,60px) 5%;max-width:1200px;margin:0 auto;}
+.ab-commit h2{color:#fff;font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:10px;}
+.ab-commit p{max-width:620px;margin-bottom:18px;}
+.ab-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;background:var(--ab-red);color:#fff !important;transition:background .2s;}
+.ab-btn:hover{background:#c62828;}
+.ab-btn.ab-btn-w{background:#fff;color:var(--ab-dk) !important;}
+.ab-btn.ab-btn-w:hover{background:var(--ab-tint);}
 
-/* contact widget */
-.noz-sb-contact {
-    padding: 16px 20px;
-}
-.noz-sb-contact h4 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 12px;
-}
-.noz-contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-}
-.noz-contact-item:last-child { border-bottom: none; }
-.noz-ci-icon {
-    width: 30px; height: 30px;
-    border-radius: 6px;
-    background: var(--teal-light);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    color: var(--teal);
-    margin-top: 1px;
-}
-.noz-ci-text {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-}
-.noz-ci-text strong {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 1px;
-}
+/* Trust strip */
+.ab-trust{display:grid;grid-template-columns:repeat(4,1fr);}
+.ab-trust div{text-align:center;padding:22px 10px;border-right:1px solid var(--ab-line);}
+.ab-trust div:last-child{border-right:0;}
+.ab-trust i{font-size:1.8rem;color:var(--ab-g);display:block;margin-bottom:6px;}
+.ab-trust b{font-family:var(--th-fh,'Oswald',sans-serif);font-weight:500;color:var(--ab-dk);}
 
-/* CTA button */
-.noz-sb-cta {
-    display: block;
-    background: var(--teal);
-    color: #fff;
-    text-align: center;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    padding: 13px 20px;
-    text-decoration: none;
-    border-radius: var(--radius);
-    transition: background .2s, transform .18s;
-    letter-spacing: .4px;
-}
-.noz-sb-cta:hover { background: #138a74; transform: translateY(-1px); }
+/* Team */
+.ab-team-sub{text-align:center;max-width:620px;margin:-12px auto 28px;}
+.ab-team{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.ab-member{border:1px solid var(--ab-line);border-radius:12px;overflow:hidden;background:#fff;text-align:center;box-shadow:0 6px 18px rgba(12,58,39,.06);}
+.ab-member-img{aspect-ratio:1/1.05;background:radial-gradient(circle at 50% 38%,#cfeadb 0 36%,var(--ab-tint) 37%);}
+.ab-member-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.ab-member-body{padding:14px 12px 18px;}
+.ab-member h3{font-size:1.15rem;margin-bottom:8px;}
+.ab-role{display:inline-block;background:var(--ab-g);color:#fff;font-size:.82rem;font-weight:600;padding:4px 14px;border-radius:6px;margin-bottom:8px;}
+.ab-member p{font-size:.86rem;line-height:1.5;}
 
-/* ══════════════════════════════════════════════════
-   MAIN CONTENT
-   ══════════════════════════════════════════════════ */
-.noz-about-main {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+/* CTA band */
+.ab-cta{background:var(--ab-red);color:#fff;border-radius:12px;padding:24px 28px;display:flex;align-items:center;gap:22px;justify-content:space-between;}
+.ab-cta i.fa-capsules{font-size:2.4rem;}
+.ab-cta-t{flex:1;}
+.ab-cta h2{color:#fff;font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:4px;}
+.ab-cta p{font-size:.92rem;}
 
-/* ── Hero banner ── */
-.noz-hero {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--pk);
-    padding: 52px 44px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 220px;
+/* Tablet */
+@media (max-width:1000px){
+.ab-who{grid-template-columns:1fr 1fr;}
+.ab-who-img{grid-column:1/-1;}
+.ab-vals,.ab-team{grid-template-columns:repeat(2,1fr);}
 }
-.noz-hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 260px; height: 260px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.06);
-    pointer-events: none;
-}
-.noz-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px; right: 80px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.04);
-    pointer-events: none;
-}
-.noz-hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(255,255,255,.16);
-    border: 1px solid rgba(255,255,255,.26);
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    padding: 5px 14px 5px 9px;
-    border-radius: 30px;
-    margin-bottom: 16px;
-    width: fit-content;
-    backdrop-filter: blur(6px);
-}
-.noz-hero-tag-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #f9c5d6;
-    flex-shrink: 0;
-}
-.noz-hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.1;
-    margin-bottom: 14px;
-    text-shadow: 0 2px 20px rgba(0,0,0,.15);
-}
-.noz-hero p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.72;
-    color: rgba(255,255,255,.85);
-    max-width: 580px;
-}
-
-/* ── Feature cards row ── */
-.noz-features {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-}
-.noz-feat-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: box-shadow .2s, transform .2s;
-}
-.noz-feat-card:hover {
-    box-shadow: 0 6px 24px rgba(0,0,0,.08);
-    transform: translateY(-3px);
-}
-.noz-feat-icon {
-    width: 44px; height: 44px;
-    border-radius: 10px;
-    background: var(--pk-light);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--pk);
-}
-.noz-feat-card h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    color: var(--text);
-    line-height: 1.3;
-}
-.noz-feat-card p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
-}
-.noz-feat-badge {
-    margin-top: auto;
-    display: inline-block;
-    background: var(--teal-light);
-    color: var(--teal);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 20px;
-    width: fit-content;
-}
-
-/* ── Story section ── */
-.noz-story {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-}
-.noz-story-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-.noz-story-text {
-    padding: 36px;
-    border-right: 1px solid var(--border);
-}
-.noz-story-text .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    color: var(--pk);
-    margin-bottom: 14px;
-}
-.noz-story-text .section-label::before {
-    content: '';
-    width: 18px; height: 2px;
-    background: var(--pk);
-    border-radius: 2px;
-}
-.noz-story-text h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(24px, 2.8vw, 36px);
-    font-weight: 700;
-    color: var(--text);
-    line-height: 1.2;
-    margin-bottom: 16px;
-}
-.noz-story-text p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.75;
-    margin-bottom: 12px;
-}
-.noz-story-text p:last-of-type { margin-bottom: 0; }
-
-.noz-story-stats {
-    padding: 36px;
-    background: #fafbfc;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-}
-.noz-big-stat {
-    text-align: center;
-    padding: 20px;
-    background: var(--white);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-}
-.noz-big-stat .num {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 42px;
-    font-weight: 700;
-    color: var(--pk);
-    line-height: 1;
-    display: block;
-    margin-bottom: 4px;
-}
-.noz-big-stat .lbl {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: .8px;
-}
-
-/* ── Values strip ── */
-.noz-values {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-}
-.noz-val-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 16px;
-    text-align: center;
-    transition: box-shadow .2s, transform .2s;
-}
-.noz-val-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); transform: translateY(-2px); }
-.noz-val-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--pk);
-    line-height: 1;
-    margin-bottom: 4px;
-}
-.noz-val-card h4 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--text);
-    margin-bottom: 6px;
-}
-.noz-val-card p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.55;
-}
-
-/* ── Trust CTA strip ── */
-.noz-trust {
-    background: linear-gradient(135deg, var(--pk) 0%, #b0255f 100%);
-    border-radius: var(--radius);
-    padding: 32px 36px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-}
-.noz-trust-text h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: clamp(22px, 2.6vw, 32px);
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 8px;
-}
-.noz-trust-text p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: rgba(255,255,255,.82);
-    line-height: 1.6;
-    max-width: 480px;
-}
-.noz-trust-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    color: var(--pk);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    padding: 13px 26px;
-    border-radius: 8px;
-    text-decoration: none;
-    white-space: nowrap;
-    flex-shrink: 0;
-    box-shadow: 0 4px 16px rgba(0,0,0,.18);
-    transition: transform .18s, box-shadow .2s;
-}
-.noz-trust-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.24); }
-
-/* ══════════════════════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════════════════════ */
-@media (max-width: 1100px) {
-    .noz-values { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 900px) {
-    .noz-about-page {
-        flex-direction: column;
-        padding: 16px 14px 32px;
-        gap: 16px;
-    }
-    .noz-about-sidebar {
-        width: 100%;
-        min-width: 0;
-        position: static;
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .noz-sb-pharmacy { flex: 1 1 220px; }
-    .noz-sb-stats     { flex: 1 1 220px; }
-    .noz-sb-contact   { flex: 1 1 220px; }
-    .noz-sb-cta       { flex: 1 1 100%; }
-
-    .noz-features { grid-template-columns: repeat(2, 1fr); }
-
-    .noz-story-inner { grid-template-columns: 1fr; }
-    .noz-story-text  { border-right: none; border-bottom: 1px solid var(--border); }
-    .noz-story-stats { flex-direction: row; flex-wrap: wrap; gap: 12px; }
-    .noz-big-stat    { flex: 1 1 120px; }
-}
-
-@media (max-width: 640px) {
-    .noz-about-sidebar { flex-direction: column; }
-    .noz-hero { padding: 32px 24px; }
-    .noz-features { grid-template-columns: 1fr; }
-    .noz-values   { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .noz-story-text { padding: 24px 20px; }
-    .noz-story-stats { padding: 20px; }
-    .noz-trust { flex-direction: column; text-align: center; padding: 28px 22px; }
-    .noz-trust-text p { max-width: 100%; }
-}
-
-@media (max-width: 400px) {
-    .noz-values { grid-template-columns: 1fr; }
+/* Phone */
+@media (max-width:700px){
+.ab-who{grid-template-columns:1fr;}
+.ab-mv{grid-template-columns:1fr;}
+.ab-card{padding:18px;}
+.ab-ic{flex-basis:52px;height:52px;font-size:1.3rem;}
+.ab-why{grid-template-columns:1fr;}
+.ab-why-img{min-height:240px;}
+.ab-trust{grid-template-columns:repeat(2,1fr);}
+.ab-trust div:nth-child(2){border-right:0;}
+.ab-trust div:nth-child(-n+2){border-bottom:1px solid var(--ab-line);}
+.ab-team{gap:12px;}
+.ab-member h3{font-size:1rem;}
+.ab-member p{font-size:.8rem;}
+.ab-cta{flex-direction:column;text-align:center;}
+.ab-h2::before,.ab-h2::after{width:24px;}
 }
 </style>
 
-<div class="noz-about-page">
+<main class="ab">
 
-    <!-- ══ LEFT SIDEBAR ══ -->
-    <aside class="noz-about-sidebar">
+<div class="ab-hero">
+<img src="<?php echo $img . $ab_hero; ?>" alt="Travotech Agencies Limited healthcare and pharmacy team in Kenya" width="1600" height="500" fetchpriority="high">
+</div>
 
-        <!-- Brand card -->
-        <div class="noz-sb-card noz-sb-pharmacy">
-            <div class="sb-logo-circle">N</div>
-            <h3>Nozaltah</h3>
-            <p>Licensed online pharmacy serving Kenya since 2018. Regulated &amp; trusted.</p>
-        </div>
+<section class="ab-sec">
+<div class="ab-wrap ab-who">
+<div>
+<span class="ab-pill">About Us</span>
+<h1>Who <span>We Are</span></h1>
+<p>Travotech Agencies Limited is a trusted provider of quality pharmaceutical, laboratory and healthcare products in Kenya. We are committed to improving health and wellness through safe, reliable and affordable products.</p>
+<div class="ab-who-line"></div>
+</div>
+<div class="ab-tiles">
+<div class="ab-tile"><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><b>Quality Products</b></div>
+<div class="ab-tile"><i class="fa-solid fa-handshake" aria-hidden="true"></i><b>Trusted Partner</b></div>
+<div class="ab-tile"><i class="fa-solid fa-users" aria-hidden="true"></i><b>Dedicated Team</b></div>
+<div class="ab-tile"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i><b>Better Health</b></div>
+</div>
+<div class="ab-who-img">
+<img src="<?php echo $img . $ab_who; ?>" alt="Travotech Agencies Limited, pharmaceutical and laboratory equipment supplier in Nairobi" width="600" height="450" loading="lazy">
+</div>
+</div>
+</section>
 
-        <!-- Quick stats -->
-        <div class="noz-sb-card noz-sb-stats">
-            <h4>At a Glance</h4>
+<section class="ab-sec ab-mv-bg">
+<div class="ab-wrap">
+<h2 class="ab-h2">Our Mission &amp; Vision</h2>
+<div class="ab-mv">
+<div class="ab-card">
+<div class="ab-ic"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></div>
+<div>
+<h3>Our Mission</h3>
+<p>To provide high-quality pharmaceutical, laboratory and healthcare products and services that promote better health and wellness for all Kenyans.</p>
+</div>
+</div>
+<div class="ab-card">
+<div class="ab-ic"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+<div>
+<h3>Our Vision</h3>
+<p>To be the leading and most trusted pharmaceutical and healthcare partner in Kenya and beyond.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-            <div class="noz-stat-row">
-                <div class="noz-stat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                </div>
-                <div>
-                    <div class="noz-stat-val">500,000+</div>
-                    <div class="noz-stat-lbl">Happy Customers</div>
-                </div>
-            </div>
+<section class="ab-sec">
+<div class="ab-wrap">
+<h2 class="ab-h2">Our Core Values</h2>
+<div class="ab-vals">
+<div class="ab-val"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><h3>Integrity</h3><p>We do what is right, always.</p></div>
+<div class="ab-val"><i class="fa-solid fa-award" aria-hidden="true"></i><h3>Quality</h3><p>We never compromise on quality.</p></div>
+<div class="ab-val"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i><h3>Reliability</h3><p>You can count on us.</p></div>
+<div class="ab-val"><i class="fa-solid fa-headset" aria-hidden="true"></i><h3>Customer Care</h3><p>Your health is our priority.</p></div>
+</div>
+</div>
+</section>
 
-            <div class="noz-stat-row">
-                <div class="noz-stat-icon teal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                </div>
-                <div>
-                    <div class="noz-stat-val">25,000+</div>
-                    <div class="noz-stat-lbl">Products in Stock</div>
-                </div>
-            </div>
+<section class="ab-why">
+<div class="ab-why-img">
+<img src="<?php echo $img . $ab_why; ?>" alt="Healthcare professionals supporting Travotech customers" width="800" height="600" loading="lazy">
+</div>
+<div class="ab-why-txt">
+<h2>Why Choose Travotech</h2>
+<p>We are your trusted healthcare partner, offering quality products and professional support.</p>
+<ul class="ab-ticks">
+<li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Wide range of genuine pharmaceutical and laboratory products</li>
+<li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Competitive prices</li>
+<li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Professional and friendly support</li>
+<li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Reliable delivery across Kenya</li>
+</ul>
+</div>
+</section>
 
-            <div class="noz-stat-row">
-                <div class="noz-stat-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div>
-                    <div class="noz-stat-val">200+</div>
-                    <div class="noz-stat-lbl">Licensed Suppliers</div>
-                </div>
-            </div>
+<section class="ab-commit">
+<img src="<?php echo $img . $ab_quality; ?>" alt="" aria-hidden="true" loading="lazy">
+<div class="ab-commit-in">
+<h2>Our Commitment to Quality</h2>
+<p>At Travotech Agencies Limited, quality is at the heart of everything we do. We source our products from verified and reputable suppliers and adhere to strict quality assurance standards.</p>
+<a class="ab-btn" href="<?php echo esc_url( $shop ); ?>">Browse products <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+</div>
+</section>
 
-            <div class="noz-stat-row">
-                <div class="noz-stat-icon teal">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <div>
-                    <div class="noz-stat-val">24/7</div>
-                    <div class="noz-stat-lbl">Pharmacist Support</div>
-                </div>
-            </div>
-        </div>
+<div class="ab-wrap">
+<div class="ab-trust">
+<div><i class="fa-solid fa-shield-heart" aria-hidden="true"></i><b>Trusted Healthcare</b></div>
+<div><i class="fa-solid fa-capsules" aria-hidden="true"></i><b>Quality Products</b></div>
+<div><i class="fa-solid fa-users" aria-hidden="true"></i><b>Customer Focus</b></div>
+<div><i class="fa-solid fa-handshake" aria-hidden="true"></i><b>Reliable Service</b></div>
+</div>
+</div>
 
-        <!-- Contact widget -->
-        <div class="noz-sb-card noz-sb-contact">
-            <h4>Contact Us</h4>
+<section class="ab-sec">
+<div class="ab-wrap">
+<h2 class="ab-h2">Our Team</h2>
+<p class="ab-team-sub">A dedicated team of healthcare professionals, always ready to support you with expert advice and reliable service.</p>
+<div class="ab-team">
+<?php foreach ( $ab_team as $m ) : ?>
+<article class="ab-member">
+<div class="ab-member-img">
+<img src="<?php echo $img . esc_attr( $m[0] ); ?>" alt="<?php echo esc_attr( $m[1] . ', ' . $m[2] . ' at Travotech Agencies Limited' ); ?>" width="400" height="420" loading="lazy">
+</div>
+<div class="ab-member-body">
+<h3><?php echo esc_html( $m[1] ); ?></h3>
+<span class="ab-role"><?php echo esc_html( $m[2] ); ?></span>
+<p><?php echo esc_html( $m[3] ); ?></p>
+</div>
+</article>
+<?php endforeach; ?>
+</div>
+</div>
+</section>
 
-            <div class="noz-contact-item">
-                <div class="noz-ci-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
-                </div>
-                <div class="noz-ci-text">
-                    <strong>Phone</strong>
-                    +254 796 038 686
-                </div>
-            </div>
+<section class="ab-sec" style="padding-top:0;">
+<div class="ab-wrap">
+<div class="ab-cta">
+<i class="fa-solid fa-capsules" aria-hidden="true"></i>
+<div class="ab-cta-t">
+<h2>Explore Our Products Today</h2>
+<p>Get quality pharmaceutical, laboratory and healthcare products in Kenya.</p>
+</div>
+<a class="ab-btn ab-btn-w" href="<?php echo esc_url( $contact ); ?>">Contact Us <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+</div>
+</div>
+</section>
 
-            <div class="noz-contact-item">
-                <div class="noz-ci-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </div>
-                <div class="noz-ci-text">
-                    <strong>Email</strong>
-                    info@nozaltah.co.ke
-                </div>
-            </div>
-
-            <div class="noz-contact-item">
-                <div class="noz-ci-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                </div>
-                <div class="noz-ci-text">
-                    <strong>Location</strong>
-                    Nairobi, Kenya
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" class="noz-sb-cta">
-            Shop Now &rarr;
-        </a>
-
-    </aside>
-
-    <!-- ══ MAIN CONTENT ══ -->
-    <main class="noz-about-main">
-
-        <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-            <div class="noz-hero">
-                <span class="noz-hero-tag"><span class="noz-hero-tag-dot"></span>Our Story</span>
-                <h1><?php the_title(); ?></h1>
-                <?php the_content(); ?>
-            </div>
-
-        <?php endwhile; else : ?>
-
-            <!-- ── Hero banner ── -->
-            <div class="noz-hero">
-                <span class="noz-hero-tag"><span class="noz-hero-tag-dot"></span>Our Story</span>
-                <h1>About Nozaltah</h1>
-                <p>Your trusted online pharmacy. Committed to delivering genuine medicines, health supplements, and wellness products right to your door — with care, speed, and expertise.</p>
-            </div>
-
-            <!-- ── Feature cards ── -->
-            <div class="noz-features">
-
-                <div class="noz-feat-card">
-                    <div class="noz-feat-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    </div>
-                    <h3>100% Genuine Products</h3>
-                    <p>Every product sourced directly from licensed manufacturers and distributors. No counterfeits, ever.</p>
-                    <span class="noz-feat-badge">Verified</span>
-                </div>
-
-                <div class="noz-feat-card">
-                    <div class="noz-feat-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-                    </div>
-                    <h3>Fast &amp; Free Delivery</h3>
-                    <p>Orders over KSh 9,999 ship free. Same-day dispatch on orders placed before 2 PM.</p>
-                    <span class="noz-feat-badge">Free over 9,999</span>
-                </div>
-
-                <div class="noz-feat-card">
-                    <div class="noz-feat-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
-                    </div>
-                    <h3>24/7 Expert Support</h3>
-                    <p>Licensed pharmacists and customer care available around the clock for your peace of mind.</p>
-                    <span class="noz-feat-badge">Always On</span>
-                </div>
-
-            </div>
-
-            <!-- ── Our Story ── -->
-            <div class="noz-story">
-                <div class="noz-story-inner">
-                    <div class="noz-story-text">
-                        <span class="section-label">Who We Are</span>
-                        <h2>Built on Trust,<br>Driven by Care</h2>
-                        <p>Nozaltah was founded with a simple mission: to make quality healthcare accessible and affordable for everyone in Kenya. What started as a small online store has grown into one of the most trusted digital pharmacies — serving over 500,000 customers nationwide.</p>
-                        <p>We partner with over 200 licensed suppliers and carry more than 25,000 products across medicine, wellness, beauty, fitness, and devices categories. Every order is handled by certified pharmacy professionals to ensure you receive exactly what you need, safely and on time.</p>
-                    </div>
-                    <div class="noz-story-stats">
-                        <div class="noz-big-stat">
-                            <span class="num">500K+</span>
-                            <span class="lbl">Customers Served</span>
-                        </div>
-                        <div class="noz-big-stat">
-                            <span class="num">25K+</span>
-                            <span class="lbl">Products Available</span>
-                        </div>
-                        <div class="noz-big-stat">
-                            <span class="num">200+</span>
-                            <span class="lbl">Trusted Suppliers</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ── Values ── -->
-            <div class="noz-values">
-                <div class="noz-val-card">
-                    <div class="noz-val-num">01</div>
-                    <h4>Authenticity</h4>
-                    <p>Only genuine, licensed products from verified manufacturers.</p>
-                </div>
-                <div class="noz-val-card">
-                    <div class="noz-val-num">02</div>
-                    <h4>Accessibility</h4>
-                    <p>Affordable healthcare delivered anywhere in Kenya, fast.</p>
-                </div>
-                <div class="noz-val-card">
-                    <div class="noz-val-num">03</div>
-                    <h4>Expertise</h4>
-                    <p>Licensed pharmacists guiding every step of your wellness journey.</p>
-                </div>
-                <div class="noz-val-card">
-                    <div class="noz-val-num">04</div>
-                    <h4>Integrity</h4>
-                    <p>Transparent pricing, honest advice, and your privacy protected.</p>
-                </div>
-            </div>
-
-            <!-- ── Trust CTA ── */
-            <div class="noz-trust">
-                <div class="noz-trust-text">
-                    <h2>Ready to experience better healthcare?</h2>
-                    <p>Browse over 25,000 genuine products and have them delivered to your door today.</p>
-                </div>
-                <a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" class="noz-trust-btn">
-                    Shop Now
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-
-        <?php endif; ?>
-
-    </main>
-
-</div><!-- /.noz-about-page -->
+</main>
 
 <?php get_footer(); ?>
