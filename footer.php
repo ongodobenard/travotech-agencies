@@ -388,6 +388,15 @@ $trv_order_link = 'https://wa.me/' . $trv_wa . '?text=' . rawurlencode( 'Hello T
     .trv-footer .trv-foot-credit{white-space:nowrap;margin:0;}
     .trv-footer .trv-foot-credit{text-align:right;}
 }
+
+/* ---- Footer v4 ---- */
+/* Phone and tablet only: remove the empty gap under the credit */
+@media (max-width:900px){
+    .trv-footer .trv-foot-bottom{padding-bottom:0 !important;margin-bottom:0 !important;}
+    .trv-footer .trv-foot-bottom-inner{padding-bottom:12px !important;}
+    .trv-footer .trv-foot-credit{padding-bottom:0 !important;margin-bottom:0 !important;}
+    body{margin-bottom:0 !important;padding-bottom:0 !important;}
+}
 </style>
 
 <footer class="trv-footer" role="contentinfo">
