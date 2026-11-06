@@ -650,7 +650,7 @@ button[name="update_cart"].cart-changed {
 <section class="cart-banner">
   <div class="cart-banner-inner">
     <h1>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <i class="fa-solid fa-bag-shopping" style="font-size:22px;line-height:1;color:rgba(255,255,255,.85);" aria-hidden="true"></i>
       My Cart
     </h1>
     <nav class="cart-breadcrumb">
@@ -861,7 +861,7 @@ button[name="update_cart"].cart-changed {
           <h3>Your cart is empty</h3>
           <p>Looks like you haven't added any products yet.</p>
           <a href="<?php echo esc_url(function_exists('wc_get_page_id') ? get_permalink(wc_get_page_id('shop')) : home_url('/shop')); ?>" class="btn-shop">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            <i class="fa-solid fa-bag-shopping" style="font-size:14px;line-height:1;" aria-hidden="true"></i>
             Continue Shopping
           </a>
         </div>
@@ -918,7 +918,7 @@ button[name="update_cart"].cart-changed {
         <div class="cart-checkout-wrap">
           <button type="button" class="cart-checkout-btn" id="checkoutBtn"
             data-checkout-url="<?php echo esc_url(wc_get_checkout_url()); ?>">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            <i class="fa-solid fa-chevron-right" style="font-size:15px;line-height:1;" aria-hidden="true"></i>
             Proceed to Checkout
           </button>
         </div>

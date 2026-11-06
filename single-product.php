@@ -269,14 +269,14 @@ html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
 <!-- TOAST -->
 <div id="travotech-toast" role="alert" aria-live="assertive">
   <div class="cv-toast-icon-wrap">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    <i class="fa-solid fa-check" style="font-size:18px;line-height:1;color:#fff;" aria-hidden="true"></i>
   </div>
   <div class="cv-toast-body">
     <div class="cv-toast-title">Added to Cart</div>
     <div class="cv-toast-name" id="cv-toast-name"><?php echo esc_html($travotech_toast_name); ?></div>
     <div class="cv-toast-actions">
       <a href="<?php echo esc_url(wc_get_cart_url()); ?>" class="cv-toast-btn-cart">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg>
+        <i class="fa-solid fa-cart-shopping" style="font-size:12px;line-height:1;" aria-hidden="true"></i>
         View Cart
       </a>
       <button class="cv-toast-btn-close" id="cv-toast-close" type="button">Dismiss</button>
@@ -293,7 +293,7 @@ html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
       <?php if ($img): ?>
         <img src="<?php echo esc_url($img); ?>" alt="<?php the_title_attribute(); ?>">
       <?php else: ?>
-        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".2"><path d="M10.5 3.5a6 6 0 018 8l-8.5 8.5a6 6 0 01-8-8l8.5-8.5z"/><line x1="9" y1="15" x2="15" y2="9"/></svg>
+        <i class="fa-regular fa-image" style="font-size:80px;line-height:1;opacity:.2;" aria-hidden="true"></i>
       <?php endif; ?>
     </div>
 
@@ -316,20 +316,20 @@ html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
       <div class="sp-meta-card">
         <?php if ($cat_n): ?>
         <div class="sp-meta-badge sp-meta-cat">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          <i class="fa-solid fa-tag" style="font-size:13px;line-height:1;" aria-hidden="true"></i>
           <?php echo esc_html($cat_n); ?>
         </div>
         <?php endif; ?>
         <div class="sp-meta-badge sp-meta-stock <?php echo $stock==='instock'?'instock':'outofstock'; ?>">
           <?php if ($stock==='instock'): ?>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>In Stock
+            <i class="fa-solid fa-check" style="font-size:13px;line-height:1;" aria-hidden="true"></i>In Stock
           <?php else: ?>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Out of Stock
+            <i class="fa-solid fa-xmark" style="font-size:13px;line-height:1;" aria-hidden="true"></i>Out of Stock
           <?php endif; ?>
         </div>
         <?php if ($sku): ?>
         <div class="sp-meta-badge sp-meta-sku">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>
+          <i class="fa-solid fa-barcode" style="font-size:13px;line-height:1;" aria-hidden="true"></i>
           SKU: <?php echo esc_html($sku); ?>
         </div>
         <?php endif; ?>
@@ -358,7 +358,7 @@ html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
           data-name="<?php echo esc_attr($name); ?>"
           data-price="<?php echo esc_attr($price_c); ?>"
           data-url="<?php echo esc_attr(get_permalink()); ?>">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <i class="fa-brands fa-whatsapp" style="font-size:18px;line-height:1;" aria-hidden="true"></i>
           Buy Via WhatsApp
         </button>
 
@@ -371,7 +371,7 @@ html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
           data-price="<?php echo esc_attr($price_c); ?>"
           data-fullname="<?php echo esc_attr($name); ?>">
           <span class="atc-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg>
+            <i class="fa-solid fa-cart-shopping" style="font-size:18px;line-height:1;" aria-hidden="true"></i>
           </span>
           <div class="atc-spinner"></div><span class="t">Add to Cart</span></button>
         <?php else: ?>
@@ -489,7 +489,7 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
       </h2>
       <a href="<?php echo get_permalink(wc_get_page_id('shop')); ?>" class="trending-viewall">
         View All
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <i class="fa-solid fa-arrow-right" style="font-size:13px;line-height:1;" aria-hidden="true"></i>
       </a>
     </div>
     <div class="sp-related-grid">
@@ -515,7 +515,7 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
         <a href="<?php echo get_permalink($rid); ?>" class="p-img-link">
           <div class="p-img">
             <?php if ($rimg): ?><img src="<?php echo esc_url($rimg); ?>" alt="<?php echo esc_attr($rp->get_name()); ?>" loading="lazy">
-            <?php else: ?><svg style="width:48px;height:48px;opacity:.2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10.5 3.5a6 6 0 018 8l-8.5 8.5a6 6 0 01-8-8l8.5-8.5z"/></svg><?php endif; ?>
+            <?php else: ?><i class="fa-regular fa-image" style="font-size:48px;line-height:1;opacity:.2;" aria-hidden="true"></i><?php endif; ?>
             <?php if ($rsale&&$rpr): ?><div class="p-badge-sale">-<?php echo round((($rpr-$rpc)/$rpr)*100); ?>% OFF</div>
             <?php elseif ($ris_new): ?><div class="p-badge-new">NEW</div><?php endif; ?>
           </div>
@@ -538,15 +538,15 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
               data-pid="<?php echo esc_attr($rid); ?>"
               data-nonce="<?php echo esc_attr(wp_create_nonce('woocommerce-add-to-cart')); ?>"
               data-name="<?php echo esc_attr($rname_s); ?>">
-              <span class="p-btn-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span><span class="t">Add to Cart</span></button>
+              <span class="p-btn-ico"><i class="fa-solid fa-cart-shopping" style="font-size:13px;line-height:1;" aria-hidden="true"></i></span><span class="t">Add to Cart</span></button>
             <?php else: ?>
             <a href="<?php echo get_permalink($rid); ?>" class="p-btn-cart">
-              <span class="p-btn-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.97 1.61h9.72a2 2 0 001.97-1.67L23 6H6"/></svg></span>
+              <span class="p-btn-ico"><i class="fa-solid fa-cart-shopping" style="font-size:13px;line-height:1;" aria-hidden="true"></i></span>
               Select Options
             </a>
             <?php endif; ?>
             <a href="https://wa.me/<?php echo esc_attr($wa); ?>?text=<?php echo $rwa_msg; ?>" class="p-btn-wa" target="_blank" rel="noopener noreferrer">
-              <span class="p-btn-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+              <span class="p-btn-ico"><i class="fa-brands fa-whatsapp" style="font-size:13px;line-height:1;" aria-hidden="true"></i></span>
               Buy Via WhatsApp
             </a>
           </div>
@@ -559,7 +559,7 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
     <div class="sp-rel-pagination">
       <?php if ($related_page > 1): ?>
         <a href="<?php echo esc_url(add_query_arg('rel_page',$related_page-1,$base_url)); ?>#sp-related-anchor" class="sp-rel-page-btn prev">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>PREV
+          <i class="fa-solid fa-chevron-left" style="font-size:12px;line-height:1;" aria-hidden="true"></i>PREV
         </a>
       <?php endif; ?>
       <?php
@@ -575,7 +575,7 @@ $spx_star = function ( $n ) { $o = ''; for ( $i = 1; $i <= 5; $i++ ) { $o .= '<i
       <?php $prev_pg=$pg; endforeach; ?>
       <?php if ($related_page < $total_rel_pages): ?>
         <a href="<?php echo esc_url(add_query_arg('rel_page',$related_page+1,$base_url)); ?>#sp-related-anchor" class="sp-rel-page-btn next">
-          NEXT<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          NEXT<i class="fa-solid fa-chevron-right" style="font-size:12px;line-height:1;" aria-hidden="true"></i>
         </a>
       <?php endif; ?>
     </div>
