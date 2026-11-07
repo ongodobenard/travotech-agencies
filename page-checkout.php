@@ -956,6 +956,14 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
   html body .chkp-scroll,
   html body .chkp-sidebar #order_review{overscroll-behavior:auto !important;overscroll-behavior-y:auto !important;}
 }
+/* chkp-btnrow-v1: desktop order buttons side by side on one line (same as Leshavin) */
+@media (min-width:961px){
+  html body .chkp-desktop-actions{flex-direction:row !important;flex-wrap:wrap !important;align-items:stretch !important;gap:14px !important;}
+  html body .chkp-desktop-actions .chkp-or{display:none !important;}
+  html body .chkp-desktop-actions .chkp-place-btn{order:1;flex:1 1 220px;width:auto !important;max-width:280px;}
+  html body .chkp-desktop-actions .chkp-wa-btn{order:2;flex:1 1 240px;width:auto !important;max-width:320px;}
+  html body .chkp-desktop-actions .chkp-back{order:3;flex:0 0 100%;margin-top:4px;}
+}
 </style>
 <script>
 (function(){
