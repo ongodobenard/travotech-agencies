@@ -964,6 +964,15 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
   html body .chkp-desktop-actions .chkp-wa-btn{order:2;flex:1 1 240px;width:auto !important;max-width:320px;}
   html body .chkp-desktop-actions .chkp-back{order:3;flex:0 0 100%;margin-top:4px;}
 }
+/* chkp-center-v1: centred order buttons + summary height equals the form height */
+@media (min-width:961px){
+  html body .chkp-desktop-actions{justify-content:center !important;}
+  html body .chkp-desktop-actions .chkp-place-btn,
+  html body .chkp-desktop-actions .chkp-wa-btn{justify-content:center !important;text-align:center;}
+  html body .chkp-desktop-actions .chkp-back{justify-content:center !important;text-align:center;width:100%;}
+  html body .chkp-layout{align-items:stretch !important;}
+  html body .chkp-sidebar{min-height:0 !important;}
+}
 </style>
 <script>
 (function(){
