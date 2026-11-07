@@ -478,7 +478,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
             <button type="button" class="chkp-place-btn" id="chkp-place-btn-desktop">
               <span class="cv-spin"></span>
               <span class="dashicons dashicons-yes-alt" style="font-size:15px;width:15px;height:15px;"></span>
-              <span class="chkp-btn-label">Place Order</span>
+              <span class="chkp-btn-label">Place Order<small class="chkp-btn-sub">Order via website</small></span>
             </button>
             <a href="<?php echo esc_url( wc_get_cart_url() ); ?>" class="chkp-back">
               <span class="dashicons dashicons-arrow-left-alt" style="font-size:13px;width:13px;height:13px;"></span>
@@ -549,7 +549,7 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
     <button type="button" id="chkp-place-btn-mobile" class="chkp-place-btn">
       <span class="cv-spin"></span>
       <span class="dashicons dashicons-yes-alt" style="font-size:15px;width:15px;height:15px;"></span>
-      <span class="chkp-btn-label">Place Order</span>
+      <span class="chkp-btn-label">Place Order<small class="chkp-btn-sub">Order via website</small></span>
     </button>
 
     <a href="<?php echo esc_url( function_exists( 'wc_get_page_id' ) ? get_permalink( wc_get_page_id( 'shop' ) ) : home_url( '/shop' ) ); ?>"
@@ -973,6 +973,9 @@ html body .chkp-scroll::-webkit-scrollbar-thumb{background:#22adb0;border-radius
   html body .chkp-layout{align-items:stretch !important;}
   html body .chkp-sidebar{min-height:0 !important;}
 }
+/* chkp-btn-sub: small caption under Place Order */
+.chkp-place-btn .chkp-btn-label{display:flex;flex-direction:column;align-items:center;line-height:1.2;}
+.chkp-place-btn .chkp-btn-sub{display:block;font-size:.66rem;font-weight:600;opacity:.85;letter-spacing:.02em;margin-top:2px;}
 </style>
 <script>
 (function(){
