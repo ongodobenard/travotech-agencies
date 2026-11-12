@@ -62,6 +62,11 @@ $hp_card = function ( $p ) use ( $hp_wa ) {
     $can   = $p->is_type( 'simple' ) && $p->is_purchasable() && $p->is_in_stock() && $pc !== '';
     $oos   = ! $p->is_in_stock();
     $short = mb_strlen( $name ) > 30 ? mb_substr( $name, 0, 30 ) . '...' : $name;
+    $pcats = get_the_terms( $pid, 'product_cat' );
+    $cat_n = ( $pcats && ! is_wp_error( $pcats ) ) ? $pcats[0]->name : '';
+    $brs   = get_the_terms( $pid, 'product_brand' );
+    if ( ! $brs || is_wp_error( $brs ) ) { $brs = get_the_terms( $pid, 'pa_brand' ); }
+    $brand = ( $brs && ! is_wp_error( $brs ) ) ? $brs[0]->name : '';
     $pshow = $isvar ? (float) $p->get_variation_price( 'min' ) : (float) $pc;
     $wamsg = rawurlencode( "Hello Travotech Agencies, I'd like to order: *" . $name . '*' . ( $pc !== '' ? ' - KES ' . number_format( $pshow, 2 ) : '' ) . '. Link: ' . $url );
     ?>
@@ -71,6 +76,12 @@ $hp_card = function ( $p ) use ( $hp_wa ) {
             <?php echo $p->get_image( 'woocommerce_thumbnail', array( 'loading' => 'lazy', 'alt' => $name ) ); // phpcs:ignore ?>
         </a>
         <div class="hp-card-body">
+            <?php if ( $cat_n || $brand ) : ?>
+            <div class="hp-chips">
+                <?php if ( $cat_n ) : ?><span class="hp-chip"><?php echo esc_html( $cat_n ); ?></span><?php endif; ?>
+                <?php if ( $brand ) : ?><span class="hp-chip b"><?php echo esc_html( $brand ); ?></span><?php endif; ?>
+            </div>
+            <?php endif; ?>
             <h3><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $name ); ?></a></h3>
             <div class="hp-price"><?php echo wp_kses_post( $p->get_price_html() ); ?></div>
             <div class="hp-actions">
@@ -359,7 +370,11 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
 #travotech-toast.cv-show .cv-bar{animation:cvCount 5s linear forwards;}
 @keyframes cvCount{from{transform:scaleX(1);}to{transform:scaleX(0);}}
 @media (max-width:560px){#travotech-toast{right:12px;left:12px;width:auto;bottom:84px;}}
-/* ---- Home add to cart v1 ---- */
+/* ---- Home product category chips ---- */
+.hp-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.hp-chip{font:700 10px var(--th-fb,sans-serif);text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:50px;background:var(--th-lt,#e4fafa);color:var(--th-g,#22adb0);}
+.hp-chip.b{background:#fff;border:1px solid #c9d3cd;color:#22adb0;}
+@media (max-width:560px){.hp-chips{gap:4px;}.hp-chip{font-size:9px;padding:1px 6px;}}/* ---- Home add to cart v1 ---- */
 .hp-actions{display:grid;gap:7px;margin-top:4px;}
 .hp-actions .hp-btn{width:100%;font-size:12px;padding:10px 8px;line-height:1.2;text-align:center;cursor:pointer;}
 .hp-btn-wa{background:#25D366;border-color:#25D366;color:#fff;}
