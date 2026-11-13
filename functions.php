@@ -1301,3 +1301,15 @@ html body .th-cart-amt{font-size:12px !important;}
 }
 </style>';
 }, 99999 );
+
+/* travotech_black_prices: all prices in black */
+add_action( 'wp_head', function () {
+    echo '<style id="travotech-black-prices">
+.hp .hp-price,.hp .hp-price ins,.hp .hp-price .amount,.hp .hp-price bdi,
+.sh .sh-price,.sh .sh-price span,.sh .sh-price small,
+.price,.price ins,.price .amount,.price bdi,
+.woocommerce-Price-amount,.woocommerce-Price-currencySymbol,
+.woocommerce .amount,.woocommerce-cart .amount,.woocommerce-checkout .amount{color:#000 !important;}
+.hp .hp-price del,.hp .hp-price del *,.sh .sh-price del,.price del,.price del *,del .woocommerce-Price-amount{color:#9aa3ad !important;}
+</style>' . "\n";
+}, 99 );
