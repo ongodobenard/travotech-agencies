@@ -1313,3 +1313,13 @@ add_action( 'wp_head', function () {
 .hp .hp-price del,.hp .hp-price del *,.sh .sh-price del,.price del,.price del *,del .woocommerce-Price-amount{color:#9aa3ad !important;}
 </style>' . "\n";
 }, 99 );
+
+/* travotech_hide_cat_icons: no icons in the category side panel or the shop sidebar */
+add_action( 'wp_head', function () {
+    echo '<style id="travotech-hide-cat-icons">
+html body .th-side-row > a > i,
+html body .sh-cats li a i.ic{display:none !important;}
+html body .th-side-row > a{gap:0;padding-left:14px;}
+html body .sh-cats li a{gap:0;}
+</style>' . "\n";
+}, 99 );
