@@ -1314,19 +1314,13 @@ add_action( 'wp_head', function () {
 </style>' . "\n";
 }, 99 );
 
-/* travotech_cat_dots: bold dot bullets instead of icons in the category panel and shop sidebar */
+/* travotech_cat_plain: no icons and no dots in the category panel and shop sidebar */
 add_action( 'wp_head', function () {
-    echo '<style id="travotech-cat-dots">
+    echo '<style id="travotech-cat-plain">
 html body .th-side-row > a > i,
 html body .sh-cats li a i.ic{display:none !important;}
 html body .th-side-row > a,
-html body .sh-cats li a{gap:10px;}
-html body .th-side-row > a::before,
-html body .sh-cats li a::before{content:"";flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:#093c3c;}
-html body .th-side-row > a:hover::before,
-html body .sh-cats li a:hover::before,
-html body .sh-cats li a.on::before{background:#22adb0;}
-html body .th-side-row > a,
-html body .sh-cats li a{font-weight:700;}
+html body .sh-cats li a{gap:0;}
+html body .th-side-row > a{padding-left:14px;}
 </style>' . "\n";
 }, 99 );
