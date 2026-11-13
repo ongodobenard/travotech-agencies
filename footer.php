@@ -441,7 +441,7 @@ html body .trv-footer .trv-foot-contact li:nth-child(2){min-width:0;}
           <span class="trv-foot-logo-img"><img src="<?php echo esc_url( $trv_logo ); ?>" alt="Travotech Agencies Limited — laboratory and hospital supplies in Nairobi, Kenya" width="160" height="52" loading="lazy"></span>
           <span class="trv-foot-logo-tag">The Home of Laboratory &amp; Hospital Supplies</span>
         </a>
-        <p class="trv-foot-desc">Travotech Agencies Limited is a trusted Nairobi supplier of affordable, professional laboratory and hospital equipment: hematology analyzers, hospital beds, patient monitors and rapid tests at pocket-friendly prices, delivered to Thika, Nairobi and across Kenya.</p>
+        <p class="trv-foot-desc">Trusted Nairobi supplier of laboratory and hospital equipment, delivered across Kenya.</p>
 
         <div class="trv-foot-socs">
           <?php
