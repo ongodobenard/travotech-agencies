@@ -389,21 +389,22 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
   .hp .hp-cats{gap:12px;}
   .hp .hp-cat{flex:0 0 calc(50% - 6px);max-width:calc(50% - 6px);}
 }
-/* hs-v1: discount + countdown */
-.hs{background:linear-gradient(135deg,#072f2f 0%,#093c3c 55%,#0f5a5a 100%);color:#fff;padding:clamp(30px,6vw,64px) 0;border-top:4px solid var(--th-red,#e53935);overflow:hidden;}
-.hs-top{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,48px);align-items:center;}
-.hs-tag{display:inline-flex;align-items:center;gap:8px;background:var(--th-red,#e53935);color:#fff;font:600 13px var(--th-fh,'Oswald',sans-serif);letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:50px;margin-bottom:14px;}
-.hs h2{color:#fff;font-size:clamp(1.6rem,4.4vw,2.8rem);}
-.hs-sub{margin:12px 0 0;color:rgba(255,255,255,.9);font-size:clamp(.95rem,1.6vw,1.1rem);}
-.hs-end{margin:8px 0 0;font-size:.88rem;color:#8fe3e5;}
-.hs-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;}
-.hs-timer{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,2vw,16px);}
-.hs-box{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:10px;text-align:center;padding:clamp(12px,2.4vw,22px) 4px;}
-.hs-box b{display:block;font:600 clamp(1.7rem,5.4vw,3.2rem)/1 var(--th-fh,'Oswald',sans-serif);color:#fff;font-variant-numeric:tabular-nums;}
-.hs-box span{display:block;margin-top:8px;font-size:clamp(.62rem,1.7vw,.8rem);letter-spacing:.1em;text-transform:uppercase;color:#8fe3e5;}
-.hs .hp-grid{margin-top:clamp(24px,4vw,40px);}
-@media (max-width:900px){.hs-top{grid-template-columns:1fr;text-align:center;}.hs-btns{justify-content:center;}}
-@media (max-width:560px){.hs-btns .hp-btn{width:100%;}}
+/* ofr-v2: simple year-end offer */
+.ofr{background:var(--th-dk,#093c3c);color:#fff;padding:clamp(28px,5vw,56px) 0;border-top:4px solid var(--th-red,#e53935);}
+.ofr-row{display:flex;align-items:center;justify-content:space-between;gap:clamp(20px,4vw,48px);flex-wrap:wrap;}
+.ofr-txt{flex:1 1 340px;min-width:0;}
+.ofr-kick{display:block;font:600 13px var(--th-fh,'Oswald',sans-serif);letter-spacing:.14em;text-transform:uppercase;color:#8fe3e5;margin-bottom:8px;}
+.ofr h2{color:#fff;font-size:clamp(1.5rem,3.6vw,2.4rem);}
+.ofr p{margin:10px 0 0;color:rgba(255,255,255,.88);}
+.ofr-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;}
+.ofr-timer{flex:0 1 460px;min-width:0;width:100%;max-width:460px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.6vw,14px);}
+.ofr-box{border:1px solid rgba(255,255,255,.28);border-radius:8px;text-align:center;padding:clamp(12px,2vw,20px) 4px;}
+.ofr-box b{display:block;font:600 clamp(1.6rem,5vw,2.6rem)/1 var(--th-fh,'Oswald',sans-serif);font-variant-numeric:tabular-nums;}
+.ofr-box span{display:block;margin-top:8px;font-size:clamp(.6rem,1.6vw,.75rem);letter-spacing:.1em;text-transform:uppercase;color:#8fe3e5;}
+.ofr .hp-grid{margin-top:clamp(24px,4vw,38px);}
+.ofr .hp-card{color:#183332;}
+@media (max-width:900px){.ofr-row{text-align:center;justify-content:center;}.ofr-btns{justify-content:center;}.ofr-timer{margin:0 auto;}}
+@media (max-width:560px){.ofr-btns .hp-btn{width:100%;}}
 </style>
 
 <main class="hp" id="main">
@@ -434,69 +435,7 @@ section[aria-labelledby="hp-new-h"] .hp-card .hp-btn-sm{padding:7px 6px;font-siz
         </div>
     </section>
 
-    <?php
-/* hs-v1: discount section. Runs for one month from 1 November (Nairobi time). */
-$hs_tz    = new DateTimeZone( 'Africa/Nairobi' );
-$hs_start = new DateTime( '2026-11-01 00:00:00', $hs_tz );
-$hs_end   = clone $hs_start;
-$hs_end->modify( '+1 month' );
-$hs_on    = ( time() >= $hs_start->getTimestamp() && time() < $hs_end->getTimestamp() );
-$hs_prods = array();
-if ( $hs_on && function_exists( 'wc_get_product_ids_on_sale' ) ) {
-    $hs_ids = wc_get_product_ids_on_sale();
-    if ( ! empty( $hs_ids ) ) {
-        $hs_prods = wc_get_products( array( 'status' => 'publish', 'include' => array_slice( $hs_ids, 0, 60 ), 'limit' => 8, 'orderby' => 'date', 'order' => 'DESC' ) );
-    }
-}
-if ( $hs_on ) : ?>
-    <!-- DISCOUNT + COUNTDOWN -->
-    <section class="hs" id="hs-sec" data-end="<?php echo (int) ( $hs_end->getTimestamp() * 1000 ); ?>" aria-labelledby="hs-h">
-        <div class="hp-wrap">
-            <div class="hs-top">
-                <div>
-                    <span class="hs-tag"><i class="fa-solid fa-fire" aria-hidden="true"></i> Limited time offer</span>
-                    <h2 id="hs-h">Month-End Discounts on Laboratory &amp; Hospital Equipment</h2>
-                    <p class="hs-sub">Save on selected equipment while the offer lasts. Order online or on WhatsApp.</p>
-                    <p class="hs-end">Offer ends <?php echo esc_html( wp_date( 'j F Y', $hs_end->getTimestamp() - 1, $hs_tz ) ); ?></p>
-                    <div class="hs-btns">
-                        <a class="hp-btn hp-btn-red" href="<?php echo esc_url( $hp_shop ); ?>"><i class="fa-solid fa-bag-shopping" aria-hidden="true"></i> Shop the offers</a>
-                        <a class="hp-btn hp-btn-ghost" href="https://wa.me/<?php echo esc_attr( $hp_wa ); ?>?text=<?php echo rawurlencode( 'Hello Travotech Agencies, I would like to know about your current discounts.' ); ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Ask on WhatsApp</a>
-                    </div>
-                </div>
-                <div class="hs-timer" role="timer" aria-live="off" aria-label="Time left for the offer">
-                    <div class="hs-box"><b data-u="d">00</b><span>Days</span></div>
-                    <div class="hs-box"><b data-u="h">00</b><span>Hours</span></div>
-                    <div class="hs-box"><b data-u="m">00</b><span>Minutes</span></div>
-                    <div class="hs-box"><b data-u="s">00</b><span>Seconds</span></div>
-                </div>
-            </div>
-            <?php if ( ! empty( $hs_prods ) ) : ?>
-            <div class="hp-grid">
-                <?php foreach ( $hs_prods as $p ) { $hp_card( $p ); } ?>
-            </div>
-            <?php endif; ?>
-        </div>
-    </section>
-    <script>
-    (function(){
-        var s=document.getElementById('hs-sec');if(!s)return;
-        var end=parseInt(s.getAttribute('data-end'),10);
-        var el={d:s.querySelector('[data-u="d"]'),h:s.querySelector('[data-u="h"]'),m:s.querySelector('[data-u="m"]'),s:s.querySelector('[data-u="s"]')};
-        function p(n){return n<10?'0'+n:String(n);}
-        function tick(){
-            var left=Math.floor((end-Date.now())/1000);
-            if(left<=0){s.style.display='none';return false;}
-            el.d.textContent=p(Math.floor(left/86400));
-            el.h.textContent=p(Math.floor(left%86400/3600));
-            el.m.textContent=p(Math.floor(left%3600/60));
-            el.s.textContent=p(left%60);
-            return true;
-        }
-        if(tick()){var t=setInterval(function(){if(!tick())clearInterval(t);},1000);}
-    })();
-    </script>
-<?php endif; ?>
-	<!-- CATEGORIES (live from WooCommerce) -->
+    <!-- CATEGORIES (live from WooCommerce) -->
     <?php if ( ! empty( $hp_cats ) ) : ?>
     <section class="hp-sec" aria-labelledby="hp-cat-h">
         <div class="hp-wrap">
@@ -554,7 +493,66 @@ if ( $hs_on ) : ?>
     </section>
     <?php endif; ?>
 
-    <!-- ABOUT -->
+    <?php
+/* ofr-v2: year-end offer, ends 31 December 2026 (Nairobi time). */
+$ofr_tz  = new DateTimeZone( 'Africa/Nairobi' );
+$ofr_end = new DateTime( '2026-12-31 23:59:59', $ofr_tz );
+$ofr_on  = time() < $ofr_end->getTimestamp();
+$ofr_products = array();
+if ( $ofr_on && function_exists( 'wc_get_product_ids_on_sale' ) ) {
+    $ofr_ids = wc_get_product_ids_on_sale();
+    if ( ! empty( $ofr_ids ) ) {
+        $ofr_products = wc_get_products( array( 'status' => 'publish', 'include' => array_slice( $ofr_ids, 0, 60 ), 'limit' => 4, 'orderby' => 'date', 'order' => 'DESC' ) );
+    }
+}
+if ( $ofr_on ) : ?>
+    <!-- YEAR-END OFFER -->
+    <section class="ofr" id="ofr-sec" data-end="<?php echo (int) ( $ofr_end->getTimestamp() * 1000 ); ?>" aria-labelledby="ofr-h">
+        <div class="hp-wrap">
+            <div class="ofr-row">
+                <div class="ofr-txt">
+                    <span class="ofr-kick">Year-End Offer</span>
+                    <h2 id="ofr-h">Special Prices on Selected Equipment</h2>
+                    <p>Offer ends 31 December 2026. Order online or on WhatsApp.</p>
+                    <div class="ofr-btns">
+                        <a class="hp-btn hp-btn-red" href="<?php echo esc_url( $hp_shop ); ?>">Shop the offers <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        <a class="hp-btn hp-btn-ghost" href="https://wa.me/<?php echo esc_attr( $hp_wa ); ?>?text=<?php echo rawurlencode( 'Hello Travotech Agencies, I would like to know about your current offers.' ); ?>" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> WhatsApp us</a>
+                    </div>
+                </div>
+                <div class="ofr-timer" role="timer" aria-live="off" aria-label="Time left for the offer">
+                    <div class="ofr-box"><b data-u="d">00</b><span>Days</span></div>
+                    <div class="ofr-box"><b data-u="h">00</b><span>Hours</span></div>
+                    <div class="ofr-box"><b data-u="m">00</b><span>Mins</span></div>
+                    <div class="ofr-box"><b data-u="s">00</b><span>Secs</span></div>
+                </div>
+            </div>
+            <?php if ( ! empty( $ofr_products ) ) : ?>
+            <div class="hp-grid">
+                <?php foreach ( $ofr_products as $p ) { $hp_card( $p ); } ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <script>
+    (function(){
+        var s=document.getElementById('ofr-sec');if(!s)return;
+        var end=parseInt(s.getAttribute('data-end'),10);
+        var el={d:s.querySelector('[data-u="d"]'),h:s.querySelector('[data-u="h"]'),m:s.querySelector('[data-u="m"]'),s:s.querySelector('[data-u="s"]')};
+        function p(n){return n<10?'0'+n:String(n);}
+        function tick(){
+            var left=Math.floor((end-Date.now())/1000);
+            if(left<=0){s.style.display='none';return false;}
+            el.d.textContent=p(Math.floor(left/86400));
+            el.h.textContent=p(Math.floor(left%86400/3600));
+            el.m.textContent=p(Math.floor(left%3600/60));
+            el.s.textContent=p(left%60);
+            return true;
+        }
+        if(tick()){var t=setInterval(function(){if(!tick())clearInterval(t);},1000);}
+    })();
+    </script>
+<?php endif; ?>
+	<!-- ABOUT -->
     <section class="hp-sec alt" aria-labelledby="hp-about-h">
         <div class="hp-wrap hp-about">
             <img src="<?php echo esc_url( $hp_about ); ?>" alt="Travotech Agencies laboratory and hospital supplies" loading="lazy" width="640" height="440">
