@@ -393,6 +393,10 @@ if ( is_wp_error( $sh_cats ) ) { $sh_cats = array(); }
   .sh .sh-side:not(.open){display:none !important;}
   .sh .sh-search{margin:0 0 10px !important;}
 }
+/* spx-fit-v1: nothing cropped in product cards */
+.sh .sh-card,.sh .sh-body,.sh .sh-chips{min-width:0;max-width:100%;}
+.sh .sh-chip{max-width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.35;border-radius:12px;}
+.sh .sh-b{white-space:normal;line-height:1.2;min-width:0;}
 </style>
 </style>
 

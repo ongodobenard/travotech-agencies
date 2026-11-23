@@ -264,6 +264,23 @@ html body .sp-wrap .sp-atc-btn.atc-done{background:#093c3c !important;opacity:1;
 html body .sp-wrap .p-btn-cart.atc-done{background:#093c3c !important;color:#fff !important;border-color:#093c3c !important;}
 html body .sp-wrap .atc-done .t{animation:spxPop .35s ease;}
 @keyframes spxPop{0%{transform:scale(.85);opacity:.4;}100%{transform:scale(1);opacity:1;}}
+/* spx-fit-v1: nothing cropped on phones */
+.sp-wrap,.sp-wrap *{box-sizing:border-box;}
+.sp-wrap .sp-card,.sp-wrap .sp-info,.sp-wrap .sp-actions,.sp-wrap .sp-meta-card{min-width:0;max-width:100%;}
+.sp-wrap .sp-meta-badge{white-space:normal;max-width:100%;overflow-wrap:anywhere;line-height:1.35;}
+.sp-wrap .sp-wa-btn,.sp-wrap .sp-atc-btn{width:100%;max-width:100%;white-space:normal;text-align:center;line-height:1.25;}
+.sp-wrap .sp-related-grid .p-card,.sp-wrap .sp-related-grid .p-body{min-width:0;max-width:100%;}
+.sp-wrap .sp-related-grid .p-card-cat,.sp-wrap .sp-related-grid .p-card-brand{white-space:normal;max-width:100%;overflow-wrap:anywhere;line-height:1.35;border-radius:12px;}
+.sp-wrap .sp-related-grid .p-btn-cart,.sp-wrap .sp-related-grid .p-btn-wa{white-space:normal;line-height:1.2;min-width:0;}
+.sp-wrap .sp-related-grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+@media(max-width:960px){.sp-wrap .sp-related-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:760px){.sp-wrap .sp-related-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:400px){.sp-wrap .sp-related-grid{grid-template-columns:minmax(0,1fr);}}
+@media(max-width:700px){
+  .sp-wrap .sp-card{align-items:stretch;}
+  .sp-wrap .sp-info{width:100%;flex:none;}
+  .sp-wrap .sp-gallery{width:100%;}
+}
 </style>
 
 <!-- TOAST -->
